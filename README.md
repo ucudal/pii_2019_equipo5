@@ -3,7 +3,7 @@
 ## EQUIPO 5 : Sofía, Fausto, Matías, Marcelo.
 
 ## PROYECTO IGNIS APP
-probando
+
 ### INTRODUCCIÓN
 
 #### Tuvimos la presentación por parte de Natalia y Carolina.
