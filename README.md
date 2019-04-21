@@ -91,6 +91,9 @@
         * Proyectos en Marcha.
         * Proyectos Concluidos.
         * Estado (activo, inactivo).
+        * altaCliente()
+        * activarCliente()
+        * inactivarCliente()
     * Colaboraciones
         * Usuarios.
         * Proyectos.
@@ -104,6 +107,10 @@
         * Roles (máx. 3).
         * Horas acumuladas.
         * Estado (activo, inactivo).
+        * altaTecnico()
+        * activarTecnico()
+        * inactivarTecnico()
+        * asignarTecnicoProyecto()
     * Colaboraciones
         * Usuarios.
         * Roles.
@@ -114,12 +121,17 @@
         * Nombre y apellido.
         * Contaseña.
         * Perfil (cliente, técnico, ignis).
+        * Estado (activo, inactivo).
+        * altaUsuario()
+        * activarUsuario()
+        * inactivarUsuario()
+        * cambiarContrasena()
     * Colaboraciones
         * Login.
         * Clientes.
         * Técnicos.
 
-* CLASE: Login
+* CLASE: Autenticacion
     * Esta clase recibe usuario y contraseña a partir de una página inicial y presenta la siguiente ventana de acuerdo al perfil. Puede ser un cliente, un técnico o una operadora de Ignis.
     * Responsabilidades
         * login()
@@ -135,6 +147,9 @@
         * Dificultad.
         * Horas estimadas.
         * Estado (activo, concluido, cancelado).
+        * altaProyecto()
+        * activarProyecto()
+        * inactivarProyecto()
     * Colaboraciones
         * Clientes.
         * Técnicos.
@@ -144,6 +159,10 @@
     * Esta clase conoce los roles de los técnicos.
     * Responsabilidades
         * Descripción.
+        * Estado.
+        * altaRol()
+        * activarRol()
+        * inactivarRol()
     * Colaboraciones
         * Técnicos.
         * Proyecto.
@@ -153,6 +172,7 @@
     * Responsabilidades
         * Categoría.
         * Costo por hora.
+        * modificarCostoPorHora()
     * Colaboraciones
         * Proyecto.
         * Clientes.
@@ -163,6 +183,8 @@
     * Responsabilidades
         * Límite de roles por técnico.
         * Límite de proyectos por técnico.
+        * modificarLimiteRoles()
+        * modificarLimiteProyectos()
     * Colaboraciones
         * Roles.
         * Proyecto.
