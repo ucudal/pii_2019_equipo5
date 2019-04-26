@@ -105,9 +105,12 @@
     * actualizarLista() 	método para actualizar las listas al inicio o al agregar o quitar objetos.
 
 * Colaboraciones:
-    * Clientes
-    * Tecnicos
+    * Cliente
+    * Tecnico
 
+* Implementa:
+    * Clase abstracta "AdminListas"
+    
 ## INTERFASE "IPERSONA"
 
 ### Basándonos en el patrón de Polimorfismo, creamos esta interfase para activar o desactivar la cuenta de un objeto Cliente o de un objeto Tecnico.
@@ -130,7 +133,7 @@
     * Nombre
     * Presentación (texto)
     * Estado (activo, concluido)
-    * listaSolicitudes
+    * Lista de Solicitudes
 
 * Comportamientos:
     * agregarProyecto() 	método para agregar el proyecto al sistema luego de construido el objeto. Dispara actualizarListaProyectos() de la clase Proyectos y también guarda un registro nuevo en los archivos de texto.
@@ -150,10 +153,16 @@
 ### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si se modifica como se utiliza la misma o se agregan nuevos comportamientos.
 
 * Atributos:
-    * listaProyectos
+    * Lista de Proyectos
 
 * Comportamientos:
     * actualizarLista() 	método para actualizar la lista al inicio de la app, luego de agregar un nuevo proyecto o cambiar el estado de uno existente.
+
+* Colaboraciones:
+    * Proyecto
+
+* Implementa:
+    * Clase abstracta "AdminListas"
 
 ## CLASE "SOLICITUD"
 
@@ -181,6 +190,9 @@
     * Identificador, título principal.
     * Descripción, de la actividad que desarrolla.
 
+* Colaboraciones:
+    * Roles
+
 ## CLASE "ROLES"
 
 ### Esta clase tiene como responsabilidad mantener una lista de los roles y actualizar la lista al inicio de la app o luego de agregar un nuevo rol.
@@ -194,14 +206,21 @@
 * Comportamientos:
     * actualizarLista() 	método para actualizar la lista.
 
-## INTERFASE "ILISTAS"
+* Colaboraciones:
+    * Rol
 
-### Basándonos en el patrón de Polimorfismo, creamos esta interfase, ya que identificamos el mismo tipo en los objetos ROLES y PROYECTOS.
+* Implementa:
+    * Clase abstracta "AdminListas"
+
+## CLASE ABSTRACTA "AdminListas"
+
+### Implementamos esta clase abstracta ya que identificamos que las clases Persona, Roles y Proyectos tienen listas que deben ser actualizadas. Como comparten este mismo tipo, podemos aplicar una clase abstracta, una en algunas clases realizamos un override del método ya que el comportamiento debe ser distinto a las demás clases.
 
 * Comportamientos:
     * actualizarLista()
 
 * Implementada por:
+    * clase "Personas"
     * clase "Roles"
     * clase "Proyectos"
 
@@ -231,14 +250,31 @@
     * limiteProyectosPorTecnico (máx. 3 concurrentes).
     * limiteAñosEgresados (ej. 1, 2 o 3 años máximo).
 
-## CLASE "ARCHIVOTXT"
+* Comportamientos:
+    * modificarRolesPorTecnico()
+    * modificarProyectosPorTecnico()
+    * modificarAñosEgresados()
+
+## CLASE "dbFormato"
 
 ### A los efectos de mantener la información de los objetos en forma local, esta clase recibe los atributos de un objeto, genera una línea a partir de los mismos y la guarda en un archivo de texto. Al inicio de la aplicación esta clase lee los datos y genera los objetos a partir de la información almacenada.
 
 * Comportamientos:
     * CodificarLineaTxt()
     * DecodificarLineaTxt()
+
+* Colaboradores:
+    * dbArchivo
+
+## CLASE "dbArchivo"
+
+### A los efectos de mantener la información de los objetos en forma local, esta clase recibe los atributos de un objeto, genera una línea a partir de los mismos y la guarda en un archivo de texto. Al inicio de la aplicación esta clase lee los datos y genera los objetos a partir de la información almacenada.
+
+* Comportamientos:
     * GuardarLinea()
     * EliminarLinea()
     * LeerLineas() = leer todo el archivo.
+
+* Colaboradores:
+    * dbFormato
 

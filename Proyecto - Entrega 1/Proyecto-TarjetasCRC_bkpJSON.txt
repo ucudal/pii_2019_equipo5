@@ -1,0 +1,252 @@
+[
+  {
+    "name": "Cliente",
+    "superclasses": "Persona",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Hereda: Nombre Completo",
+      "Hereda: Cédula de Identidad",
+      "Hereda: Estado",
+      "",
+      "Hereda: activar()",
+      "Hereda: inactivar()"
+    ],
+    "collaborators": [
+      "Personas"
+    ]
+  },
+  {
+    "name": "Tecnico",
+    "superclasses": "Persona",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Hereda: Nombre Completo",
+      "Hereda: Cédula de Identidad",
+      "Hereda: Estado",
+      "Presentación (texto)",
+      "Estudiante o Egresado",
+      "Año de egreso",
+      "Nivel de dificultad que puede encarar (básico, avanzado)",
+      "Calificación de Centro Ignis (asignada por el administrador de Ignis)",
+      "Calificación de Clientes (asignada por clientes)",
+      "",
+      "Hereda: activar()",
+      "Hereda: inactivar()",
+      "modificarCalificaIgnis()",
+      "modificarCalificaCliente()",
+      ""
+    ],
+    "collaborators": [
+      "Personas"
+    ]
+  },
+  {
+    "name": "Persona",
+    "superclasses": "",
+    "subclasses": "Cliente, Tecnico",
+    "type": 1,
+    "responsibilities": [
+      "Nombre completo (nombre y apellido)",
+      "Cédula de Identidad",
+      "Estado (activo o inactivo)",
+      "activar()",
+      "inactivar()",
+      ""
+    ],
+    "collaborators": [
+      "Cliente",
+      "Tecnico",
+      "Persona"
+    ]
+  },
+  {
+    "name": "Personas",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "ListaClientes",
+      "ListaTecnicos",
+      "actualizarLista()",
+      ""
+    ],
+    "collaborators": [
+      "Cliente",
+      "Tecnico",
+      "AdminListas"
+    ]
+  },
+  {
+    "name": "IPersona",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 3,
+    "responsibilities": [
+      "activar()",
+      "inactivar()",
+      ""
+    ],
+    "collaborators": [
+      "Cliente",
+      "Tecnico",
+      "Persona"
+    ]
+  },
+  {
+    "name": "Proyecto",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Nombre",
+      "Presentación (texto)",
+      "Estado (activo, concluido)",
+      "Lista de Solicitudes",
+      "agregarProyecto()",
+      "agregarSolicitud()",
+      "reactivarProyecto()",
+      "concluirProyecto()",
+      ""
+    ],
+    "collaborators": [
+      "Proyectos",
+      "Solicitud"
+    ]
+  },
+  {
+    "name": "Proyectos",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Lista de Proyectos",
+      "actualizarLista()",
+      ""
+    ],
+    "collaborators": [
+      "Proyecto",
+      "AdminListas"
+    ]
+  },
+  {
+    "name": "Solicitud",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Rol",
+      "Nivel de dificultad",
+      "Observaciones"
+    ],
+    "collaborators": [
+      "Proyecto"
+    ]
+  },
+  {
+    "name": "Rol",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Identificador, título principal.",
+      "Descripción, de la actividad que desarrolla."
+    ],
+    "collaborators": [
+      "Rol",
+      ""
+    ]
+  },
+  {
+    "name": "Roles",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "listaRoles[]",
+      "actualizarLista()",
+      ""
+    ],
+    "collaborators": [
+      "Rol",
+      "AdminListas"
+    ]
+  },
+  {
+    "name": "AdminListas",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 2,
+    "responsibilities": [
+      "actualizarLista()",
+      ""
+    ],
+    "collaborators": [
+      "Personas",
+      "Roles",
+      "Proyectos"
+    ]
+  },
+  {
+    "name": "Costo",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Categoria",
+      "CostoPorHora",
+      "modificarCostoPorHora()",
+      ""
+    ],
+    "collaborators": [
+      ""
+    ]
+  },
+  {
+    "name": "Config",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "limiteRolesPorTecnico",
+      "limiteProyectosPorTecnico",
+      "limiteAñosEgresados",
+      "modificarRolesPorTecnico()",
+      "modificarProyectosPorTecnico()",
+      "modificarAñosEgresados()",
+      ""
+    ],
+    "collaborators": [
+      "Proyecto"
+    ]
+  },
+  {
+    "name": "dbFormato",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "CodificarLineaTxt()",
+      "DecodificarLineaTxt()"
+    ],
+    "collaborators": [
+      "dbArchivo"
+    ]
+  },
+  {
+    "name": "dbArchivo",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "GuardarLinea()",
+      "EliminarLinea()",
+      "LeerLineas()",
+      ""
+    ],
+    "collaborators": [
+      "dbFormato"
+    ]
+  }
+]
