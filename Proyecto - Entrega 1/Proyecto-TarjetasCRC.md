@@ -20,7 +20,7 @@
 # LA APLICACIÓN
 
 ### La aplicación inicia se muestra una pantalla principal en donde se podra ver en que proyectos se encuentra trbajando el centro ignis, asi como dos botones principales para el registro de clientes o tecnicos y otro boton para ingresar a las cuentas ya creadas.
-### Cuando el usuario intente ingresar se presentara el login en donde dependiendo del usuario este ingresara a su correspondiente menú en este caso son tres opciones:
+### Cuando el usuario intente ingresar se presentara el login en donde dependiendo del usuario este ingresara a su correspondiente menú. En este caso son tres opciones:
 * acceder al menú de clientes.
 * acceder al menú de técnicos.
 * acceder al menú de administrador del Centro Ignis.
