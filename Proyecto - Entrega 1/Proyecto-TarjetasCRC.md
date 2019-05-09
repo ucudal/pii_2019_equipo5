@@ -407,13 +407,13 @@
 * Test asociados a esta clase:
     * Test para asegurar que el método de leer completamente un archivo no devuelva valores nulos.
 
-# CASOS DE USO DE INTERACCIÓN
+## CASOS DE USO DE INTERACCIÓN
 ## LOGIN 
-### PASO 1: El usuario ingresa su mail y contraseña.
-### PASO 2: La clase LOGIN chekea que el mail se encuentren en la lista de usuarios en la clase PERSONA.
-### PASO 2.1: La clase no encuentra el mail, se envia un mensaje de error al usuario.
-### PASO 3: Si el sistema encuentra el mail chekea que la contraseña corresponda con la guardada para este usuario.
-### PASO 3.1: Si encuentra el mail, y la contraeña no coincide, se envia mensaje de error al usuario.
-### PASO 4: Si el mail y la contraseña son correctas se chekea que el estado del usuario sea "Activo".
-### PASO 4.1: Si el usuario se encuentra con estado "Inactivo" entonces se envia mensaje de error al usuario.
-### PASO 5: Si mail, contraseña, estado son correctos entonces la clase LOGIN re-envia al usuario a su menu correspondiente.
+* PASO 1: El usuario ingresa su mail y contraseña.
+* PASO 2: La clase LOGIN chekea que el mail se encuentren en la lista de usuarios en la clase PERSONA.
+* PASO 2.1: La clase no encuentra el mail, se envia un mensaje de error al usuario.
+* PASO 3: Si el sistema encuentra el mail chekea que la contraseña corresponda con la guardada para este usuario.
+* PASO 3.1: Si encuentra el mail, y la contraeña no coincide, se envia mensaje de error al usuario.
+* PASO 4: Si el mail y la contraseña son correctas se chekea que el estado del usuario sea "Activo".
+* PASO 4.1: Si el usuario se encuentra con estado "Inactivo" entonces se envia mensaje de error al usuario.
+* PASO 5: Si mail, contraseña, estado son correctos entonces la clase LOGIN re-envia al usuario a su menu correspondiente.
