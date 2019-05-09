@@ -122,7 +122,7 @@
 * Atributos:
     * Nombre completo (nombre y apellido)
     * Estado (activo, inactivo)
-    * e-mail
+    * e-mail 
     * Contrseña
 
 * Comportamientos:
@@ -407,7 +407,7 @@
 * Test asociados a esta clase:
     * Test para asegurar que el método de leer completamente un archivo no devuelva valores nulos.
 
-#CASOS DE USO DE INTERACCIÓN
+# CASOS DE USO DE INTERACCIÓN
 ## LOGIN 
 ### PASO 1: El usuario ingresa su mail y contraseña.
 ### PASO 2: La clase LOGIN chekea que el mail se encuentren en la lista de usuarios en la clase PERSONA.
