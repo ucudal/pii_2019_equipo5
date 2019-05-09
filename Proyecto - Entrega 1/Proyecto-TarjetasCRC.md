@@ -1,6 +1,6 @@
 # PROGRAMACIÓN 2 - 2019
 
-### EQUIPO 5 : Sofía, Fausto, Matías, Marcelo Stabile.
+### EQUIPO 5 : Sofía Nicoletti, Fausto Pieruzzi, Angel Matías Rodriguez, Marcelo Stabile.
 
 
 # INTRODUCCIÓN
@@ -19,7 +19,8 @@
 
 # LA APLICACIÓN
 
-### La aplicación inicia, se presenta al usuario tres opciones:
+### La aplicación inicia se muestra una pantalla principal en donde se podra ver en que proyectos se encuentra trbajando el centro ignis, asi como dos botones principales para el registro de clientes o tecnicos y otro boton para ingresar a las cuentas ya creadas.
+### Cuando el usuario intente ingresar se presentara el login en donde dependiendo del usuario este ingresara a su correspondiente menú en este caso son tres opciones:
 * acceder al menú de clientes.
 * acceder al menú de técnicos.
 * acceder al menú de administrador del Centro Ignis.
@@ -96,7 +97,58 @@
     * front para Ignis (administradores)
 
 
-## CLASE "CLIENTE"
+## CLASE "LOGIN"
+### Clase con la responsabilidad de redireccionar al usuario a su menu correspondiente y regresarlo al menu principal cuando desee salir del sistema.
+### Cumple con SRP ya que esta es su única responsabilidad.
+
+* Comportamientos:
+    * ingresar() metodo para que el usuario ingrese al sistema.
+    * salir() metodo para que el usuario salga del sistema.
+
+* Colaboraciones: 
+    * Persona
+
+* Tests asociados a esta clase:
+    * Si el email o contraseña es correcta.
+    * Es importante que se controle que no se ingrese nigun campo vacio.
+    * Es importante que se controle que el usuario se encuentre activo. 
+  
+
+## CLASE "ADMINISTRADOR" : PERSONA
+
+### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Administrador" y cambiar sus datos y su estado. 
+### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
+
+* Atributos:
+    * Nombre completo (nombre y apellido)
+    * Estado (activo, inactivo)
+    * e-mail
+    * Contrseña
+
+* Comportamientos:
+    * activarCliente()    método para activar un cliente.
+    * inactivarCliente()    método para inactivar un cliente.
+    * activarTecnico()    método para activar un cliente.
+    * inactivarTecnico()    método para inactivar un cliente.
+    * asignarTecnico()  asignar tecnico a uno o mas proyectos.
+    * modifCostoPorHora() modificar el precio por hora de los proyectos.
+    * modificarLimites() modificar limites de roles o proyectos.
+
+* Colaboraciones:
+    * Persona
+    * Proyecto
+    * Roles
+    * Costo
+    * Config
+    * Solicitud
+
+* Implementa:
+    * Interfase IPersona.
+
+* Tests asociados a esta clase:
+    * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
+    
+## CLASE "CLIENTE" : PERSONA
 
 ### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Cliente" y cambiar sus datos y su estado. 
 ### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
@@ -105,13 +157,16 @@
     * Nombre completo (nombre y apellido)
     * Edad
     * Estado (activo, inactivo)
+    * e-mail
+    * Contrseña
+    
 
 * Comportamientos:
     * activar()    método para activar un cliente.
     * inactivar()    método para inactivar un cliente y sus solicitudes y proyectos asociados.
 
 * Colaboraciones:
-    * Personas
+    * Persona
 
 * Implementa:
     * Interfase IPersona.
@@ -120,7 +175,7 @@
     * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
     * Es importante que se controle que la edad ingresada no sea cero o negativa.
 
-## CLASE "TECNICO"
+## CLASE "TECNICO" : PERSONA
 
 ### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Tecnico" y cambiar sus datos y su estado.
 ### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
@@ -134,6 +189,8 @@
     * Estado (activo, inactivo)
     * Calificación de Centro Ignis (asignada por el administrador de Ignis)
     * Calificación de Clientes (asignada por clientes)
+    * e-mail
+    * Contrseña
 
 * Comportamientos:
     * activar()      método para activar un técnico.
@@ -152,14 +209,19 @@
     * Es necesario controlar que exista un método para controlar que el año de egreso no sea menor a cero (o un valor razonable, ejemplo 2015) y que además el valor ingresado tampoco puede ser mayor al año en curso.
     * Es necesario hacer un test sobre los métodos que modifican las calificaciones de clientes y del centro ya que los mismos deben controlar que los valores se encuentran dentro de los rangos establecidos previamente (ejemplo, entre 0 y 5).
 
-## CLASE "PERSONAS"
+## CLASE "PERSONA"
 
-### Considerando EXPERT, decimos que esta clase es experta en mantener una lista de personas en el sistema (clientes, técnicos).
+### Considerando EXPERT, decimos que esta clase es experta en mantener una lista de personas en el sistema (clientes, técnicos,administradores).
 ### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si hay modificaciones sobre las listas o se agrega otra a futuro.
 
 * Atributos:
+    * Nombre completo (Nombre, Apellido)
+    * Estado (Activo, Inictivo)
+    * e-mail
+    * Contrseña
     * ListaClientes.
     * ListaTecnicos.
+    * ListaAdministradores.
 
 * Comportamientos:
     * actualizarLista() 	método para actualizar las listas al inicio o al agregar o quitar objetos.
@@ -198,7 +260,8 @@
     * Lista de Solicitudes
 
 * Comportamientos:
-    * agregarProyecto() 	método para agregar el proyecto al sistema luego de construido el objeto. Dispara actualizarListaProyectos() de la clase Proyectos y también guarda un registro nuevo en los archivos de texto.
+    * agregarProyecto() 	método para agregar el proyecto al sistema luego de construido el objeto. Dispara 
+    * actualizarListaProyectos() de la clase Proyectos y también guarda un registro nuevo en los archivos de texto.
     * agregarSolicitud() 	método para agregar una solicitud de un técnico a las lista de solicitudes.
     * reactivarProyecto()      método para marcar como reactivar un proyecto.
     * concluirProyecto()    método para marcar como concluido un proyecto.
