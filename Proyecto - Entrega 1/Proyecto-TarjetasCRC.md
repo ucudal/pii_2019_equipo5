@@ -111,8 +111,7 @@
 * Comportamientos:
     * cambiarContraseña()
     * MsgError() metodo que muestra mensaje de error.
-    * checkForm()
-
+  
 * Colaboraciones:
     * Cliente
     * Tecnico
