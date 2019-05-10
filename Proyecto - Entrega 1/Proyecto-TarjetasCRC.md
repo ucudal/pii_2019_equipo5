@@ -5,9 +5,9 @@
 
 # INTRODUCCIÓN
 
-### El Centro Ignis cumple el rol de facilitador de técnicos calificados para proyectos, siendo un intermediario entre el cliente que tiene un proyecto y los técnicos que se registran para trabajar. Para desarrollar estas funciones, necesita una aplicación que permita al centro la administración de recursos humanos para proyectos. Esta aplicación debe ser una mejora significativa al método que actualmente utilizan que se basa en el uso de planillas excel y correos con información. 
+### El Centro Ignis cumple el rol de facilitador de técnicos calificados para proyectos, siendo un intermediario entre el cliente que tiene un proyecto y los técnicos que se registran para trabajar. Para desarrollar estas funciones, necesita una aplicación que permita al centro la administración de recursos humanos para proyectos. Esta aplicación debe ser una mejora significativa al método que actualmente utilizan que se basa en el uso de planillas excel y correos con información.
 
-### Los clientes son estudiantes de la UCU, a futuro podrían ampliarse a egresados. El cliente se contacta con el Centro Ignis presentando su proyecto y realizando solicitudes por los técnicos que necesita. 
+### Los clientes son estudiantes de la UCU, a futuro podrían ampliarse a egresados. El cliente se contacta con el Centro Ignis presentando su proyecto y realizando solicitudes por los técnicos que necesita.
 ### Al final del proyecto, el centro debe calcular las horas empleadas por técnico e informarle cuanto debe pagar.
 
 ### Los técnicos son estudiantes de la UCU que se registran en el centro para trabajar. Pueden anotarse hasta en 3 roles (hay 22 disponibles). Pueden ser de cualquier año de la carrera, serán catalogados según "niveles de dificultad".
@@ -74,7 +74,7 @@
     * solicitudes.
 
 * Permitir a los clientes:
-    * registrar sus proyectos. 
+    * registrar sus proyectos.
     * registrar solicitudes por los técnicos que necesita.
 
 * Permitir a los técnicos:
@@ -124,7 +124,7 @@
 
 ## CLASE "CLIENTE" : PERSONA
 
-### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Cliente" y cambiar sus datos y su estado. 
+### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Cliente" y cambiar sus datos y su estado.
 ### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
 
 * Atributos:
@@ -136,7 +136,7 @@
     * Estado (activo, inactivo)
     * e-mail
     * Contraseña
-    
+
 * Comportamientos:
     * Constructor del cliente.
     * activar()    método para activar un cliente.
@@ -145,7 +145,7 @@
 * Colaboraciones:
     * Persona
     * Proyecto
-    
+
 * Tests asociados a esta clase:
     * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
     * Es importante que se controle que la edad ingresada no sea cero o negativa.
@@ -173,7 +173,7 @@
     * Contraseña
 
 * Comportamientos:
-    * Constructor del técnico. 
+    * Constructor del técnico.
     * activar()      método para activar un técnico.
     * inactivar()    método para inactivar un técnico.
     * asignarTecnico()  asignar tecnico a uno o mas proyectos.
@@ -192,7 +192,7 @@
 
 ## CLASE "ADMINISTRADOR" : PERSONA
 
-### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Administrador" y cambiar sus datos y su estado. 
+### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Administrador" y cambiar sus datos y su estado.
 ### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
 
 * Atributos:
@@ -219,7 +219,7 @@
 
 * Tests asociados a esta clase:
     * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
-    
+
 
 ## INTERFASE "IPERSONA"
 
@@ -242,13 +242,13 @@
     * ingresar() metodo para que el usuario ingrese al sistema.
     * salir() metodo para que el usuario salga del sistema.
 
-* Colaboraciones: 
+* Colaboraciones:
     * Persona
 
 * Tests asociados a esta clase:
     * Si el email o contraseña es correcta.
     * Es importante que se controle que no se ingrese nigun campo vacio.
-    * Es importante que se controle que el usuario se encuentre activo. 
+    * Es importante que se controle que el usuario se encuentre activo.
 
 
 ## CLASE "PROYECTO"
@@ -263,7 +263,7 @@
     * Lista de Solicitudes
 
 * Comportamientos:
-    * agregarProyecto() 	método para agregar el proyecto al sistema luego de construido el objeto. Dispara 
+    * agregarProyecto() 	método para agregar el proyecto al sistema luego de construido el objeto. Dispara
     * actualizarListaProyectos() de la clase Proyectos y también guarda un registro nuevo en los archivos de texto.
     * agregarSolicitud() 	método para agregar una solicitud de un técnico a las lista de solicitudes.
     * reactivarProyecto()      método para marcar como reactivar un proyecto.
@@ -420,9 +420,9 @@
     * Test para asegurar que el método de leer completamente un archivo no devuelva valores nulos.
 
 
-## CASOS DE USO DE INTERACCIÓN
+## CASOS DE USO DE INTERACCIÓN.
 
-## LOGIN 
+## LOGIN
 * PASO 1: El usuario ingresa su mail y contraseña.
 * PASO 2: La clase LOGIN chekea que el mail se encuentren en la lista de usuarios en la clase PERSONA.
 * PASO 2.1: La clase no encuentra el mail, se envia un mensaje de error al usuario.
