@@ -97,6 +97,136 @@
     * front para Ignis (administradores)
 
 
+## CLASE "PERSONA"
+
+### Considerando EXPERT, decimos que esta clase es experta por mantener el constructor de personas.
+### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si hay modificaciones sobre las listas o se agrega otra a futuro.
+
+* Atributos:
+    * Nombre completo (Nombre, Apellido)
+    * Estado (Activo, Inictivo)
+    * e-mail
+    * Contraseña
+
+* Comportamientos:
+    * cambiarContraseña()
+
+* Colaboraciones:
+    * Cliente
+    * Tecnico
+
+* Implementa:
+    * Clase abstracta "AdminLista"
+
+* Tests asociados a esta clase:
+    * Se puede crear un test que controle que el método de actualizar listas no devuelve vacíos o nulos.
+
+
+## CLASE "CLIENTE" : PERSONA
+
+### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Cliente" y cambiar sus datos y su estado. 
+### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
+
+* Atributos:
+    * ListaClientes
+
+* Hereda de PERSONA los siguientes atributos:
+    * Nombre completo (nombre y apellido)
+    * Edad
+    * Estado (activo, inactivo)
+    * e-mail
+    * Contraseña
+    
+* Comportamientos:
+    * Constructor del cliente.
+    * activar()    método para activar un cliente.
+    * inactivar()    método para inactivar un cliente y sus solicitudes y proyectos asociados.
+
+* Tests asociados a esta clase:
+    * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
+    * Es importante que se controle que la edad ingresada no sea cero o negativa.
+
+
+## CLASE "TECNICO" : PERSONA
+
+### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Tecnico" y cambiar sus datos y su estado.
+### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
+
+* Atributos:
+    * Presentación (texto)
+    * Estudiante o Egresado
+    * Año de egreso
+    * Nivel de dificultad que puede encarar (básico, avanzado)
+    * Calificación de Centro Ignis (asignada por el administrador de Ignis)
+    * Calificación asignada por clientes.
+    * ListaTecnicos
+
+* Hereda de PERSONA los siguientes atributos:
+    * Nombre completo (nombre y apellido)
+    * Edad
+    * Estado (activo, inactivo)
+    * e-mail
+    * Contraseña
+
+* Comportamientos:
+    * Constructor del técnico. 
+    * activar()      método para activar un técnico.
+    * inactivar()    método para inactivar un técnico.
+    * asignarTecnico()  asignar tecnico a uno o mas proyectos.
+    * modificarCalificaIgnis()     método para modificar la calificación realizada por Ignis
+    * modificarCalificaCliente()   método para modificar la calificación realizada por Clientes
+
+* Tests asociados a esta clase:
+    * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
+    * Es necesario controlar que exista un método para controlar que el año de egreso no sea menor a cero (o un valor razonable, ejemplo 2015) y que además el valor ingresado tampoco puede ser mayor al año en curso.
+    * Es necesario hacer un test sobre los métodos que modifican las calificaciones de clientes y del centro ya que los mismos deben controlar que los valores se encuentran dentro de los rangos establecidos previamente (ejemplo, entre 0 y 5).
+
+
+## CLASE "ADMINISTRADOR" : PERSONA
+
+### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Administrador" y cambiar sus datos y su estado. 
+### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
+
+* Atributos:
+    * ListaAdministradores
+
+* Hereda de PERSONA los siguientes atributos:
+    * Nombre completo (nombre y apellido)
+    * Edad
+    * Estado (activo, inactivo)
+    * e-mail
+    * Contraseña
+
+* Comportamientos:
+    * constructor del administrador.
+    * modifCostoPorHora() modificar el precio por hora de los proyectos.
+    * modificarLimites() modificar limites de roles o proyectos.
+
+* Colaboraciones:
+    * Persona
+    * Proyecto
+    * Roles
+    * Costo
+    * Config
+    * Solicitud
+
+* Tests asociados a esta clase:
+    * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
+    
+
+## INTERFASE "IPERSONA"
+
+### Basándonos en el patrón de Polimorfismo, identificamos que ambos objetos comparten los mismos tipos, por lo que creamos esta interfase para activar o desactivar la cuenta de un objeto Cliente o de un objeto Tecnico.
+
+* Comportamientos:
+    * activar()
+    * inactivar()
+
+* Implementada por:
+    * clase "Cliente"
+    * clase "Tecnico"
+
+
 ## CLASE "LOGIN"
 ### Clase con la responsabilidad de redireccionar al usuario a su menu correspondiente y regresarlo al menu principal cuando desee salir del sistema.
 ### Cumple con SRP ya que esta es su única responsabilidad.
@@ -112,141 +242,7 @@
     * Si el email o contraseña es correcta.
     * Es importante que se controle que no se ingrese nigun campo vacio.
     * Es importante que se controle que el usuario se encuentre activo. 
-  
 
-## CLASE "ADMINISTRADOR" : PERSONA
-
-### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Administrador" y cambiar sus datos y su estado. 
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
-
-* Atributos:
-    * Nombre completo (nombre y apellido)
-    * Estado (activo, inactivo)
-    * e-mail 
-    * Contrseña
-
-* Comportamientos:
-    * activarCliente()    método para activar un cliente.
-    * inactivarCliente()    método para inactivar un cliente.
-    * activarTecnico()    método para activar un cliente.
-    * inactivarTecnico()    método para inactivar un cliente.
-    * asignarTecnico()  asignar tecnico a uno o mas proyectos.
-    * modifCostoPorHora() modificar el precio por hora de los proyectos.
-    * modificarLimites() modificar limites de roles o proyectos.
-
-* Colaboraciones:
-    * Persona
-    * Proyecto
-    * Roles
-    * Costo
-    * Config
-    * Solicitud
-
-* Implementa:
-    * Interfase IPersona.
-
-* Tests asociados a esta clase:
-    * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
-    
-## CLASE "CLIENTE" : PERSONA
-
-### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Cliente" y cambiar sus datos y su estado. 
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
-
-* Atributos:
-    * Nombre completo (nombre y apellido)
-    * Edad
-    * Estado (activo, inactivo)
-    * e-mail
-    * Contrseña
-    
-
-* Comportamientos:
-    * activar()    método para activar un cliente.
-    * inactivar()    método para inactivar un cliente y sus solicitudes y proyectos asociados.
-
-* Colaboraciones:
-    * Persona
-
-* Implementa:
-    * Interfase IPersona.
-
-* Tests asociados a esta clase:
-    * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
-    * Es importante que se controle que la edad ingresada no sea cero o negativa.
-
-## CLASE "TECNICO" : PERSONA
-
-### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Tecnico" y cambiar sus datos y su estado.
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
-
-* Atributos:
-    * Nombre completo (nombre y apellido)
-    * Presentación (texto)
-    * Estudiante o Egresado
-    * Año de egreso
-    * Nivel de dificultad que puede encarar (básico, avanzado)
-    * Estado (activo, inactivo)
-    * Calificación de Centro Ignis (asignada por el administrador de Ignis)
-    * Calificación de Clientes (asignada por clientes)
-    * e-mail
-    * Contrseña
-
-* Comportamientos:
-    * activar()      método para activar un técnico.
-    * inactivar()    método para inactivar un técnico.
-    * modificarCalificaIgnis()     método para modificar la calificación realizada por Ignis
-    * modificarCalificaCliente()   método para modificar la calificación realizada por Clientes
-
-* Colaboraciones:
-    * Personas
-
-* Implementa:
-    * Interfase IPersona.
-
-* Tests asociados a esta clase:
-    * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
-    * Es necesario controlar que exista un método para controlar que el año de egreso no sea menor a cero (o un valor razonable, ejemplo 2015) y que además el valor ingresado tampoco puede ser mayor al año en curso.
-    * Es necesario hacer un test sobre los métodos que modifican las calificaciones de clientes y del centro ya que los mismos deben controlar que los valores se encuentran dentro de los rangos establecidos previamente (ejemplo, entre 0 y 5).
-
-## CLASE "PERSONA"
-
-### Considerando EXPERT, decimos que esta clase es experta en mantener una lista de personas en el sistema (clientes, técnicos,administradores).
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si hay modificaciones sobre las listas o se agrega otra a futuro.
-
-* Atributos:
-    * Nombre completo (Nombre, Apellido)
-    * Estado (Activo, Inictivo)
-    * e-mail
-    * Contrseña
-    * ListaClientes.
-    * ListaTecnicos.
-    * ListaAdministradores.
-
-* Comportamientos:
-    * actualizarLista() 	método para actualizar las listas al inicio o al agregar o quitar objetos.
-
-* Colaboraciones:
-    * Cliente
-    * Tecnico
-
-* Implementa:
-    * Clase abstracta "AdminLista"
-
-* Tests asociados a esta clase:
-    * Se puede crear un test que controle que el método de actualizar listas no devuelve vacíos o nulos.
-
-## INTERFASE "IPERSONA"
-
-### Basándonos en el patrón de Polimorfismo, identificamos que ambos objetos comparten los mismos tipos, por lo que creamos esta interfase para activar o desactivar la cuenta de un objeto Cliente o de un objeto Tecnico.
-
-* Comportamientos:
-    * activar()
-    * inactivar()
-
-* Implementada por:
-    * clase "Cliente"
-    * clase "Tecnico"
 
 ## CLASE "PROYECTO"
 
@@ -274,6 +270,7 @@
     * Testear que el método agregarProyecto() efectivamente agrega un proyecto a la aplicación.
     * Testear que el método agregarSolicitud() efectivamente agrega una solicitud a un proyecto.
 
+
 ## CLASE "PROYECTOS"
 
 ### Esta clase tiene como responsabilidad mantener una lista de proyectos y actualizar la lista al inicio de la app, luego de agregar un nuevo proyecto o cambiar el estado de uno existente.
@@ -293,6 +290,7 @@
 * Implementa:
     * Clase abstracta "AdminLista"
 
+
 ## CLASE "SOLICITUD"
 
 ### Considerando EXPERT, esta clase es experta en construir una solicitud de técnico.
@@ -306,6 +304,7 @@
 * Colaboraciones:
     * Proyecto.
 
+
 ## CLASE "ROL"
 
 ### Considerando EXPERT, esta clase es experta en construir un rol (especialización de los técnicos).
@@ -317,6 +316,7 @@
 
 * Colaboraciones:
     * Roles
+
 
 ## CLASE "ROLES"
 
@@ -338,6 +338,7 @@
 * Implementa:
     * Clase abstracta "AdminLista"
 
+
 ## CLASE ABSTRACTA "AdminLista"
 
 ### Implementamos esta clase abstracta ya que identificamos que las clases Persona, Roles y Proyectos tienen listas que deben ser actualizadas. Como comparten este mismo tipo, podemos aplicar una clase abstracta, una en algunas clases realizamos un override del método ya que el comportamiento debe ser distinto a las demás clases.
@@ -350,6 +351,7 @@
     * clase "Roles"
     * clase "Proyectos"
 
+
 ## CLASE "COSTO"
 
 ### Según EXPERT, esta clase es experta porque su función es mantener la información del costo según categoría.
@@ -361,6 +363,7 @@
 
 * Comportamiento:
     * modificarCostoPorHora()
+
 
 ## CLASE "CONFIG"
 
@@ -377,6 +380,7 @@
     * modificarProyectosPorTecnico()
     * modificarAñosEgresados()
 
+
 ## CLASE "dbFormato"
 
 ### A los efectos de mantener la información de los objetos en forma local, esta clase recibe los atributos de un objeto, genera una línea a partir de los mismos y la guarda en un archivo de texto. Al inicio de la aplicación esta clase lee los datos y genera los objetos a partir de la información almacenada.
@@ -391,6 +395,7 @@
 * Test asociados a esta clase:
     * Test para asegurar que el método de codificación funciona correctamente a lo esperado.
     * Idém al anterior, sobre el método de decodificación.
+
 
 ## CLASE "dbArchivo"
 
@@ -407,7 +412,9 @@
 * Test asociados a esta clase:
     * Test para asegurar que el método de leer completamente un archivo no devuelva valores nulos.
 
+
 ## CASOS DE USO DE INTERACCIÓN
+
 ## LOGIN 
 * PASO 1: El usuario ingresa su mail y contraseña.
 * PASO 2: La clase LOGIN chekea que el mail se encuentren en la lista de usuarios en la clase PERSONA.
