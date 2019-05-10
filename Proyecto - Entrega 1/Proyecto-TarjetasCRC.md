@@ -508,4 +508,3 @@
 ## ASINGACION TECNICO A PROYECTO
 * PASO 1: Una vez presentado el proyecto, y avisando mediante mail a el centro Ignis. El administrador debe ingresar los tecnicos los cuales realizaran el proyecto, enviando un mensaje de tipo Administrador.asignarTecnico()
 * PASO 2: Una vez que se asigna se envia un mail al tecnico avisando que el mismo fue asignado a un proyecto. por lo tento se envia un mensaje de MAIL.Enviar()
-
