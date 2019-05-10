@@ -407,7 +407,7 @@
 
 
 ## CLASE "dbArchivo"
-
+ 
 ### A los efectos de mantener la información de los objetos en forma local, esta clase recibe los atributos de un objeto, genera una línea a partir de los mismos y la guarda en un archivo de texto. Al inicio de la aplicación esta clase lee los datos y genera los objetos a partir de la información almacenada.
 
 * Comportamientos:
