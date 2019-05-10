@@ -240,6 +240,7 @@
 * Comportamientos:
     * ingresar() metodo para que el usuario ingrese al sistema.
     * salir() metodo para que el usuario salga del sistema.
+    * MsgError()
 
 * Colaboraciones:
     * Persona
