@@ -420,7 +420,7 @@
     * Test para asegurar que el método de leer completamente un archivo no devuelva valores nulos.
 
 
-## CASOS DE USO DE INTERACCIÓN..
+## CASOS DE USO DE INTERACCIÓN
 
 ## LOGIN
 * PASO 1: El usuario ingresa su mail y contraseña.
