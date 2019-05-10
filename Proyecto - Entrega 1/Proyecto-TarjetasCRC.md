@@ -110,6 +110,7 @@
 
 * Comportamientos:
     * cambiarContraseña()
+    
 
 * Colaboraciones:
     * Cliente
