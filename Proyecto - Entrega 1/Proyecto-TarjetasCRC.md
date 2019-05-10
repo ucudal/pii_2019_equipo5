@@ -111,7 +111,7 @@
 * Comportamientos:
     * cambiarContraseña()
     * MsgError() metodo que muestra mensaje de error.
-    * checkForm()
+    * checkForm() matodo que chekea el formulario que llenan los usuarios.
 
 * Colaboraciones:
     * Cliente
@@ -428,7 +428,6 @@
 * PASO 1: El usuario ingresa su mail y contraseña. Por lo cual se le envia un mensaje a la clase LOGIN de tipo: login.habilitarINgreso();
 * PASO 2: Si este coincide la clase le contesta con un mensaje login.habilitarIngreso();
 * PASO 2.1: La clase no encuentra el mail, se envia un mensaje de error al usuario de tipo: login.MsgError();.
-
 
 ## REGISTRO
 * PASO 1: El cliente debe llenar un formulario, en donde se le envia mensaje a la clase Persona.checkForm()
