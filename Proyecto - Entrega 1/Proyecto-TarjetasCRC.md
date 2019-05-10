@@ -110,11 +110,8 @@
 
 * Comportamientos:
     * cambiarContraseña()
-<<<<<<< HEAD
-    
-=======
     * MsgError() metodo que muestra mensaje de error.
->>>>>>> a2f18a0619744f30d1c81bb6b89994bb8142f492
+    * checkForm()
 
 * Colaboraciones:
     * Cliente
