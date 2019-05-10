@@ -55,7 +55,7 @@
 ### El administrador podrá realizar las siguientes acciones:
 * Activar / desactivar clientes (no se borra para preservar sus datos históricos).
 * Activar / desactivar técnicos (no se borra para preservar sus datos históricos).
-* Asignar un técnico a cada solicitud.
+* Asignar uno o mas técnicos a cada proyecto.
 * Modificar el costo / hora.
 * Modificar el limite de roles por técnico.
 * Modificar el limite de proyectos en los que puede estar asignado un técnico.
@@ -210,6 +210,7 @@
     * constructor del administrador.
     * modifCostoPorHora() modificar el precio por hora de los proyectos.
     * modificarLimites() modificar limites de roles o proyectos.
+    * agregarTecnico() Agrega tecnico a un proyecto.
 
 * Colaboraciones:
     * Persona
@@ -270,6 +271,8 @@
     * agregarSolicitud() 	método para agregar una solicitud de un técnico a las lista de solicitudes.
     * reactivarProyecto()      método para marcar como reactivar un proyecto.
     * concluirProyecto()    método para marcar como concluido un proyecto.
+    * checkForm() metodo que revisa el formulario de proyectos
+    * MsgEror() metodo que envia mensaje de error. 
 
 * Colaboraciones:
     * Proyectos.
@@ -292,6 +295,7 @@
 
 * Comportamientos:
     * actualizarLista() 	método para actualizar la lista al inicio de la app, luego de agregar un nuevo proyecto o cambiar el estado de uno existente.
+   
 
 * Colaboraciones:
     * Proyecto
@@ -313,6 +317,68 @@
 * Colaboraciones:
     * Proyecto.
 
+## CLASE MAIL
+### Considerando EXPERT, esta clase es experta en el envio de un mail.
+### Cumple con SRP ya que está es su única responsabilidad y solo cambia si se modifica el constructor o se agregan comportamientos.
+
+* Atributos:
+    * Asunto.
+    * Remitente.
+    * Destinatario.
+    * Contenido.
+
+* Comportamientos:
+    * Enviar().
+
+* Colaboraciones:
+    * MailSenderAPI
+
+## CLASE MailCLIENTE : MAIL
+### Considerando EXPERT, esta clase es experta en dar formato al mail de un cliente.
+### Cumple con SRP ya que está es su única responsabilidad y solo cambia si se modifica el constructor o se agregan comportamientos.
+
+* Atributos:
+    * Cliente.
+    * Cuerpo.
+
+* Hereda de la clase MAIL los atributos:
+    * Asunto.
+    * Contenido.
+
+* Colaboraciones:
+    * Mail
+
+## CLASE MailTECNICO : MAIL
+### Considerando EXPERT, esta clase es experta en dar formato al mail de un tecnico.
+### Cumple con SRP ya que está es su única responsabilidad y solo cambia si se modifica el constructor o se agregan comportamientos.
+
+* Atributos:
+    * Cliente.
+    * Cuerpo.
+
+* Hereda de la clase MAIL los atributos:
+    * Asunto.
+    * Contenido.
+
+* Colaboraciones:
+    * Mail
+
+
+## CLASE MailSenderAPI
+### Esta clase es experta en el envio de un mail.
+
+* Atributos:
+    * adressFrom().
+    * nameFrom().
+    * passwordFrom().
+
+* Comportamientos:
+    * MailSender().
+    * GetPassword().
+    * SendMail().
+
+* Colaboraciones:
+    * Mail.
 
 ## CLASE "ROL"
 
@@ -433,3 +499,12 @@
 * PASO 1: El cliente debe llenar un formulario, en donde se le envia mensaje a la clase Persona.checkForm()
 * PASO 2: Si los datos fueron llenados correctamente entonces se crea la persona.
 * PASO 2.1: Si no encuentra los datos se le envia un mensaje de error al usuario de tipo Persona.MsgError()
+
+## INGRESO PROYECTO
+* PASO 1: El Cliente debe llenar un formulario con el nombre del proyecto, descripcion. por lo que envia un mensaje Proyecto.checkForm()
+* PASO 2: Si el formulario se llena de manera correcta entonces se envia un correo con la confirmacion de la cracion del proyecto. Mail.Enviar()
+* PASO 2.1: Si el formulario no se llena de manera correcta entonces mande mensaje error Proyecto.MsgError().
+
+## ASINGACION TECNICO A PROYECTO
+* PASO 1: Una vez presentado el proyecto, y avisando mediante mail a el centro Ignis. El administrador debe ingresar los tecnicos los cuales realizaran el proyecto, enviando un mensaje de tipo Administrador.asignarTecnico()
+* 
