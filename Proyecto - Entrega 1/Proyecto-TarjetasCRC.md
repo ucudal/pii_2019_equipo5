@@ -142,6 +142,10 @@
     * activar()    método para activar un cliente.
     * inactivar()    método para inactivar un cliente y sus solicitudes y proyectos asociados.
 
+* Colaboraciones:
+    * Persona
+    * Proyecto
+    
 * Tests asociados a esta clase:
     * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
     * Es importante que se controle que la edad ingresada no sea cero o negativa.
@@ -176,6 +180,10 @@
     * modificarCalificaIgnis()     método para modificar la calificación realizada por Ignis
     * modificarCalificaCliente()   método para modificar la calificación realizada por Clientes
 
+* Colaboraciones:
+    * Persona
+    * Proyecto
+
 * Tests asociados a esta clase:
     * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
     * Es necesario controlar que exista un método para controlar que el año de egreso no sea menor a cero (o un valor razonable, ejemplo 2015) y que además el valor ingresado tampoco puede ser mayor al año en curso.
@@ -206,7 +214,6 @@
     * Persona
     * Proyecto
     * Roles
-    * Costo
     * Config
     * Solicitud
 
