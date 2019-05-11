@@ -33,6 +33,7 @@
 
 ![Poster](Poster.jpg)
 
+
 ## MENÚ DE CLIENTES
 
 ### El cliente que ingresa a la aplicación por primera vez, deberá registrarse como cliente, ingresando sus datos personales.
@@ -40,15 +41,17 @@
 ### Para dar de alta un proyecto, debe ingresar un nombre de proyecto y una descripción (a modo de presentación).
 ### Luego de creado el proyecto, el cliente podrá dar de alta una o más solicitudes de técnicos. Deberá ingresar una solicitud por cada técnico que necesita. Un proyecto podrá tener "n" solicitudes de técnicos, por el momento no hay una limitación establecida por el Centro Ignis.
 
+
 ## MENÚ DE TÉCNICOS
 
 ### El técnico que ingresa a la aplicación por primera vez, deberá registrarse como técnico, ingresando sus datos personales y seleccionando a los roles a los cuales se postula. Cada rol implica una disciplina (sonidista, músico, etc.). Podrá postularse hasta un máximo de 3 roles, pudiendo cambiar los mismos más adelante, aunque siempre conservando la limitación de 3.
 
-### Una vez registrado, podrá ingresar a la aplicación cuando quiera para visualizar a qué proyecto está asignado y tambien a controlar las horas que viene desarrollando en cada uno.
+### Una vez registrado, podrá ingresar a la aplicación cuando quiera para visualizar a qué proyecto está asignado y también a controlar las horas que viene desarrollando en cada uno.
 
 ### Es de interés para el Centro Ignis de brindar al técnico  un historial de sus trabajos, ya que puede servirle como referencia laboral. Por lo tanto, el técnico contará con la opción de descargar un documento que detalle los trabajos que realizó (nombre de los proyectos, el rol que desempeño en cada uno y las horas en cada uno).
 
 ### Debido a que el técnico recibe un pago por sus servicios, la aplicación tambien debe permitirle descargar un documento con las horas realizadas por proyecto y el pago que debe recibir por cada uno. Esto tambien le permite al Centro Ignis de alivianar su trabajo administrativo, ya que en todo momento el técnico puede revisar lo que tiene que cobrar sin necesidad de depender del administrador del centro.
+
 
 ## MENÚ DEL ADMINISTRADOR DEL CENTRO IGNIS
 
@@ -62,10 +65,10 @@
 ### El administrador podrá realizar las siguientes acciones:
 * Activar / desactivar clientes (no se borra para preservar sus datos históricos).
 * Activar / desactivar técnicos (no se borra para preservar sus datos históricos).
-* Asignar uno o mas técnicos a cada proyecto.
+* Asignar uno o más técnicos a cada proyecto.
 * Modificar el costo / hora.
-* Modificar el limite de roles por técnico.
-* Modificar el limite de proyectos en los que puede estar asignado un técnico.
+* Modificar el límite de roles por técnico.
+* Modificar el límite de proyectos en los que puede estar asignado un técnico.
 
 ### Es necesario obtener la siguiente información en reportes:
 * Lista de proyectos activos, indicando el cliente en cada caso.
@@ -106,35 +109,40 @@
 
 ## CLASE "PERSONA"
 
-### Considerando EXPERT, decimos que esta clase es experta por mantener el constructor de personas.
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si hay modificaciones sobre las listas o se agrega otra a futuro.
+### Esta clase implementa el constructor de una persona. Por herencia, las clases Cliente, Técnico y Administrador implementarán estos atributos y métodos.
+
+### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto persona, no hay otra clase para esta función.
+### SRP, cumple con este principio puesto que es su única responsabilidad y solo cambia si hay cambios en el constructor o se agregan métodos.
 
 * Atributos:
     * Nombre completo (Nombre, Apellido)
-    * Estado (Activo, Inictivo)
+    * Estado (Activo, Inactivo)
     * e-mail
     * Contraseña
 
 * Comportamientos:
     * cambiarContraseña()
-    * MsgError() metodo que muestra mensaje de error.
-    * checkForm() matodo que chekea el formulario que llenan los usuarios.
 
 * Colaboraciones:
     * Cliente
     * Tecnico
+    * Administrador
 
 * Implementa:
     * Clase abstracta "AdminLista"
 
 * Tests asociados a esta clase:
-    * Se puede crear un test que controle que el método de actualizar listas no devuelve vacíos o nulos.
+    * Se puede crear un test sobre la construccion de una persona.
 
 
 ## CLASE "CLIENTE" : PERSONA
 
-### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Cliente" y cambiar sus datos y su estado.
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
+### Esta clase implementa el constructor de un cliente. Hereda de Persona algunos atributos y métodos.
+### Además contiene una lista de clientes, la cual se actualiza al inicio de la aplicación y cuando hay altas de clientes.
+
+### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto cliente, no hay otra clase para esta función.
+### Tampoco hay otra clase que mantenga la lista de clientes.
+### SRP, cumple con este principio puesto que es su única responsabilidad y solo cambia si hay cambios en el constructor o se agregan atributos o métodos.
 
 * Atributos:
     * ListaClientes
@@ -155,14 +163,18 @@
     * Proyecto
 
 * Tests asociados a esta clase:
+    * Es importante controlar que no se ingrese nulo el nombre, el apellido o el email.
     * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
-    * Es importante que se controle que la edad ingresada no sea cero o negativa.
 
 
 ## CLASE "TECNICO" : PERSONA
 
-### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Tecnico" y cambiar sus datos y su estado.
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
+### Esta clase implementa el constructor de un técnico. Hereda de Persona algunos atributos y métodos.
+### Además contiene una lista de técnicos, la cual se actualiza al inicio de la aplicación y cuando hay altas.
+
+### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto técnico, no hay otra clase para esta función.
+### Tampoco hay otra clase que mantenga la lista de técnicos.
+### SRP, cumple con este principio puesto que es su única responsabilidad y solo cambia si hay cambios en el constructor o se agregan atributos o métodos.
 
 * Atributos:
     * Presentación (texto)
@@ -193,6 +205,7 @@
     * Proyecto
 
 * Tests asociados a esta clase:
+    * Es importante controlar que no se ingrese nulo el nombre, el apellido, la edad o el email.
     * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
     * Es necesario controlar que exista un método para controlar que el año de egreso no sea menor a cero (o un valor razonable, ejemplo 2015) y que además el valor ingresado tampoco puede ser mayor al año en curso.
     * Es necesario hacer un test sobre los métodos que modifican las calificaciones de clientes y del centro ya que los mismos deben controlar que los valores se encuentran dentro de los rangos establecidos previamente (ejemplo, entre 0 y 5).
@@ -200,8 +213,12 @@
 
 ## CLASE "ADMINISTRADOR" : PERSONA
 
-### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Administrador" y cambiar sus datos y su estado.
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
+### Esta clase implementa el constructor de un Administrador. Hereda de Persona algunos atributos y métodos.
+### Además contiene una lista de Administradores, la cual se actualiza al inicio de la aplicación y cuando hay altas.
+
+### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto Administrador, no hay otra clase para esta función.
+### Tampoco hay otra clase que mantenga la lista de Administradores.
+### SRP, cumple con este principio puesto que es su única responsabilidad y solo cambia si hay cambios en el constructor o se agregan atributos o métodos.
 
 * Atributos:
     * ListaAdministradores
@@ -227,33 +244,40 @@
     * Solicitud
 
 * Tests asociados a esta clase:
+    * Es importante controlar que no se ingrese nulo el nombre, el apellido o el email.
     * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
 
 
 ## INTERFASE "IPERSONA"
 
-### Basándonos en el patrón de Polimorfismo, identificamos que ambos objetos comparten los mismos tipos, por lo que creamos esta interfase para activar o desactivar la cuenta de un objeto Cliente o de un objeto Tecnico.
+### Basándonos en el patrón de Polimorfismo, identificamos que ambos los objetos Cliente, Técnico y Administrador comparten los mismos tipos, por lo que creamos esta interfase para activar o desactivar la cuenta. Si el atributo Estado de la cuenta es "Inactivo", el usuario no se puede loguear en la aplicación.
 
 * Comportamientos:
     * activar()
     * inactivar()
 
 * Implementada por:
-    * clase "Cliente"
-    * clase "Tecnico"
+    * clase "Cliente".
+    * clase "Tecnico".
+    * clase "Administrador".
 
 
 ## CLASE "LOGIN"
+
 ### Clase con la responsabilidad de redireccionar al usuario a su menu correspondiente y regresarlo al menu principal cuando desee salir del sistema.
 ### Cumple con SRP ya que esta es su única responsabilidad.
 
 * Comportamientos:
-    * ingresar() metodo para que el usuario ingrese al sistema.
-    * salir() metodo para que el usuario salga del sistema.
-    * MsgError() metodo que muestra mensaje de error.
+    * ingresar() método para que el usuario ingrese al sistema.
+    * salir() método para que el usuario salga del sistema.
+    * MsgError() método que muestra mensaje de error.
+    * checkForm() método que chekea el formulario que llenan los usuarios.
 
 * Colaboraciones:
     * Persona
+    * Cliente, para controlar que el usuario existe en la lista de Clientes.
+    * Tecnico, para controlar que el usuario existe en la lista de Técnicos.
+    * Administrador, para controlar que el usuario existe en la lista de Administradores.
 
 * Tests asociados a esta clase:
     * Si el email o contraseña es correcta.
