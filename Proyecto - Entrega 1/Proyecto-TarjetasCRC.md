@@ -274,6 +274,7 @@
 ### Cumple con SRP ya que esta es su única responsabilidad.
 
 * Comportamientos:
+    * constructor de la clase.
     * ingresar() método para que el usuario ingrese al sistema.
     * salir() método para que el usuario salga del sistema.
     * MsgError() método que muestra mensaje de error.
@@ -309,6 +310,7 @@
     * Lista de Proyectos
 
 * Comportamientos:
+    * constructor de la clase.
     * agregarProyecto() 	método para agregar el proyecto al sistema luego de construido el objeto, tambien debe agregar el alta a la lista.
     * agregarSolicitud() 	método para agregar una solicitud de un técnico a las lista de solicitudes.
     * concluirProyecto()    método para marcar como concluido un proyecto.
@@ -340,6 +342,9 @@
     * solicitud_Nivel
     * solicitud_Observaciones
 
+* Comportamiento:
+    * constructor de la clase.
+
 * Colaboraciones:
     * Proyecto.
 
@@ -359,6 +364,7 @@
     * Lista de Roles.
 
 * Comportamientos:
+    * constructor de la clase.
     * agregarRol()
 
 * Colaboraciones:
@@ -446,6 +452,7 @@
 ### El método actualizarLista() se ejecuta durante el inicio de la aplicación para leer los archivos de texto que mantienen la información en el tiempo y actualizar la lista que corresponda, ya sea un cliente, técnico, administrador, rol o proyecto. Tambien se ejecuta cuando se da alta a uno de estos objetos.
 
 * Comportamientos:
+    * constructor de la clase.
     * actualizarLista() 
 
 * Implementada por:
@@ -469,6 +476,7 @@
     * CostoPorHora
 
 * Comportamiento:
+    * constructor de la clase.
     * modificarCostoPorHora()
 
 
@@ -478,12 +486,16 @@
 
 ### Establecemos una clase de "configuración general" para mantener estos valores.
 
+### EXPERT, esta clase es experta en su función, no hay otra clase con ese propósito.
+### SRP, cumple con este principio ya que está es su única responsabilidad y solo cambia si se modifican sus valores o se agregan comportamientos.
+
 * Atributos:
     * limiteRolesPorTecnico (máx. 3 concurrentes).
     * limiteProyectosPorTecnico (máx. 3 concurrentes).
     * limiteAñosEgresados (ej. 1, 2 o 3 años máximo).
 
 * Comportamientos:
+    * constructor de la clase.
     * modificarRolesPorTecnico()
     * modificarProyectosPorTecnico()
     * modificarAñosEgresados()
@@ -493,7 +505,11 @@
 
 ### A los efectos de mantener la información de los objetos en forma local, esta clase recibe los atributos de un objeto, genera una línea a partir de los mismos y la guarda en un archivo de texto. Al inicio de la aplicación esta clase lee los datos y genera los objetos a partir de la información almacenada.
 
+### EXPERT, esta clase es experta en su función, no hay otra clase con ese propósito.
+### SRP, cumple con este principio ya que está es su única responsabilidad y solo cambia si se modifican sus valores o se agregan comportamientos.
+
 * Comportamientos:
+    * constructor de la clase.
     * CodificarLineaTxt()
     * DecodificarLineaTxt()
 
@@ -509,7 +525,11 @@
 
 ### A los efectos de mantener la información de los objetos, esta clase recibe los atributos de un objeto, genera una línea a partir de los mismos y la guarda en un archivo de texto.
 
+### EXPERT, esta clase es experta en su función, no hay otra clase con ese propósito.
+### SRP, cumple con este principio ya que está es su única responsabilidad y solo cambia si se modifican sus valores o se agregan comportamientos.
+
 * Comportamientos:
+    * constructor de la clase.
     * GuardarLinea()
     * EliminarLinea()
     * LeerLineas() = leer todo el archivo.
@@ -519,6 +539,19 @@
 
 * Test asociados a esta clase:
     * Test para asegurar que el método de leer completamente un archivo no devuelva valores nulos.
+
+
+## CLASE "FORM"
+
+### Esta clase implementa los comportamientos para la interacción entre formularios HTML, front al cliente, y las demás clases.
+
+### EXPERT, esta clase es experta en su función, no hay otra clase con ese propósito.
+### SRP, cumple con este principio ya que está es su única responsabilidad y solo cambia si se modifican sus valores o se agregan comportamientos.
+
+* Comportamientos:
+    * constructor de la clase.
+    * checkForm() método que revisa lo ingresado por el usuario en el formulario.
+    * MsgEror() método que envia un mensaje de error en los casos que corresponda.
 
 
 ## CASOS DE USO DE INTERACCIÓN
