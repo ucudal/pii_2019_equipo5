@@ -123,8 +123,6 @@
 
 * Comportamientos:
     * cambiarContraseña()
-    * MsgError() método que muestra mensaje de error.
-    * checkForm() método que chekea el formulario que llenan los usuarios.
 
 * Colaboraciones:
     * Cliente
@@ -141,7 +139,7 @@
 ## CLASE "CLIENTE" : PERSONA
 
 ### Esta clase implementa el constructor de un cliente. Hereda de Persona algunos atributos y métodos.
-### Además contiene una lista de clientes, la cual se actualiza al inicio de la aplicación cuando hay altas de clientes.
+### Además contiene una lista de clientes, la cual se actualiza al inicio de la aplicación y cuando hay altas de clientes.
 
 ### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto cliente, no hay otra clase para esta función.
 ### Tampoco hay otra clase que mantenga la lista de clientes.
@@ -173,7 +171,7 @@
 ## CLASE "TECNICO" : PERSONA
 
 ### Esta clase implementa el constructor de un técnico. Hereda de Persona algunos atributos y métodos.
-### Además contiene una lista de técnicos, la cual se actualiza al inicio de la aplicación cuando hay altas.
+### Además contiene una lista de técnicos, la cual se actualiza al inicio de la aplicación y cuando hay altas.
 
 ### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto técnico, no hay otra clase para esta función.
 ### Tampoco hay otra clase que mantenga la lista de técnicos.
@@ -216,8 +214,12 @@
 
 ## CLASE "ADMINISTRADOR" : PERSONA
 
-### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Administrador" y cambiar sus datos y su estado.
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
+### Esta clase implementa el constructor de un Administrador. Hereda de Persona algunos atributos y métodos.
+### Además contiene una lista de Administradores, la cual se actualiza al inicio de la aplicación y cuando hay altas.
+
+### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto Administrador, no hay otra clase para esta función.
+### Tampoco hay otra clase que mantenga la lista de Administradores.
+### SRP, cumple con este principio puesto que es su única responsabilidad y solo cambia si hay cambios en el constructor o se agregan atributos o métodos.
 
 * Atributos:
     * ListaAdministradores
@@ -243,33 +245,40 @@
     * Solicitud
 
 * Tests asociados a esta clase:
+    * Es importante controlar que no se ingrese nulo el nombre, el apellido o el email.
     * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
 
 
 ## INTERFASE "IPERSONA"
 
-### Basándonos en el patrón de Polimorfismo, identificamos que ambos objetos comparten los mismos tipos, por lo que creamos esta interfase para activar o desactivar la cuenta de un objeto Cliente o de un objeto Tecnico.
+### Basándonos en el patrón de Polimorfismo, identificamos que ambos los objetos Cliente, Técnico y Administrador comparten los mismos tipos, por lo que creamos esta interfase para activar o desactivar la cuenta. Si el atributo Estado de la cuenta es "Inactivo", el usuario no se puede loguear en la aplicación.
 
 * Comportamientos:
     * activar()
     * inactivar()
 
 * Implementada por:
-    * clase "Cliente"
-    * clase "Tecnico"
+    * clase "Cliente".
+    * clase "Tecnico".
+    * clase "Administrador".
 
 
 ## CLASE "LOGIN"
+
 ### Clase con la responsabilidad de redireccionar al usuario a su menu correspondiente y regresarlo al menu principal cuando desee salir del sistema.
 ### Cumple con SRP ya que esta es su única responsabilidad.
 
 * Comportamientos:
-    * ingresar() metodo para que el usuario ingrese al sistema.
-    * salir() metodo para que el usuario salga del sistema.
-    * MsgError() metodo que muestra mensaje de error.
+    * ingresar() método para que el usuario ingrese al sistema.
+    * salir() método para que el usuario salga del sistema.
+    * MsgError() método que muestra mensaje de error.
+    * checkForm() método que chekea el formulario que llenan los usuarios.
 
 * Colaboraciones:
     * Persona
+    * Cliente, para controlar que el usuario existe en la lista de Clientes.
+    * Tecnico, para controlar que el usuario existe en la lista de Técnicos.
+    * Administrador, para controlar que el usuario existe en la lista de Administradores.
 
 * Tests asociados a esta clase:
     * Si el email o contraseña es correcta.
