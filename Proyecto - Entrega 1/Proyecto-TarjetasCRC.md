@@ -19,7 +19,7 @@
 
 # LA APLICACIÓN
 
-### La aplicación se inicia mostrando una pantalla principal en donde se podrá ver en qué proyectos se encuentra trabajando el Centro Ignis, así como dos botones principales para el registro de clientes o técnicos y otro botón para ingresar a las cuentas ya creadas.
+### La aplicación se inicia mostrando una pantalla principal en donde se podrá ver dos botones principales para el registro de clientes o técnicos , en caso de ya estar registrado hay otro botón para ingresar a las cuentas ya creadas.
 
 ### Cuando el usuario intente ingresar se presentará el login en donde dependiendo del usuario este ingresara a su correspondiente menú. En este caso son tres opciones:
 * acceder al menú de clientes.
@@ -38,7 +38,6 @@
 
 ### El cliente que ingresa a la aplicación por primera vez, deberá registrarse como cliente, ingresando sus datos personales.
 ### Luego de registrado estará en condiciones de ingresar proyectos a su cuenta de cliente.
-
 ### Para dar de alta un proyecto, debe ingresar un nombre de proyecto y una descripción (a modo de presentación).
 ### Luego de creado el proyecto, el cliente podrá dar de alta una o más solicitudes de técnicos. Deberá ingresar una solicitud por cada técnico que necesita. Un proyecto podrá tener "n" solicitudes de técnicos, por el momento no hay una limitación establecida por el Centro Ignis.
 
@@ -49,7 +48,7 @@
 
 ### Una vez registrado, podrá ingresar a la aplicación cuando quiera para visualizar a qué proyecto está asignado y también a controlar las horas que viene desarrollando en cada uno.
 
-### Es de interés para el Centro Ignis de brindar al técnico de un historial de sus trabajos, ya que puede servirle como referencia laboral. Por lo tanto, el técnico contará con la opción de descargar un documento que detalle los trabajos que realizó (nombre de los proyectos, el rol que desempeño en cada uno y las horas en cada uno).
+### Es de interés para el Centro Ignis de brindar al técnico  un historial de sus trabajos, ya que puede servirle como referencia laboral. Por lo tanto, el técnico contará con la opción de descargar un documento que detalle los trabajos que realizó (nombre de los proyectos, el rol que desempeño en cada uno y las horas en cada uno).
 
 ### Debido a que el técnico recibe un pago por sus servicios, la aplicación tambien debe permitirle descargar un documento con las horas realizadas por proyecto y el pago que debe recibir por cada uno. Esto tambien le permite al Centro Ignis de alivianar su trabajo administrativo, ya que en todo momento el técnico puede revisar lo que tiene que cobrar sin necesidad de depender del administrador del centro.
 
