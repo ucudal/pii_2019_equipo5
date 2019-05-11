@@ -7,24 +7,42 @@
 
 ### El Centro Ignis cumple el rol de facilitador de técnicos calificados para proyectos, siendo un intermediario entre el cliente que tiene un proyecto y los técnicos que se registran para trabajar. Para desarrollar estas funciones, necesita una aplicación que permita la administración de recursos humanos para proyectos. Esta aplicación debe ser una mejora significativa al método que actualmente utilizan, basado en el uso de planillas Excel y correos electrónicos.
 
-### Los clientes son estudiantes de la UCU, a futuro podría ampliarse el servicio para egresados. El cliente se contacta con el Centro Ignis presentando su proyecto y realizando solicitudes por los técnicos que necesita.
-### Al final del proyecto, el centro debe calcular las horas empleadas por técnico e informarle cuanto pagar.
+### Los estudiantes de la UCU que presentan proyectos, los consideraremos clientes en adelante, a futuro podría ampliarse el servicio para egresados. El cliente se contacta con el Centro Ignis presentando su proyecto ya que la Universidad debe estar al tanto de todos.
+### Además de registrar los proyectos, los clientes deben solicitar expresamente los técnicos que necesita.
 
-### Los técnicos son estudiantes de la UCU que se registran en el centro para trabajar. Pueden anotarse hasta en 3 roles (hay 22 disponibles). Pueden ser de cualquier año de la carrera, serán catalogados según "niveles de dificultad".
+
+### Los técnicos, son estudiantes de la UCU que se registran en el centro para trabajar. Pueden anotarse hasta en 3 roles (hay 22 disponibles). Pueden ser de cualquier año de la carrera, serán catalogados según "niveles de dificultad".
 ### Podrán estar trabajando hasta un máximo de 3 proyectos concurrentes.
 
-### Los clientes deben registrar su proyecto en el centro, ya que la universidad debe estar al tanto de los proyectos en curso.
-### Además de registrar los proyectos, los clientes deben solicitar expresamente los técnicos que necesita.
+### Al final del proyecto, el centro debe calcular las horas empleadas por  el técnico e informar al cliente  cuanto debe pagar.
+
 
 
 # LA APLICACIÓN
 
-### La aplicación se inicia mostrando una pantalla principal en donde se podrá ver dos botones principales para el registro de clientes o técnicos , en caso de ya estar registrado hay otro botón para ingresar a las cuentas ya creadas.
+### Cuando el usuario  se loguea en la aplicación podrá hacerlo  con tres perfiles diferentes, cliente, técnico o administrador.
+### Los técnicos deberán ingresar sus datos personales e indicar en que roles están dispuestos a brindar su ascesoramiento.
+### Los clientes  podrán postular sus proyectos y solicitar que tipo de técnico necesita.
+### Los administradorres, autorizarán a técnicos y cleintes,  analizarán los proyectos presentados, asignarán los técnicos a cada proyecto y calcularán las horas trabajadas y  los honorarios del mismo.
 
-### Cuando el usuario intente ingresar se presentará el login en donde dependiendo del usuario este ingresara a su correspondiente menú. En este caso son tres opciones:
-* acceder al menú de clientes.
-* acceder al menú de técnicos.
-* acceder al menú de administrador del Centro Ignis.
+
+### MANUAL DE USUARIO
+### Al ingresar a la pantalla principal de la aplicación, deberá loguearse, en el botón Entrar, ingresando su mail y contraseña, en caso de no tener usuario creado debe registrarse, ingresando a los botones, de cliente o técnico, según corresponda.
+
+### Para registrarse como cliente, debe ingresar, nombre, mail y contraseña. El administrador le confirmará cuando su registro quede activado.
+
+### Para registrarse como técnico debe ingresar sus datos personales y seleccionando los roles a los cuales se postula. Cada rol implica una disciplina (sonidista, músico, etc.). Podrá postularse hasta un máximo de 3 roles, pudiendo cambiar los mismos más adelante, aunque siempre conservando la limitación de 3. El administrador le confirmará cuando su registro quede activado.
+
+### Cuando un usuario registrado como técnico se loguee, podra acceder al MENÚ DE TECNICOS y podrá ver los proyectos que están activos dentro de los roles indicados al registrarse y podrá postularce a cualquiera de ellos.
+
+### Cuando un usuario registrado como cliente se loguee, podra acceder al MENÚ DE CLIENTES y podrá postular su proyecto, para esto debe ingresar: nombre del proyecto y descripción del mismo.
+
+### Cuando un usuario registrado como administrador se loguee, podra acceder al MENÚ DE ADMINISTRADOR  y podrá activar o desactivar clientes y técnicos que se han registrado en la aplicación.
+### Verá los  proyectos presentados de cada cliente y los técnicos postulados a dicho proyecto, debiendo hacer la asignación final.
+### Ingresará la cantidad e horas informadas por los técnicos dedicadas a cada proyecto.
+### Realizará la liquidación de horas, empleadas por cada técnico en cada proyecto y se inforará al cliente los honorarios a pagar al técnico..
+
+
 
 
 ## POSTER DE LA APLICACIÓN
@@ -36,24 +54,22 @@
 
 ## MENÚ DE CLIENTES
 
-### El cliente que ingresa a la aplicación por primera vez, deberá registrarse como cliente, ingresando sus datos personales.
-### Luego de registrado estará en condiciones de ingresar proyectos a su cuenta de cliente.
+
+### Estará en condiciones de ingresar proyectos a su cuenta de cliente.
 ### Para dar de alta un proyecto, debe ingresar un nombre de proyecto y una descripción (a modo de presentación).
 ### Luego de creado el proyecto, el cliente podrá dar de alta una o más solicitudes de técnicos. Deberá ingresar una solicitud por cada técnico que necesita. Un proyecto podrá tener "n" solicitudes de técnicos, por el momento no hay una limitación establecida por el Centro Ignis.
 
 
 ## MENÚ DE TÉCNICOS
 
-### El técnico que ingresa a la aplicación por primera vez, deberá registrarse como técnico, ingresando sus datos personales y seleccionando a los roles a los cuales se postula. Cada rol implica una disciplina (sonidista, músico, etc.). Podrá postularse hasta un máximo de 3 roles, pudiendo cambiar los mismos más adelante, aunque siempre conservando la limitación de 3.
-
-### Una vez registrado, podrá ingresar a la aplicación cuando quiera para visualizar a qué proyecto está asignado y también a controlar las horas que viene desarrollando en cada uno.
+### Ingresará cuando quiera visualizar a qué proyecto está asignado y también a controlar las horas que viene desarrollando en cada uno.
 
 ### Es de interés para el Centro Ignis de brindar al técnico  un historial de sus trabajos, ya que puede servirle como referencia laboral. Por lo tanto, el técnico contará con la opción de descargar un documento que detalle los trabajos que realizó (nombre de los proyectos, el rol que desempeño en cada uno y las horas en cada uno).
 
 ### Debido a que el técnico recibe un pago por sus servicios, la aplicación tambien debe permitirle descargar un documento con las horas realizadas por proyecto y el pago que debe recibir por cada uno. Esto tambien le permite al Centro Ignis de alivianar su trabajo administrativo, ya que en todo momento el técnico puede revisar lo que tiene que cobrar sin necesidad de depender del administrador del centro.
 
 
-## MENÚ DEL ADMINISTRADOR DEL CENTRO IGNIS
+## MENÚ DE ADMINISTRADOR DEL CENTRO IGNIS
 
 ### El administrador del Centro Ignis accede a la aplicación y tendrá opciones para visualizar la siguiente información:
 * Lista de clientes registrados (pudiendo ver información detallada de cada uno).
