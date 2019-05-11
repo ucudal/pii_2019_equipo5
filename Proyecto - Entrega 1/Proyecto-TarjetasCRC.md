@@ -1,14 +1,14 @@
 # PROGRAMACIÓN 2 - 2019
 
-### EQUIPO 5 : Sofía Nicoletti, Fausto Pieruzzi, Angel Matías Rodriguez, Marcelo Stabile.
+### EQUIPO 5: Sofía Nicoletti, Fausto Pieruzzi, Angel Matías Rodriguez, Marcelo Stabile.
 
 
 # INTRODUCCIÓN
 
-### El Centro Ignis cumple el rol de facilitador de técnicos calificados para proyectos, siendo un intermediario entre el cliente que tiene un proyecto y los técnicos que se registran para trabajar. Para desarrollar estas funciones, necesita una aplicación que permita al centro la administración de recursos humanos para proyectos. Esta aplicación debe ser una mejora significativa al método que actualmente utilizan que se basa en el uso de planillas excel y correos con información.
+### El Centro Ignis cumple el rol de facilitador de técnicos calificados para proyectos, siendo un intermediario entre el cliente que tiene un proyecto y los técnicos que se registran para trabajar. Para desarrollar estas funciones, necesita una aplicación que permita la administración de recursos humanos para proyectos. Esta aplicación debe ser una mejora significativa al método que actualmente utilizan, basado en el uso de planillas Excel y correos electrónicos.
 
-### Los clientes son estudiantes de la UCU, a futuro podrían ampliarse a egresados. El cliente se contacta con el Centro Ignis presentando su proyecto y realizando solicitudes por los técnicos que necesita.
-### Al final del proyecto, el centro debe calcular las horas empleadas por técnico e informarle cuanto debe pagar.
+### Los clientes son estudiantes de la UCU, a futuro podría ampliarse el servicio para egresados. El cliente se contacta con el Centro Ignis presentando su proyecto y realizando solicitudes por los técnicos que necesita.
+### Al final del proyecto, el centro debe calcular las horas empleadas por técnico e informarle cuanto pagar.
 
 ### Los técnicos son estudiantes de la UCU que se registran en el centro para trabajar. Pueden anotarse hasta en 3 roles (hay 22 disponibles). Pueden ser de cualquier año de la carrera, serán catalogados según "niveles de dificultad".
 ### Podrán estar trabajando hasta un máximo de 3 proyectos concurrentes.
@@ -19,11 +19,19 @@
 
 # LA APLICACIÓN
 
-### La aplicación inicia se muestra una pantalla principal en donde se podra ver en que proyectos se encuentra trbajando el centro ignis, asi como dos botones principales para el registro de clientes o tecnicos y otro boton para ingresar a las cuentas ya creadas.
+### La aplicación se inicia mostrando una pantalla principal en donde se podrá ver en que proyectos se encuentra trbajando el centro ignis, asi como dos botones principales para el registro de clientes o tecnicos y otro boton para ingresar a las cuentas ya creadas.
+
 ### Cuando el usuario intente ingresar se presentara el login en donde dependiendo del usuario este ingresara a su correspondiente menú. En este caso son tres opciones:
 * acceder al menú de clientes.
 * acceder al menú de técnicos.
 * acceder al menú de administrador del Centro Ignis.
+
+
+## POSTER DE LA APLICACIÓN
+
+### Abrir el archivo Poster.jpg ubicado en la misma carpeta donde se encuentra el documento.
+
+![Poster](Poster.jpg)
 
 ## MENÚ DE CLIENTES
 
