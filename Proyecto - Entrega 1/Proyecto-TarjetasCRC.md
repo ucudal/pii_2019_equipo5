@@ -320,12 +320,8 @@
 ### El Administrador del Centro Ignis podrá revisar estas solicitudes, filtrar todas las solicitudes de acuerdo al rol de cada una, y asignar un técnico disponible para cada solicitud.
 ### Caso particular: si el cliente necesita dos técnicos del mismo rol, por ejemplo dos sonidistas, deberá ingresar una solicitud por cada persona. 
 
-### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto Proyecto, no hay otra clase para esta función.
-### Tampoco hay otra clase que mantenga la lista de Solicitudes.
+### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto Solicitud, no hay otra clase para esta función.
 ### SRP, cumple con este principio puesto que es su única responsabilidad y solo cambia si hay cambios en el constructor o se agregan atributos o métodos.
-
-### Considerando EXPERT, esta clase es experta en construir una solicitud de técnico.
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan comportamientos.
 
 * Atributos:
     * solicitud_Rol
@@ -335,70 +331,10 @@
 * Colaboraciones:
     * Proyecto.
 
-## CLASE MAIL
-### Considerando EXPERT, esta clase es experta en el envio de un mail.
-### Cumple con SRP ya que está es su única responsabilidad y solo cambia si se modifica el constructor o se agregan comportamientos.
-
-* Atributos:
-    * Asunto.
-    * Remitente.
-    * Destinatario.
-    * Contenido.
-
-* Comportamientos:
-    * Enviar().
-
-* Colaboraciones:
-    * MailSenderAPI
-
-## CLASE MailCLIENTE : MAIL
-### Considerando EXPERT, esta clase es experta en dar formato al mail de un cliente.
-### Cumple con SRP ya que está es su única responsabilidad y solo cambia si se modifica el constructor o se agregan comportamientos.
-
-* Atributos:
-    * Cliente.
-    * Cuerpo.
-
-* Hereda de la clase MAIL los atributos:
-    * Asunto.
-    * Contenido.
-
-* Colaboraciones:
-    * Mail
-
-## CLASE MailTECNICO : MAIL
-### Considerando EXPERT, esta clase es experta en dar formato al mail de un tecnico.
-### Cumple con SRP ya que está es su única responsabilidad y solo cambia si se modifica el constructor o se agregan comportamientos.
-
-* Atributos:
-    * Cliente.
-    * Cuerpo.
-
-* Hereda de la clase MAIL los atributos:
-    * Asunto.
-    * Contenido.
-
-* Colaboraciones:
-    * Mail
-
-
-## CLASE MailSenderAPI
-### Esta clase es experta en el envio de un mail.
-
-* Atributos:
-    * adressFrom().
-    * nameFrom().
-    * passwordFrom().
-
-* Comportamientos:
-    * MailSender().
-    * GetPassword().
-    * SendMail().
-
-* Colaboraciones:
-    * Mail.
 
 ## CLASE "ROL"
+
+### El Centro Ignis estableció una lista de 22 roles, correspondientes a 22 especializaciones técnicas.
 
 ### Considerando EXPERT, esta clase es experta en construir un rol (especialización de los técnicos).
 ### Cumple con SRP ya que está es su única responsabilidad y solo cambia si se modifica el constructor o se agregan comportamientos.
@@ -430,6 +366,79 @@
 
 * Implementa:
     * Clase abstracta "AdminLista"
+
+
+## CLASE MAIL
+
+### Considerando EXPERT, esta clase es experta en el envio de un mail.
+### Cumple con SRP ya que está es su única responsabilidad y solo cambia si se modifica el constructor o se agregan comportamientos.
+
+* Atributos:
+    * Asunto.
+    * Remitente.
+    * Destinatario.
+    * Contenido.
+
+* Comportamientos:
+    * Enviar().
+
+* Colaboraciones:
+    * MailSenderAPI
+
+
+## CLASE MailCLIENTE : MAIL
+
+### Considerando EXPERT, esta clase es experta en dar formato al mail de un cliente.
+### Cumple con SRP ya que está es su única responsabilidad y solo cambia si se modifica el constructor o se agregan comportamientos.
+
+* Atributos:
+    * Cliente.
+    * Cuerpo.
+
+* Hereda de la clase MAIL los atributos:
+    * Asunto.
+    * Contenido.
+
+* Colaboraciones:
+    * Mail
+
+
+## CLASE MailTECNICO : MAIL
+
+### Considerando EXPERT, esta clase es experta en dar formato al mail de un tecnico.
+### Cumple con SRP ya que está es su única responsabilidad y solo cambia si se modifica el constructor o se agregan comportamientos.
+
+* Atributos:
+    * Cliente.
+    * Cuerpo.
+
+* Hereda de la clase MAIL los atributos:
+    * Asunto.
+    * Contenido.
+
+* Colaboraciones:
+    * Mail
+
+
+## CLASE MailSenderAPI
+
+### Esta clase es experta en el envio de un mail.
+
+* Atributos:
+    * adressFrom().
+    * nameFrom().
+    * passwordFrom().
+
+* Comportamientos:
+    * MailSender().
+    * GetPassword().
+    * SendMail().
+
+* Colaboraciones:
+    * Mail.
+
+
+
 
 
 ## CLASE ABSTRACTA "AdminLista"
