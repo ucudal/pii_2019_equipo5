@@ -128,9 +128,6 @@
     * Tecnico
     * Administrador
 
-* Implementa:
-    * Clase abstracta "AdminLista"
-
 * Tests asociados a esta clase:
     * Se puede crear un test sobre la construccion de una persona.
 
@@ -318,7 +315,14 @@
 
 ## CLASE "SOLICITUD"
 
-###
+### Para cada proyecto, el cliente ingresa una solicitud por cada técnico que necesita.
+### Se pueden ingresar "n" solicitudes por proyecto, no hay un límite establecido.
+### El Administrador del Centro Ignis podrá revisar estas solicitudes, filtrar todas las solicitudes de acuerdo al rol de cada una, y asignar un técnico disponible para cada solicitud.
+### Caso particular: si el cliente necesita dos técnicos del mismo rol, por ejemplo dos sonidistas, deberá ingresar una solicitud por cada persona. 
+
+### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto Proyecto, no hay otra clase para esta función.
+### Tampoco hay otra clase que mantenga la lista de Solicitudes.
+### SRP, cumple con este principio puesto que es su única responsabilidad y solo cambia si hay cambios en el constructor o se agregan atributos o métodos.
 
 ### Considerando EXPERT, esta clase es experta en construir una solicitud de técnico.
 ### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan comportamientos.
