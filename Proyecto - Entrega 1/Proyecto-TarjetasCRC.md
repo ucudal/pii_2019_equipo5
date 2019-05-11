@@ -458,9 +458,10 @@
 
 ## CLASE "COSTO"
 
-### 
+### Es necesario mantener el precio por hora, según las categorias "básico" y "avanzado".
+### Estos costos pueden modificarse en el tiempo.
 
-### Según EXPERT, esta clase es experta porque su función es mantener la información del costo según categoría.
+### EXPERT, esta clase es experta porque su función es mantener la información del costo según categoría, no hay otra clase con ese propósito.
 ### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si se modifican sus valores o se agregan comportamientos.
 
 * Atributos:
@@ -473,8 +474,9 @@
 
 ## CLASE "CONFIG"
 
-### Existen determinados parámetros de la aplicación que podrían variar a futuro pero que no deben ser manipulados por los usuarios.
-### Establecemos una clase de "configuración general" para mantener los mismos.
+### Existen determinados parámetros de la aplicación que podrían variar a futuro pero que no deben ser manipulados por los usuarios y sí por los administradores.
+
+### Establecemos una clase de "configuración general" para mantener estos valores.
 
 * Atributos:
     * limiteRolesPorTecnico (máx. 3 concurrentes).
@@ -505,7 +507,7 @@
 
 ## CLASE "dbArchivo"
 
-### A los efectos de mantener la información de los objetos en forma local, esta clase recibe los atributos de un objeto, genera una línea a partir de los mismos y la guarda en un archivo de texto. Al inicio de la aplicación esta clase lee los datos y genera los objetos a partir de la información almacenada.
+### A los efectos de mantener la información de los objetos, esta clase recibe los atributos de un objeto, genera una línea a partir de los mismos y la guarda en un archivo de texto.
 
 * Comportamientos:
     * GuardarLinea()
