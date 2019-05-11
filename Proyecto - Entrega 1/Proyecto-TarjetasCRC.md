@@ -144,9 +144,6 @@
     * Tecnico
     * Administrador
 
-* Implementa:
-    * Clase abstracta "AdminLista"
-
 * Tests asociados a esta clase:
     * Se puede crear un test sobre la construccion de una persona.
 
@@ -181,6 +178,9 @@
 * Tests asociados a esta clase:
     * Es importante controlar que no se ingrese nulo el nombre, el apellido o el email.
     * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
+
+* Implementa:
+    * AdminLista, para el método de actualizarLista().
 
 
 ## CLASE "TECNICO" : PERSONA
@@ -226,6 +226,9 @@
     * Es necesario controlar que exista un método para controlar que el año de egreso no sea menor a cero (o un valor razonable, ejemplo 2015) y que además el valor ingresado tampoco puede ser mayor al año en curso.
     * Es necesario hacer un test sobre los métodos que modifican las calificaciones de clientes y del centro ya que los mismos deben controlar que los valores se encuentran dentro de los rangos establecidos previamente (ejemplo, entre 0 y 5).
 
+* Implementa:
+    * AdminLista, para el método de actualizarLista().
+
 
 ## CLASE "ADMINISTRADOR" : PERSONA
 
@@ -263,6 +266,9 @@
     * Es importante controlar que no se ingrese nulo el nombre, el apellido o el email.
     * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
 
+* Implementa:
+    * AdminLista, para el método de actualizarLista().
+
 
 ## INTERFASE "IPERSONA"
 
@@ -284,6 +290,7 @@
 ### Cumple con SRP ya que esta es su única responsabilidad.
 
 * Comportamientos:
+    * constructor de la clase.
     * ingresar() método para que el usuario ingrese al sistema.
     * salir() método para que el usuario salga del sistema.
     * MsgError() método que muestra mensaje de error.
@@ -303,68 +310,89 @@
 
 ## CLASE "PROYECTO"
 
-### Considerando EXPERT, esta clase es experta en construir un objeto "Proyecto" y mantener sus datos.
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si se necesita modificar el constructor o agregar nuevos comportamientos.
+### Esta clase implementa el constructor de un proyecto y mantiene una Lista de Proyectos.
+### Los clientes ingresan su proyecto y luego darán de alta solicitudes de técnicos.
+### Por lo tanto, cada proyecto contiene una "Lista de Solicitudes".
+### Decimos qué: un proyecto puede tener "n" solicitudes, ya que las necesidades de cada proyecto son distintas. 
+
+### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto Proyecto, no hay otra clase para esta función.
+### Tampoco hay otra clase que mantenga la lista de Solicitudes.
+### SRP, cumple con este principio puesto que es su única responsabilidad y solo cambia si hay cambios en el constructor o se agregan atributos o métodos.
 
 * Atributos:
     * Nombre
     * Presentación (texto)
     * Estado (activo, concluido)
-    * Lista de Solicitudes
+    * Lista de Proyectos
 
 * Comportamientos:
-    * agregarProyecto() 	método para agregar el proyecto al sistema luego de construido el objeto. Dispara
-    * actualizarListaProyectos() de la clase Proyectos y también guarda un registro nuevo en los archivos de texto.
+    * constructor de la clase.
+    * agregarProyecto() 	método para agregar el proyecto al sistema luego de construido el objeto, tambien debe agregar el alta a la lista.
     * agregarSolicitud() 	método para agregar una solicitud de un técnico a las lista de solicitudes.
-    * reactivarProyecto()      método para marcar como reactivar un proyecto.
     * concluirProyecto()    método para marcar como concluido un proyecto.
-    * checkForm() metodo que revisa el formulario de proyectos
-    * MsgEror() metodo que envia mensaje de error. 
+    * reactivarProyecto()      método para marcar como reactivar un proyecto.
 
 * Colaboraciones:
-    * Proyectos.
     * Solicitud.
 
 * Tests asociados a esta clase:
     * Testear que el método agregarProyecto() efectivamente agrega un proyecto a la aplicación.
     * Testear que el método agregarSolicitud() efectivamente agrega una solicitud a un proyecto.
 
-
-## CLASE "PROYECTOS"
-
-### Esta clase tiene como responsabilidad mantener una lista de proyectos y actualizar la lista al inicio de la app, luego de agregar un nuevo proyecto o cambiar el estado de uno existente.
-
-### Considerando EXPERT, decimos que esta clase es experta por mantener una lista de objetos de tipo "Proyecto".
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si se modifica como se utiliza la misma o se agregan nuevos comportamientos.
-
-* Atributos:
-    * Lista de Proyectos
-
-* Comportamientos:
-    * actualizarLista() 	método para actualizar la lista al inicio de la app, luego de agregar un nuevo proyecto o cambiar el estado de uno existente.
-   
-
-* Colaboraciones:
-    * Proyecto
-
 * Implementa:
-    * Clase abstracta "AdminLista"
+    * AdminLista, para el método de actualizarLista().
 
 
 ## CLASE "SOLICITUD"
 
-### Considerando EXPERT, esta clase es experta en construir una solicitud de técnico.
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan comportamientos.
+### Para cada proyecto, el cliente ingresa una solicitud por cada técnico que necesita.
+### Se pueden ingresar "n" solicitudes por proyecto, no hay un límite establecido.
+### El Administrador del Centro Ignis podrá revisar estas solicitudes, filtrar todas las solicitudes de acuerdo al rol de cada una, y asignar un técnico disponible para cada solicitud.
+### Caso particular: si el cliente necesita dos técnicos del mismo rol, por ejemplo dos sonidistas, deberá ingresar una solicitud por cada persona. 
+
+### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto Solicitud, no hay otra clase para esta función.
+### SRP, cumple con este principio puesto que es su única responsabilidad y solo cambia si hay cambios en el constructor o se agregan atributos o métodos.
 
 * Atributos:
     * solicitud_Rol
     * solicitud_Nivel
     * solicitud_Observaciones
 
+* Comportamiento:
+    * constructor de la clase.
+
 * Colaboraciones:
     * Proyecto.
 
+
+## CLASE "ROL"
+
+### El Centro Ignis estableció una lista de 22 roles, correspondientes a 22 especializaciones técnicas.
+### Un técnico podrá registrarse hasta en un máximo de 3 roles concurrentes.
+### Si lo cree necesario, podrá eliminar un rol y asignarse otro, siempre que el límite se lo permita.
+
+### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto Rol, tambien en mantener una Lista de Roles como atributo. No hay otra clase para esta función.
+### SRP, cumple con este principio puesto que es su única responsabilidad y solo cambia si hay cambios en el constructor o se agregan atributos o métodos.
+
+* Atributos:
+    * Identificador, título principal.
+    * Descripción, de la actividad que desarrolla.
+    * Lista de Roles.
+
+* Comportamientos:
+    * constructor de la clase.
+    * agregarRol()
+
+* Colaboraciones:
+    * Tecnico
+    * Solicitudes
+
+* Implementa:
+    * AdminLista, para el método de actualizarLista().
+
+
 ## CLASE MAIL
+
 ### Considerando EXPERT, esta clase es experta en el envio de un mail.
 ### Cumple con SRP ya que está es su única responsabilidad y solo cambia si se modifica el constructor o se agregan comportamientos.
 
@@ -380,7 +408,9 @@
 * Colaboraciones:
     * MailSenderAPI
 
+
 ## CLASE MailCLIENTE : MAIL
+
 ### Considerando EXPERT, esta clase es experta en dar formato al mail de un cliente.
 ### Cumple con SRP ya que está es su única responsabilidad y solo cambia si se modifica el constructor o se agregan comportamientos.
 
@@ -395,7 +425,9 @@
 * Colaboraciones:
     * Mail
 
+
 ## CLASE MailTECNICO : MAIL
+
 ### Considerando EXPERT, esta clase es experta en dar formato al mail de un tecnico.
 ### Cumple con SRP ya que está es su única responsabilidad y solo cambia si se modifica el constructor o se agregan comportamientos.
 
@@ -412,6 +444,7 @@
 
 
 ## CLASE MailSenderAPI
+
 ### Esta clase es experta en el envio de un mail.
 
 * Atributos:
@@ -427,56 +460,31 @@
 * Colaboraciones:
     * Mail.
 
-## CLASE "ROL"
-
-### Considerando EXPERT, esta clase es experta en construir un rol (especialización de los técnicos).
-### Cumple con SRP ya que está es su única responsabilidad y solo cambia si se modifica el constructor o se agregan comportamientos.
-
-* Atributos:
-    * Identificador, título principal.
-    * Descripción, de la actividad que desarrolla.
-
-* Colaboraciones:
-    * Roles
-
-
-## CLASE "ROLES"
-
-### Esta clase tiene como responsabilidad mantener una lista de los roles y actualizar la lista al inicio de la app o luego de agregar un nuevo rol.
-
-### Considerando EXPERT, decimos que esta clase es experta porque su función es solo mantener una lista de objetos de tipo "Roles".
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si se modifican o agregan comportamientos.
-
-* Atributos:
-    * listaRoles[]
-
-* Comportamientos:
-    * agregarRol()
-    * actualizarLista() 	método para actualizar la lista.
-
-* Colaboraciones:
-    * Rol
-
-* Implementa:
-    * Clase abstracta "AdminLista"
-
 
 ## CLASE ABSTRACTA "AdminLista"
 
-### Implementamos esta clase abstracta ya que identificamos que las clases Persona, Roles y Proyectos tienen listas que deben ser actualizadas. Como comparten este mismo tipo, podemos aplicar una clase abstracta, una en algunas clases realizamos un override del método ya que el comportamiento debe ser distinto a las demás clases.
+### Implementamos esta clase abstracta ya que identificamos que las clases Cliente, Tecnico, Administrador, Rol y Proyecto tienen listas que deben ser actualizadas. Como comparten este mismo tipo, podemos aplicar una clase abstracta. Para algunas de estas clases, realizaremos un override del método ya que el comportamiento debe ser varia respecto a las otras clases.
+
+### El método actualizarLista() se ejecuta durante el inicio de la aplicación para leer los archivos de texto que mantienen la información en el tiempo y actualizar la lista que corresponda, ya sea un cliente, técnico, administrador, rol o proyecto. Tambien se ejecuta cuando se da alta a uno de estos objetos.
 
 * Comportamientos:
-    * actualizarLista()
+    * constructor de la clase.
+    * actualizarLista() 
 
 * Implementada por:
-    * clase "Personas"
-    * clase "Roles"
-    * clase "Proyectos"
+    * Cliente
+    * Tecnico
+    * Administrador
+    * Rol
+    * Proyecto
 
 
 ## CLASE "COSTO"
 
-### Según EXPERT, esta clase es experta porque su función es mantener la información del costo según categoría.
+### Es necesario mantener el precio por hora, según las categorias "básico" y "avanzado".
+### Estos costos pueden modificarse en el tiempo.
+
+### EXPERT, esta clase es experta porque su función es mantener la información del costo según categoría, no hay otra clase con ese propósito.
 ### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si se modifican sus valores o se agregan comportamientos.
 
 * Atributos:
@@ -484,13 +492,18 @@
     * CostoPorHora
 
 * Comportamiento:
+    * constructor de la clase.
     * modificarCostoPorHora()
 
 
 ## CLASE "CONFIG"
 
-### Existen determinados parámetros de la aplicación que podrían variar a futuro pero que no deben ser manipulados por los usuarios.
-### Establecemos una clase de "configuración general" para mantener los mismos.
+### Existen determinados parámetros de la aplicación que podrían variar a futuro pero que no deben ser manipulados por los usuarios y sí por los administradores.
+
+### Establecemos una clase de "configuración general" para mantener estos valores.
+
+### EXPERT, esta clase es experta en su función, no hay otra clase con ese propósito.
+### SRP, cumple con este principio ya que está es su única responsabilidad y solo cambia si se modifican sus valores o se agregan comportamientos.
 
 * Atributos:
     * limiteRolesPorTecnico (máx. 3 concurrentes).
@@ -498,6 +511,7 @@
     * limiteAñosEgresados (ej. 1, 2 o 3 años máximo).
 
 * Comportamientos:
+    * constructor de la clase.
     * modificarRolesPorTecnico()
     * modificarProyectosPorTecnico()
     * modificarAñosEgresados()
@@ -507,7 +521,11 @@
 
 ### A los efectos de mantener la información de los objetos en forma local, esta clase recibe los atributos de un objeto, genera una línea a partir de los mismos y la guarda en un archivo de texto. Al inicio de la aplicación esta clase lee los datos y genera los objetos a partir de la información almacenada.
 
+### EXPERT, esta clase es experta en su función, no hay otra clase con ese propósito.
+### SRP, cumple con este principio ya que está es su única responsabilidad y solo cambia si se modifican sus valores o se agregan comportamientos.
+
 * Comportamientos:
+    * constructor de la clase.
     * CodificarLineaTxt()
     * DecodificarLineaTxt()
 
@@ -521,9 +539,13 @@
 
 ## CLASE "dbArchivo"
 
-### A los efectos de mantener la información de los objetos en forma local, esta clase recibe los atributos de un objeto, genera una línea a partir de los mismos y la guarda en un archivo de texto. Al inicio de la aplicación esta clase lee los datos y genera los objetos a partir de la información almacenada.
+### A los efectos de mantener la información de los objetos, esta clase recibe los atributos de un objeto, genera una línea a partir de los mismos y la guarda en un archivo de texto.
+
+### EXPERT, esta clase es experta en su función, no hay otra clase con ese propósito.
+### SRP, cumple con este principio ya que está es su única responsabilidad y solo cambia si se modifican sus valores o se agregan comportamientos.
 
 * Comportamientos:
+    * constructor de la clase.
     * GuardarLinea()
     * EliminarLinea()
     * LeerLineas() = leer todo el archivo.
@@ -533,6 +555,19 @@
 
 * Test asociados a esta clase:
     * Test para asegurar que el método de leer completamente un archivo no devuelva valores nulos.
+
+
+## CLASE "FORM"
+
+### Esta clase implementa los comportamientos para la interacción entre formularios HTML, front al cliente, y las demás clases.
+
+### EXPERT, esta clase es experta en su función, no hay otra clase con ese propósito.
+### SRP, cumple con este principio ya que está es su única responsabilidad y solo cambia si se modifican sus valores o se agregan comportamientos.
+
+* Comportamientos:
+    * constructor de la clase.
+    * checkForm() método que revisa lo ingresado por el usuario en el formulario.
+    * MsgEror() método que envia un mensaje de error en los casos que corresponda.
 
 
 ## CASOS DE USO DE INTERACCIÓN
