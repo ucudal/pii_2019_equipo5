@@ -112,7 +112,7 @@
 
 ### Esta clase implementa el constructor de una persona. Por herencia, las clases Cliente, Técnico y Administrador implementarán estos atributos y métodos.
 
-### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto persona.
+### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto persona, no hay otra clase para esta función.
 ### SRP, cumple con este principio puesto que es su única responsabilidad y solo cambia si hay cambios en el constructor o se agregan métodos.
 
 * Atributos:
@@ -140,10 +140,12 @@
 
 ## CLASE "CLIENTE" : PERSONA
 
-### Esta clase implementa el constructor de un cliente. Hereda de Persona algunos atributos y métodos comunes a Clientes y Administradores.
+### Esta clase implementa el constructor de un cliente. Hereda de Persona algunos atributos y métodos.
+### Además contiene una lista de clientes, la cual se actualiza al inicio de la aplicación cuando hay altas de clientes.
 
-### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Cliente" y cambiar sus datos y su estado.
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
+### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto cliente, no hay otra clase para esta función.
+### Tampoco hay otra clase que mantenga la lista de clientes.
+### SRP, cumple con este principio puesto que es su única responsabilidad y solo cambia si hay cambios en el constructor o se agregan atributos o métodos.
 
 * Atributos:
     * ListaClientes
@@ -164,14 +166,18 @@
     * Proyecto
 
 * Tests asociados a esta clase:
+    * Es importante controlar que no se ingrese nulo el nombre, el apellido o el email.
     * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
-    * Es importante que se controle que la edad ingresada no sea cero o negativa.
 
 
 ## CLASE "TECNICO" : PERSONA
 
-### Considerando EXPERT, decimos que esta clase es experta en construir un objeto "Tecnico" y cambiar sus datos y su estado.
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan nuevos métodos al objeto.
+### Esta clase implementa el constructor de un técnico. Hereda de Persona algunos atributos y métodos.
+### Además contiene una lista de técnicos, la cual se actualiza al inicio de la aplicación cuando hay altas.
+
+### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto técnico, no hay otra clase para esta función.
+### Tampoco hay otra clase que mantenga la lista de técnicos.
+### SRP, cumple con este principio puesto que es su única responsabilidad y solo cambia si hay cambios en el constructor o se agregan atributos o métodos.
 
 * Atributos:
     * Presentación (texto)
@@ -202,6 +208,7 @@
     * Proyecto
 
 * Tests asociados a esta clase:
+    * Es importante controlar que no se ingrese nulo el nombre, el apellido, la edad o el email.
     * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
     * Es necesario controlar que exista un método para controlar que el año de egreso no sea menor a cero (o un valor razonable, ejemplo 2015) y que además el valor ingresado tampoco puede ser mayor al año en curso.
     * Es necesario hacer un test sobre los métodos que modifican las calificaciones de clientes y del centro ya que los mismos deben controlar que los valores se encuentran dentro de los rangos establecidos previamente (ejemplo, entre 0 y 5).
