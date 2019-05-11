@@ -163,6 +163,9 @@
     * Es importante controlar que no se ingrese nulo el nombre, el apellido o el email.
     * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
 
+* Implementa:
+    * AdminLista, para el método de actualizarLista().
+
 
 ## CLASE "TECNICO" : PERSONA
 
@@ -207,6 +210,9 @@
     * Es necesario controlar que exista un método para controlar que el año de egreso no sea menor a cero (o un valor razonable, ejemplo 2015) y que además el valor ingresado tampoco puede ser mayor al año en curso.
     * Es necesario hacer un test sobre los métodos que modifican las calificaciones de clientes y del centro ya que los mismos deben controlar que los valores se encuentran dentro de los rangos establecidos previamente (ejemplo, entre 0 y 5).
 
+* Implementa:
+    * AdminLista, para el método de actualizarLista().
+
 
 ## CLASE "ADMINISTRADOR" : PERSONA
 
@@ -243,6 +249,9 @@
 * Tests asociados a esta clase:
     * Es importante controlar que no se ingrese nulo el nombre, el apellido o el email.
     * Si el nombre y el apellido se ingresan en distintos atributos, es importante que al concatenarlos se controle que no existan "espacios" innecesarios entre ellos.
+
+* Implementa:
+    * AdminLista, para el método de actualizarLista().
 
 
 ## INTERFASE "IPERSONA"
@@ -312,6 +321,9 @@
     * Testear que el método agregarProyecto() efectivamente agrega un proyecto a la aplicación.
     * Testear que el método agregarSolicitud() efectivamente agrega una solicitud a un proyecto.
 
+* Implementa:
+    * AdminLista, para el método de actualizarLista().
+
 
 ## CLASE "SOLICITUD"
 
@@ -335,37 +347,26 @@
 ## CLASE "ROL"
 
 ### El Centro Ignis estableció una lista de 22 roles, correspondientes a 22 especializaciones técnicas.
+### Un técnico podrá registrarse hasta en un máximo de 3 roles concurrentes.
+### Si lo cree necesario, podrá eliminar un rol y asignarse otro, siempre que el límite se lo permita.
 
-### Considerando EXPERT, esta clase es experta en construir un rol (especialización de los técnicos).
-### Cumple con SRP ya que está es su única responsabilidad y solo cambia si se modifica el constructor o se agregan comportamientos.
+### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto Rol, tambien en mantener una Lista de Roles como atributo. No hay otra clase para esta función.
+### SRP, cumple con este principio puesto que es su única responsabilidad y solo cambia si hay cambios en el constructor o se agregan atributos o métodos.
 
 * Atributos:
     * Identificador, título principal.
     * Descripción, de la actividad que desarrolla.
-
-* Colaboraciones:
-    * Roles
-
-
-## CLASE "ROLES"
-
-### Esta clase tiene como responsabilidad mantener una lista de los roles y actualizar la lista al inicio de la app o luego de agregar un nuevo rol.
-
-### Considerando EXPERT, decimos que esta clase es experta porque su función es solo mantener una lista de objetos de tipo "Roles".
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si se modifican o agregan comportamientos.
-
-* Atributos:
-    * listaRoles[]
+    * Lista de Roles.
 
 * Comportamientos:
     * agregarRol()
-    * actualizarLista() 	método para actualizar la lista.
 
 * Colaboraciones:
-    * Rol
+    * Tecnico
+    * Solicitudes
 
 * Implementa:
-    * Clase abstracta "AdminLista"
+    * AdminLista, para el método de actualizarLista().
 
 
 ## CLASE MAIL
@@ -438,23 +439,26 @@
     * Mail.
 
 
-
-
-
 ## CLASE ABSTRACTA "AdminLista"
 
-### Implementamos esta clase abstracta ya que identificamos que las clases Persona, Roles y Proyectos tienen listas que deben ser actualizadas. Como comparten este mismo tipo, podemos aplicar una clase abstracta, una en algunas clases realizamos un override del método ya que el comportamiento debe ser distinto a las demás clases.
+### Implementamos esta clase abstracta ya que identificamos que las clases Cliente, Tecnico, Administrador, Rol y Proyecto tienen listas que deben ser actualizadas. Como comparten este mismo tipo, podemos aplicar una clase abstracta. Para algunas de estas clases, realizaremos un override del método ya que el comportamiento debe ser varia respecto a las otras clases.
+
+### El método actualizarLista() se ejecuta durante el inicio de la aplicación para leer los archivos de texto que mantienen la información en el tiempo y actualizar la lista que corresponda, ya sea un cliente, técnico, administrador, rol o proyecto. Tambien se ejecuta cuando se da alta a uno de estos objetos.
 
 * Comportamientos:
-    * actualizarLista()
+    * actualizarLista() 
 
 * Implementada por:
-    * clase "Personas"
-    * clase "Roles"
-    * clase "Proyectos"
+    * Cliente
+    * Tecnico
+    * Administrador
+    * Rol
+    * Proyecto
 
 
 ## CLASE "COSTO"
+
+### 
 
 ### Según EXPERT, esta clase es experta porque su función es mantener la información del costo según categoría.
 ### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si se modifican sus valores o se agregan comportamientos.
