@@ -288,26 +288,28 @@
 
 ## CLASE "PROYECTO"
 
-### Considerando EXPERT, esta clase es experta en construir un objeto "Proyecto" y mantener sus datos.
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si se necesita modificar el constructor o agregar nuevos comportamientos.
+### Esta clase implementa el constructor de un proyecto y mantiene una Lista de Proyectos.
+### Los clientes ingresan su proyecto y luego darán de alta solicitudes de técnicos.
+### Por lo tanto, cada proyecto contiene una "Lista de Solicitudes".
+### Decimos qué: un proyecto puede tener "n" solicitudes, ya que las necesidades de cada proyecto son distintas. 
+
+### EXPERT, consideramos que esta clase es experta en establecer el constructor de un objeto Proyecto, no hay otra clase para esta función.
+### Tampoco hay otra clase que mantenga la lista de Solicitudes.
+### SRP, cumple con este principio puesto que es su única responsabilidad y solo cambia si hay cambios en el constructor o se agregan atributos o métodos.
 
 * Atributos:
     * Nombre
     * Presentación (texto)
     * Estado (activo, concluido)
-    * Lista de Solicitudes
+    * Lista de Proyectos
 
 * Comportamientos:
-    * agregarProyecto() 	método para agregar el proyecto al sistema luego de construido el objeto. Dispara
-    * actualizarListaProyectos() de la clase Proyectos y también guarda un registro nuevo en los archivos de texto.
+    * agregarProyecto() 	método para agregar el proyecto al sistema luego de construido el objeto, tambien debe agregar el alta a la lista.
     * agregarSolicitud() 	método para agregar una solicitud de un técnico a las lista de solicitudes.
-    * reactivarProyecto()      método para marcar como reactivar un proyecto.
     * concluirProyecto()    método para marcar como concluido un proyecto.
-    * checkForm() metodo que revisa el formulario de proyectos
-    * MsgEror() metodo que envia mensaje de error. 
+    * reactivarProyecto()      método para marcar como reactivar un proyecto.
 
 * Colaboraciones:
-    * Proyectos.
     * Solicitud.
 
 * Tests asociados a esta clase:
@@ -315,28 +317,9 @@
     * Testear que el método agregarSolicitud() efectivamente agrega una solicitud a un proyecto.
 
 
-## CLASE "PROYECTOS"
-
-### Esta clase tiene como responsabilidad mantener una lista de proyectos y actualizar la lista al inicio de la app, luego de agregar un nuevo proyecto o cambiar el estado de uno existente.
-
-### Considerando EXPERT, decimos que esta clase es experta por mantener una lista de objetos de tipo "Proyecto".
-### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si se modifica como se utiliza la misma o se agregan nuevos comportamientos.
-
-* Atributos:
-    * Lista de Proyectos
-
-* Comportamientos:
-    * actualizarLista() 	método para actualizar la lista al inicio de la app, luego de agregar un nuevo proyecto o cambiar el estado de uno existente.
-   
-
-* Colaboraciones:
-    * Proyecto
-
-* Implementa:
-    * Clase abstracta "AdminLista"
-
-
 ## CLASE "SOLICITUD"
+
+###
 
 ### Considerando EXPERT, esta clase es experta en construir una solicitud de técnico.
 ### Cumple con SRP ya que esta es su única responsabilidad y solo cambia si cambia el constructor o se agregan comportamientos.
