@@ -14,35 +14,33 @@
 ### Los técnicos, son estudiantes de la UCU que se registran en el centro para trabajar. Pueden anotarse hasta en 3 roles (hay 22 disponibles). Pueden ser de cualquier año de la carrera, serán catalogados según "niveles de dificultad".
 ### Podrán estar trabajando hasta un máximo de 3 proyectos concurrentes.
 
-### Al final del proyecto, el centro debe calcular las horas empleadas por  el técnico e informar al cliente  cuanto debe pagar.
-
+### Al final del proyecto, el centro debe calcular las horas empleadas por el técnico e informar al cliente  cuanto debe pagar.
 
 
 # LA APLICACIÓN
 
-### Cuando el usuario  se loguea en la aplicación podrá hacerlo  con tres perfiles diferentes, cliente, técnico o administrador.
-### Los técnicos deberán ingresar sus datos personales e indicar en que roles están dispuestos a brindar su ascesoramiento.
-### Los clientes  podrán postular sus proyectos y solicitar que tipo de técnico necesita.
-### Los administradorres, autorizarán a técnicos y cleintes,  analizarán los proyectos presentados, asignarán los técnicos a cada proyecto y calcularán las horas trabajadas y  los honorarios del mismo.
+### Cuando el usuario se loguea en la aplicación podrá hacerlo con tres perfiles diferentes, cliente, técnico o administrador.
+### Los técnicos deberán ingresar sus datos personales e indicar en que roles están dispuestos a brindar su asesoramiento.
+### Los clientes podrán postular sus proyectos y solicitar que tipo de técnico necesita.
+### Los administradores, autorizarán a técnicos y clientes, analizarán los proyectos presentados, asignarán los técnicos a cada proyecto y calcularán las horas trabajadas y los honorarios del mismo.
 
 
-### MANUAL DE USUARIO
+## MANUAL DE USUARIO
+
 ### Al ingresar a la pantalla principal de la aplicación, deberá loguearse, en el botón Entrar, ingresando su mail y contraseña, en caso de no tener usuario creado debe registrarse, ingresando a los botones, de cliente o técnico, según corresponda.
 
 ### Para registrarse como cliente, debe ingresar, nombre, mail y contraseña. El administrador le confirmará cuando su registro quede activado.
 
 ### Para registrarse como técnico debe ingresar sus datos personales y seleccionando los roles a los cuales se postula. Cada rol implica una disciplina (sonidista, músico, etc.). Podrá postularse hasta un máximo de 3 roles, pudiendo cambiar los mismos más adelante, aunque siempre conservando la limitación de 3. El administrador le confirmará cuando su registro quede activado.
 
-### Cuando un usuario registrado como técnico se loguee, podra acceder al MENÚ DE TECNICOS y podrá ver los proyectos que están activos dentro de los roles indicados al registrarse y podrá postularce a cualquiera de ellos.
+### Cuando un usuario registrado como técnico se loguee, podrá acceder al MENÚ DE TECNICOS y podrá ver los proyectos que están activos dentro de los roles indicados al registrarse y podrá postularce a cualquiera de ellos.
 
-### Cuando un usuario registrado como cliente se loguee, podra acceder al MENÚ DE CLIENTES y podrá postular su proyecto, para esto debe ingresar: nombre del proyecto y descripción del mismo.
+### Cuando un usuario registrado como cliente se loguee, podra acceder al MENÚ DE CLIENTES y podrá postular su proyecto, para esto debe ingresar: nombre del proyecto y una descripción.
 
-### Cuando un usuario registrado como administrador se loguee, podra acceder al MENÚ DE ADMINISTRADOR  y podrá activar o desactivar clientes y técnicos que se han registrado en la aplicación.
-### Verá los  proyectos presentados de cada cliente y los técnicos postulados a dicho proyecto, debiendo hacer la asignación final.
+### Cuando un usuario registrado como administrador se loguee, podrá acceder al MENÚ DE ADMINISTRADOR y podrá activar o desactivar clientes y técnicos que se han registrado en la aplicación.
+### Verá los proyectos presentados de cada cliente y los técnicos postulados a dicho proyecto, debiendo hacer la asignación final.
 ### Ingresará la cantidad e horas informadas por los técnicos dedicadas a cada proyecto.
-### Realizará la liquidación de horas, empleadas por cada técnico en cada proyecto y se inforará al cliente los honorarios a pagar al técnico..
-
-
+### Realizará la liquidación de horas, empleadas por cada técnico en cada proyecto y se informará al cliente los honorarios a pagar al técnico.
 
 
 ## POSTER DE LA APLICACIÓN
@@ -54,7 +52,6 @@
 
 ## MENÚ DE CLIENTES
 
-
 ### Estará en condiciones de ingresar proyectos a su cuenta de cliente.
 ### Para dar de alta un proyecto, debe ingresar un nombre de proyecto y una descripción (a modo de presentación).
 ### Luego de creado el proyecto, el cliente podrá dar de alta una o más solicitudes de técnicos. Deberá ingresar una solicitud por cada técnico que necesita. Un proyecto podrá tener "n" solicitudes de técnicos, por el momento no hay una limitación establecida por el Centro Ignis.
@@ -64,9 +61,9 @@
 
 ### Ingresará cuando quiera visualizar a qué proyecto está asignado y también a controlar las horas que viene desarrollando en cada uno.
 
-### Es de interés para el Centro Ignis de brindar al técnico  un historial de sus trabajos, ya que puede servirle como referencia laboral. Por lo tanto, el técnico contará con la opción de descargar un documento que detalle los trabajos que realizó (nombre de los proyectos, el rol que desempeño en cada uno y las horas en cada uno).
+### Es de interés para el Centro Ignis de brindar al técnico un historial de sus trabajos, ya que puede servirle como referencia laboral. Por lo tanto, el técnico contará con la opción de descargar un documento que detalle los trabajos que realizó (nombre de los proyectos, el rol que desempeño en cada uno y las horas en cada uno).
 
-### Debido a que el técnico recibe un pago por sus servicios, la aplicación tambien debe permitirle descargar un documento con las horas realizadas por proyecto y el pago que debe recibir por cada uno. Esto tambien le permite al Centro Ignis de alivianar su trabajo administrativo, ya que en todo momento el técnico puede revisar lo que tiene que cobrar sin necesidad de depender del administrador del centro.
+### Debido a que el técnico recibe un pago por sus servicios, la aplicación también debe permitirle descargar un documento con las horas realizadas por proyecto y el pago que debe recibir por cada uno. Esto también le permite al Centro Ignis de alivianar su trabajo administrativo, ya que en todo momento el técnico puede revisar lo que tiene que cobrar sin necesidad de depender del administrador del centro.
 
 
 ## MENÚ DE ADMINISTRADOR DEL CENTRO IGNIS
