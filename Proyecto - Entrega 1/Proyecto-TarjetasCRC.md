@@ -27,11 +27,11 @@
 
 ## MANUAL DE USUARIO
 
-### Al ingresar a la pantalla principal de la aplicación, deberá loguearse, en el botón Entrar, ingresando su mail y contraseña, en caso de no tener usuario creado debe registrarse, ingresando a los botones, de cliente o técnico, según corresponda.
+### Al ingresar a la pantalla principal de la aplicación, deberá loguearse en el botón Entrar, ingresando su mail y contraseña, en caso de no tener usuario creado debe registrarse, ingresando a los botones, de cliente o técnico, según corresponda.
 
-### Para registrarse como cliente, debe ingresar, nombre, mail y contraseña. El administrador le confirmará cuando su registro quede activado.
+### Para registrarse como cliente, debe ingresar, nombre, mail y contraseña.
 
-### Para registrarse como técnico debe ingresar sus datos personales y seleccionando los roles a los cuales se postula. Cada rol implica una disciplina (sonidista, músico, etc.). Podrá postularse hasta un máximo de 3 roles, pudiendo cambiar los mismos más adelante, aunque siempre conservando la limitación de 3. El administrador le confirmará cuando su registro quede activado.
+### Para registrarse como técnico debe ingresar sus datos personales y seleccionando los roles a los cuales se postula. Cada rol implica una disciplina (sonidista, músico, etc.). Podrá postularse hasta un máximo de 3 roles, pudiendo cambiar los mismos más adelante, aunque siempre conservando la limitación de 3.
 
 ### Cuando un usuario registrado como técnico se loguee, podrá acceder al MENÚ DE TECNICOS y podrá ver los proyectos que están activos dentro de los roles indicados al registrarse y podrá postularce a cualquiera de ellos.
 
@@ -39,7 +39,7 @@
 
 ### Cuando un usuario registrado como administrador se loguee, podrá acceder al MENÚ DE ADMINISTRADOR y podrá activar o desactivar clientes y técnicos que se han registrado en la aplicación.
 ### Verá los proyectos presentados de cada cliente y los técnicos postulados a dicho proyecto, debiendo hacer la asignación final.
-### Ingresará la cantidad e horas informadas por los técnicos dedicadas a cada proyecto.
+### Ingresará la cantidad de horas informadas por los técnicos dedicadas a cada proyecto.
 ### Realizará la liquidación de horas, empleadas por cada técnico en cada proyecto y se informará al cliente los honorarios a pagar al técnico.
 
 
