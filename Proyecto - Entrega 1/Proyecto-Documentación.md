@@ -255,7 +255,7 @@
 * Colaboraciones:
     * Persona
     * Proyecto
-    * Roles
+    * Rol
     * Config
     * Solicitud
 
