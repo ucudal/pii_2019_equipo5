@@ -421,6 +421,7 @@
 
 * Colaboraciones:
     * Mail
+    * Cliente
 
 
 ## CLASE MailTECNICO : MAIL
@@ -438,6 +439,7 @@
 
 * Colaboraciones:
     * Mail
+    * Tecnico
 
 
 ## CLASE MailSenderAPI
