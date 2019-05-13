@@ -382,7 +382,7 @@
 
 * Colaboraciones:
     * Tecnico
-    * Solicitudes
+    * Solicitud
 
 * Implementa:
     * AdminLista, para el método de actualizarLista().
