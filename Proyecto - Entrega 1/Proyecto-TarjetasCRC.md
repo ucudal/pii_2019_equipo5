@@ -550,7 +550,7 @@
     * LeerLineas() = leer todo el archivo.
 
 * Colaboradores:
-    * dbFormato
+    * dbFormato 
 
 * Test asociados a esta clase:
     * Test para asegurar que el método de leer completamente un archivo no devuelva valores nulos.
