@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Person/bin/Debug/netcoreapp2.1/Person.dll",
+            "program": "${workspaceFolder}/Ignis/tests/bin/Debug/netcoreapp2.2/tests.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Person",
+            "cwd": "${workspaceFolder}/Ignis/tests",
             // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
             "console": "internalConsole",
             "stopAtEntry": false

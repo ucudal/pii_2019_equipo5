@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Person/Person.csproj"
+                "${workspaceFolder}/Ignis/tests/tests.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/Person/Person.csproj"
+                "${workspaceFolder}/Ignis/tests/tests.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/Person/Person.csproj"
+                "${workspaceFolder}/Ignis/tests/tests.csproj"
             ],
             "problemMatcher": "$tsc"
         }
