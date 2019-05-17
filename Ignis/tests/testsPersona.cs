@@ -23,7 +23,8 @@ namespace tests
 
         /// <summary>
         /// El nombre ingresado no puede ser nulo o vacío.
-        /// No pasa hasta que no se agrega un nombre.
+        /// La clase no debe permitir construir el objeto si el nombre está vacío.
+        /// Si el nombre está vacío, este test no se pasa.
         /// </summary>
         [Fact]
         public void nombre_no_puede_ser_nulo_o_vacio()

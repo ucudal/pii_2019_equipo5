@@ -6,18 +6,21 @@ namespace Ignis
     {
         /// <summary>
         /// Constructor de la clase Persona.
+        /// 
+        /// Esta es la clase base para las clases Administrador, Cliente y Administrador.
         /// </summary>
         public Persona(string Nombre, string Correo, string Contrasena) 
         {
             this.nombre = Nombre;
             this.correo = Correo;
             this.contrasena = Contrasena;
-            this.estado = true;             // True = activo.
+            this.estado = true;
         }
 
         /// <summary>
-        /// Atributo Nombre. 
-        /// Controlamos que no sea nulo o vacío el valor ingresado.
+        /// Atributo Nombre.
+        /// 
+        /// Controlamos que el valor ingresado no sea nulo o vacío.
         /// </summary>
         private string nombre;
         public string Nombre 
@@ -38,8 +41,8 @@ namespace Ignis
 
         /// <summary>
         /// Atributo Correo.
-        /// Controlamos que los valores ingresados tengan formato de correo.
-        /// Debe tener una arroba y un dominio.
+        /// 
+        /// Controlamos que el valor ingresado tenga formato de dirección de correo electrónico.
         /// </summary>
         private string correo;
         public string Correo 
@@ -66,7 +69,8 @@ namespace Ignis
 
         /// <summary>
         /// Método para el cambio de contraseña.
-        /// Controlamos que no sea nula y que tenga un largo mínimo de cuatro carácteres.
+        /// 
+        /// Controlamos que el valor ingresado no sea nula y que tenga un largo mínimo de cuatro carácteres.
         /// </summary> 
         private void CambiarContrasena(string value) 
         {
