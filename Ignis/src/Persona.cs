@@ -25,7 +25,7 @@ namespace Ignis
             get { return nombre; }
             set 
             { 
-                if (string.IsNullOrEmpty(value)) 
+                if ( string.IsNullOrEmpty(value) ) 
                 {
                     Console.WriteLine("Se ingresó un valor nulo o vacío.");
                 }
