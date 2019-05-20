@@ -9,6 +9,9 @@ namespace RazorPagesIgnis.Models
             : base(options)
         {
         }
+
+        public DbSet<RazorPagesIgnis.Models.Proyecto> Proyecto { get; set; }
+
         public DbSet<RazorPagesIgnis.Models.Tecnico> Tecnico { get; set; }
     }
 }
