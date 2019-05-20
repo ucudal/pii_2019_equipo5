@@ -1,12 +1,12 @@
 using System;
 
-namespace Ignis
+namespace Ignis 
 {   
     public class Persona 
     {
         /// <summary> 
         /// Esta es Superclase de las clases: Administrador, Cliente y Administrador.
-        /// Estas clases heredan todos los atributos y métodos de la clase Persona.
+        /// Estas clases heredan todos los atributos y métodos de esta clase.
         /// </summary>
         public Persona(string Nombre, string Correo, string Contrasena) 
         {
@@ -14,9 +14,9 @@ namespace Ignis
             this.correo = Correo;
             this.contrasena = Contrasena;
 
-            Status statusValor = new Status(true);
-            this.status = statusValor.Valor;
+            this.status = statusAux.Valor;
         }
+
 
         /// <summary>
         /// Atributo: Nombre.
@@ -39,6 +39,7 @@ namespace Ignis
             }
         }
 
+
         /// <summary>
         /// Atributo: Correo.
         /// </summary>
@@ -53,6 +54,7 @@ namespace Ignis
             }
         }
 
+
         /// <summary>
         /// Atributo: Contraseña.
         /// </summary>
@@ -65,6 +67,7 @@ namespace Ignis
                 this.CambiarContrasena(value);
             }
         }
+
 
         /// <summary>
         /// Método para el cambio de contraseña.
@@ -82,13 +85,18 @@ namespace Ignis
             }
         }
 
+
         /// <summary>
         /// Atributo: Status.
         /// </summary>
-        public bool status  
+        private bool status;
+        public bool Status 
         {
-            get { return this.status; }
-            private set {}
+            get => status;
+            set => this.status = value;
         }
+
+        private Status statusAux = new Status(true);
+
     }
 }
