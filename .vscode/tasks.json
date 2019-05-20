@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Ignis/tests/tests.csproj"
+                "${workspaceFolder}/RazorPagesMovie/RazorPagesMovie.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/Ignis/tests/tests.csproj"
+                "${workspaceFolder}/RazorPagesMovie/RazorPagesMovie.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/Ignis/tests/tests.csproj"
+                "${workspaceFolder}/RazorPagesMovie/RazorPagesMovie.csproj"
             ],
             "problemMatcher": "$tsc"
         }
