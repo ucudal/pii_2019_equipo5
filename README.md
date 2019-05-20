@@ -2,4 +2,10 @@
 
 ## EQUIPO 5 : Sofía, Fausto, Matías, Marcelo.
 
-### La primera entrega se encuentra en la subcarpeta "Proyecto - Entrega 1".
+### Carpeta "Proyecto - CSharp": entorno C# exclusivo, para crear las clases y probar su funcionamiento.
+
+### Carpeta "RazorPagesIgnis": entorno AspNet Core MVC, para el proyecto Ignis.
+
+### Carpeta "RazorPagesMovie": entorno AspNet Core MVC, ejercicio Movies. 
+
+### Carpeta "Proyecto - Entrega 1", documentos de la primera entrega.
