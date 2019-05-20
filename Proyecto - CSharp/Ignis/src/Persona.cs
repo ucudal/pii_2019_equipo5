@@ -13,7 +13,6 @@ namespace Ignis
             this.nombre = Nombre;
             this.correo = Correo;
             this.contrasena = Contrasena;
-
             this.status = statusAux.Valor;
         }
 
