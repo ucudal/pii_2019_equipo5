@@ -6,19 +6,20 @@ namespace Ignis
     {
         /// <summary>
         /// El TECNICO es la persona que se registra en el sistema para ser contratado.
-        /// Esta clase es subclase de Persona. Utilizamos herencia para utilizar sus atributos y comportamientos.
+        /// Esta clase es subclase de Persona, para utilizar todos sus atributos y comportamientos.
         /// </summary>
-        public Tecnico(string Nombre, string Correo, string Contrasena, Int32 Edad, bool Status) 
-        : base(Nombre, Correo, Contrasena) 
+        public Tecnico(string Nombre, string Correo, string Contrasena, Int32 Edad) 
+                        : base(Nombre, Correo, Contrasena) 
         {
             this.edad = Edad;
         }
+
 
         /// <summary>
         /// Atributo: Edad. 
         /// </summary>
         private Int32 edad;
-        public Int32 Edad
+        public Int32 Edad 
         {
             get { return edad; }
             set 
