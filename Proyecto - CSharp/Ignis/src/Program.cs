@@ -6,7 +6,10 @@ namespace Ignis //src
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Persona p1 = new Persona("Marcelo", "marce@correo", "qwer1234");
+
+            Console.WriteLine("{0} {1} {2} {3}", p1.Nombre, p1.Correo, p1.Contrasena, p1.Status);
+
         }
     }
 }
