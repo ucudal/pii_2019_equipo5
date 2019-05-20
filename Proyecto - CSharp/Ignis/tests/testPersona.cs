@@ -39,13 +39,5 @@ namespace tests
             Assert.NotNull(p1.Nombre);            
         }
 
-        // - Construir una persona correctamente.
-
-        // - El nombre no puede ser nulo o vacío.
-
-        // - El correo debe tener formato adecuado.
-
-        // - La contraseña no puede ser vacía o menor a 4 dígitos.
-
     }
 }
