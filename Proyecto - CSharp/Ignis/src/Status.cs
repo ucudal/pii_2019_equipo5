@@ -46,7 +46,7 @@ namespace Ignis
         /// <summary>
         /// Método para inactivar un objeto.
         /// </summary>
-        public void Inctivar() 
+        public void Inactivar() 
         {
             if (this.valor == true) { this.CambiarStatus(); }
         }
