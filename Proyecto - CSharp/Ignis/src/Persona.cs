@@ -10,21 +10,21 @@ namespace Ignis
         /// estas clases utilizan todos sus atríbutos y comportamientos.
         /// 
         /// A los efectos de encapsulamiento, implementamos getters y setters 
-        /// que nos permitió validar el ingreso de valores.
+        /// de acuerdo a cada atributo y además esto nos permitió validar el ingreso de valores.
         /// </summary>
         public Persona(string Nombre, string Correo, string Contrasena) 
         {
             this.nombre = Nombre;
             this.correo = Correo;
             this.contrasena = Contrasena;
-            this.status = statusAux.Valor;
+            this.status = statusInicial.Valor;
         }
 
-        private Status statusAux = new Status(true);
+        private Status statusInicial = new Status(true);
 
         /// <summary>
         /// Atributo: Nombre.
-        /// En SET validamos que no se ingresen valores nulo o vacío.
+        /// En SET validamos que no se ingresen valores nulos o vacíos.
         /// </summary>
         private string nombre { get; set; }
         public string Nombre 
@@ -35,7 +35,7 @@ namespace Ignis
             }
             set 
             { 
-                if ( string.IsNullOrWhiteSpace(value) )
+                if ( string.IsNullOrEmpty(value) ) 
                     throw new ArgumentException("No se puede ingresar un valor nulo o vacío.");
                 
                 this.nombre = value;
@@ -45,8 +45,7 @@ namespace Ignis
 
         /// <summary>
         /// Atributo: Correo.
-        /// En SET validamos que la dirección tenga formato de correo.
-        /// Controlamos que el valor ingresado tenga formato de dirección de correo electrónico.
+        /// En SET validamos que la dirección ingresada tenga formato de dirección de correo electrónico.
         /// </summary>
         private string correo { get; set; }
         public string Correo 
@@ -69,6 +68,8 @@ namespace Ignis
 
         /// <summary>
         /// Atributo: Contraseña.
+        /// En SET validamos que tenga los requerimientos especificados.
+        /// Las condiciones se detalla en la definición de la clase EsUnaContrasenaValida (ValidarContrasena.cs) 
         /// </summary>
         private string contrasena { get; set; }
         public string Contrasena  
@@ -79,7 +80,7 @@ namespace Ignis
             }
             set 
             { 
-                ValidarContrasena vc= new ValidarContrasena();
+                ValidarContrasena vc = new ValidarContrasena();
                 
                 if ( !vc.EsUnaContrasenaValida(value) ) 
                     throw new ArgumentException("El formato o largo de la contraseña no es válida.");
@@ -93,10 +94,10 @@ namespace Ignis
         /// Atributo: Status.
         /// </summary>
         private bool status { get; set; }
-        public bool Status 
+        public bool Status
         {
-            get => status;
-            set => this.status = value;
+            get => this.status;
+            protected set {}
         }
     }
 }
