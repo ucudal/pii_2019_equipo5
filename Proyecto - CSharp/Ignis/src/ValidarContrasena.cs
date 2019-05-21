@@ -7,7 +7,7 @@ namespace Ignis
     { 
         /// <summary>
         /// Método para controlar que la contraseña ingresada tiene un formato válido.
-        /// Para este caso, controlamos que no sea 'vacío' que no sea 'null'
+        /// Para este caso, controlamos que no sea 'vacío' y que no sea 'null'
         /// y que el largo sea mayor a 4 carácteres.
         /// Si es necesario, se pueden agregar otras condiciones aquí.
         /// </summary> 
