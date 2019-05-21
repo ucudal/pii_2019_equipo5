@@ -16,21 +16,15 @@ namespace Ignis
             this.valor = Valor;
         }
 
-        private bool valor { get; set; }
 
+        private bool valor { get; set; }
         public bool Valor 
         { 
-            get { return this.valor; }
+            get 
+            { 
+                return this.valor; 
+            }
             private set {}
-        }
-
-
-        /// <summary>
-        /// Método para cambiar el atributo Status.
-        /// </summary>
-        private void CambiarStatus() 
-        {
-            this.valor = !this.valor;
         }
 
 
@@ -51,5 +45,13 @@ namespace Ignis
             if (this.valor == true) { this.CambiarStatus(); }
         }
 
+
+        /// <summary>
+        /// Método para cambiar el atributo Status.
+        /// </summary>
+        private void CambiarStatus() 
+        {
+            this.valor = !this.valor;
+        }
     }
 }
