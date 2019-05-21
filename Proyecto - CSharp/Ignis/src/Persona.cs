@@ -45,6 +45,7 @@ namespace Ignis
         /// <summary>
         /// Atributo: Correo.
         /// En SET validamos que la dirección tenga formato de correo.
+        /// Controlamos que el valor ingresado tenga formato de dirección de correo electrónico.
         /// </summary>
         private string correo { get; set; }
         public string Correo 
@@ -55,7 +56,8 @@ namespace Ignis
             }
             set 
             {
-                /// Controlamos que el valor ingresado tenga formato de dirección de correo electrónico.
+                        // agregar sentencias de control
+
                 this.correo = value; 
             }
         }
@@ -67,9 +69,20 @@ namespace Ignis
         private string contrasena { get; set; }
         public string Contrasena  
         {
-            get { return this.contrasena; }
+            get 
+            { 
+                return this.contrasena;
+            }
             set 
             {
+                ValidarEmail ve = new ValidarEmail();
+
+                if ( string.IsNullOrWhiteSpace(value) )
+                    throw new ArgumentException("No se puede ingresar un valor nulo o vacío.");
+                    
+                if ( !ve.EsUnEmailValido(value) ) 
+                    throw new ArgumentException("NLa dirección indicada no tiene el formato correcto.");
+
                 this.CambiarContrasena(value);
             }
         }
