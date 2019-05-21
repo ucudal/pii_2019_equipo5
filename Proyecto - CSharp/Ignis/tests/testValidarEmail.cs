@@ -10,7 +10,6 @@ namespace tests
         /// Testeamos que la clase ValidarEmail realiza el comportamiento esperado.
         /// </summary>
 
-
         [Fact]
         public void email_correcto_debe_retornar_true()
         {
@@ -26,12 +25,11 @@ namespace tests
             Assert.Equal(expected, actual);
         }
 
-
         [Fact]
         public void email_incorrecto_debe_retornar_false()
         {
             // preparación
-            string emailIngresado = "equipo.ucu.edu.uy";
+            string emailIngresado = "equipo@ucu.edu.uy";
             ValidarEmail ve = new ValidarEmail();
             bool actual = ve.EsUnEmailValido(emailIngresado);
 
