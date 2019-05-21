@@ -1,5 +1,5 @@
 using System;
-using System.Net.Mail;
+using System.Text.RegularExpressions;
 
 namespace Ignis 
 {   
@@ -7,17 +7,25 @@ namespace Ignis
     { 
         /// <summary>
         /// Esta clase recibe un mensaje cuyo parámetro es una dirección de email.
-        /// El constructor de MailAddress chequea el formato y retorna si es válido. 
-        /// En caso contrario se captura una excepción retornando false.
+        /// El método chequea que la dirección esté bien escrita, en caso afirmativo retorna true. 
+        /// En caso contrario se retorna false.
         /// </summary>
-        public bool EsUnEmailValido(string email)
+        public bool EsUnEmailValido(string email) 
         {
-            try
+            String expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+
+            if (Regex.IsMatch(email,expresion)) 
             {
-                MailAddress m = new MailAddress(email);
-                return true;
+                if (Regex.Replace(email, expresion, String.Empty).Length == 0)
+                {
+                    return true; 
+                }
+                else
+                {
+                    return false;
+                }
             }
-            catch (FormatException)
+            else
             {
                 return false;
             }
