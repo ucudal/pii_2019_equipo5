@@ -7,10 +7,10 @@ namespace Ignis
         /// <summary>
         /// La clase Persona es superclase de las clases Cliente, Técnico y Administrador.
         /// Considerando la propiedad polimórfica, implementamos herencia porque todas 
-        /// estas clases utilizan todos sus atríbutos y comportamientos.
+        /// estas clases utilizan todos sus atributos y comportamientos.
         /// 
         /// A los efectos de encapsulamiento, implementamos getters y setters 
-        /// de acuerdo a cada atributo y además esto nos permitió validar el ingreso de valores.
+        /// de acuerdo con cada atributo y además esto nos permitió validar el ingreso de valores.
         /// </summary>
         public Persona(string Nombre, string Correo, string Contrasena) 
         {
