@@ -29,6 +29,7 @@ namespace tests
         {
             Status s1 = new Status(true);   // creo el objeto con valor true.
             s1.Inactivar();                 // cambio el valor mediante el método.
+
             bool actual = s1.Valor;
 
             bool expected = false;
