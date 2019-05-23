@@ -9,3 +9,5 @@
 ### Carpeta "RazorPagesMovie": entorno AspNet Core MVC, ejercicio Movies. 
 
 ### Carpeta "Proyecto - Entrega 1", documentos de la primera entrega.
+
+### Carpeta "Proyecto - Entrega 2", documentos de la segunda entrega.
