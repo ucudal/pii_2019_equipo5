@@ -12,7 +12,7 @@ namespace tests
         [Fact]
         public void construir_un_objeto_tecnico()
         {
-            Tecnico t1 = new Tecnico("Gonzalo", "gonza@correo", "abc123", 33);
+            Tecnico t1 = new Tecnico("Gonzalo", "gonza@correo", "abc123", 33, "", "", 0, "", 0, 0);
 
             string actual = string.Format(@"{0} {1} {2} {3} {4}", t1.Nombre, t1.Correo, t1.Contrasena, t1.Edad, t1.Status);
 
@@ -20,5 +20,6 @@ namespace tests
 
             Assert.Equal(expected, actual);
         }
+
     }
 }
