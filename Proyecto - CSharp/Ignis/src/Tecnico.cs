@@ -5,8 +5,10 @@ namespace Ignis
     public class Tecnico : Persona
     {
         /// <summary>
-        /// El TECNICO es la persona que se registra en el sistema para ser contratado.
-        /// Esta clase es subclase de Persona, para utilizar todos sus atributos y comportamientos.
+        /// El Técnico es la persona que se registra en la aplicación para ser contratado.
+        /// Puede anotarse hasta en 3 roles (especialidades) y los Administradores lo asigna a Proyectos.
+        /// 
+        /// La clase Tecnico hereda todos los atributos y comportamientos de la clase Persona.
         /// </summary>
         public Tecnico(string Nombre, string Correo, string Contrasena, Int32 Edad) 
                         : base(Nombre, Correo, Contrasena) 
@@ -17,6 +19,9 @@ namespace Ignis
 
         /// <summary>
         /// Atributo: Edad. 
+        /// Validación: la edad debe ser mayor a cero, no puede ser nulo o vacío. 
+        /// Este parámetro puede ser cambiado por el Administrador, ya que podria especificar una edad 
+        /// mínima de contratación de técnicos (ejem. 18 años).
         /// </summary>
         private Int32 edad;
         public Int32 Edad 
@@ -24,8 +29,7 @@ namespace Ignis
             get { return edad; }
             set 
             { 
-                /// El valor debe ser mayor a cero. 
-                /// Controlamos que no sea nulo o vacío el valor ingresado.
+
                 if ( string.IsNullOrEmpty(value.ToString()) && (value > 0) ) 
                 {
                     Console.WriteLine("Error. No puede ingresar un valor nulo o vacío. El valor debe ser mayor a cero.");
@@ -36,5 +40,6 @@ namespace Ignis
                 }
             }
         }
+
     }
 }
