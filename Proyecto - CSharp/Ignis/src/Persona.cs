@@ -10,8 +10,9 @@ namespace Ignis
         /// estas clases utilizan todos sus atributos y comportamientos.
         /// 
         /// A los efectos de encapsulamiento, implementamos getters y setters 
-        /// de acuerdo con cada atributo y además esto nos permitió validar el ingreso de valores.
+        /// de acuerdo con cada atributo, que en algunos casos nos permitió validar el ingreso de valores.
         /// </summary>
+
         public Persona(string Nombre, string Correo, string Contrasena) 
         {
             this.nombre = Nombre;
@@ -20,11 +21,14 @@ namespace Ignis
             this.status = statusInicial.Valor;
         }
 
+        /// <summary>
+        /// Instanciamos Status para crear un status inicial al construir el objeto.
+        /// </summary>
         private Status statusInicial = new Status(true);
 
         /// <summary>
         /// Atributo: Nombre.
-        /// En SET validamos que no se ingresen valores nulos o vacíos.
+        /// Para SET no se permite datos nulos o vacíos.
         /// </summary>
         private string nombre { get; set; }
         public string Nombre 
@@ -45,7 +49,7 @@ namespace Ignis
 
         /// <summary>
         /// Atributo: Correo.
-        /// En SET validamos que la dirección ingresada tenga formato de dirección de correo electrónico.
+        /// Para SET validamos que la dirección ingresada tenga formato de dirección de correo electrónico.
         /// </summary>
         private string correo { get; set; }
         public string Correo 
@@ -68,7 +72,7 @@ namespace Ignis
 
         /// <summary>
         /// Atributo: Contraseña.
-        /// En SET validamos que tenga los requerimientos especificados.
+        /// Para SET validamos que tenga los requerimientos especificados.
         /// Las condiciones se detalla en la definición de la clase EsUnaContrasenaValida (ValidarContrasena.cs) 
         /// </summary>
         private string contrasena { get; set; }
