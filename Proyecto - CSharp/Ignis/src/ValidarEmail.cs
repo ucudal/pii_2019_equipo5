@@ -6,7 +6,7 @@ namespace Ignis
     public class ValidarEmail 
     { 
         /// <summary>
-        /// Esta clase recibe un mensaje cuyo parámetro es una dirección de email.
+        /// Esta clase recibe un mensaje cuyo parámetro es una dirección de email ingresada por el usuario.
         /// El método chequea que la dirección esté bien escrita, en caso afirmativo retorna true. 
         /// En caso contrario se retorna false.
         /// </summary>
