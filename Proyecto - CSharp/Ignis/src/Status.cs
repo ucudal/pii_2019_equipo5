@@ -21,10 +21,10 @@ namespace Ignis
         public bool Valor 
         { 
             get 
-            { 
-                return this.valor; 
+            {
+                return this.valor;
             }
-            private set {}
+            protected set {}
         }
 
 

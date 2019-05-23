@@ -8,35 +8,22 @@ namespace tests
     { 
         /// <summary> 
         /// Testeamos que la clase ValidarEmail realiza el comportamiento esperado.
+        /// Implementamos el uso de InLineData para testear mediante parámetros.
+        /// En el primer caso ingresamos "equipo@ucu.edu.uy" y debe retornar true.
+        /// En el segundo caso ingresamos "equipo@uc" y debe retornar false.
         /// </summary>
 
-        [Fact]
-        public void email_correcto_debe_retornar_true()
+        [Theory]
+        [InlineData("equipo@ucu.edu.uy", true)]
+        [InlineData("equipo@uc", false)]
+        public void email_correcto_debe_retornar_true(string emailIngresado, bool resultado)
         {
-            // preparación
-            string emailIngresado = "equipo@ucu.edu.uy";
             ValidarEmail ve = new ValidarEmail();
+
             bool actual = ve.EsUnEmailValido(emailIngresado);
 
-            // esperado
-            bool expected = true;
+            bool expected = resultado;
 
-            // test
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void email_incorrecto_debe_retornar_false()
-        {
-            // preparación
-            string emailIngresado = "equipo@ucu.edu.uy";
-            ValidarEmail ve = new ValidarEmail();
-            bool actual = ve.EsUnEmailValido(emailIngresado);
-
-            // esperado
-            bool expected = false;
-
-            // test
             Assert.Equal(expected, actual);
         }
     }
