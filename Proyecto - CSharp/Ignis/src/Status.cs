@@ -5,11 +5,15 @@ namespace Ignis
     public class Status
     {
         /// <summary>
-        /// El STATUS de un objeto permite al Administrador de Ignis habilitar/deshabilitar 
-        /// las operaciones de ese objeto. Por ejemplo, un técnico con Status = Inactivo 
-        /// puede consultar históricos pero no puede ser asignado a proyectos.
+        /// El Status de un usuario permite al Administrador de Ignis habilitar/deshabilitar 
+        /// las operaciones en la aplicación. Por ejemplo, un técnico con Status = Inactivo 
+        /// puede ingresar y consultar históricos pero no puede ser asignado a proyectos.
         /// 
-        /// Status: Activo (True), Inactivo (False).
+        /// Durante la creación del objeto Cliente, Tecnico o Administrador, debido a la herencia 
+        /// de estos de la clase Persona, el atributo Status se implementa como un objeto 
+        /// que tiene un valor 'Activo' y los comportamientos de 'Activar' y 'Desactivar'.
+        /// 
+        /// Status del usuario: Activo (True), Inactivo (False).
         /// </summary>
         public Status(bool Valor)  
         {
@@ -29,7 +33,8 @@ namespace Ignis
 
 
         /// <summary>
-        /// Método para activar un objeto.
+        /// Método para cambiar el status, si el usuario está 'Inactivo' se cambia 
+        /// su status para 'Activo'.
         /// </summary>
         public void Activar() 
         {
@@ -38,7 +43,8 @@ namespace Ignis
 
 
         /// <summary>
-        /// Método para inactivar un objeto.
+        /// Método para cambiar el status, si el usuario está 'Activo' se cambia 
+        /// su status para 'Inactivo'.
         /// </summary>
         public void Inactivar() 
         {
@@ -53,5 +59,6 @@ namespace Ignis
         {
             this.valor = !this.valor;
         }
+
     }
 }
