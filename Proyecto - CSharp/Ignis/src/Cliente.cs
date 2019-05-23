@@ -12,6 +12,9 @@ namespace Ignis
         public Cliente (string Nombre, string Correo, string Contrasena, Int32 Edad, 
                         string presentacion, string condAcademica, int anioEgreso, 
                         string nivel_experiencia, int calificacionClientes, int calificacionIgnis) 
-                : base(Nombre, Correo, Contrasena) 
+                : base(Nombre, Correo, Contrasena)
+                {
+                    
+                } 
     }
 }
