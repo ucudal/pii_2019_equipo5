@@ -5,14 +5,13 @@ namespace Ignis
     public class Persona 
     {
         /// <summary>
-        /// La clase Persona es superclase de las clases Cliente, Técnico y Administrador.
+        /// La clase Persona es superclase de las clases: Cliente, Técnico y Administrador.
         /// Considerando la propiedad polimórfica, implementamos herencia porque todas 
         /// estas clases utilizan todos sus atributos y comportamientos.
         /// 
         /// A los efectos de encapsulamiento, implementamos getters y setters 
         /// de acuerdo con cada atributo, que en algunos casos nos permitió validar el ingreso de valores.
         /// </summary>
-
         public Persona(string Nombre, string Correo, string Contrasena) 
         {
             this.nombre = Nombre;
@@ -21,16 +20,19 @@ namespace Ignis
             this.status = statusInicial.Valor;
         }
 
+
         /// <summary>
-        /// Instanciamos Status para crear un status inicial al construir el objeto.
+        /// Esta instancia de Status es para que durante la creación del objeto 
+        /// nos permita establecer el status inicial del usuario como activo (true).
         /// </summary>
         private Status statusInicial = new Status(true);
 
+
         /// <summary>
-        /// Atributo: Nombre.
-        /// Para SET no se permite datos nulos o vacíos.
+        /// Atributo: Nombre del usuario.
+        /// Validación: SET, no permite datos nulos o vacíos.
         /// </summary>
-        private string nombre { get; set; }
+        private string nombre { get; set; } 
         public string Nombre 
         {
             get 
@@ -39,7 +41,7 @@ namespace Ignis
             }
             set 
             { 
-                if ( string.IsNullOrEmpty(value) ) 
+                if (string.IsNullOrEmpty(value)) 
                     throw new ArgumentException("No se puede ingresar un valor nulo o vacío.");
                 
                 this.nombre = value;
@@ -48,8 +50,8 @@ namespace Ignis
 
 
         /// <summary>
-        /// Atributo: Correo.
-        /// Para SET validamos que la dirección ingresada tenga formato de dirección de correo electrónico.
+        /// Atributo: Dirección de casilla de correo del usuario.
+        /// Validación: SET, el valor ingresado debe tener formato de dirección de correo electrónico.
         /// </summary>
         private string correo { get; set; }
         public string Correo 
@@ -71,9 +73,8 @@ namespace Ignis
 
 
         /// <summary>
-        /// Atributo: Contraseña.
-        /// Para SET validamos que tenga los requerimientos especificados.
-        /// Las condiciones se detalla en la definición de la clase EsUnaContrasenaValida (ValidarContrasena.cs) 
+        /// Atributo: Contraseña del usuario.
+        /// Validación: SET, debe cumplir con las condiciones detallas en la clase EsUnaContrasenaValida (archivo ValidarContrasena.cs) 
         /// </summary>
         private string contrasena { get; set; }
         public string Contrasena  
@@ -103,5 +104,6 @@ namespace Ignis
             get => this.status;
             protected set {}
         }
+
     }
 }
