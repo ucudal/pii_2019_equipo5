@@ -9,5 +9,7 @@ namespace Ignis
             this.nombre=Nombre;
             this.descripcion=Descripcion;
         }
+        private string nombre{ get; set; }
+        private string descripcion { get; set; }
     }
 }
