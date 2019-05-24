@@ -6,31 +6,39 @@ namespace Ignis
     {
         /// <summary>
         /// La clase Persona es superclase de las clases: Cliente, Técnico y Administrador.
-        /// Considerando la propiedad polimórfica, implementamos herencia porque todas 
-        /// estas clases utilizan todos sus atributos y comportamientos.
-        /// 
-        /// A los efectos de encapsulamiento, implementamos getters y setters 
-        /// de acuerdo con cada atributo, que en algunos casos nos permitió validar el ingreso de valores.
+        /// Aplicamos polimorfismo, implementando herencia, porque todas estas clases 
+        /// utilizan todos sus atributos y comportamientos de esta clase.
         /// </summary>
         public Persona(string Nombre, string Correo, string Contrasena) 
         {
+            Check.Precondicion(!string.IsNullOrEmpty(Nombre), "Nombre no puede ser nulo o vacío.");
+            Check.Precondicion(validaEmail.EsUnEmailValido(Correo), "Formato de correo incorrecto.");
+            Check.Precondicion(validaContrasena.EsUnaContrasenaValida(Contrasena), "La contraseña no cumple los requerimientos necesarios.");
+
             this.nombre = Nombre;
             this.correo = Correo;
             this.contrasena = Contrasena;
-            this.status = statusInicial.Valor;
+            this.status = statusIni.Valor;
+
+            Check.Postcondicion(this.status == true, "Status no fue actualizado.");
         }
 
-
         /// <summary>
-        /// Esta instancia de Status es para que durante la creación del objeto 
-        /// nos permita establecer el status inicial del usuario como activo (true).
+        /// La clase ValidarEmail realiza una validación de la dirección de correo electrónico ingresada.
         /// </summary>
-        private Status statusInicial = new Status(true);
-
+        /// <returns>True = Contraseña válida; False = contraseña inválida</returns>
+        ValidarEmail validaEmail = new ValidarEmail();
 
         /// <summary>
-        /// Atributo: Nombre del usuario.
-        /// Validación: SET, no permite datos nulos o vacíos.
+        /// La clase ValidarContrasena realiza una validación de la contraseña ingresada.
+        /// </summary>
+        /// <returns>True = Contraseña válida; False = contraseña inválida</returns>
+        ValidarContrasena validaContrasena = new ValidarContrasena();
+
+        /// <summary>
+        /// Nombre del usuario.
+        /// 
+        /// No se permite un valor nulo o vacío.
         /// </summary>
         private string nombre { get; set; } 
         public string Nombre 
@@ -41,17 +49,18 @@ namespace Ignis
             }
             set 
             { 
-                if (string.IsNullOrEmpty(value)) 
-                    throw new ArgumentException("No se puede ingresar un valor nulo o vacío.");
-                
-                this.nombre = value;
+                Check.Precondicion(!string.IsNullOrEmpty(Nombre), "Nombre no puede ser nulo o vacío.");
+
+                if (!string.IsNullOrEmpty(value)) this.nombre = value;
+
+                Check.Postcondicion(this.nombre == value, "Nombre no fue actualizado.");
             }
         }
 
-
         /// <summary>
-        /// Atributo: Dirección de casilla de correo del usuario.
-        /// Validación: SET, el valor ingresado debe tener formato de dirección de correo electrónico.
+        /// Dirección de correo electrónico.
+        /// 
+        /// La información ingresada debe tener formato de dirección de correo electrónico.
         /// </summary>
         private string correo { get; set; }
         public string Correo 
@@ -62,19 +71,18 @@ namespace Ignis
             }
             set 
             { 
-                ValidarEmail ve = new ValidarEmail();
+                Check.Precondicion(validaEmail.EsUnEmailValido(Correo), "Formato de correo incorrecto.");
 
-                if ( !ve.EsUnEmailValido(value) )
-                    throw new ArgumentException("El formato de correo ingresado no es correcto.");
-                
-                this.correo = value;
+                if (validaEmail.EsUnEmailValido(value)) this.correo = value;
+
+                Check.Postcondicion(this.correo == value, "Dirección de correo no fue actualizado.");
             }
         }
 
-
         /// <summary>
-        /// Atributo: Contraseña del usuario.
-        /// Validación: SET, debe cumplir con las condiciones detallas en la clase EsUnaContrasenaValida (archivo ValidarContrasena.cs) 
+        /// Contraseña del usuario.
+        /// 
+        /// Debe cumplir con las condiciones detalladas en la clase EsUnaContrasenaValida (archivo ValidarContrasena.cs)
         /// </summary>
         private string contrasena { get; set; }
         public string Contrasena  
@@ -85,23 +93,24 @@ namespace Ignis
             }
             set 
             { 
-                ValidarContrasena vc = new ValidarContrasena();
+                Check.Precondicion(validaContrasena.EsUnaContrasenaValida(Contrasena), "La contraseña no cumple los requerimientos necesarios.");
                 
-                if ( !vc.EsUnaContrasenaValida(value) ) 
-                    throw new ArgumentException("El formato o largo de la contraseña no es válida.");
+                if (validaContrasena.EsUnaContrasenaValida(value)) this.contrasena = value;
 
-                this.contrasena = value;
+                Check.Postcondicion(this.contrasena == value, "Contraseña no fue actualizada.");
             }
         }
 
-
         /// <summary>
-        /// Atributo: Status.
+        /// La clase Status permite gestionar el estado operativo del usuario.
         /// </summary>
+        /// <returns>True = usuario activo; False = usuario inactivo</returns>
+        private Status statusIni = new Status(true);
+
         private bool status { get; set; }
-        public bool Status
+        public bool Status 
         {
-            get => this.status;
+            get => this.status; 
             protected set {}
         }
 

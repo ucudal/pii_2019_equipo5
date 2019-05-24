@@ -20,7 +20,6 @@ namespace Ignis
             this.valor = Valor;
         }
 
-
         private bool valor { get; set; }
         public bool Valor 
         { 
@@ -31,29 +30,23 @@ namespace Ignis
             protected set {}
         }
 
-
         /// <summary>
-        /// Método para cambiar el status, si el usuario está 'Inactivo' se cambia 
-        /// su status para 'Activo'.
+        /// Métodos para cambiar el status, 
+        /// Activar(): si el usuario está 'Inactivo' se cambia para 'Activo'.
+        /// Inactivar(): si el usuario está "Activo" se cambia para "Inactivo".
         /// </summary>
         public void Activar() 
         {
             if (this.valor == false) { this.CambiarStatus(); }
         }
 
-
-        /// <summary>
-        /// Método para cambiar el status, si el usuario está 'Activo' se cambia 
-        /// su status para 'Inactivo'.
-        /// </summary>
         public void Inactivar() 
         {
             if (this.valor == true) { this.CambiarStatus(); }
         }
 
-
         /// <summary>
-        /// Método para cambiar el atributo Status.
+        /// Método para alternar el calor del atributo Status.
         /// </summary>
         private void CambiarStatus() 
         {
