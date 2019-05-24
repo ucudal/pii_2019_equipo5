@@ -17,16 +17,8 @@ namespace Ignis
             this.nombre = Nombre;
             this.correo = Correo;
             this.contrasena = Contrasena;
-            this.status = statusInicial.Valor;
+            this.status = statusIni.Valor;
         }
-
-
-        /// <summary>
-        /// Esta instancia de Status es para que durante la creación del objeto 
-        /// nos permita establecer el status inicial del usuario como activo (true).
-        /// </summary>
-        private Status statusInicial = new Status(true);
-
 
         /// <summary>
         /// Atributo: Nombre del usuario.
@@ -47,7 +39,6 @@ namespace Ignis
                 this.nombre = value;
             }
         }
-
 
         /// <summary>
         /// Atributo: Dirección de casilla de correo del usuario.
@@ -71,7 +62,6 @@ namespace Ignis
             }
         }
 
-
         /// <summary>
         /// Atributo: Contraseña del usuario.
         /// Validación: SET, debe cumplir con las condiciones detallas en la clase EsUnaContrasenaValida (archivo ValidarContrasena.cs) 
@@ -94,16 +84,24 @@ namespace Ignis
             }
         }
 
-
         /// <summary>
         /// Atributo: Status.
         /// </summary>
         private bool status { get; set; }
-        public bool Status
+        public bool Status 
         {
-            get => this.status;
+            get 
+            {
+                return this.status;
+            }
             protected set {}
         }
+
+        /// <summary>
+        /// Esta instancia de Status es para que durante la creación del objeto 
+        /// nos permita establecer el status inicial del usuario como activo (true).
+        /// </summary>
+        private Status statusIni = new Status(true);
 
     }
 }
