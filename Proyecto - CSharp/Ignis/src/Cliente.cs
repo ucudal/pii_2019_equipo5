@@ -9,9 +9,7 @@ namespace Ignis
         
         /// La clase Cliente hereda todos los atributos y comportamientos de la clase Persona y de la clase Proyecto.
         /// </summary>
-        public Cliente (string Nombre, string Correo, string Contrasena, Int32 Edad, 
-                        string presentacion, string condAcademica, int anioEgreso, 
-                        string nivel_experiencia, int calificacionClientes, int calificacionIgnis) 
+        public Cliente (string Nombre, string Correo, string Contrasena) 
                 : base(Nombre, Correo, Contrasena)
                 {
                     
