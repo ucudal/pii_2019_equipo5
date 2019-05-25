@@ -34,5 +34,20 @@ namespace tests
             Assert.NotNull(p1.Nombre);            
         }
 
+        /// <summary>
+        /// Verificamos que se pueda inactivar un usuario.
+        /// </summary>
+        [Fact]
+        public void cambiar_status_de_usuario_mediante_metodo_inactivar()
+        {
+            Persona p1 = new Persona("X", "leo@correo.ucu.edu.uy", "ZXCV1234"); 
+            p1.Inactivar();
+            bool actual = p1.Status;
+
+            bool expected = false;
+
+            Assert.Equal(expected.ToString(), actual.ToString());
+        }
+
     }
 }
