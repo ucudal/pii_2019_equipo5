@@ -3,8 +3,8 @@ using System;
 namespace Ignis 
 {   
     /// <summary>
-    /// Esta clase ons permite chequear Precondiciones, Postcondiciones e Invariantes durante 
-    /// la ejecución de la aplicación.
+    /// Esta clase permite implementar el manejo de Precondiciones, Postcondiciones e Invariantes 
+    /// durante la ejecución de la aplicación.
     /// </summary>
     public class Check 
     { 
