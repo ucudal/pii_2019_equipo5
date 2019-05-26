@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Ignis //src
 {
@@ -6,38 +7,30 @@ namespace Ignis //src
     {
         static void Main(string[] args)
         {
-            // probando la creación de una persona
-            Persona pp = new Persona("X", "marce@ucu.uy", "qwer1234");
+            // creamos persona.
+            Persona pp = new Persona("Marcelo", "marce@ucu.uy", "qwer1234");
 
+            Console.WriteLine("Creamos persona:");
             Console.WriteLine("{0} {1} {2} {3}", pp.Nombre, pp.Correo, pp.Contrasena, pp.Status);
 
-            // probando la creación de un técnico.
-            Tecnico tt = new Tecnico("Gonzalo", "gonza@ucu.uy", "abc123", 33, "", "", 0, 0, );
+            // creamos técnico.
+            Tecnico tt = new Tecnico("Gonzalo", "gonza@ucu.uy", "abc123", 33, "mipresentacion", "Básico");
 
-            Console.WriteLine("{0} {1} {2} {3} {4}", tt.Nombre, tt.Correo, tt.Contrasena, tt.Edad, tt.Status);
+            Console.WriteLine("Creamos técnico:");
+            Console.WriteLine("{0} {1} {2} {3}", tt.Nombre, tt.Edad, tt.Presentacion, tt.Nivel_experiencia);
 
-            // probando validar un email.
-            ValidarEmail ve = new ValidarEmail();
+            // creamos lista de técnicos.
+            Usuarios uu = new Usuarios();
 
-            string emaildir1 = "correoCorrecto@dominio.com";
+            uu.AgregarTecnico(tt);
 
-            Console.WriteLine("Validar " + emaildir1 + "nos devuelve: " + ve.EsUnEmailValido(emaildir1));
+            // creamos cliente.
 
-            string emaildir2 = "correoIncorrecto@dominio";
+            // creamos proyecto.
 
-            Console.WriteLine("Validar " + emaildir2 + "nos devuelve: " + ve.EsUnEmailValido(emaildir2));
+            // creamos solicitud.
 
-            // probando validar una contraseña.
-            ValidarContrasena vc = new ValidarContrasena();
-
-            string clave1 = "";
-            string clave2 = "a@1";
-            string clave3 = "ClaveCorrecta1";
-
-            Console.WriteLine("Validar la contraseña: " + clave1 + "(vacío) nos devuelve: " + vc.EsUnaContrasenaValida(clave1));
-            Console.WriteLine("Validar la contraseña: " + clave2 + " nos devuelve: " + vc.EsUnaContrasenaValida(clave2));
-            Console.WriteLine("Validar la contraseña: " + clave3 + " nos devuelve: " + vc.EsUnaContrasenaValida(clave3));
-
+            // asociamos técnico a solicitud.
 
         }
     }
