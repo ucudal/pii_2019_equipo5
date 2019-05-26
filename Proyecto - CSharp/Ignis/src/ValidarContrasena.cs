@@ -6,10 +6,13 @@ namespace Ignis
     public class ValidarContrasena  
     { 
         /// <summary>
-        /// Este método controla que la contraseña ingresada tiene un formato válido.
-        /// Para este caso, controlamos que no sea 'vacío', que no sea 'null' y debe 
-        /// tener un largo mayor a 4 caracteres.
-        /// </summary> 
+        /// La clase ValidarContrasena implementa un método para validar una contraseña ingresada.
+        /// controlando que tenga un formato válido.
+        /// 
+        /// Actualmente controlamos que no sea 'vacío', que no sea 'null' y debe 
+        /// tener un largo mayor a 4 carácteres.
+        /// </summary>
+        /// <returns>True = Contraseña válida; False = contraseña inválida</returns>
         public bool EsUnaContrasenaValida(string value) 
         {
             if ( (string.IsNullOrEmpty(value)) || (value.Length < 4) ) 
@@ -22,4 +25,5 @@ namespace Ignis
             }
         }
     }
+
 }
