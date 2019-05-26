@@ -22,29 +22,40 @@ namespace tests
         }
 
         /// <summary>
-        /// Verificamos que el nombre ingresado no sea nulo o vacío.
-        /// </summary>
-        [Fact]
-        public void el_nombre_no_puede_ser_nulo_o_vacio()
-        {
-            // campo nombre: "X" pasa el test, si lo borramos "" no pasa.
-            Persona p1 = new Persona("X", "leo@correo.ucu.edu.uy", "ZXCV1234");   
-
-            Assert.NotEmpty(p1.Nombre);
-            Assert.NotNull(p1.Nombre);            
-        }
-
-        /// <summary>
         /// Verificamos que se pueda inactivar un usuario.
         /// </summary>
         [Fact]
         public void cambiar_status_de_usuario_mediante_metodo_inactivar()
         {
-            Persona p1 = new Persona("X", "leo@correo.ucu.edu.uy", "ZXCV1234"); 
+            Persona p1 = new Persona("Leonardo", "leo@correo.ucu.edu.uy", "ZXCV1234"); 
+            
+            // por defecto queda activo. Enviamos un mensaje a p1 para inactivar el usuario.
             p1.Inactivar();
+            
             bool actual = p1.Status;
 
             bool expected = false;
+
+            Assert.Equal(expected.ToString(), actual.ToString());
+        }
+
+        /// <summary>
+        /// Verificamos que se pueda activar un usuario.
+        /// </summary>
+        [Fact]
+        public void cambiar_status_de_usuario_mediante_metodo_activar()
+        {
+            Persona p1 = new Persona("Leonardo", "leo@correo.ucu.edu.uy", "ZXCV1234"); 
+            
+            // por defecto queda activo. Enviamos un mensaje a p1 para inactivar el usuario.
+            p1.Inactivar();
+
+            // Enviamos un mensaje para cambiar status activándolo.
+            p1.Activar();
+            
+            bool actual = p1.Status;
+
+            bool expected = true;
 
             Assert.Equal(expected.ToString(), actual.ToString());
         }

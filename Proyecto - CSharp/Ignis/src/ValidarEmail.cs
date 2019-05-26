@@ -6,10 +6,12 @@ namespace Ignis
     public class ValidarEmail 
     { 
         /// <summary>
-        /// Esta clase recibe un mensaje cuyo parámetro es una dirección de email ingresada por el usuario.
-        /// El método chequea que la dirección esté bien escrita, en caso afirmativo retorna true. 
-        /// En caso contrario se retorna false.
+        /// La clase ValidarEmail implementa un método para validar 
+        /// la dirección de correo electrónico ingresada.
+        /// 
+        /// Recibe un mensaje cuyo parámetro es una dirección de email.
         /// </summary>
+        /// <returns>True = Contraseña válida; False = contraseña inválida</returns>
         public bool EsUnEmailValido(string email) 
         {
             String expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
