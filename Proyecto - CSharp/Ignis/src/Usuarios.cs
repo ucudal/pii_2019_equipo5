@@ -12,30 +12,32 @@ namespace Ignis
         public Usuarios()  
         {   
 
+            List<Cliente> ListaDeClientes = new List<Cliente> {};
             List<Tecnico> ListaDeTecnicos = new List<Tecnico> {};
 
-            // this.listaClientes = ListaDeClientes;
+
+            this.listaClientes = ListaDeClientes;
             this.listaTecnicos = ListaDeTecnicos;
             // this.listaAdministradores = ListaDeAdministradores;
         } 
 
-        // // CLIENTES
-        // private List<Cliente> listaClientes;
-        // public List<Cliente> ListaDeClientes 
-        // {
-        //     get => this.listaClientes;
-        //     protected set {}
-        // }
+        // CLIENTES
+        private List<Cliente> listaClientes;
+        public List<Cliente> ListaDeClientes 
+        {
+            get => this.listaClientes;
+            protected set {}
+        }
 
-        // public void AgregarCliente(Cliente nuevoCliente)  
-        // {
-        //     listaClientes.Add(nuevoCliente);
-        // }
+        public void AgregarCliente(Cliente nuevoCliente)  
+        {
+            listaClientes.Add(nuevoCliente);
+        }
 
-        // public void EliminarCliente(Cliente borrarCliente)  
-        // {
-        //     listaClientes.Remove(borrarCliente);
-        // }
+        public void EliminarCliente(Cliente borrarCliente)  
+        {
+            listaClientes.Remove(borrarCliente);
+        }
 
         // TÉCNICOS
         private List<Tecnico> listaTecnicos;
