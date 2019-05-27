@@ -55,6 +55,11 @@ namespace Ignis //src
             sol2.AgregarHoras(5);
             sol3.AgregarHoras(7);
 
+            // restamos horas.
+            sol1.RestarHoras(1);
+            sol2.RestarHoras(1);
+            sol3.RestarHoras(1);
+
             // Imprimir información.
             Console.WriteLine("Rol: {0} Experiencia: {1} Técnico: {2} Horas realizadas: {3} ", 
                                 sol1.Solicitud_Rol, sol1.Solicitud_Experiencia, sol1.TecnicoAsignado.Nombre, sol1.HorasRealizadas);
