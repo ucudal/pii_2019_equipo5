@@ -11,6 +11,9 @@ namespace Ignis
         /// </summary>
         public Usuarios()  
         {   
+
+            List<Tecnico> ListaDeTecnicos = new List<Tecnico> {};
+
             // this.listaClientes = ListaDeClientes;
             this.listaTecnicos = ListaDeTecnicos;
             // this.listaAdministradores = ListaDeAdministradores;
@@ -44,12 +47,12 @@ namespace Ignis
 
         public void AgregarTecnico(Tecnico nuevoTecnico)  
         {
-            listaTecnicos.Add(nuevoTecnico);
+            this.listaTecnicos.Add(nuevoTecnico);
         }
 
         public void EliminarTecnico(Tecnico borrarTecnico)  
         {
-            listaTecnicos.Remove(borrarTecnico);
+            this.listaTecnicos.Remove(borrarTecnico);
         }
 
         // // ADMINISTRADORES
