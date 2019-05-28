@@ -11,6 +11,8 @@
       "Status (activo o inactivo)",
       "",
       "[ Comportamientos ] - - - - -",
+      "Activar el usuario / proyecto (true).",
+      "Inactivar el usuario / proyecto (false).",
       "Cambiar contraseña."
     ],
     "collaborators": [
@@ -33,22 +35,7 @@
     "collaborators": [
       "Persona",
       "Proyecto",
-      "ListaClientes"
-    ]
-  },
-  {
-    "name": "ListaClientes",
-    "superclasses": "",
-    "subclasses": "",
-    "type": 1,
-    "responsibilities": [
-      "ListaDeClientes",
-      "[ Comportamientos ] - - - - -",
-      "Agregar un Cliente.",
-      "Eliminar un Cliente."
-    ],
-    "collaborators": [
-      "Cliente"
+      "Usuarios"
     ]
   },
   {
@@ -69,22 +56,7 @@
     "collaborators": [
       "Persona",
       "Proyecto",
-      "ListaTecnicos"
-    ]
-  },
-  {
-    "name": "ListaTecnicos",
-    "superclasses": "",
-    "subclasses": "",
-    "type": 1,
-    "responsibilities": [
-      "ListaDeTecnicos",
-      "[ Comportamientos ] - - - - -",
-      "Agregar un Técnico.",
-      "Eliminar un Técnico."
-    ],
-    "collaborators": [
-      "Tecnico"
+      "Usuarios"
     ]
   },
   {
@@ -99,22 +71,31 @@
     ],
     "collaborators": [
       "Persona",
-      "ListaAdministradores"
+      "Usuarios"
     ]
   },
   {
-    "name": "ListaAdministradores",
+    "name": "Usuarios",
     "superclasses": "",
     "subclasses": "",
     "type": 1,
     "responsibilities": [
-      "ListaDeAdministradores",
+      "Lista De Clientes",
+      "Lista De Técnicos",
+      "Lista De Administradores",
       "[ Comportamientos ] - - - - -",
+      "Agregar un Cliente.",
+      "Eliminar un Cliente.",
+      "Agregar un Técnico.",
+      "Eliminar un Técnico.",
       "Agregar un Administrador.",
-      "Eliminar un Administrador."
+      "Eliminar un Administrador.",
+      ""
     ],
     "collaborators": [
-      "Administrador"
+      "Administrador",
+      "Cliente",
+      "Técnico"
     ]
   },
   {
@@ -196,21 +177,6 @@
     ],
     "collaborators": [
       "Rol"
-    ]
-  },
-  {
-    "name": "Status",
-    "superclasses": "",
-    "subclasses": "",
-    "type": 1,
-    "responsibilities": [
-      "[ Comportamientos ] - - - - -",
-      "Activar el usuario / proyecto (true).",
-      "Inactivar el usuario / proyecto (false)."
-    ],
-    "collaborators": [
-      "Persona",
-      "Proyecto"
     ]
   },
   {
@@ -376,6 +342,51 @@
     ],
     "collaborators": [
       "Mail"
+    ]
+  },
+  {
+    "name": "Check",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Clase PrecondicionExcepcion : Exception",
+      "Precondicion(bool condicion, string mensaje)",
+      "",
+      "Clase PostcondicionExcepcion : Exception",
+      "Postcondicion(bool condicion, string mensaje)",
+      "",
+      "Clase InvarianteExcepcion : Exception",
+      "Invariante(bool condicion, string mensaje)"
+    ],
+    "collaborators": [
+      ""
+    ]
+  },
+  {
+    "name": "ValidarEmail",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "[ Comportamiento ] - - - - - ",
+      "Validar dirección de email ingresado."
+    ],
+    "collaborators": [
+      ""
+    ]
+  },
+  {
+    "name": "ValidarContrasena",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "[ Comportamientos ] - - - - -",
+      "Validar contraseña ingresada."
+    ],
+    "collaborators": [
+      ""
     ]
   }
 ]

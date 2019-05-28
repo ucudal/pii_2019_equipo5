@@ -30,7 +30,11 @@ namespace Ignis //src
             uu.AgregarTecnico(t2);
 
             // creamos cliente.
+
              cc = new Cliente("Gustavo", "gus@hotmail.com", "asdf4356");
+
+            Cliente cc = new Cliente("Gustavo", "gus@hotmail.com", "asdf4356");
+
 
             // agregamos clientes a las lista de clientes.
             uu.AgregarCliente(cc);

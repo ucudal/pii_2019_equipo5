@@ -3,19 +3,19 @@ using System.Collections;
 
 namespace Ignis 
 {   
-    public class ListaTecnicos 
+    public class ListaClientes 
     {
         /// <summary>
         /// Esta clase conoce la lista de técnicos y su comportamiento comprende 
         /// las acciones de agregar y eliminar técnicos de la lista.
         /// </summary>
-        public ListaTecnicos(ArrayList ListaDeTecnicos) 
+        public ListaClientes(ArrayList ListaDeClientes) 
         {
-            this.listaDeTecnicos = ListaDeTecnicos;
+            this.listaDeClientes = ListaDeClientes;
         }
 
-        private ArrayList listaDeTecnicos;
-        public ArrayList ListaDeTecnicos { get; set; }
+        private ArrayList listaDeClientes;
+        public ArrayList ListaDeClientes { get; set; }
 
     }
 }
