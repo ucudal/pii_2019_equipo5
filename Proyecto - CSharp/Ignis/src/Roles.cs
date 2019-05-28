@@ -12,7 +12,7 @@ namespace Ignis
             List<string> lista = new List<string>();
         }
 
-        // esto es un comentario
+        // esto es un comentariooo
         public string Titulo{get;set;}
         public string Descripcion{get;set;}
 
