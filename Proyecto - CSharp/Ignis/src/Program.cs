@@ -12,9 +12,9 @@ namespace Ignis //src
             Console.WriteLine("{0} {1} {2} {3}", pp.Nombre, pp.Correo, pp.Contrasena, pp.Status);
 
             // probando la creación de un técnico.
-            Tecnico tt = new Tecnico("Gonzalo", "gonza@ucu.uy", "abc123", 33, "", "", 0, "", 0, 0);
+            //Tecnico tt = new Tecnico("Gonzalo", "gonza@ucu.uy", "abc123", 33, "", "", 0, "", 0, 0);
 
-            Console.WriteLine("{0} {1} {2} {3} {4}", tt.Nombre, tt.Correo, tt.Contrasena, tt.Edad, tt.Status);
+            //Console.WriteLine("{0} {1} {2} {3} {4}", tt.Nombre, tt.Correo, tt.Contrasena, tt.Edad, tt.Status);
 
             // probando validar un email.
             ValidarEmail ve = new ValidarEmail();
@@ -38,8 +38,8 @@ namespace Ignis //src
             Console.WriteLine("Validar la contraseña: " + clave2 + " nos devuelve: " + vc.EsUnaContrasenaValida(clave2));
             Console.WriteLine("Validar la contraseña: " + clave3 + " nos devuelve: " + vc.EsUnaContrasenaValida(clave3));
 
-            MailTecnico rr = new MailTecnico("hola",tt,pp,"esto es el contenido","Esto es el cuerpo");
-            rr.enviar();
+            //MailTecnico rr = new MailTecnico("hola",tt,pp,"esto es el contenido","Esto es el cuerpo");
+            //rr.enviar();
         }
     }
 }
