@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Ignis
 {   
@@ -9,20 +10,19 @@ namespace Ignis
         /// Puede anotarse hasta en 3 roles (especialidades) y los Administradores lo asigna a Proyectos.
         /// 
         /// La clase Tecnico hereda todos los atributos y comportamientos de la clase Persona.
+        /// Los campos obligatorios son: nombre y edad.
         /// </summary>
-        public Tecnico(string Nombre, string Correo, string Contrasena, Int32 Edad, 
-                        string presentacion, string nivel_experiencia, 
-                        int calif_Clientes, int calif_Ignis) 
+        public Tecnico(string Nombre, string Correo, string Contrasena, 
+                        Int32 Edad, string presentacion, string nivel_experiencia) 
                     : base(Nombre, Correo, Contrasena) 
         { 
+            // Nombre, correo y contraseña los chequea la clase Persona.
             Check.Precondicion(!string.IsNullOrEmpty(Edad.ToString()), "La edad no puede ser nulo o vacío.");
             Check.Precondicion((Edad > 0), "La edad debe ser mayor que cero.");
 
             this.edad = Edad;
-            this.presentacion = "";         // Texto de presentación de sí mismo.
-            this.nivel_experiencia = "";    // 'Básico', 'Avanzado'.
-            this.calif_Clientes = 0;        // Rango del 0 al 5.
-            this.calif_Ignis = 0;           // Rango del 0 al 5.
+            this.presentacion = "";                 // Texto de presentación de sí mismo.
+            this.nivel_experiencia = "";            // 'Básico', 'Avanzado'.
         }
 
         /// <summary>
@@ -33,19 +33,15 @@ namespace Ignis
         private Int32 edad;
         public Int32 Edad 
         {
-            get 
-            { 
-                return edad; 
-            }
-            set 
-            { 
+            get { return this.edad; }
+            set { 
                 Check.Precondicion(!string.IsNullOrEmpty(Edad.ToString()), "La edad no puede ser nulo o vacío.");
                 Check.Precondicion((Edad > 0), "La edad debe ser mayor que cero.");
 
                 this.edad = value;
 
                 Check.Postcondicion(this.Edad == value, "Edad no fue actualizado.");
-            }
+                }
         }
 
         /// <summary>
@@ -53,11 +49,11 @@ namespace Ignis
         /// 
         /// El técnico puede incluir un texto para aclarar cosas, describir su forma de trabajo o intéreses.
         /// </summary>
-        private string presentacion { get; set; }
+        private string presentacion;
         public string  Presentacion
         {
             get => this.presentacion;
-            set => this.presentacion = Presentacion;
+            set => this.presentacion = value;
         }
 
         /// <summary>
@@ -66,48 +62,18 @@ namespace Ignis
         /// Nivel que el técnico se adjudica de experiencia.
         /// </summary>
         /// <value>"Básico", "Avanzado"</value>
-        private string nivel_experiencia { get; set; }
+        private string nivel_experiencia;
         public string  Nivel_experiencia
         {
-            get => this.nivel_experiencia;
-            set => this.nivel_experiencia = Nivel_experiencia;
+            get { return this.nivel_experiencia; }
+            set { 
+                Check.Precondicion((value == "Básico" || value == "Avanzado"), "Nivel de experiencia no admitido.");
+
+                this.nivel_experiencia = value;
+
+                Check.Postcondicion((value == "Básico" || value == "Avanzado"), "Nivel de experiencia no fue actualizado.");
+                }
         }
-
-        /// <summary>
-        /// Calificación promedio de los clientes.
-        /// </summary>
-        /// <value>Rango: 0 al 5, siendo 5 la mejor calificación.</value>
-        private int calif_Clientes { get; set; }
-        public int  Calif_Clientes
-        {
-            get => this.calif_Clientes;
-            set => this.calif_Clientes = value;
-        }
-
-        /// <summary>
-        /// Calificación del Centro Ignis.
-        /// </summary>
-        /// <value>Rango: 0 al 5, siendo 5 la mejor calificación.</value>
-        private int calif_Ignis { get; set; }
-        public int Calif_Ignis
-        {
-            get => this.calif_Ignis;
-            set => this.calif_Ignis = value;
-        }
-
-        // /// <summary>
-        // /// Método para modificar la calificación de clientes.
-        // /// 
-        // /// Esta calificación es un promedio, ya que se considera la calificación 
-        // /// que el técnico tenía de otros usuarios antes de agregarse una nueva.
-        // /// </summary>
-        // /// <value>Rango: 0 al 5, siendo 5 la mejor calificación.</value>
-        // public void modificarCalif_Clientes(int nuevaCalificacion) 
-        // {
-        //     Check.Precondicion((nuevaCalificacion >= 0 && nuevaCalificacion <= 5) , "El rango debe estar entre 0 y 5.");
-
-        //     if (nuevaCalificacion == 0) this.calificacionClientes == 
-        // }
 
     }
 }

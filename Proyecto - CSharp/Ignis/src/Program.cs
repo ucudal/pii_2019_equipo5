@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Ignis //src
 {
@@ -6,39 +7,81 @@ namespace Ignis //src
     {
         static void Main(string[] args)
         {
-            // probando la creación de una persona
+            // creamos persona.
             Persona pp = new Persona("Marcelo", "marce@ucu.uy", "qwer1234");
 
+            Console.WriteLine("Creamos persona:");
             Console.WriteLine("{0} {1} {2} {3}", pp.Nombre, pp.Correo, pp.Contrasena, pp.Status);
 
-            // probando la creación de un técnico.
-            Tecnico tt = new Tecnico("Gonzalo", "gonza@ucu.uy", "abc123", 33, "", "", 0,0);
-            Console.WriteLine("{0} {1} {2} {3} {4}", tt.Nombre, tt.Correo, tt.Contrasena, tt.Edad, tt.Status);
+            // creamos técnico.
+            Tecnico tt = new Tecnico("Gonzalo", "gonza@ucu.uy", "abc123", 33, "mipresentacion", "Básico");
 
-            // probando validar un email.
-            ValidarEmail ve = new ValidarEmail();
+            Console.WriteLine("Creamos técnico:");
+            Console.WriteLine("{0} {1} {2} {3}", tt.Nombre, tt.Edad, tt.Presentacion, tt.Nivel_experiencia);
 
-            string emaildir1 = "correoCorrecto@dominio.com";
+            // creamos lista de técnicos.
+            Tecnico t1 = new Tecnico("Marcos", "marcos@correo.com", "ab123", 40, "mepresento", "Avanzado");
+            Tecnico t2 = new Tecnico("Marcelo", "marce@correo.ucu.edu.uy", "abc123", 33, "mipresentacion", "Básico");
 
-            Console.WriteLine("Validar " + emaildir1 + "nos devuelve: " + ve.EsUnEmailValido(emaildir1));
+            Usuarios uu = new Usuarios();
 
-            string emaildir2 = "correoIncorrecto@dominio";
+            uu.AgregarTecnico(tt);
+            uu.AgregarTecnico(t1);
+            uu.AgregarTecnico(t2);
 
-            Console.WriteLine("Validar " + emaildir2 + "nos devuelve: " + ve.EsUnEmailValido(emaildir2));
+            // creamos cliente.
+            Cliente cc = new Cliente("Gustavo", "gus@hotmail.com", "asdf4356");
 
-            // probando validar una contraseña.
-            ValidarContrasena vc = new ValidarContrasena();
+            // agregamos clientes a las lista de clientes.
+            uu.AgregarCliente(cc);
+            
+            // creamos proyecto.
+            Proyecto proy1 = new Proyecto("Hulk Aplasta !!!", "Historia de un super héroe.");
+            Proyecto proy2 = new Proyecto("Spiderman 5", "Deberá combatir nuevamente a Octopus.");
 
-            string clave1 = "";
-            string clave2 = "a@1";
-            string clave3 = "ClaveCorrecta1";
+            // creamos solicitud.
+            Solicitud sol1 = new Solicitud("Electricista", "Básico", "Debe saber conectar luces.", null, 0);
+            Solicitud sol2 = new Solicitud("Camarógrafo", "Avanzado", "Con experiencia previa con superhéroes.", null, 0);
+            Solicitud sol3 = new Solicitud("Vestuarista", "Avanzado", "Se utilizarán materiales de otro planeta.", null, 0);
 
-            Console.WriteLine("Validar la contraseña: " + clave1 + "(vacío) nos devuelve: " + vc.EsUnaContrasenaValida(clave1));
-            Console.WriteLine("Validar la contraseña: " + clave2 + " nos devuelve: " + vc.EsUnaContrasenaValida(clave2));
-            Console.WriteLine("Validar la contraseña: " + clave3 + " nos devuelve: " + vc.EsUnaContrasenaValida(clave3));
+            // Asociamos solicitudes al proyecto.
+            proy1.AsociarSolicitud_A_Proyecto(sol1);
+            proy1.AsociarSolicitud_A_Proyecto(sol2);
+            proy2.AsociarSolicitud_A_Proyecto(sol3);
+
+            // asociamos técnico a solicitud.
+            sol1.AsignarTecnico(t1);
+            sol2.AsignarTecnico(t2);
+            sol3.AsignarTecnico(tt);
+
 
             MailTecnico rr = new MailTecnico("hola",tt,pp,"esto es el contenido","Esto es el cuerpo");
             rr.enviar();
+
+            // agregamos horas.
+            sol1.AgregarHoras(8);
+            sol2.AgregarHoras(6);
+            sol3.AgregarHoras(2);
+
+            // agregamos más horas.
+            sol1.AgregarHoras(2);
+            sol2.AgregarHoras(5);
+            sol3.AgregarHoras(7);
+
+            // restamos horas.
+            sol1.RestarHoras(1);
+            sol2.RestarHoras(1);
+            sol3.RestarHoras(1);
+
+            // Cargamos costos.
+            Costo costos = new Costo();
+
+            costos.ModificarCostoHoraBasico(125);
+            costos.ModificarCostoHoraAvanzado(250);
+
+            // Imprimir información.
+            proy1.ImprimirInfoProyecto(costos);
+            proy2.ImprimirInfoProyecto(costos);
         }
     }
 }
