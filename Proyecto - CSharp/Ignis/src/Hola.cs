@@ -5,9 +5,6 @@ namespace Ignis
 { 
     public class Hola
     { 
-        ArrayList Calif_Ignis = new ArrayList ();
-
-        
 
     }
 }
