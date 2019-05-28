@@ -13,6 +13,9 @@ namespace Ignis
                 : base(Nombre, Correo, Contrasena)
                 {
                     
-                } 
+                }
+        public desactivarCliente (){
+            
+        }
     }
 }

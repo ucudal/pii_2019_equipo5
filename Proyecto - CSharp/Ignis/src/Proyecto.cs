@@ -4,12 +4,14 @@ namespace Ignis
 {
     public class Proyecto
     {
-        public Proyecto(string  Nombre, string Descripcion)
+        public Proyecto(string  Nombre, string Presentacion, string Estado)
         {
             this.nombre=Nombre;
-            this.descripcion=Descripcion;
+            this.presentacion=Presentacion;
+            this.estado=Estado;
         }
         private string nombre{ get; set; }
-        private string descripcion { get; set; }
+        private string presentacion{ get; set; }
+        private string estado{get;set;}
     }
 }
