@@ -58,6 +58,10 @@ namespace Ignis //src
             sol2.AsignarTecnico(t2);
             sol3.AsignarTecnico(tt);
 
+
+            MailTecnico rr = new MailTecnico("hola",tt,pp,"esto es el contenido","Esto es el cuerpo");
+            rr.enviar();
+
             // agregamos horas.
             sol1.AgregarHoras(8);
             sol2.AgregarHoras(6);
@@ -82,7 +86,6 @@ namespace Ignis //src
             // Imprimir información.
             proy1.ImprimirInfoProyecto(costos);
             proy2.ImprimirInfoProyecto(costos);
-
         }
     }
 }
