@@ -7,7 +7,7 @@ namespace Ignis
         /// <summary>
         /// La clase Persona es superclase de las clases: Cliente, Técnico y Administrador.
         /// Aplicamos polimorfismo, implementando herencia, porque todas estas clases 
-        /// utilizan todos sus atributos y comportamientos de esta clase.
+        /// utilizan todos lso atributos y los comportamientos de esta clase.
         /// </summary>
         public Persona(string Nombre, string Correo, string Contrasena) 
         { 
@@ -19,6 +19,9 @@ namespace Ignis
             this.correo = Correo;
             this.contrasena = Contrasena;
             this.status = true;
+
+            Check.Postcondicion(!string.IsNullOrEmpty(this.nombre), "El nombre es nulo o vacío.");
+            Check.Postcondicion(this.status=true, "El status asignado no corresponde al estado activo.");
         }
 
         ValidarEmail validaEmail = new ValidarEmail();
