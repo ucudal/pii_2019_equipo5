@@ -29,6 +29,12 @@ namespace Ignis //src
             uu.AgregarTecnico(t1);
             uu.AgregarTecnico(t2);
 
+            // creamos administrador.
+            Administrador adm = new Administrador("Natalia", "natalia@hotmail.com", "as34fd23");
+
+            // agregamos el administrador a las lista de administradores.
+            uu.AgregarAdministrador(adm);
+
             // creamos cliente.
 
              cc = new Cliente("Gustavo", "gus@hotmail.com", "asdf4356");
@@ -49,9 +55,9 @@ namespace Ignis //src
             Solicitud sol3 = new Solicitud("Vestuarista", "Avanzado", "Se utilizarán materiales de otro planeta.", null, 0);
 
             // Asociamos solicitudes al proyecto.
-            proy1.AsociarSolicitud_A_Proyecto(sol1);
-            proy1.AsociarSolicitud_A_Proyecto(sol2);
-            proy2.AsociarSolicitud_A_Proyecto(sol3);
+            proy1.AsociarSolicitud_a_Proyecto(sol1);
+            proy1.AsociarSolicitud_a_Proyecto(sol2);
+            proy2.AsociarSolicitud_a_Proyecto(sol3);
 
             // asociamos técnico a solicitud.
             sol1.AsignarTecnico(t1);
