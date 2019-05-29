@@ -11,14 +11,14 @@ namespace Ignis
         /// </summary>
         public Usuarios()  
         {   
-
             List<Cliente> ListaDeClientes = new List<Cliente> {};
-            List<Tecnico> ListaDeTecnicos = new List<Tecnico> {};
-
-
             this.listaClientes = ListaDeClientes;
+
+            List<Tecnico> ListaDeTecnicos = new List<Tecnico> {};
             this.listaTecnicos = ListaDeTecnicos;
-            // this.listaAdministradores = ListaDeAdministradores;
+
+            List<Administrador> ListaDeAdministradores = new List<Administrador> {};
+            this.listaAdministradores = ListaDeAdministradores;
         } 
 
         // CLIENTES
@@ -29,14 +29,14 @@ namespace Ignis
             protected set {}
         }
 
-        public void AgregarCliente(Cliente nuevoCliente)  
+        public void AgregarCliente(Cliente Cliente_Nuevo)  
         {
-            listaClientes.Add(nuevoCliente);
+            listaClientes.Add(Cliente_Nuevo);
         }
 
-        public void EliminarCliente(Cliente borrarCliente)  
+        public void EliminarCliente(Cliente Cliente_a_Eliminar)  
         {
-            listaClientes.Remove(borrarCliente);
+            listaClientes.Remove(Cliente_a_Eliminar);
         }
 
         // TÉCNICOS
@@ -47,32 +47,33 @@ namespace Ignis
             protected set {}
         }
 
-        public void AgregarTecnico(Tecnico nuevoTecnico)  
+        public void AgregarTecnico(Tecnico Tecnico_Nuevo)  
         {
-            this.listaTecnicos.Add(nuevoTecnico);
+            this.listaTecnicos.Add(Tecnico_Nuevo);
         }
 
-        public void EliminarTecnico(Tecnico borrarTecnico)  
+        public void EliminarTecnico(Tecnico Tecnico_a_Eliminar)  
         {
-            this.listaTecnicos.Remove(borrarTecnico);
+            this.listaTecnicos.Remove(Tecnico_a_Eliminar);
         }
 
-        // // ADMINISTRADORES
-        // private List<Administrador> listaAdministradores;
-        // public List<Administrador> ListaDeAdministradores  
-        // {
-        //     get => this.listaAdministradores;
-        //     protected set {}
-        // }
+        // ADMINISTRADORES
+        private List<Administrador> listaAdministradores;
+        public List<Administrador> ListaAdministradores 
+        {
+            get => this.listaAdministradores;
+            protected set {}
+        }
 
-        // public void AgregarAdministrador(Administrador nuevoAdministrador)  
-        // {
-        //     listaAdministradores.Add(nuevoAdministrador);
-        // }
+        public void AgregarAdministrador(Administrador Administrador_Nuevo)  
+        {
+            this.listaAdministradores.Add(Administrador_Nuevo);
+        }
 
-        // public void EliminarAdministrador(Administrador borrarAdministrador)  
-        // {
-        //     listaAdministradores.Remove(borrarAdministrador);
-        // }
+        public void EliminarAdministrador(Administrador Administrador_a_Eliminar)  
+        {
+            this.listaAdministradores.Remove(Administrador_a_Eliminar);
+        }
+
     }
 }
