@@ -8,8 +8,26 @@ namespace Ignis
         {
             this.costoHoraBasico = 150;
             this.costoHoraAvanzado = 280;
+            this.primeraHoraBasico = 380;
+            this.primeraHoraAvanzado = 520;
+            this.jornadaAvanzado=2000;
+            this.jornadaBasico=1200;
+            this.horaJornada=6;
+        }
+        //cantidad de horas por jornada
+        private int horaJornada;
+        public int HoraJornada 
+        {
+            get => this.horaJornada;
+            protected set {}
         }
 
+        public void ModificarHoraJornada(int nuevoCosto) 
+        {
+            this.horaJornada = nuevoCosto;
+        }
+        
+        //costo basico
         private int costoHoraBasico;
         public int CostoHoraBasico 
         {
@@ -22,6 +40,7 @@ namespace Ignis
             this.costoHoraBasico = nuevoCosto;
         }
 
+        //costo avanzado
         private int costoHoraAvanzado;
         public int CostoHoraAvanzado 
         {
@@ -35,6 +54,56 @@ namespace Ignis
         }
 
 
+        //primera hora
+        private int primeraHoraBasico;
+        public int PrimeraHoraBasico 
+        {
+            get => this.primeraHoraBasico;
+            protected set {}
+        }
+
+        public void ModificarPrimeraHoraBasico(int nuevoCosto) 
+
+        {
+            this.primeraHoraBasico = nuevoCosto;
+        }
+
+
+        private int primeraHoraAvanzado;
+        public int PrimeraHoraAvanzado 
+        {
+            get => this.primeraHoraAvanzado;
+            protected set {}
+        }
+
+        public void ModificarPrimeraHoraAvanzado(int nuevoCosto) 
+        {
+            this.primeraHoraAvanzado = nuevoCosto;
+        }
+        
+        private int jornadaBasico;
+        public int JornadaBasico
+        {
+            get => this.jornadaBasico;
+            protected set {}
+        }
+
+        public void ModificarJornadaBasico(int nuevoCosto) 
+        {
+            this.jornadaBasico = nuevoCosto;
+        }
+
+        private int jornadaAvanzado;
+        public int JornadaAvanzado
+        {
+            get => this.jornadaAvanzado;
+            protected set {}
+        }
+
+        public void ModificarJornadaAvanzado(int nuevoCosto) 
+        {
+            this.jornadaAvanzado = nuevoCosto;
+        }
         public int CalcularCostoSolicitud(Solicitud solicitudIngresada) 
         {
             int CostoTotalSolicitud = 0;
@@ -43,30 +112,31 @@ namespace Ignis
 
             if (solicitudIngresada.Solicitud_Experiencia == "Avanzado"){
                
-                if (solicitudIngresada.HorasRealizadas < 6 )
+                if (solicitudIngresada.HorasRealizadas < this.horaJornada )
                 {
                     
                     CostoTotalSolicitud = (solicitudIngresada.HorasRealizadas -1) * this.CostoHoraAvanzado;
-                    CostoTotalSolicitud = CostoTotalSolicitud + 520;
+                    CostoTotalSolicitud = CostoTotalSolicitud + this.primeraHoraAvanzado;
                 }
-                else {
-                    modulo= solicitudIngresada.HorasRealizadas % 6;//horas por jornada
-                    int resta = solicitudIngresada.HorasRealizadas - (modulo * 6);
-                    CostoTotalSolicitud = (resta*this.costoHoraAvanzado) + (modulo * 2000);//precio jornada
+                else
+                 {
+                    modulo= solicitudIngresada.HorasRealizadas / this.horaJornada;
+                    int resta = solicitudIngresada.HorasRealizadas - (modulo * this.horaJornada);
+                    CostoTotalSolicitud = (resta*this.costoHoraAvanzado) + (modulo * this.jornadaAvanzado);
                 }
             }
 
             else
             {
-                if (solicitudIngresada.HorasRealizadas < 6 ){
+                if (solicitudIngresada.HorasRealizadas < this.horaJornada ){
                     
                     CostoTotalSolicitud = (solicitudIngresada.HorasRealizadas -1) * this.CostoHoraBasico;
-                    CostoTotalSolicitud = CostoTotalSolicitud + 380;
+                    CostoTotalSolicitud = CostoTotalSolicitud + this.primeraHoraBasico;
                 }
                 else {
-                    modulo= solicitudIngresada.HorasRealizadas % 6;
-                    int resta = solicitudIngresada.HorasRealizadas - (modulo * 6);
-                    CostoTotalSolicitud = (resta*this.costoHoraBasico) + (modulo * 1200);
+                    modulo= solicitudIngresada.HorasRealizadas / this.horaJornada;
+                    int resta = solicitudIngresada.HorasRealizadas - (modulo * this.horaJornada);
+                    CostoTotalSolicitud = (resta*this.costoHoraBasico) + (modulo * this.jornadaBasico);
                 }
             }
             return CostoTotalSolicitud;

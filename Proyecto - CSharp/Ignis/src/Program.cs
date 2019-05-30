@@ -63,7 +63,7 @@ namespace Ignis //src
             // agregamos horas.
             sol1.AgregarHoras(1);
             sol2.AgregarHoras(1);
-            sol3.AgregarHoras(12);
+            sol3.AgregarHoras(13);
 
             // agregamos más horas.
             sol1.AgregarHoras(1);
@@ -85,6 +85,7 @@ namespace Ignis //src
             proy1.ImprimirInfoProyecto();
             proy2.ImprimirInfoProyecto();
 
+           
         }
     }
 }
