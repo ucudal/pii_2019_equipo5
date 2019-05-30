@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Ignis 
 {   
-    public class ListaCosto : Costo
+    public class ListaCostos
     {
         /// <summary>
         /// Esta clase conoce la lista de costos y su comportamiento comprende 
