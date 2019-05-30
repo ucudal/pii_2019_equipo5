@@ -61,14 +61,14 @@ namespace Ignis //src
             sol3.AsignarTecnico(tt);
 
             // agregamos horas.
-            sol1.AgregarHoras(8);
-            sol2.AgregarHoras(6);
-            sol3.AgregarHoras(2);
+            sol1.AgregarHoras(1);
+            sol2.AgregarHoras(1);
+            sol3.AgregarHoras(12);
 
             // agregamos más horas.
-            sol1.AgregarHoras(2);
-            sol2.AgregarHoras(5);
-            sol3.AgregarHoras(7);
+            sol1.AgregarHoras(1);
+            sol2.AgregarHoras(1);
+            sol3.AgregarHoras(1);
 
             // restamos horas.
             sol1.RestarHoras(1);
@@ -76,14 +76,14 @@ namespace Ignis //src
             sol3.RestarHoras(1);
 
             // Cargamos costos.
-            Costo costos = new Costo();
+           /* Costo costos = new Costo();
 
             costos.ModificarCostoHoraBasico(125);
-            costos.ModificarCostoHoraAvanzado(250);
+            costos.ModificarCostoHoraAvanzado(250);*/
 
             // Imprimir información.
-            proy1.ImprimirInfoProyecto(costos);
-            proy2.ImprimirInfoProyecto(costos);
+            proy1.ImprimirInfoProyecto();
+            proy2.ImprimirInfoProyecto();
 
         }
     }
