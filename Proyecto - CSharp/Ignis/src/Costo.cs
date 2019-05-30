@@ -1,3 +1,8 @@
+/// <summary>
+        /// Esta clase conoce las horas de los proyectos, categoria, precio primera hora, precio de hora y precio por jornada. 
+        /// Tiene la responsabilidad de calcular las horas por solicitud de proyecto, y el costo total del proyecto.
+/// </summary>
+
 using System;
 
 namespace Ignis 
