@@ -36,11 +36,7 @@ namespace Ignis //src
             uu.AgregarAdministrador(adm);
 
             // creamos cliente.
-
-             cc = new Cliente("Gustavo", "gus@hotmail.com", "asdf4356");
-
             Cliente cc = new Cliente("Gustavo", "gus@hotmail.com", "asdf4356");
-
 
             // agregamos clientes a las lista de clientes.
             uu.AgregarCliente(cc);
@@ -63,10 +59,6 @@ namespace Ignis //src
             sol1.AsignarTecnico(t1);
             sol2.AsignarTecnico(t2);
             sol3.AsignarTecnico(tt);
-
-
-            MailTecnico rr = new MailTecnico("hola",tt,pp,"esto es el contenido","Esto es el cuerpo");
-            rr.enviar();
 
             // agregamos horas.
             sol1.AgregarHoras(8);
@@ -92,6 +84,7 @@ namespace Ignis //src
             // Imprimir información.
             proy1.ImprimirInfoProyecto(costos);
             proy2.ImprimirInfoProyecto(costos);
+
         }
     }
 }
