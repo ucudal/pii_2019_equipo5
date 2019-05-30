@@ -5,6 +5,7 @@ namespace Ignis{
    class MailTecnico : Mail
     {
        private string Encabezado;
+       
        public MailTecnico(string asunto,Tecnico tecnico,Persona persona, string contenido, string Cuerpo) : base (asunto,contenido)
        {
            this.Remitente = persona;
