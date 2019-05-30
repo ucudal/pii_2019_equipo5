@@ -48,46 +48,27 @@ namespace Ignis
             ListaDeSolicitudes.Add(nuevaSolicitud);
         }
 
-        public void ImprimirInfoProyecto(Costo ListaCosto) 
+        public void ImprimirInfoProyecto() 
         {
             Console.WriteLine
                         ("Proyecto: {0} {1} {2}", 
                         this.Nombre, 
                         this.descripcion, 
                         this.status);
-
-            int CostoTotalProyecto = 0;
-
-            for (int i = 0; i < listaSolicitudes.Count; i++) 
-            {
-                Console.WriteLine
-                        ("Solicitud: {0} {1} {2} {3} {4} {5}",
-                        this.listaSolicitudes[i].Solicitud_Rol, 
-                        this.listaSolicitudes[i].Solicitud_Experiencia, 
-                        this.listaSolicitudes[i].Solicitud_Obs, 
-                        this.listaSolicitudes[i].TecnicoAsignado.Nombre, 
-                        this.listaSolicitudes[i].HorasRealizadas, 
-                        CalcularCostoSolicitud(listaSolicitudes[i], ListaCosto)
-                        );
-
-                CostoTotalProyecto = CostoTotalProyecto + CalcularCostoSolicitud(listaSolicitudes[i], ListaCosto);
-            }
-
-            Console.WriteLine
+                        
+           Costo c = new Costo ();
+            
+           Console.WriteLine
                         ("El costo total del proyecto {0} es: $ {1}", 
-                        this.Nombre, 
-                        CostoTotalProyecto);
+                        
+                        this.nombre,
+                        c.CostoTotalProyecto(this)
+                        
+                        );
+                        
         }
 
-        // OJO QUE ESTE MÉTODO NO ESTÁ BIEN IMPLEMENTADO. SOLO PARA EJEMPLO.
-        public int CalcularCostoSolicitud(Solicitud solicitudIngresada, Costo ListaCosto) 
-        {
-            int CostoTotalSolicitud = 0;
 
-            CostoTotalSolicitud = solicitudIngresada.HorasRealizadas * ListaCosto.CostoHoraBasico;
-
-            return CostoTotalSolicitud;
-        }
     }
 
 }

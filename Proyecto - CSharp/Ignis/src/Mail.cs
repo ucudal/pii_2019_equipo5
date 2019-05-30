@@ -5,10 +5,10 @@ namespace Ignis
 { 
     class Mail
      {
-            protected string Asunto ;
-            protected Persona Remitente;
-            protected Persona Destinatario;
-            protected string Contenido;
+            public string Asunto ;
+            public Persona Remitente;
+            public Persona Destinatario;
+            public string Contenido;
 
         public Mail(string asunto, string contenido)
         {
