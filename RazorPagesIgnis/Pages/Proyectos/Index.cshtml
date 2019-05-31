@@ -1,23 +1,26 @@
 @page
-@model RazorPagesIgnis.Pages.Proyectos.IndexModel
+@model RazorPagesIgnis.Pages.proyectos.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Proyectos";
 }
 
-<h1>Index</h1>
+<h1>Proyectos</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">< Crear nuevo ></a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Proyecto[0].Titulo)
+                @Html.DisplayNameFor(model => model.Proyecto[0].Nombre)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Proyecto[0].Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proyecto[0].Status)
             </th>
             <th></th>
         </tr>
@@ -26,10 +29,13 @@
 @foreach (var item in Model.Proyecto) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
+                @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

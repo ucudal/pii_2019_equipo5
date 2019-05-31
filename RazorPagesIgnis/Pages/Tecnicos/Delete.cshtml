@@ -1,5 +1,5 @@
 @page
-@model RazorPagesIgnis.Pages.Tecnicos.DeleteModel
+@model RazorPagesIgnis.Pages.tecnicos.DeleteModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -13,16 +13,46 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tecnico.Edad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tecnico.Edad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tecnico.Presentacion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tecnico.Presentacion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tecnico.Nivel_experiencia)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tecnico.Nivel_experiencia)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Tecnico.Nombre)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Tecnico.Nombre)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tecnico.Apellido)
+            @Html.DisplayNameFor(model => model.Tecnico.Correo)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Tecnico.Apellido)
+            @Html.DisplayFor(model => model.Tecnico.Correo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tecnico.Contrasena)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tecnico.Contrasena)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tecnico.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tecnico.Status)
         </dd>
     </dl>
     

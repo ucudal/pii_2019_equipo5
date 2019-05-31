@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Ignis;
 using RazorPagesIgnis.Models;
 
-namespace RazorPagesIgnis.Pages.Proyectos
+namespace RazorPagesIgnis.Pages.proyectos
 {
     public class CreateModel : PageModel
     {
