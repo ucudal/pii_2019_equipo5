@@ -1,0 +1,54 @@
+@page
+@model RazorPagesIgnis.Pages.solicitudes.IndexModel
+
+@{
+    ViewData["Title"] = "Solcitudes";
+}
+
+<h1>Solicitudes</h1>
+
+<p>
+    <a asp-page="Create">< Crear nuevo ></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Solicitud[0].Solicitud_Rol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Solicitud[0].Solicitud_Experiencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Solicitud[0].Solicitud_Obs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Solicitud[0].HorasRealizadas)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Solicitud) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Solicitud_Rol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Solicitud_Experiencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Solicitud_Obs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HorasRealizadas)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

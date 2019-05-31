@@ -6,9 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Ignis;
 using RazorPagesIgnis.Models;
 
-namespace RazorPagesIgnis.Pages.Proyectos
+namespace RazorPagesIgnis.Pages.proyectos
 {
     public class EditModel : PageModel
     {
