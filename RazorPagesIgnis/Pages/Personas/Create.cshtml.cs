@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Ignis;
 using RazorPagesIgnis.Models;
 
-namespace RazorPagesIgnis.Pages.persona
+namespace RazorPagesIgnis.Pages.Personas
 {
     public class CreateModel : PageModel
     {

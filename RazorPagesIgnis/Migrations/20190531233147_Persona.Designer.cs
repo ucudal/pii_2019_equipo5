@@ -9,7 +9,7 @@ using RazorPagesIgnis.Models;
 namespace RazorPagesIgnis.Migrations
 {
     [DbContext(typeof(RazorPagesIgnisContext))]
-    [Migration("20190531152532_Persona")]
+    [Migration("20190531233147_Persona")]
     partial class Persona
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -107,9 +107,23 @@ namespace RazorPagesIgnis.Migrations
                     b.ToTable("Solicitud");
                 });
 
+            modelBuilder.Entity("Ignis.Usuarios", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Usuarios");
+                });
+
             modelBuilder.Entity("Ignis.Administrador", b =>
                 {
                     b.HasBaseType("Ignis.Persona");
+
+                    b.Property<int?>("UsuariosID");
+
+                    b.HasIndex("UsuariosID");
 
                     b.HasDiscriminator().HasValue("Administrador");
                 });
@@ -117,6 +131,11 @@ namespace RazorPagesIgnis.Migrations
             modelBuilder.Entity("Ignis.Cliente", b =>
                 {
                     b.HasBaseType("Ignis.Persona");
+
+                    b.Property<int?>("UsuariosID")
+                        .HasColumnName("Cliente_UsuariosID");
+
+                    b.HasIndex("UsuariosID");
 
                     b.HasDiscriminator().HasValue("Cliente");
                 });
@@ -131,6 +150,11 @@ namespace RazorPagesIgnis.Migrations
 
                     b.Property<string>("Presentacion");
 
+                    b.Property<int?>("UsuariosID")
+                        .HasColumnName("Tecnico_UsuariosID");
+
+                    b.HasIndex("UsuariosID");
+
                     b.HasDiscriminator().HasValue("Tecnico");
                 });
 
@@ -143,6 +167,27 @@ namespace RazorPagesIgnis.Migrations
                     b.HasOne("Ignis.Tecnico", "TecnicoAsignado")
                         .WithMany()
                         .HasForeignKey("TecnicoAsignadoID");
+                });
+
+            modelBuilder.Entity("Ignis.Administrador", b =>
+                {
+                    b.HasOne("Ignis.Usuarios")
+                        .WithMany("ListaAdministradores")
+                        .HasForeignKey("UsuariosID");
+                });
+
+            modelBuilder.Entity("Ignis.Cliente", b =>
+                {
+                    b.HasOne("Ignis.Usuarios")
+                        .WithMany("ListaDeClientes")
+                        .HasForeignKey("UsuariosID");
+                });
+
+            modelBuilder.Entity("Ignis.Tecnico", b =>
+                {
+                    b.HasOne("Ignis.Usuarios")
+                        .WithMany("ListaDeTecnicos")
+                        .HasForeignKey("UsuariosID");
                 });
 #pragma warning restore 612, 618
         }

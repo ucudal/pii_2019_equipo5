@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Ignis;
 using RazorPagesIgnis.Models;
 
-namespace RazorPagesIgnis.Pages.persona
+namespace RazorPagesIgnis.Pages.Personas
 {
     public class EditModel : PageModel
     {

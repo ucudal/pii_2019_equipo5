@@ -17,6 +17,8 @@ namespace RazorPagesIgnis.Models
         public DbSet<Ignis.Solicitud> Solicitud { get; set; }
         public DbSet<Ignis.Proyecto> Proyecto { get; set; }
         public DbSet<Ignis.Costo> Costo { get; set; }
+        public DbSet<Ignis.Usuarios> Usuarios { get; set; }
+
 
     }
 }

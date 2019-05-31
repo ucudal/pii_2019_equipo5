@@ -21,6 +21,8 @@ namespace Ignis
             this.listaAdministradores = ListaDeAdministradores;
         } 
 
+        public int ID { get; set; }
+        
         // CLIENTES
         private List<Cliente> listaClientes;
         public List<Cliente> ListaDeClientes 
