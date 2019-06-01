@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RazorPagesIgnis.Models;
 
 namespace RazorPagesIgnis.Migrations
 {
     [DbContext(typeof(RazorPagesIgnisContext))]
-    partial class RazorPagesIgnisContextModelSnapshot : ModelSnapshot
+    [Migration("20190531230932_Check")]
+    partial class Check
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,20 +33,26 @@ namespace RazorPagesIgnis.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Contrasena");
+                    b.Property<int>("CostoHoraAvanzado");
 
-                    b.Property<string>("Correo");
+                    b.Property<int>("CostoHoraBasico");
 
-                    b.Property<string>("Nombre");
+                    b.Property<int>("HoraJornada");
 
-                    b.Property<bool>("Status");
+                    b.Property<int>("JornadaAvanzado");
+
+                    b.Property<int>("JornadaBasico");
+
+                    b.Property<int>("PrimeraHoraAvanzado");
+
+                    b.Property<int>("PrimeraHoraBasico");
 
                     b.HasKey("ID");
 
-                    b.ToTable("Administrador");
+                    b.ToTable("Costo");
                 });
 
-            modelBuilder.Entity("Ignis.Cliente", b =>
+            modelBuilder.Entity("Ignis.Persona", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -53,13 +61,18 @@ namespace RazorPagesIgnis.Migrations
 
                     b.Property<string>("Correo");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<string>("Nombre");
 
                     b.Property<bool>("Status");
 
                     b.HasKey("ID");
 
-                    b.ToTable("Cliente");
+                    b.ToTable("Persona");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Persona");
                 });
 
             modelBuilder.Entity("Ignis.Proyecto", b =>
@@ -104,28 +117,31 @@ namespace RazorPagesIgnis.Migrations
                     b.ToTable("Solicitud");
                 });
 
+            modelBuilder.Entity("Ignis.Administrador", b =>
+                {
+                    b.HasBaseType("Ignis.Persona");
+
+                    b.HasDiscriminator().HasValue("Administrador");
+                });
+
+            modelBuilder.Entity("Ignis.Cliente", b =>
+                {
+                    b.HasBaseType("Ignis.Persona");
+
+                    b.HasDiscriminator().HasValue("Cliente");
+                });
+
             modelBuilder.Entity("Ignis.Tecnico", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Contrasena");
-
-                    b.Property<string>("Correo");
+                    b.HasBaseType("Ignis.Persona");
 
                     b.Property<int>("Edad");
 
                     b.Property<string>("Nivel_experiencia");
 
-                    b.Property<string>("Nombre");
-
                     b.Property<string>("Presentacion");
 
-                    b.Property<bool>("Status");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Tecnico");
+                    b.HasDiscriminator().HasValue("Tecnico");
                 });
 
             modelBuilder.Entity("Ignis.Solicitud", b =>
