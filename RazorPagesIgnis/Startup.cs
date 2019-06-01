@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RazorPagesIgnis.Models;
 using Microsoft.EntityFrameworkCore;
+using RazorPagesIgnis.Areas.Identity;
+using RazorPagesIgnis.Areas.Identity.Data;
 
 namespace RazorPagesIgnis
 {
@@ -36,6 +38,9 @@ namespace RazorPagesIgnis
             services.AddDbContext<RazorPagesIgnisContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("IgnisContext")));
 
+            // services.AddDbContext<RazorPagesIgnisIdentityDbContext>(options =>
+            //     options.UseSqlite(Configuration.GetConnectionString("IgnisContext")));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -55,6 +60,7 @@ namespace RazorPagesIgnis
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseCookiePolicy();
 
             app.UseMvc();

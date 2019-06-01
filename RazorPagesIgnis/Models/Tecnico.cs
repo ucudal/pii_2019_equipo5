@@ -5,6 +5,14 @@ namespace Ignis
 {   
     public class Tecnico : Persona
     {
+        /// Constructor sin argumentos y PrimaryKey para RazorPages.
+        public Tecnico() 
+        {
+
+        }
+
+        public int ID { get; set; }
+
         /// <summary>
         /// El Técnico es la persona que se registra en la aplicación para ser contratado.
         /// Puede anotarse hasta en 3 roles (especialidades) y los Administradores lo asigna a Proyectos.
@@ -35,8 +43,8 @@ namespace Ignis
         {
             get { return this.edad; }
             set { 
-                Check.Precondicion(!string.IsNullOrEmpty(Edad.ToString()), "La edad no puede ser nulo o vacío.");
-                Check.Precondicion((Edad > 0), "La edad debe ser mayor que cero.");
+                Check.Precondicion(!string.IsNullOrEmpty(value.ToString()), "La edad no puede ser nulo o vacío.");
+                Check.Precondicion((value > 0), "La edad debe ser mayor que cero.");
 
                 this.edad = value;
 

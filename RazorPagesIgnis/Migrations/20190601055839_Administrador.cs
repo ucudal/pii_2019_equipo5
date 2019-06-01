@@ -2,31 +2,12 @@
 
 namespace RazorPagesIgnis.Migrations
 {
-    public partial class Persona : Migration
+    public partial class Administrador : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Costo",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    HoraJornada = table.Column<int>(nullable: false),
-                    CostoHoraBasico = table.Column<int>(nullable: false),
-                    CostoHoraAvanzado = table.Column<int>(nullable: false),
-                    PrimeraHoraBasico = table.Column<int>(nullable: false),
-                    PrimeraHoraAvanzado = table.Column<int>(nullable: false),
-                    JornadaBasico = table.Column<int>(nullable: false),
-                    JornadaAvanzado = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Costo", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Persona",
+                name: "Administrador",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -34,15 +15,27 @@ namespace RazorPagesIgnis.Migrations
                     Nombre = table.Column<string>(nullable: true),
                     Correo = table.Column<string>(nullable: true),
                     Contrasena = table.Column<string>(nullable: true),
-                    Status = table.Column<bool>(nullable: false),
-                    Discriminator = table.Column<string>(nullable: false),
-                    Edad = table.Column<int>(nullable: true),
-                    Presentacion = table.Column<string>(nullable: true),
-                    Nivel_experiencia = table.Column<string>(nullable: true)
+                    Status = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Persona", x => x.ID);
+                    table.PrimaryKey("PK_Administrador", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Cliente",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Nombre = table.Column<string>(nullable: true),
+                    Correo = table.Column<string>(nullable: true),
+                    Contrasena = table.Column<string>(nullable: true),
+                    Status = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cliente", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -58,6 +51,25 @@ namespace RazorPagesIgnis.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Proyecto", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tecnico",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Nombre = table.Column<string>(nullable: true),
+                    Correo = table.Column<string>(nullable: true),
+                    Contrasena = table.Column<string>(nullable: true),
+                    Status = table.Column<bool>(nullable: false),
+                    Edad = table.Column<int>(nullable: false),
+                    Presentacion = table.Column<string>(nullable: true),
+                    Nivel_experiencia = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tecnico", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -83,9 +95,9 @@ namespace RazorPagesIgnis.Migrations
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Solicitud_Persona_TecnicoAsignadoID",
+                        name: "FK_Solicitud_Tecnico_TecnicoAsignadoID",
                         column: x => x.TecnicoAsignadoID,
-                        principalTable: "Persona",
+                        principalTable: "Tecnico",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -104,7 +116,10 @@ namespace RazorPagesIgnis.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Costo");
+                name: "Administrador");
+
+            migrationBuilder.DropTable(
+                name: "Cliente");
 
             migrationBuilder.DropTable(
                 name: "Solicitud");
@@ -113,7 +128,7 @@ namespace RazorPagesIgnis.Migrations
                 name: "Proyecto");
 
             migrationBuilder.DropTable(
-                name: "Persona");
+                name: "Tecnico");
         }
     }
 }

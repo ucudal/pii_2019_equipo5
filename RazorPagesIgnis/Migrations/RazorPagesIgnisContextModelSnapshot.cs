@@ -31,26 +31,20 @@ namespace RazorPagesIgnis.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CostoHoraAvanzado");
+                    b.Property<string>("Contrasena");
 
-                    b.Property<int>("CostoHoraBasico");
+                    b.Property<string>("Correo");
 
-                    b.Property<int>("HoraJornada");
+                    b.Property<string>("Nombre");
 
-                    b.Property<int>("JornadaAvanzado");
-
-                    b.Property<int>("JornadaBasico");
-
-                    b.Property<int>("PrimeraHoraAvanzado");
-
-                    b.Property<int>("PrimeraHoraBasico");
+                    b.Property<bool>("Status");
 
                     b.HasKey("ID");
 
-                    b.ToTable("Costo");
+                    b.ToTable("Administrador");
                 });
 
-            modelBuilder.Entity("Ignis.Persona", b =>
+            modelBuilder.Entity("Ignis.Cliente", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -59,18 +53,13 @@ namespace RazorPagesIgnis.Migrations
 
                     b.Property<string>("Correo");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
-
                     b.Property<string>("Nombre");
 
                     b.Property<bool>("Status");
 
                     b.HasKey("ID");
 
-                    b.ToTable("Persona");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Persona");
+                    b.ToTable("Cliente");
                 });
 
             modelBuilder.Entity("Ignis.Proyecto", b =>
@@ -115,31 +104,28 @@ namespace RazorPagesIgnis.Migrations
                     b.ToTable("Solicitud");
                 });
 
-            modelBuilder.Entity("Ignis.Administrador", b =>
-                {
-                    b.HasBaseType("Ignis.Persona");
-
-                    b.HasDiscriminator().HasValue("Administrador");
-                });
-
-            modelBuilder.Entity("Ignis.Cliente", b =>
-                {
-                    b.HasBaseType("Ignis.Persona");
-
-                    b.HasDiscriminator().HasValue("Cliente");
-                });
-
             modelBuilder.Entity("Ignis.Tecnico", b =>
                 {
-                    b.HasBaseType("Ignis.Persona");
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Contrasena");
+
+                    b.Property<string>("Correo");
 
                     b.Property<int>("Edad");
 
                     b.Property<string>("Nivel_experiencia");
 
+                    b.Property<string>("Nombre");
+
                     b.Property<string>("Presentacion");
 
-                    b.HasDiscriminator().HasValue("Tecnico");
+                    b.Property<bool>("Status");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Tecnico");
                 });
 
             modelBuilder.Entity("Ignis.Solicitud", b =>

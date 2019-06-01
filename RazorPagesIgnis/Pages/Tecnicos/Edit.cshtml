@@ -13,6 +13,7 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Tecnico.ID" />
             <div class="form-group">
                 <label asp-for="Tecnico.Edad" class="control-label"></label>
                 <input asp-for="Tecnico.Edad" class="form-control" />
@@ -28,7 +29,6 @@
                 <input asp-for="Tecnico.Nivel_experiencia" class="form-control" />
                 <span asp-validation-for="Tecnico.Nivel_experiencia" class="text-danger"></span>
             </div>
-            <input type="hidden" asp-for="Tecnico.ID" />
             <div class="form-group">
                 <label asp-for="Tecnico.Nombre" class="control-label"></label>
                 <input asp-for="Tecnico.Nombre" class="form-control" />
