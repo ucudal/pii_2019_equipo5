@@ -16,7 +16,17 @@ namespace RazorPagesIgnis.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
-            modelBuilder.Entity("Ignis.Administrador", b =>
+            modelBuilder.Entity("Ignis.Check", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Check");
+                });
+
+            modelBuilder.Entity("Ignis.Costo", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
