@@ -19,6 +19,6 @@ dotnet ef migrations add Solicitud
 
 dotnet ef migrations add Proyecto
 
-
+dotnet ef database update 
 
 
