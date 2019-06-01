@@ -4,6 +4,15 @@ namespace Ignis
 {
     public class Solicitud 
     {
+
+        /// Constructor sin argumentos y PrimaryKey para RazorPages.
+        public Solicitud() 
+        {
+
+        }
+
+        public int ID { get; set; }
+
         public Solicitud(string Solicitud_Rol, string Solicitud_Experiencia, string Solicitud_Obs) 
         {
             this.solicita_rol = Solicitud_Rol;
@@ -12,8 +21,6 @@ namespace Ignis
             this.tecnicoAsignado = null;
             this.HorasRealizadas = 0;
         }
-
-        public int ID { get; set; }
         
         private string solicita_rol;
         public string Solicitud_Rol 

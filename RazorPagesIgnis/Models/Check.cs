@@ -8,6 +8,11 @@ namespace Ignis
     /// </summary>
     public class Check 
     { 
+        /// Constructor sin argumentos y PrimaryKey para RazorPages.
+        public Check() 
+        {
+
+        }
 
         public int ID { get; set; }
 

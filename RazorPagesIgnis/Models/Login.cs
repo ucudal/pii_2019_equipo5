@@ -6,8 +6,9 @@ namespace Ignis
     {
         public Login() 
         {
-            
+
         }
+
         public static void IngresarAlSistema(Persona persona)
         {
             Console.WriteLine("Ingrese su mail: ");
