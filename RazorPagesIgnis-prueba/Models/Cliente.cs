@@ -10,7 +10,7 @@ namespace Ignis
 
         }
 
-        public int ID { get; set; }
+        public new int ID { get; set; }   // se agrega 'new' para evitar advertencia de compilación.
 
         /// <summary>
         /// El cliente es la persona que tiene el proyecto y contrata los servicios del técnico.

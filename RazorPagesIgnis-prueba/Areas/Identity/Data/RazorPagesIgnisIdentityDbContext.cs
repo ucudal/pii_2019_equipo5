@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RazorPagesIgnis.Areas.Identity.Data;
 
 namespace RazorPagesIgnis.Areas.Identity.Data
 {
-    public class RazorPagesIgnisIdentityDbContext : IdentityDbContext<IdentityUser>
+    public class RazorPagesIgnisIdentityDbContext : IdentityDbContext<RazorPagesIgnisUser>
     {
         public RazorPagesIgnisIdentityDbContext(DbContextOptions<RazorPagesIgnisIdentityDbContext> options)
             : base(options)

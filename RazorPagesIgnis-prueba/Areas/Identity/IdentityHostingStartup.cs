@@ -20,7 +20,7 @@ namespace RazorPagesIgnis.Areas.Identity
                     options.UseSqlite(
                         context.Configuration.GetConnectionString("IgnisContext")));
 
-                services.AddDefaultIdentity<IdentityUser>()
+                services.AddDefaultIdentity<RazorPagesIgnisUser>()
                     .AddEntityFrameworkStores<RazorPagesIgnisIdentityDbContext>();
 
                 // services.AddDefaultIdentity<RazorPagesIgnisUser>()

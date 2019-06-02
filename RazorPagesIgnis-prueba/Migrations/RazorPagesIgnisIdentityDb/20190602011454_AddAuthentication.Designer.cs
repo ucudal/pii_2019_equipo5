@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RazorPagesIgnis.Areas.Identity.Data;
 
 namespace RazorPagesIgnis.Migrations.RazorPagesIgnisIdentityDb
 {
     [DbContext(typeof(RazorPagesIgnisIdentityDbContext))]
-    partial class RazorPagesIgnisIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190602011454_AddAuthentication")]
+    partial class AddAuthentication
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

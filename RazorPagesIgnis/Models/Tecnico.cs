@@ -11,7 +11,7 @@ namespace Ignis
 
         }
 
-        public int ID { get; set; }
+        public new int ID { get; set; }   // se agrega 'new' para evitar advertencia de compilación.
 
         /// <summary>
         /// El Técnico es la persona que se registra en la aplicación para ser contratado.

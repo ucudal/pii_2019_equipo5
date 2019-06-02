@@ -10,7 +10,7 @@ namespace Ignis
 
         }
 
-        public int ID { get; set; }
+        public new int ID { get; set; }   // se agrega 'new' para evitar advertencia de compilación.
 
         public Administrador(string Nombre, string Correo, string Contrasena) 
                     : base(Nombre, Correo, Contrasena) 
