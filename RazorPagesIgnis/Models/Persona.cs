@@ -2,7 +2,7 @@ using System;
 
 namespace Ignis 
 {   
-    public class Persona 
+    public class Persona
     {
         /// Constructor sin argumentos y PrimaryKey para RazorPages.
         public Persona() 

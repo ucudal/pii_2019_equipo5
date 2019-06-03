@@ -2,13 +2,22 @@ using System;
 
 namespace Ignis 
 {
-    public class Solicitud 
+    public class Solicitud : IGestionHoras, IGestionTecnicos
     {
+        /// Implementamos DIP y ISP agregando las interfases IGestionHoras y IGestionTecnicos.
+        /// Esta abstracciones nos permiten separar las dependencias de otras clases con esta clase.
+        /// De acuerdo a ISP, encontramos dos responsabilidades diferentes:
+        /// - Agregar o Restar Horas.
+        /// - Asignar un técnico.
+        /// Son dos conjuntos de tipos diferentes, por lo que separamos:
+        /// IGestionHoras: contiene los tipos que manejan las operaciones con horas.
+        /// IGestionTecnicos: contiene los tipos que manejan las operaciones con técnicos.
+        /// Por ejemplo, una clase que requiera que se agreguen o resten horas no necesita los tipos que manejan tecnicos.
+        /// De esta forma los separamos y solo le asignamos la interfase que necesita para su uso.
 
-        /// Constructor sin argumentos y PrimaryKey para RazorPages.
         public Solicitud() 
         {
-
+            /// Constructor sin argumentos y PrimaryKey para RazorPages.
         }
 
         public int ID { get; set; }

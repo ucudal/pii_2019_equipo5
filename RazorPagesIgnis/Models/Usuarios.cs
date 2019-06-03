@@ -3,8 +3,15 @@ using System.Collections.Generic;
 
 namespace Ignis 
 {   
-    public class Usuarios 
+    public class Usuarios : IUsuariosAdministradores, IUsuariosClientes, IUsuariosTecnicos 
     {
+        /// Implementamos DIP y ISP agregando las interfases IUsuariosAdministradores, IUsuariosClientes, IUsuariosTecnicos.
+        /// Con estas abstracciones separamos las dependencias de otras clases con esta clase.
+        /// De acuerdo a ISP, encontramos tres responsabilidades diferentes:
+        /// - Agregar o Eliminar un administrador.
+        /// - Agregar o Eliminar un cliente.
+        /// - Agregar o Eliminar un técnico.
+
         /// <summary>
         /// Esta clase conoce la lista de usuarios y su comportamiento comprende 
         /// las acciones de agregar y eliminar usuarios de las correspondientes listas.
@@ -29,14 +36,14 @@ namespace Ignis
             protected set {}
         }
 
-        public void AgregarCliente(Cliente Cliente_Nuevo)  
+        public void AgregarCliente(Cliente ClienteNuevo)  
         {
-            listaClientes.Add(Cliente_Nuevo);
+            listaClientes.Add(ClienteNuevo);
         }
 
-        public void EliminarCliente(Cliente Cliente_a_Eliminar)  
+        public void EliminarCliente(Cliente ClienteEliminar)  
         {
-            listaClientes.Remove(Cliente_a_Eliminar);
+            listaClientes.Remove(ClienteEliminar);
         }
 
         // TÉCNICOS
@@ -47,14 +54,14 @@ namespace Ignis
             protected set {}
         }
 
-        public void AgregarTecnico(Tecnico Tecnico_Nuevo)  
+        public void AgregarTecnico(Tecnico TecnicoNuevo)  
         {
-            this.listaTecnicos.Add(Tecnico_Nuevo);
+            this.listaTecnicos.Add(TecnicoNuevo);
         }
 
-        public void EliminarTecnico(Tecnico Tecnico_a_Eliminar)  
+        public void EliminarTecnico(Tecnico TecnicoEliminar)  
         {
-            this.listaTecnicos.Remove(Tecnico_a_Eliminar);
+            this.listaTecnicos.Remove(TecnicoEliminar);
         }
 
         // ADMINISTRADORES
@@ -65,14 +72,14 @@ namespace Ignis
             protected set {}
         }
 
-        public void AgregarAdministrador(Administrador Administrador_Nuevo)  
+        public void AgregarAdministrador(Administrador AdministradorNuevo)  
         {
-            this.listaAdministradores.Add(Administrador_Nuevo);
+            this.listaAdministradores.Add(AdministradorNuevo);
         }
 
-        public void EliminarAdministrador(Administrador Administrador_a_Eliminar)  
+        public void EliminarAdministrador(Administrador AdministradorEliminar)  
         {
-            this.listaAdministradores.Remove(Administrador_a_Eliminar);
+            this.listaAdministradores.Remove(AdministradorEliminar);
         }
 
     }
