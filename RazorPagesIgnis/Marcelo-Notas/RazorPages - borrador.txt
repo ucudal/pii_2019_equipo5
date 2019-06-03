@@ -1,0 +1,21 @@
+
+persona
+
+administradores
+
+clientes
+
+tecnicos
+
+solicitudes
+
+proyectos
+
+checks
+
+costos
+
+listacostos
+
+
+C:\2019 UCU PII\pii_2019_equipo5\RazorPagesIgnis\wwwroot\
