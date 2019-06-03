@@ -5,17 +5,16 @@ namespace Ignis
 {   
     public class Tecnico : Persona
     {
-        /// Constructor sin argumentos y PrimaryKey para RazorPages.
         public Tecnico() 
         {
-
+            /// Constructor sin argumentos y PrimaryKey para RazorPages.
         }
-
-        public new int ID { get; set; }   // se agrega 'new' para evitar advertencia de compilación.
+        
+        public new int ID { get; set; }   // se agrega 'new' para evitar advertencia de compilación de RazorPages.
 
         /// <summary>
         /// El Técnico es la persona que se registra en la aplicación para ser contratado.
-        /// Puede anotarse hasta en 3 roles (especialidades) y los Administradores lo asigna a Proyectos.
+        /// Puede anotarse hasta en 3 roles (especialidades) y los Administradores lo asignan a Proyectos.
         /// 
         /// La clase Tecnico hereda todos los atributos y comportamientos de la clase Persona.
         /// Los campos obligatorios son: nombre y edad.
@@ -24,7 +23,7 @@ namespace Ignis
                         Int32 Edad, string presentacion, string nivel_experiencia) 
                     : base(Nombre, Correo, Contrasena) 
         { 
-            // Nombre, correo y contraseña los chequea la clase Persona.
+            // Nombre, correo y contraseña los valida la clase Persona.
             Check.Precondicion(!string.IsNullOrEmpty(Edad.ToString()), "La edad no puede ser nulo o vacío.");
             Check.Precondicion((Edad > 0), "La edad debe ser mayor que cero.");
 
