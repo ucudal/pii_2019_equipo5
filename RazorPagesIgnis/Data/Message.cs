@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using Models.tests;
 
 namespace RazorPagesIgnis.Data
 {
