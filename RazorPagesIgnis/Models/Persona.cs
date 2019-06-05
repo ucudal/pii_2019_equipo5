@@ -1,10 +1,10 @@
 using System;
 
-namespace Ignis 
+namespace RazorPagesIgnis 
 {   
     public class Persona
     {
-        /// Constructor sin argumentos y PrimaryKey para RazorPages.
+        /// Constructor sin argumentos y PrimaryKey ID para RazorPages.
         public Persona() 
         {
 
@@ -14,8 +14,6 @@ namespace Ignis
         
         /// <summary>
         /// La clase Persona es superclase de las clases: Cliente, Técnico y Administrador.
-        /// Aplicamos polimorfismo, implementando herencia, porque todas estas clases 
-        /// utilizan todos lso atributos y los comportamientos de esta clase.
         /// </summary>
         public Persona(string Nombre, string Correo, string Contrasena) 
         { 
@@ -95,8 +93,7 @@ namespace Ignis
         /// las operaciones en la aplicación. Por ejemplo, un técnico con Status = Inactivo 
         /// puede ingresar y consultar históricos pero no puede ser asignado a proyectos.
         /// 
-        /// Durante la creación del objeto Cliente, Tecnico o Administrador, el atributo Status 
-        /// se inicializa con valor 'Activo'.
+        /// Durante la creación del objeto Cliente, Tecnico o Administrador, Status se inicializa con valor 'Activo'.
         /// </summary>
         /// <returns>True = usuario activo; False = usuario inactivo</returns>
         private bool status;
