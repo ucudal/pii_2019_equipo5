@@ -5,10 +5,9 @@ namespace RazorPagesIgnis
 {   
     public class Proyecto
     {
-        /// Constructor sin argumentos y PrimaryKey para RazorPages.
+        /// Constructor sin argumentos y PrimaryKey ID para RazorPages.
         public Proyecto() 
         {
-
         }
 
         public int ID { get; set; }
@@ -22,7 +21,7 @@ namespace RazorPagesIgnis
             List<Solicitud> ListaDeSolicitudes = new List<Solicitud>();
             this.listaSolicitudes = ListaDeSolicitudes;
         }
-            
+
         private string nombre;
         public string Nombre  
         { 
@@ -51,31 +50,24 @@ namespace RazorPagesIgnis
             protected set {}
         }
 
-        public void AsociarSolicitud_a_Proyecto(Solicitud nuevaSolicitud) 
+        /// <summary>
+        /// Este método agrega una nueva solicitud a la lista de solicitudes del proyecto.
+        /// </summary>
+        /// <param name="nuevaSolicitud">la nueva solicitud creada que se agrega a la lista</param>
+        public void agregarSolicitud(Solicitud nuevaSolicitud) 
         {
             ListaDeSolicitudes.Add(nuevaSolicitud);
         }
 
-        public void ImprimirInfoProyecto() 
+        /// <summary>
+        /// Este método imprime por pantalla el costo total del proyecto.
+        /// </summary>
+        public void imprimirInfoCostoTotal() 
         {
-            Console.WriteLine
-                        ("Proyecto: {0} {1} {2}", 
-                        this.Nombre, 
-                        this.descripcion, 
-                        this.status);
-                        
-           Costo c = new Costo ();
-            
-           Console.WriteLine
-                        ("El costo total del proyecto {0} es: $ {1}", 
-                        
-                        this.nombre,
-                        c.CostoTotalProyecto(this)
-                        
-                        );
-                        
-        }
+            IConsoleWriter iconsole = new ConsoleWriter();
 
+            iconsole.imprimirCostoTotalProyecto(this);
+        }
 
     }
 
