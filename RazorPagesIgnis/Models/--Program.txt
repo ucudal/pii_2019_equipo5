@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Ignis //src
+namespace RazorPagesIgnis //src
 {
     class Program
     {
