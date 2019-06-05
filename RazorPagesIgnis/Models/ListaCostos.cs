@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 
-namespace Ignis 
+namespace RazorPagesIgnis 
 {   
     public class ListaCostos
     {
