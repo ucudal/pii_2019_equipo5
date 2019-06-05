@@ -1,7 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace Ignis 
+namespace RazorPagesIgnis 
 {   
     public class ValidarContrasena  
     { 

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RazorPagesIgnis.Models;
-using Ignis;
+using RazorPagesIgnis;
 
 namespace RazorPagesIgnis.Models
 {
@@ -10,11 +10,11 @@ namespace RazorPagesIgnis.Models
             : base(options)
         {
         }
-        public DbSet<Ignis.Administrador> Administrador { get; set; }
-        public DbSet<Ignis.Cliente> Cliente { get; set; }
-        public DbSet<Ignis.Tecnico> Tecnico { get; set; }
-        public DbSet<Ignis.Solicitud> Solicitud { get; set; }
-        public DbSet<Ignis.Proyecto> Proyecto { get; set; }
+        public DbSet<RazorPagesIgnis.Administrador> Administrador { get; set; }
+        public DbSet<RazorPagesIgnis.Cliente> Cliente { get; set; }
+        public DbSet<RazorPagesIgnis.Tecnico> Tecnico { get; set; }
+        public DbSet<RazorPagesIgnis.Solicitud> Solicitud { get; set; }
+        public DbSet<RazorPagesIgnis.Proyecto> Proyecto { get; set; }
 
     }
 }

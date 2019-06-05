@@ -1,6 +1,6 @@
 using System;
 
-namespace Ignis 
+namespace RazorPagesIgnis 
 {
     public class Solicitud : IGestionHoras, IGestionTecnicos
     {
