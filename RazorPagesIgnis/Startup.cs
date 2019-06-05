@@ -13,6 +13,7 @@ using RazorPagesIgnis.Models;
 using Microsoft.EntityFrameworkCore;
 using RazorPagesIgnis.Areas.Identity;
 using RazorPagesIgnis.Areas.Identity.Data;
+using RazorPagesIgnis.Data;
 
 namespace RazorPagesIgnis
 {
@@ -38,7 +39,7 @@ namespace RazorPagesIgnis
             services.AddDbContext<RazorPagesIgnisContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("IgnisContext")));
 
-            // services.AddDbContext<RazorPagesIgnisIdentityDbContext>(options =>
+            // services.AddDbContext<AppDbContext>(options =>
             //     options.UseSqlite(Configuration.GetConnectionString("IgnisContext")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

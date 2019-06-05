@@ -1,4 +1,4 @@
-namespace Ignis 
+namespace RazorPagesIgnis 
 {
     public interface IUsuariosTecnicos
     {

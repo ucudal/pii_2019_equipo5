@@ -1,6 +1,6 @@
 using System;
 
-namespace Ignis 
+namespace RazorPagesIgnis 
 {   
     /// <summary>
     /// Esta clase permite implementar el manejo de Precondiciones, Postcondiciones e Invariantes 

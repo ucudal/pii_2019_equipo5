@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Ignis 
+namespace RazorPagesIgnis 
 {   
     public class Usuarios : IUsuariosAdministradores, IUsuariosClientes, IUsuariosTecnicos 
     {

@@ -1,13 +1,13 @@
 using System;
 
-namespace Ignis
+namespace RazorPagesIgnis
 {   
     public class Cliente : Persona 
     {
-        /// Constructor sin argumentos y PrimaryKey para RazorPages.
+        
         public Cliente() 
         {
-
+            /// Constructor sin argumentos y PrimaryKey ID para RazorPages.
         }
 
         public new int ID { get; set; }   // se agrega 'new' para evitar advertencia de compilación.
