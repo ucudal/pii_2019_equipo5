@@ -5,7 +5,7 @@
 
 using System;
 
-namespace Ignis 
+namespace RazorPagesIgnis 
 {   
     public class Costo 
     {
