@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace RazorPagesIgnis 
 {   
-    public class ValidarEmail 
+    public class ValidarEmail : IValidarEmail
     { 
         /// <summary>
         /// La clase ValidarEmail implementa un método para validar 
@@ -33,20 +33,6 @@ namespace RazorPagesIgnis
                 return false;
             }
         }
-
-        // \w+([\w\.\-%+])*@\w+([\w\.\-%+])*\.\w{2,5}\.\w{2,3}
-        // \w carácteres alfanuméricos.
-        // \. punto
-        // \- guión
-        // %+ signos de porcentaje y de sumar.
-        // * todos los carácteres siguientes.
-        // {2,5} de 2 a 5 carácteres.
-
-        // Referencias "Regular Expressions"
-        // https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference
-
-        // Simulador:
-        // https://regex101.com
 
     }
 }

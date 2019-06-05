@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace RazorPagesIgnis 
 {   
-    public class ValidarContrasena  
+    public class ValidarContrasena  : IValidarContrasena
     { 
         /// <summary>
         /// La clase ValidarContrasena implementa un método para validar una contraseña ingresada.

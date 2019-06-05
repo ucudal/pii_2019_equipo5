@@ -8,10 +8,9 @@ namespace RazorPagesIgnis
     /// </summary>
     public class Check 
     { 
-        /// Constructor sin argumentos y PrimaryKey para RazorPages.
+        /// Constructor sin argumentos y PrimaryKey ID para RazorPages.
         public Check() 
         {
-
         }
 
         public int ID { get; set; }

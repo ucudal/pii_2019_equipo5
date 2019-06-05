@@ -5,9 +5,9 @@ namespace RazorPagesIgnis
 {   
     public class Tecnico : Persona
     {
+        /// Constructor sin argumentos y PrimaryKey ID para RazorPages.
         public Tecnico() 
         {
-            /// Constructor sin argumentos y PrimaryKey para RazorPages.
         }
         
         public new int ID { get; set; }   // se agrega 'new' para evitar advertencia de compilación de RazorPages.
@@ -16,7 +16,6 @@ namespace RazorPagesIgnis
         /// El Técnico es la persona que se registra en la aplicación para ser contratado.
         /// Puede anotarse hasta en 3 roles (especialidades) y los Administradores lo asignan a Proyectos.
         /// 
-        /// La clase Tecnico hereda todos los atributos y comportamientos de la clase Persona.
         /// Los campos obligatorios son: nombre y edad.
         /// </summary>
         public Tecnico(string Nombre, string Correo, string Contrasena, 
@@ -80,6 +79,16 @@ namespace RazorPagesIgnis
 
                 Check.Postcondicion((value == "Básico" || value == "Avanzado"), "Nivel de experiencia no fue actualizado.");
                 }
+        }
+
+        /// <summary>
+        /// Método para cambio de nivel de experiencia.
+        /// 
+        /// Si actualmente es Básico, lo cambia a Avanzado.
+        /// </summary>
+        public void cambiarNivelExperienciaAvanzado() 
+        {
+            if (this.Nivel_experiencia == "Básico") this.Nivel_experiencia = "Avanzado";
         }
 
     }
