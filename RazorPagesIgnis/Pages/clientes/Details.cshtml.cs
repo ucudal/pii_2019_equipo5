@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Ignis;
+using RazorPagesIgnis;
 using RazorPagesIgnis.Models;
 
 namespace RazorPagesIgnis.Pages.clientes
