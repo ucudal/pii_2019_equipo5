@@ -7,7 +7,6 @@ namespace RazorPagesIgnis
         /// Constructor sin argumentos y PrimaryKey ID para RazorPages.
         public Persona() 
         {
-
         }
 
         public int ID { get; set; }
@@ -19,7 +18,7 @@ namespace RazorPagesIgnis
         { 
             Check.Precondicion(!string.IsNullOrEmpty(Nombre), "Nombre no puede ser nulo o vacío.");
             Check.Precondicion(validaEmail.EsUnEmailValido(Correo), "Formato de correo incorrecto.");
-            Check.Precondicion(validaContrasena.EsUnaContrasenaValida(Contrasena), "La contraseña no cumple los requerimientos necesarios.");
+            Check.Precondicion(validaClave.EsUnaContrasenaValida(Contrasena), "La contraseña no cumple los requerimientos necesarios.");
 
             this.nombre = Nombre;
             this.correo = Correo;
@@ -30,9 +29,9 @@ namespace RazorPagesIgnis
             Check.Postcondicion(this.status=true, "El status asignado no corresponde al estado activo.");
         }
 
-        ValidarEmail validaEmail = new ValidarEmail();
+        IValidarEmail validaEmail = new ValidarEmail();
 
-        ValidarContrasena validaContrasena = new ValidarContrasena();
+        IValidarContrasena validaClave = new ValidarContrasena();
 
         /// <summary>
         /// Nombre del usuario.
@@ -80,7 +79,7 @@ namespace RazorPagesIgnis
         {
             get { return this.contrasena; }
             set { 
-                Check.Precondicion(validaContrasena.EsUnaContrasenaValida(value), "La contraseña no cumple los requerimientos necesarios.");
+                Check.Precondicion(validaClave.EsUnaContrasenaValida(value), "La contraseña no cumple los requerimientos necesarios.");
 
                 this.contrasena = value;            // if (validaContrasena.EsUnaContrasenaValida(value)) this.contrasena = value;
 
