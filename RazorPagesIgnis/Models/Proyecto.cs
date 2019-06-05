@@ -5,6 +5,14 @@ namespace Ignis
 {   
     public class Proyecto
     {
+        /// Constructor sin argumentos y PrimaryKey para RazorPages.
+        public Proyecto() 
+        {
+
+        }
+
+        public int ID { get; set; }
+
         public Proyecto(string Nombre, string Descripcion) 
         {
             this.nombre = Nombre;
@@ -14,9 +22,7 @@ namespace Ignis
             List<Solicitud> ListaDeSolicitudes = new List<Solicitud>();
             this.listaSolicitudes = ListaDeSolicitudes;
         }
-    
-        public int ID { get; set; }
-        
+            
         private string nombre;
         public string Nombre  
         { 

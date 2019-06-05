@@ -1,0 +1,16 @@
+
+Ejecutar situados en carpeta raíz del proyecto:
+
+dotnet build RazorPagesIgnis.csproj /p:StartupObject=RazorPagesIgnis.Program
+
+dotnet add package Microsoft.EntityFrameworkCore.Design
+
+dotnet add package Microsoft.EntityFrameworkCore.Analyzers --version 2.2.4
+
+dotnet add package Microsoft.AspNetCore.Mvc --version 2.2.0
+
+dotnet add package Microsoft.Extensions.DependencyInjection.Abstractions --version 2.2.0
+
+dotnet add package Microsoft.EntityFrameworkCore.InMemory --version 2.2.4
+
+ctrl+shift+p config

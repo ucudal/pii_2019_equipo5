@@ -4,6 +4,14 @@ namespace Ignis
 {   
     public class Persona 
     {
+        /// Constructor sin argumentos y PrimaryKey para RazorPages.
+        public Persona() 
+        {
+
+        }
+
+        public int ID { get; set; }
+        
         /// <summary>
         /// La clase Persona es superclase de las clases: Cliente, Técnico y Administrador.
         /// Aplicamos polimorfismo, implementando herencia, porque todas estas clases 
@@ -28,8 +36,6 @@ namespace Ignis
 
         ValidarContrasena validaContrasena = new ValidarContrasena();
 
-        public int ID { get; set; }
-
         /// <summary>
         /// Nombre del usuario.
         /// 
@@ -40,7 +46,7 @@ namespace Ignis
         {
             get { return this.nombre; }
             set { 
-                Check.Precondicion(!string.IsNullOrEmpty(Nombre), "Nombre no puede ser nulo o vacío.");
+                Check.Precondicion(!string.IsNullOrEmpty(value), "Nombre no puede ser nulo o vacío.");
 
                 this.nombre = value;            // if (!string.IsNullOrEmpty(value)) this.nombre = value;
 
@@ -58,7 +64,7 @@ namespace Ignis
         {
             get { return this.correo; }
             set { 
-                Check.Precondicion(validaEmail.EsUnEmailValido(Correo), "Formato de correo incorrecto.");
+                Check.Precondicion(validaEmail.EsUnEmailValido(value), "Formato de correo incorrecto.");
 
                 this.correo = value;            // if (validaEmail.EsUnEmailValido(value)) this.correo = value;
 
@@ -76,7 +82,7 @@ namespace Ignis
         {
             get { return this.contrasena; }
             set { 
-                Check.Precondicion(validaContrasena.EsUnaContrasenaValida(Contrasena), "La contraseña no cumple los requerimientos necesarios.");
+                Check.Precondicion(validaContrasena.EsUnaContrasenaValida(value), "La contraseña no cumple los requerimientos necesarios.");
 
                 this.contrasena = value;            // if (validaContrasena.EsUnaContrasenaValida(value)) this.contrasena = value;
 

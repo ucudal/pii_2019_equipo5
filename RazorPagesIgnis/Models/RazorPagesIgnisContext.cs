@@ -10,7 +10,6 @@ namespace RazorPagesIgnis.Models
             : base(options)
         {
         }
-        public DbSet<Ignis.Persona> Persona { get; set; }
         public DbSet<Ignis.Administrador> Administrador { get; set; }
         public DbSet<Ignis.Cliente> Cliente { get; set; }
         public DbSet<Ignis.Tecnico> Tecnico { get; set; }

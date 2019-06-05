@@ -13,9 +13,9 @@ namespace Ignis
         /// tener un largo mayor a 4 carácteres.
         /// </summary>
         /// <returns>True = Contraseña válida; False = contraseña inválida</returns>
-        public bool EsUnaContrasenaValida(string value) 
+        public bool EsUnaContrasenaValida(string valor) 
         {
-            if ( (string.IsNullOrEmpty(value)) || (value.Length < 4) ) 
+            if ( (string.IsNullOrEmpty(valor)) || (valor.Length < 4) ) 
             {
                 return false;
             }
