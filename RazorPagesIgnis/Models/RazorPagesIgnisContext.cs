@@ -10,11 +10,11 @@ namespace RazorPagesIgnis.Models
             : base(options)
         {
         }
+
         public DbSet<RazorPagesIgnis.Administrador> Administrador { get; set; }
         public DbSet<RazorPagesIgnis.Cliente> Cliente { get; set; }
         public DbSet<RazorPagesIgnis.Tecnico> Tecnico { get; set; }
         public DbSet<RazorPagesIgnis.Solicitud> Solicitud { get; set; }
         public DbSet<RazorPagesIgnis.Proyecto> Proyecto { get; set; }
-
     }
 }
