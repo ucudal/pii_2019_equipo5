@@ -2,7 +2,7 @@
 
 namespace RazorPagesIgnis.Migrations
 {
-    public partial class Administrador : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
