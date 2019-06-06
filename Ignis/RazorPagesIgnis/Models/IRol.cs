@@ -5,8 +5,8 @@ namespace RazorPagesIgnis
     /// </summary>
     public interface IRol 
     { 
-        void modificarNombre(string Nombre);
+        void ModificarNombre(string Nombre);
 
-        void modificarDescripcion(string Descripcion);
+        void ModificarDescripcion(string Descripcion);
     }
 }

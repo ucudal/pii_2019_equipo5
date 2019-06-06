@@ -111,13 +111,14 @@ namespace RazorPagesIgnis
         {
             this.jornadaAvanzado = nuevoCosto;
         }
+
         public int CalcularCostoSolicitud(Solicitud solicitudIngresada) 
         {
             int CostoTotalSolicitud = 0;
             int modulo = 0;
 
 
-            if (solicitudIngresada.Solicitud_Experiencia == "Avanzado"){
+            if (solicitudIngresada.NivelExperiencia == "Avanzado"){
                
                 if (solicitudIngresada.HorasRealizadas < this.horaJornada )
                 {
@@ -148,17 +149,16 @@ namespace RazorPagesIgnis
             }
             return CostoTotalSolicitud;
         }
-         int CostoTotalProyectos = 0;
+
+        int CostoTotalProyectos = 0;
          
-         public int CostoTotalProyecto(Proyecto proyecto) 
+        public int CostoTotalProyecto(Proyecto proyecto) 
         {
-             for (int i = 0; i < proyecto.ListaDeSolicitudes.Count; i++) 
+            for (int i = 0; i < proyecto.ListaDeSolicitudes.Count; i++) 
             {
                 CalcularCostoSolicitud(proyecto.ListaDeSolicitudes[i]);
                 CostoTotalProyectos = CostoTotalProyectos + CalcularCostoSolicitud(proyecto.ListaDeSolicitudes[i]);
-            
             }
-
             return CostoTotalProyectos; 
         }
 

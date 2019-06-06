@@ -4,4 +4,5 @@ namespace RazorPagesIgnis
     {
         int CostoTotalProyecto(Proyecto proyecto);
     }
+    
 }
