@@ -1,0 +1,50 @@
+@page
+@model RazorPagesIgnis.Pages.solicitudes.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Solicitud</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Solicitud.ID" />
+            <div class="form-group">
+                <label asp-for="Solicitud.Solicitud_Rol" class="control-label"></label>
+                <input asp-for="Solicitud.Solicitud_Rol" class="form-control" />
+                <span asp-validation-for="Solicitud.Solicitud_Rol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Solicitud.Solicitud_Experiencia" class="control-label"></label>
+                <input asp-for="Solicitud.Solicitud_Experiencia" class="form-control" />
+                <span asp-validation-for="Solicitud.Solicitud_Experiencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Solicitud.Solicitud_Obs" class="control-label"></label>
+                <input asp-for="Solicitud.Solicitud_Obs" class="form-control" />
+                <span asp-validation-for="Solicitud.Solicitud_Obs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Solicitud.HorasRealizadas" class="control-label"></label>
+                <input asp-for="Solicitud.HorasRealizadas" class="form-control" />
+                <span asp-validation-for="Solicitud.HorasRealizadas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
