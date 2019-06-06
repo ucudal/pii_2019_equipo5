@@ -4,14 +4,7 @@ using System.Collections.Generic;
 namespace RazorPagesIgnis 
 {   
     public class Proyecto
-    {
-        /// Constructor sin argumentos y PrimaryKey ID para RazorPages.
-        public Proyecto() 
-        {
-        }
-
-        public int ID { get; set; }
-
+    { 
         public Proyecto(string Nombre, string Descripcion) 
         {
             this.nombre = Nombre;
@@ -53,8 +46,8 @@ namespace RazorPagesIgnis
         /// <summary>
         /// Este método agrega una nueva solicitud a la lista de solicitudes del proyecto.
         /// </summary>
-        /// <param name="nuevaSolicitud">la nueva solicitud creada que se agrega a la lista</param>
-        public void agregarSolicitud(Solicitud nuevaSolicitud) 
+        /// <param name="nuevaSolicitud">La nueva solicitud creada que se agrega a la lista</param>
+        public void AgregarSolicitud(Solicitud nuevaSolicitud) 
         {
             ListaDeSolicitudes.Add(nuevaSolicitud);
         }
@@ -62,13 +55,19 @@ namespace RazorPagesIgnis
         /// <summary>
         /// Este método imprime por pantalla el costo total del proyecto.
         /// </summary>
-        public void imprimirInfoCostoTotal() 
+        public void ImprimirCostoTotal() 
         {
-            IConsoleWriter iconsole = new ConsoleWriter();
+            IConsoleWriter Consola = new ConsoleWriter();
 
-            iconsole.imprimirCostoTotalProyecto(this);
+            Consola.ImprimirCostoTotalDelProyecto(this);
         }
 
-    }
+        /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
+        public Proyecto() 
+        {
+        }
 
+        public int ID { get; set; }
+
+    }
 }

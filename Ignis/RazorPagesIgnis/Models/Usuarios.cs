@@ -5,13 +5,6 @@ namespace RazorPagesIgnis
 {   
     public class Usuarios : IUsuariosAdministradores, IUsuariosClientes, IUsuariosTecnicos 
     {
-        /// Implementamos DIP y ISP agregando las interfases IUsuariosAdministradores, IUsuariosClientes, IUsuariosTecnicos.
-        /// Con estas abstracciones separamos las dependencias de otras clases con esta clase.
-        /// De acuerdo a ISP, encontramos tres responsabilidades diferentes:
-        /// - Agregar o Eliminar un administrador.
-        /// - Agregar o Eliminar un cliente.
-        /// - Agregar o Eliminar un técnico.
-
         /// <summary>
         /// Esta clase conoce la lista de usuarios y su comportamiento comprende 
         /// las acciones de agregar y eliminar usuarios de las correspondientes listas.
@@ -28,7 +21,7 @@ namespace RazorPagesIgnis
             this.listaAdministradores = ListaDeAdministradores;
         } 
 
-        // CLIENTES
+        // Clientes.
         private List<Cliente> listaClientes;
         public List<Cliente> ListaDeClientes 
         {
@@ -46,7 +39,7 @@ namespace RazorPagesIgnis
             listaClientes.Remove(ClienteEliminar);
         }
 
-        // TÉCNICOS
+        // Técnicos.
         private List<Tecnico> listaTecnicos;
         public List<Tecnico> ListaDeTecnicos 
         {
@@ -64,7 +57,7 @@ namespace RazorPagesIgnis
             this.listaTecnicos.Remove(TecnicoEliminar);
         }
 
-        // ADMINISTRADORES
+        // Administradores.
         private List<Administrador> listaAdministradores;
         public List<Administrador> ListaAdministradores 
         {

@@ -2,6 +2,6 @@ namespace RazorPagesIgnis
 {
     public interface IConsoleWriter 
     {
-        void imprimirCostoTotalProyecto(Proyecto proy);
+        void ImprimirCostoTotalDelProyecto(Proyecto proy);
     }
 }

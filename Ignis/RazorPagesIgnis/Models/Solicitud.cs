@@ -4,6 +4,7 @@ namespace RazorPagesIgnis
 {
     public class Solicitud : IGestionHoras, IGestionTecnicos
     {
+        /// <summary>
         /// Implementamos DIP y ISP agregando las interfases IGestionHoras y IGestionTecnicos.
         /// Esta abstracciones nos permiten separar las dependencias de otras clases con esta clase.
         /// De acuerdo a ISP, encontramos dos responsabilidades diferentes:
@@ -14,44 +15,42 @@ namespace RazorPagesIgnis
         /// IGestionTecnicos: contiene los tipos que manejan las operaciones con técnicos.
         /// Por ejemplo, una clase que requiera que se agreguen o resten horas no necesita los tipos que manejan tecnicos.
         /// De esta forma los separamos y solo le asignamos la interfase que necesita para su uso.
-
-        public Solicitud() 
+        /// </summary>
+        public Solicitud(string RolRequerido, string NivelExperiencia, string Observaciones) 
         {
-            /// Constructor sin argumentos y PrimaryKey para RazorPages.
-        }
+            this.rolRequerido = RolRequerido;
+            this.nivelExperiencia = NivelExperiencia;
+            this.observaciones = Observaciones;
 
-        public int ID { get; set; }
-
-        public Solicitud(string Solicitud_Rol, string Solicitud_Experiencia, string Solicitud_Obs) 
-        {
-            this.solicita_rol = Solicitud_Rol;
-            this.solicita_experiencia = Solicitud_Experiencia;
-            this.solicita_obs = Solicitud_Obs;
             this.tecnicoAsignado = null;
             this.HorasRealizadas = 0;
         }
-        
-        private string solicita_rol;
-        public string Solicitud_Rol 
+
+        // Es el rol que se está necesitando.
+        private string rolRequerido;
+        public string RolRequerido 
         {
-            get => this.solicita_rol;
-            set => this.solicita_rol = value;
+            get => this.rolRequerido;
+            set => this.rolRequerido = value;
         }
 
-        private string solicita_experiencia;
-        public string Solicitud_Experiencia 
+        // Es el nivel de esperiencia que se necesita (Básico, Avanzado).
+        private string nivelExperiencia;
+        public string NivelExperiencia 
         {
-            get => this.solicita_experiencia;
-            set => this.solicita_experiencia = value;
+            get => this.nivelExperiencia;
+            set => this.nivelExperiencia = value;
         }
 
-        private string solicita_obs;
-        public string Solicitud_Obs  
+        // Observaciones de la solicitud (opcional).
+        private string observaciones;
+        public string Observaciones  
         {
-            get => this.solicita_obs;
-            set => this.solicita_obs = value;
+            get => this.observaciones;
+            set => this.observaciones = value;
         }
 
+        // La solicitud conoce el técnico cuando se le asigna.
         private Tecnico tecnicoAsignado;
         public Tecnico TecnicoAsignado 
         {
@@ -59,13 +58,15 @@ namespace RazorPagesIgnis
             protected set {}
         }
 
-        public void AsignarTecnico(Tecnico Tecn) 
+        // Método para asignar un técnico a esta solicitud.
+        public void AsignarTecnico(Tecnico Tecnico) 
         {
-            Check.Precondicion(!string.IsNullOrEmpty(Tecn.ToString()), "El técnico no puede ser null o vacío.");
+            Check.Precondicion(!string.IsNullOrEmpty(Tecnico.ToString()), "El técnico no puede ser null o vacío.");
 
-            this.tecnicoAsignado = Tecn;
+            this.tecnicoAsignado = Tecnico;
         }
 
+        // Registro de las horas realizadas por el técnico asignado a esta solicitud.
         private int horasRealizadas;
         public int HorasRealizadas 
         {
@@ -73,19 +74,33 @@ namespace RazorPagesIgnis
             protected set {}
         }
 
+        // Método para agregar horas al técnico asignado.
+        // El mensaje recibido debe tener como parámetro un valor positivo.
+        // Implementamos valor absoluto sobre la variable para evitar error en el cálculo.
         public void AgregarHoras(int Horas) 
         {
-            Check.Precondicion(Horas > 0, "");
+            Check.Precondicion(Math.Abs(Horas) > 0, "El valor debe ser mayor a cero.");
 
-            this.horasRealizadas = this.horasRealizadas + Horas;
+            this.horasRealizadas += Math.Abs(Horas);
         }
 
+        // Método para restar horas al técnico asignado.
+        // El mensaje recibido debe tener como parámetro un valor positivo.
+        // Implementamos valor absoluto sobre la variable para evitar error en el cálculo.
         public void RestarHoras(int Horas) 
         {
-            Check.Precondicion(Horas > 0, "");
+            Check.Precondicion(Math.Abs(Horas) > 0, "El valor debe ser mayor a cero.");
+            Check.Precondicion((this.horasRealizadas - Math.Abs(Horas)) >= 0, "El resultado no puede ser negativo.");
 
-            this.horasRealizadas = this.horasRealizadas - Horas;
+            if ((this.horasRealizadas - Math.Abs(Horas)) >= 0) this.horasRealizadas -= Math.Abs(Horas);
         }
+
+        /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
+        public Solicitud() 
+        {
+        }
+
+        public int ID { get; set; }
 
     }
 }
