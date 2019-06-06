@@ -9,8 +9,8 @@ using RazorPagesIgnis.Models;
 namespace RazorPagesIgnis.Migrations
 {
     [DbContext(typeof(RazorPagesIgnisContext))]
-    [Migration("20190601055910_Solicitud")]
-    partial class Solicitud
+    [Migration("20190606004223_Tecnico")]
+    partial class Tecnico
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,7 +18,7 @@ namespace RazorPagesIgnis.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
-            modelBuilder.Entity("Ignis.Administrador", b =>
+            modelBuilder.Entity("RazorPagesIgnis.Administrador", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -36,7 +36,7 @@ namespace RazorPagesIgnis.Migrations
                     b.ToTable("Administrador");
                 });
 
-            modelBuilder.Entity("Ignis.Cliente", b =>
+            modelBuilder.Entity("RazorPagesIgnis.Cliente", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -54,7 +54,7 @@ namespace RazorPagesIgnis.Migrations
                     b.ToTable("Cliente");
                 });
 
-            modelBuilder.Entity("Ignis.Proyecto", b =>
+            modelBuilder.Entity("RazorPagesIgnis.Proyecto", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -70,7 +70,7 @@ namespace RazorPagesIgnis.Migrations
                     b.ToTable("Proyecto");
                 });
 
-            modelBuilder.Entity("Ignis.Solicitud", b =>
+            modelBuilder.Entity("RazorPagesIgnis.Solicitud", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -96,7 +96,7 @@ namespace RazorPagesIgnis.Migrations
                     b.ToTable("Solicitud");
                 });
 
-            modelBuilder.Entity("Ignis.Tecnico", b =>
+            modelBuilder.Entity("RazorPagesIgnis.Tecnico", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -120,13 +120,13 @@ namespace RazorPagesIgnis.Migrations
                     b.ToTable("Tecnico");
                 });
 
-            modelBuilder.Entity("Ignis.Solicitud", b =>
+            modelBuilder.Entity("RazorPagesIgnis.Solicitud", b =>
                 {
-                    b.HasOne("Ignis.Proyecto")
+                    b.HasOne("RazorPagesIgnis.Proyecto")
                         .WithMany("ListaDeSolicitudes")
                         .HasForeignKey("ProyectoID");
 
-                    b.HasOne("Ignis.Tecnico", "TecnicoAsignado")
+                    b.HasOne("RazorPagesIgnis.Tecnico", "TecnicoAsignado")
                         .WithMany()
                         .HasForeignKey("TecnicoAsignadoID");
                 });

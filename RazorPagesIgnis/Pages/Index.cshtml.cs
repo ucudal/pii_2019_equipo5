@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorPagesIgnis;
-using RazorPagesIgnis.Data;
+// FIX: Unable to resolve service for type 'RazorPagesIgnis.Data.AppDbContext' while attempting to activate 'RazorPagesIgnis.Pages.IndexModel'.
+// using RazorPagesIgnis.Data;
+using RazorPagesIgnis.Models;
 
 namespace RazorPagesIgnis.Pages
 {
@@ -16,78 +18,82 @@ namespace RazorPagesIgnis.Pages
 
         }
 
-        private readonly AppDbContext _db;
+        // FIX: Unable to resolve service for type 'RazorPagesIgnis.Data.AppDbContext' while attempting to activate 'RazorPagesIgnis.Pages.IndexModel'.
+        // private readonly AppDbContext _db;
+        private readonly RazorPagesIgnisContext _db;
 
-        public IndexModel(AppDbContext db)
+        // FIX: Unable to resolve service for type 'RazorPagesIgnis.Data.AppDbContext' while attempting to activate 'RazorPagesIgnis.Pages.IndexModel'.
+        // public IndexModel(AppDbContext db)
+        public IndexModel(RazorPagesIgnisContext db)
         {
             _db = db;
         }
 
-        [BindProperty]
-        public Message Message { get; set; }
+        // [BindProperty]
+        // public Message Message { get; set; }
 
-        public IList<Message> Messages { get; private set; }
+        // public IList<Message> Messages { get; private set; }
 
-        [TempData]
-        public string MessageAnalysisResult { get; set; }
+        // [TempData]
+        // public string MessageAnalysisResult { get; set; }
 
-        #region snippet1
-        public async Task OnGetAsync()
-        {
-            Messages = await _db.GetMessagesAsync();
-        }
-        #endregion
+        // #region snippet1
+        // public async Task OnGetAsync()
+        // {
+        //     Messages = await _db.GetMessagesAsync();
+        // }
+        // #endregion
 
-        public async Task<IActionResult> OnPostAddMessageAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                Messages = await _db.GetMessagesAsync();
+        // public async Task<IActionResult> OnPostAddMessageAsync()
+        // {
+        //     if (!ModelState.IsValid)
+        //     {
+        //         Messages = await _db.GetMessagesAsync();
 
-                return Page();
-            }
+        //         return Page();
+        //     }
 
-            await _db.AddMessageAsync(Message);
+        //     await _db.AddMessageAsync(Message);
 
-            return RedirectToPage();
-        }
+        //     return RedirectToPage();
+        // }
 
-        public async Task<IActionResult> OnPostDeleteAllMessagesAsync()
-        {
-            await _db.DeleteAllMessagesAsync();
+        // public async Task<IActionResult> OnPostDeleteAllMessagesAsync()
+        // {
+        //     await _db.DeleteAllMessagesAsync();
 
-            return RedirectToPage();
-        }
+        //     return RedirectToPage();
+        // }
 
-        public async Task<IActionResult> OnPostDeleteMessageAsync(int id)
-        {
-            await _db.DeleteMessageAsync(id);
+        // public async Task<IActionResult> OnPostDeleteMessageAsync(int id)
+        // {
+        //     await _db.DeleteMessageAsync(id);
 
-            return RedirectToPage();
-        }
+        //     return RedirectToPage();
+        // }
 
-        public async Task<IActionResult> OnPostAnalyzeMessagesAsync()
-        {
-            Messages = await _db.GetMessagesAsync();
+        // public async Task<IActionResult> OnPostAnalyzeMessagesAsync()
+        // {
+        //     Messages = await _db.GetMessagesAsync();
 
-            if (Messages.Count == 0)
-            {
-                MessageAnalysisResult = "There are no messages to analyze.";
-            }
-            else
-            {
-                var wordCount = 0;
+        //     if (Messages.Count == 0)
+        //     {
+        //         MessageAnalysisResult = "There are no messages to analyze.";
+        //     }
+        //     else
+        //     {
+        //         var wordCount = 0;
 
-                foreach (var message in Messages)
-                {
-                    wordCount += message.Text.Split(' ').Length;
-                }
+        //         foreach (var message in Messages)
+        //         {
+        //             wordCount += message.Text.Split(' ').Length;
+        //         }
 
-                var avgWordCount = Decimal.Divide(wordCount, Messages.Count);
-                MessageAnalysisResult = $"The average message length is {avgWordCount:0.##} words.";
-            }
+        //         var avgWordCount = Decimal.Divide(wordCount, Messages.Count);
+        //         MessageAnalysisResult = $"The average message length is {avgWordCount:0.##} words.";
+        //     }
 
-            return RedirectToPage();
-        }
+        //     return RedirectToPage();
+        // }
     }
 }
