@@ -10,4 +10,5 @@ namespace RazorPagesIgnis.Areas.Identity.Data
     public class RazorPagesIgnisUser : IdentityUser
     {
     }
+
 }
