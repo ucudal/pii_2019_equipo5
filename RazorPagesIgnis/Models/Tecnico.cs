@@ -4,25 +4,18 @@ using System.Collections.Generic;
 namespace RazorPagesIgnis
 {   
     public class Tecnico : Persona
-    {
-        /// Constructor sin argumentos y PrimaryKey ID para RazorPages.
-        public Tecnico() 
-        {
-        }
-        
-        public new int ID { get; set; }   // se agrega 'new' para evitar advertencia de compilación de RazorPages.
-
+    { 
         /// <summary>
         /// El Técnico es la persona que se registra en la aplicación para ser contratado.
         /// Puede anotarse hasta en 3 roles (especialidades) y los Administradores lo asignan a Proyectos.
         /// 
         /// Los campos obligatorios son: nombre y edad.
+        /// Nombre, correo y contraseña los valida la clase Persona.
         /// </summary>
         public Tecnico(string Nombre, string Correo, string Contrasena, 
                         Int32 Edad, string presentacion, string nivel_experiencia) 
                     : base(Nombre, Correo, Contrasena) 
         { 
-            // Nombre, correo y contraseña los valida la clase Persona.
             Check.Precondicion(!string.IsNullOrEmpty(Edad.ToString()), "La edad no puede ser nulo o vacío.");
             Check.Precondicion((Edad > 0), "La edad debe ser mayor que cero.");
 
@@ -85,11 +78,20 @@ namespace RazorPagesIgnis
         /// Método para cambio de nivel de experiencia.
         /// 
         /// Si actualmente es Básico, lo cambia a Avanzado.
+        /// Si está en Avanzado, no se realizan modificaciones.
         /// </summary>
-        public void cambiarNivelExperienciaAvanzado() 
+        public void CambiarNivelDeExperienciaParaAvanzado() 
         {
             if (this.Nivel_experiencia == "Básico") this.Nivel_experiencia = "Avanzado";
         }
+
+        /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
+        /// Para el atributo se agrega parámetro 'new' por advertencia de compilación.
+        public Tecnico() 
+        {
+        }
+
+        public new int ID { get; set; } 
 
     }
 }

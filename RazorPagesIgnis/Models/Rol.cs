@@ -4,13 +4,6 @@ namespace RazorPagesIgnis
 {
     public class Rol : IRol
     {
-        /// Constructor sin argumentos y PrimaryKey ID para RazorPages.
-        public Rol() 
-        {
-        }
-
-        public int ID { get; set; }
-
         /// <summary>
         /// El Rol corresponde a un profesión técnica.
         /// </summary>
@@ -37,16 +30,23 @@ namespace RazorPagesIgnis
         }
         
         // Modificar nombre del rol.
-        public void modificarNombre(string Nombre) 
+        public void ModificarNombre(string Nombre) 
         {
             this.Nombre = Nombre;
         }
 
         // Modificar descripción del rol.
-        public void modificarDescripcion(string Descripcion) 
+        public void ModificarDescripcion(string Descripcion) 
         {
             this.Nombre = Descripcion;
         }
+
+        /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
+        public Rol() 
+        {
+        }
+
+        public int ID { get; set; }
 
     }    
 }

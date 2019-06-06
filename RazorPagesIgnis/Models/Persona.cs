@@ -3,14 +3,7 @@ using System;
 namespace RazorPagesIgnis 
 {   
     public class Persona
-    {
-        /// Constructor sin argumentos y PrimaryKey ID para RazorPages.
-        public Persona() 
-        {
-        }
-
-        public int ID { get; set; }
-        
+    { 
         /// <summary>
         /// La clase Persona es superclase de las clases: Cliente, Técnico y Administrador.
         /// </summary>
@@ -45,7 +38,7 @@ namespace RazorPagesIgnis
             set { 
                 Check.Precondicion(!string.IsNullOrEmpty(value), "Nombre no puede ser nulo o vacío.");
 
-                this.nombre = value;            // if (!string.IsNullOrEmpty(value)) this.nombre = value;
+                this.nombre = value;
 
                 Check.Postcondicion(this.nombre == value, "Nombre no fue actualizado.");
                 }
@@ -63,7 +56,7 @@ namespace RazorPagesIgnis
             set { 
                 Check.Precondicion(validaEmail.EsUnEmailValido(value), "Formato de correo incorrecto.");
 
-                this.correo = value;            // if (validaEmail.EsUnEmailValido(value)) this.correo = value;
+                this.correo = value; 
 
                 Check.Postcondicion(this.correo == value, "Dirección de correo no fue actualizado.");
                 }
@@ -81,7 +74,7 @@ namespace RazorPagesIgnis
             set { 
                 Check.Precondicion(validaClave.EsUnaContrasenaValida(value), "La contraseña no cumple los requerimientos necesarios.");
 
-                this.contrasena = value;            // if (validaContrasena.EsUnaContrasenaValida(value)) this.contrasena = value;
+                this.contrasena = value; 
 
                 Check.Postcondicion(this.contrasena == value, "Contraseña no fue actualizada.");
                 }
@@ -105,7 +98,7 @@ namespace RazorPagesIgnis
         /// <summary>
         /// Métodos para cambiar el status, 
         /// Activar(): si el usuario está 'Inactivo' se cambia para 'Activo'.
-        /// Inactivar(): si el usuario está "Activo" se cambia para "Inactivo".
+        /// Inactivar(): si el usuario está 'Activo' se cambia para 'Inactivo'.
         /// </summary>
         public void Activar() 
         {
@@ -121,6 +114,13 @@ namespace RazorPagesIgnis
         {
             this.status = !this.status;
         }
+
+        /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
+        public Persona() 
+        {
+        }
+
+        public int ID { get; set; }   
 
     }
 }
