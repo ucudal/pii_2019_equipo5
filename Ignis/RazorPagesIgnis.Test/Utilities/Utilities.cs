@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using RazorPagesIgnis;
+using RazorPagesIgnis.Data;
 
 namespace RazorPagesIgnis.Tests
 {
@@ -16,14 +16,14 @@ namespace RazorPagesIgnis.Tests
         {
             // Create a new service provider to create a new in-memory database.
             var serviceProvider = new ServiceCollection()
-                .AddEntityFrameworkInMemoryDatabase()
+                .AddEntityFrameworkSqlite()
                 .BuildServiceProvider();
 
             // Create a new options instance using an in-memory database and 
             // IServiceProvider that the context should resolve all of its 
             // services from.
             var builder = new DbContextOptionsBuilder<AppDbContext>()
-                .UseInMemoryDatabase("InMemoryDb")
+                .UseSqlite("InMemoryDb")
                 .UseInternalServiceProvider(serviceProvider);
 
             return builder.Options;
