@@ -1,0 +1,16 @@
+CLASES
+
+Administrador           OK      NO INTERFASE
+Check                   OK      NO INTERFASE
+Cliente                 OK      NO INTERFASE
+ConsoleWriter           OK      IConsoleWriter      OK
+Costo                   OK      ICosto              OK
+Persona                 OK
+Proyecto                
+Solicitud               
+Tecnico                 => OK
+Usuarios                
+ValidarContrasena       =
+ListaCosto      => LO TIENEN QUE REVISAR
+ListaProyecto   => LO TIENEN QUE REVISAR
+Login           => CONFIRMAR SI SE MANTIENE O SE ELIMINA
