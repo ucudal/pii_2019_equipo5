@@ -4,15 +4,27 @@ namespace RazorPagesIgnis
 {
     public class Solicitud : IGestionHoras, IGestionTecnicos
     {
-
-        public Solicitud(string RolRequerido, string NivelExperiencia, string Observaciones) 
+        public Solicitud(int ModoDeContrato, string RolRequerido, int HorasContratadas, string NivelExperiencia, string Observaciones) 
         {
+            this.modoDeContrato = ModoDeContrato;
             this.rolRequerido = RolRequerido;
+            this.horasContratadas = HorasContratadas;
             this.nivelExperiencia = NivelExperiencia;
             this.observaciones = Observaciones;
 
+            ICosto Costo = new Costo();
+            this.costoSolicitud = 1000; // - - - - - > Costo.CostoTotalProyecto(ModoDeContrato, HorasContratadas, NivelExperiencia);
+
             this.tecnicoAsignado = null;
-            this.HorasRealizadas = 0;
+        }
+
+        // Modo de Contratación
+        // 1: horas y 2: Jornada.
+        private int modoDeContrato;
+        public int ModoDeContrato 
+        {
+            get => this.modoDeContrato;
+            set => this.modoDeContrato = value;
         }
 
         // Es el rol que se está necesitando.
@@ -21,6 +33,14 @@ namespace RazorPagesIgnis
         {
             get => this.rolRequerido;
             set => this.rolRequerido = value;
+        }
+
+        // Registro de las horas contratadas por cliente.
+        private int horasContratadas;
+        public int HorasContratadas 
+        {
+            get => this.horasContratadas;
+            protected set {}
         }
 
         // Es el nivel de esperiencia que se necesita (Básico, Avanzado).
@@ -47,6 +67,15 @@ namespace RazorPagesIgnis
             protected set {}
         }
 
+        // Costo de la solicitud.
+        private int costoSolicitud;
+        public int CostoSolicitud 
+        {
+            get => this.costoSolicitud;
+            protected set {}
+
+        }
+
         // Método para asignar un técnico a esta solicitud.
         public void AsignarTecnico(Tecnico Tecnico) 
         {
@@ -55,33 +84,39 @@ namespace RazorPagesIgnis
             this.tecnicoAsignado = Tecnico;
         }
 
-        // Registro de las horas realizadas por el técnico asignado a esta solicitud.
-        private int horasRealizadas;
-        public int HorasRealizadas 
-        {
-            get => this.horasRealizadas;
-            protected set {}
-        }
-
-        // Método para agregar horas al técnico asignado.
+        // Método para agregar horas de contratación.
         // El mensaje recibido debe tener como parámetro un valor positivo.
         // Implementamos valor absoluto sobre la variable para evitar error en el cálculo.
         public void AgregarHoras(int Horas) 
         {
             Check.Precondicion(Math.Abs(Horas) > 0, "El valor debe ser mayor a cero.");
 
-            this.horasRealizadas += Math.Abs(Horas);
+            this.horasContratadas += Math.Abs(Horas);
+
+            // Actualizamos el costo de esta solicitud.
+            this.ActualizarCostoSolicitud();
         }
 
-        // Método para restar horas al técnico asignado.
+        // Método para restar horas de contratación.
         // El mensaje recibido debe tener como parámetro un valor positivo.
         // Implementamos valor absoluto sobre la variable para evitar error en el cálculo.
         public void RestarHoras(int Horas) 
         {
             Check.Precondicion(Math.Abs(Horas) > 0, "El valor debe ser mayor a cero.");
-            Check.Precondicion((this.horasRealizadas - Math.Abs(Horas)) >= 0, "El resultado no puede ser negativo.");
+            Check.Precondicion((this.horasContratadas - Math.Abs(Horas)) >= 0, "El resultado no puede ser negativo.");
 
-            if ((this.horasRealizadas - Math.Abs(Horas)) >= 0) this.horasRealizadas -= Math.Abs(Horas);
+            if ((this.horasContratadas  - Math.Abs(Horas)) >= 0) this.horasContratadas -= Math.Abs(Horas);
+
+            // Actualizamos el costo de esta solicitud.
+            this.ActualizarCostoSolicitud();
+        }
+
+        /// Este método actualiza el costo estipulado para la solicitud.
+        /// Se ejecuta en dos oportunidades: cuando se agregan / restan horas y cuando se actualizan los precios.
+        public void ActualizarCostoSolicitud() 
+        {
+            ICosto Costo = new Costo(); 
+            this.costoSolicitud = 1000; // - - - - - > Costo.CostoTotalProyecto(this.ModoDeContrato, this.HorasContratadas, this.NivelExperiencia);
         }
 
         /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
