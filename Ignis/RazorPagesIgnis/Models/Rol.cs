@@ -30,15 +30,15 @@ namespace RazorPagesIgnis
         }
         
         // Modificar nombre del rol.
-        public void ModificarNombre(string Nom) 
+        public void ModificarNombre(string Nombre) 
         {
-            this.nombre = Nom;
+            this.nombre = Nombre;
         }
 
         // Modificar descripción del rol.
-        public void ModificarDescripcion(string Desc) 
+        public void ModificarDescripcion(string Descripcion) 
         {
-            this.descripcion = Desc;
+            this.descripcion = Descripcion;
         }
 
         /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
