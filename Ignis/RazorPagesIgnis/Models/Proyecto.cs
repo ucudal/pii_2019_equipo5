@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RazorPagesIgnis 
 {   
-    public class Proyecto
+    public class Proyecto : ICrearSolicitud 
     { 
         public Proyecto(string Nombre, string Descripcion) 
         {
@@ -60,6 +60,26 @@ namespace RazorPagesIgnis
             IConsoleWriter Consola = new ConsoleWriter();
 
             Consola.ImprimirCostoTotalDelProyecto(this);
+        }
+
+        /// <summary>
+        /// Métodos para cambiar el status.
+        /// Activar(): si el proyecto está 'Cerrado' se cambia para 'Activo'.
+        /// Cerrar(): si el proyecto está 'Activo' se cambia para 'Cerrado'.
+        /// </summary>
+        public void Activar() 
+        {
+            if (this.status == false) this.CambiarStatus();
+        }
+
+        public void Cerrar() 
+        {
+            if (this.status == true) this.CambiarStatus();
+        }
+
+        private void CambiarStatus() 
+        {
+            this.status = !this.status;
         }
 
         /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
