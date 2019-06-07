@@ -9,4 +9,5 @@ namespace RazorPagesIgnis
 
         void ModificarDescripcion(string Descripcion);
     }
+
 }
