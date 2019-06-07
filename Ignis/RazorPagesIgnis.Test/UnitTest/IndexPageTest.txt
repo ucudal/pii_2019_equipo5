@@ -14,37 +14,35 @@ using Microsoft.EntityFrameworkCore;
 using RazorPagesIgnis.Pages;
 using RazorPagesIgnis.Data;
 using Moq;
+using RazorPagesIgnis.Tests;
+
 namespace RazorPagesIgnis.Test
 {
     public class IndexPageTests
     {
         [Fact]
-        public async Task OnGetAsync_PopulatesThePageModel_WithAListOfMessages()
+    public async Task DeleteMessageAsync_MessageIsDeleted_WhenMessageIsFound()
+    {
+        using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
         {
             // Arrange
-            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>()
-                .UseSqlite("InMemoryDb");
-            #region snippet1
-            var mockAppDbContext = new Mock<AppDbContext>(optionsBuilder.Options);
-            var expectedMessages = AppDbContext.GetSeedingMessages();
-            mockAppDbContext.Setup(
-                db => db.GetMessagesAsync()).Returns(Task.FromResult(expectedMessages));
-            var pageModel = new IndexModel(mockAppDbContext.Object);
-            #endregion
+            var seedMessages = AppDbContext.GetSeedingMessages();
+            await db.AddRangeAsync(seedMessages);
+            await db.SaveChangesAsync();
+            var recId = 1;
+            var expectedMessages = 
+                seedMessages.Where(message => message.Id != recId).ToList();
 
-            #region snippet2
             // Act
-            await pageModel.OnGetAsync();
-            #endregion
+            await db.DeleteMessageAsync(recId);
 
-            #region snippet3
             // Assert
-            var actualMessages = Assert.IsAssignableFrom<List<Message>>(pageModel.Messages);
+            var actualMessages = await db.Messages.AsNoTracking().ToListAsync();
             Assert.Equal(
                 expectedMessages.OrderBy(m => m.Id).Select(m => m.Text), 
                 actualMessages.OrderBy(m => m.Id).Select(m => m.Text));
-            #endregion
         }
     }
 
+}
 }
