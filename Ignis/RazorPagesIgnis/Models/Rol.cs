@@ -5,40 +5,40 @@ namespace RazorPagesIgnis
     public class Rol : IRol
     {
         /// <summary>
-        /// El Rol corresponde a un profesión técnica.
+        /// Rol del técnica.
         /// </summary>
         public Rol(string Nombre, string Descripción) 
         {
             this.nombre = Nombre;
-            this.descri = Descripción;
+            this.descripcion = Descripción;
         }
 
         // Nombre del rol.
         private string nombre;
-        public string Nombre 
-        {
-            get => this.nombre;
-            protected set {}        // => this.nombre = value;
+        public string Nombre  
+        { 
+            get => this.nombre; 
+            protected set {}
         }
 
         // Descripción del rol (opcional).
-        private string descri;
-        public string Descripcion 
-        {
-            get => this.descri;
-            protected set {}        // => this.descri = value;
+        private string descripcion;
+        public string Descripcion  
+        { 
+            get => this.descripcion; 
+            protected set {}
         }
         
         // Modificar nombre del rol.
-        public void ModificarNombre(string Nombre) 
+        public void ModificarNombre(string Nom) 
         {
-            this.Nombre = Nombre;
+            this.nombre = Nom;
         }
 
         // Modificar descripción del rol.
-        public void ModificarDescripcion(string Descripcion) 
+        public void ModificarDescripcion(string Desc) 
         {
-            this.Nombre = Descripcion;
+            this.descripcion = Desc;
         }
 
         /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.

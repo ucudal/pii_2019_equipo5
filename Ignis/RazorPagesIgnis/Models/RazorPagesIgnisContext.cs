@@ -15,6 +15,7 @@ namespace RazorPagesIgnis.Models
         public DbSet<RazorPagesIgnis.Tecnico> Tecnico { get; set; }
         public DbSet<RazorPagesIgnis.Solicitud> Solicitud { get; set; }
         public DbSet<RazorPagesIgnis.Proyecto> Proyecto { get; set; }
+        public DbSet<RazorPagesIgnis.Rol> Rol { get; set; }
 
     }
 }
