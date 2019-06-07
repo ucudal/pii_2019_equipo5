@@ -92,11 +92,14 @@ namespace RazorPagesIgnis.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    ModoDeContrato = table.Column<int>(nullable: false),
                     RolRequerido = table.Column<string>(nullable: true),
+                    HorasContratadas = table.Column<int>(nullable: false),
                     NivelExperiencia = table.Column<string>(nullable: true),
                     Observaciones = table.Column<string>(nullable: true),
                     TecnicoAsignadoID = table.Column<int>(nullable: true),
-                    HorasRealizadas = table.Column<int>(nullable: false),
+                    CostoSolicitud = table.Column<int>(nullable: false),
+                    Status = table.Column<bool>(nullable: false),
                     ProyectoID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

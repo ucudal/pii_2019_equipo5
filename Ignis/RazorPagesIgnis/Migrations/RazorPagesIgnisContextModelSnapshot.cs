@@ -87,7 +87,11 @@ namespace RazorPagesIgnis.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("HorasRealizadas");
+                    b.Property<int>("CostoSolicitud");
+
+                    b.Property<int>("HorasContratadas");
+
+                    b.Property<int>("ModoDeContrato");
 
                     b.Property<string>("NivelExperiencia");
 
@@ -96,6 +100,8 @@ namespace RazorPagesIgnis.Migrations
                     b.Property<int?>("ProyectoID");
 
                     b.Property<string>("RolRequerido");
+
+                    b.Property<bool>("Status");
 
                     b.Property<int?>("TecnicoAsignadoID");
 

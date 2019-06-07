@@ -2,7 +2,7 @@ using System;
 
 namespace RazorPagesIgnis 
 {
-    public class Solicitud : IGestionHoras, IGestionTecnicos
+    public class Solicitud : IGestionHoras, IGestionTecnicos, IObserverProyecto
     {
         public Solicitud(int ModoDeContrato, string RolRequerido, int HorasContratadas, string NivelExperiencia, string Observaciones) 
         {
@@ -12,10 +12,11 @@ namespace RazorPagesIgnis
             this.nivelExperiencia = NivelExperiencia;
             this.observaciones = Observaciones;
 
-            // ICosto Costo = new ICosto();
-            // this.costoSolicitud = 1000; // - - - - - > Costo.CostoTotalProyecto(ModoDeContrato, HorasContratadas, NivelExperiencia);
+            //ICosto Costo = new Costo();
+            this.costoSolicitud = 1000; // - - - - - > Costo.CostoTotalProyecto(ModoDeContrato, HorasContratadas, NivelExperiencia);
 
             this.tecnicoAsignado = null;
+            this.status = true;
         }
 
         // Modo de Contratación
@@ -76,6 +77,13 @@ namespace RazorPagesIgnis
 
         }
 
+        private bool status;
+        public bool Status 
+        {
+            get => this.status;
+            protected set {}
+        }
+
         // Método para asignar un técnico a esta solicitud.
         public void AsignarTecnico(Tecnico Tecnico) 
         {
@@ -115,8 +123,37 @@ namespace RazorPagesIgnis
         /// Se ejecuta en dos oportunidades: cuando se agregan / restan horas y cuando se actualizan los precios.
         public void ActualizarCostoSolicitud() 
         {
-            // ICosto Costo = new Costo(); 
-            // this.costoSolicitud = 1000; // - - - - - > Costo.CostoTotalProyecto(this.ModoDeContrato, this.HorasContratadas, this.NivelExperiencia);
+            //ICosto Costo = new Costo(); 
+            this.costoSolicitud = 1000; // - - - - - > Costo.CostoTotalProyecto(this.ModoDeContrato, this.HorasContratadas, this.NivelExperiencia);
+        }
+
+        /// <summary>
+        /// Métodos para cambiar el status.
+        /// Activar(): si el proyecto está 'Cerrado' se cambia para 'Activo'.
+        /// Cerrar(): si el proyecto está 'Activo' se cambia para 'Cerrado'.
+        /// </summary>
+        public void Activar() 
+        {
+            if (this.status == false) this.CambiarStatus();
+        }
+
+        public void Cerrar() 
+        {
+            if (this.status == true) 
+            {
+                // Notifico a los observers.
+                //SujetoProyecto suj = new SujetoProyecto();
+
+                //suj.notificar(this.status);
+
+                // Cambio el estado.
+                this.CambiarStatus();
+            }
+        }
+
+        private void CambiarStatus() 
+        {
+            this.status = !this.status;
         }
 
         /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.

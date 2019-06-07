@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RazorPagesIgnis 
 {   
-    public class Proyecto : ICrearSolicitud 
+    public class Proyecto : ISujetoProyecto, ICrearSolicitud
     { 
         public Proyecto(string Nombre, string Descripcion) 
         {
@@ -50,6 +50,8 @@ namespace RazorPagesIgnis
         public void AgregarSolicitud(Solicitud nuevaSolicitud) 
         {
             ListaDeSolicitudes.Add(nuevaSolicitud);
+
+            this.Agregar(nuevaSolicitud);
         }
 
         /// <summary>
@@ -57,9 +59,9 @@ namespace RazorPagesIgnis
         /// </summary>
         public void ImprimirCostoTotal() 
         {
-            IConsoleWriter Consola = new ConsoleWriter();
+            //IConsoleWriter Consola = new ConsoleWriter();
 
-            Consola.ImprimirCostoTotalDelProyecto(this);
+            //Consola.ImprimirCostoTotalDelProyecto(this);
         }
 
         /// <summary>
@@ -74,7 +76,14 @@ namespace RazorPagesIgnis
 
         public void Cerrar() 
         {
-            if (this.status == true) this.CambiarStatus();
+            if (this.status == true) 
+            {
+                // Cambio el estado.
+                this.CambiarStatus();
+
+                // Notifico a los observers.
+                Notificar();
+            }
         }
 
         private void CambiarStatus() 

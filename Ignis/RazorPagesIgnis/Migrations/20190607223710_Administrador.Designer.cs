@@ -9,8 +9,8 @@ using RazorPagesIgnis.Models;
 namespace RazorPagesIgnis.Migrations
 {
     [DbContext(typeof(RazorPagesIgnisContext))]
-    [Migration("20190607041056_Solicitud")]
-    partial class Solicitud
+    [Migration("20190607223710_Administrador")]
+    partial class Administrador
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -89,7 +89,11 @@ namespace RazorPagesIgnis.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("HorasRealizadas");
+                    b.Property<int>("CostoSolicitud");
+
+                    b.Property<int>("HorasContratadas");
+
+                    b.Property<int>("ModoDeContrato");
 
                     b.Property<string>("NivelExperiencia");
 
@@ -98,6 +102,8 @@ namespace RazorPagesIgnis.Migrations
                     b.Property<int?>("ProyectoID");
 
                     b.Property<string>("RolRequerido");
+
+                    b.Property<bool>("Status");
 
                     b.Property<int?>("TecnicoAsignadoID");
 
