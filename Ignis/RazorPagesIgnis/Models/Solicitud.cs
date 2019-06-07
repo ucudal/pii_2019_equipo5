@@ -12,8 +12,8 @@ namespace RazorPagesIgnis
             this.nivelExperiencia = NivelExperiencia;
             this.observaciones = Observaciones;
 
-            ICosto Costo = new Costo();
-            this.costoSolicitud = 1000; // - - - - - > Costo.CostoTotalProyecto(ModoDeContrato, HorasContratadas, NivelExperiencia);
+            // ICosto Costo = new ICosto();
+            // this.costoSolicitud = 1000; // - - - - - > Costo.CostoTotalProyecto(ModoDeContrato, HorasContratadas, NivelExperiencia);
 
             this.tecnicoAsignado = null;
         }
@@ -115,8 +115,8 @@ namespace RazorPagesIgnis
         /// Se ejecuta en dos oportunidades: cuando se agregan / restan horas y cuando se actualizan los precios.
         public void ActualizarCostoSolicitud() 
         {
-            ICosto Costo = new Costo(); 
-            this.costoSolicitud = 1000; // - - - - - > Costo.CostoTotalProyecto(this.ModoDeContrato, this.HorasContratadas, this.NivelExperiencia);
+            // ICosto Costo = new Costo(); 
+            // this.costoSolicitud = 1000; // - - - - - > Costo.CostoTotalProyecto(this.ModoDeContrato, this.HorasContratadas, this.NivelExperiencia);
         }
 
         /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
