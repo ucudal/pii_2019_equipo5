@@ -14,9 +14,19 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="Solicitud.ModoDeContrato" class="control-label"></label>
+                <input asp-for="Solicitud.ModoDeContrato" class="form-control" />
+                <span asp-validation-for="Solicitud.ModoDeContrato" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Solicitud.RolRequerido" class="control-label"></label>
                 <input asp-for="Solicitud.RolRequerido" class="form-control" />
                 <span asp-validation-for="Solicitud.RolRequerido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Solicitud.HorasContratadas" class="control-label"></label>
+                <input asp-for="Solicitud.HorasContratadas" class="form-control" />
+                <span asp-validation-for="Solicitud.HorasContratadas" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Solicitud.NivelExperiencia" class="control-label"></label>
@@ -29,9 +39,14 @@
                 <span asp-validation-for="Solicitud.Observaciones" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Solicitud.HorasRealizadas" class="control-label"></label>
-                <input asp-for="Solicitud.HorasRealizadas" class="form-control" />
-                <span asp-validation-for="Solicitud.HorasRealizadas" class="text-danger"></span>
+                <label asp-for="Solicitud.CostoSolicitud" class="control-label"></label>
+                <input asp-for="Solicitud.CostoSolicitud" class="form-control" />
+                <span asp-validation-for="Solicitud.CostoSolicitud" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Solicitud.Status" /> @Html.DisplayNameFor(model => model.Solicitud.Status))
+                </label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

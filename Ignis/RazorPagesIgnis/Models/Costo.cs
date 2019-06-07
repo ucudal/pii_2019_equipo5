@@ -6,7 +6,7 @@ namespace RazorPagesIgnis
     /// Esta clase conoce la categoria, precio primera hora, precio de hora y precio por jornada. 
     /// Tiene la responsabilidad de calcular las horas por solicitud de proyecto, y el costo total del proyecto.
     /// </summary>
-    public class Costo 
+    public class Costo : ICosto 
     {
         public Costo() 
         {
@@ -112,55 +112,55 @@ namespace RazorPagesIgnis
             this.jornadaAvanzado = nuevoCosto;
         }
 
-        // public int CalcularCostoSolicitud(Solicitud solicitudIngresada) 
-        // {
-        //     int CostoTotalSolicitud = 0;
-        //     int modulo = 0;
+        public int CalcularCostoSolicitud(Solicitud solicitudIngresada) 
+        {
+            int CostoTotalSolicitud = 0;
+            int modulo = 0;
 
 
-        //     if (solicitudIngresada.NivelExperiencia == "Avanzado"){
+            if (solicitudIngresada.NivelExperiencia == "Avanzado"){
                
-        //         if (solicitudIngresada.HorasRealizadas < this.horaJornada )
-        //         {
+                if (solicitudIngresada.HorasContratadas < this.horaJornada )
+                {
                     
-        //             CostoTotalSolicitud = (solicitudIngresada.HorasRealizadas -1) * this.CostoHoraAvanzado;
-        //             CostoTotalSolicitud = CostoTotalSolicitud + this.primeraHoraAvanzado;
-        //         }
-        //         else
-        //          {
-        //             modulo= solicitudIngresada.HorasRealizadas / this.horaJornada;
-        //             int resta = solicitudIngresada.HorasRealizadas - (modulo * this.horaJornada);
-        //             CostoTotalSolicitud = (resta*this.costoHoraAvanzado) + (modulo * this.jornadaAvanzado);
-        //         }
-        //     }
+                    CostoTotalSolicitud = (solicitudIngresada.HorasContratadas -1) * this.CostoHoraAvanzado;
+                    CostoTotalSolicitud = CostoTotalSolicitud + this.primeraHoraAvanzado;
+                }
+                else
+                 {
+                    modulo= solicitudIngresada.HorasContratadas / this.horaJornada;
+                    int resta = solicitudIngresada.HorasContratadas - (modulo * this.horaJornada);
+                    CostoTotalSolicitud = (resta*this.costoHoraAvanzado) + (modulo * this.jornadaAvanzado);
+                }
+            }
 
-        //     else
-        //     {
-        //         if (solicitudIngresada.HorasRealizadas < this.horaJornada ){
+            else
+            {
+                if (solicitudIngresada.HorasContratadas < this.horaJornada ){
                     
-        //             CostoTotalSolicitud = (solicitudIngresada.HorasRealizadas -1) * this.CostoHoraBasico;
-        //             CostoTotalSolicitud = CostoTotalSolicitud + this.primeraHoraBasico;
-        //         }
-        //         else {
-        //             modulo= solicitudIngresada.HorasRealizadas / this.horaJornada;
-        //             int resta = solicitudIngresada.HorasRealizadas - (modulo * this.horaJornada);
-        //             CostoTotalSolicitud = (resta*this.costoHoraBasico) + (modulo * this.jornadaBasico);
-        //         }
-        //     }
-        //     return CostoTotalSolicitud;
-        // }
+                    CostoTotalSolicitud = (solicitudIngresada.HorasContratadas -1) * this.CostoHoraBasico;
+                    CostoTotalSolicitud = CostoTotalSolicitud + this.primeraHoraBasico;
+                }
+                else {
+                    modulo= solicitudIngresada.HorasContratadas / this.horaJornada;
+                    int resta = solicitudIngresada.HorasContratadas - (modulo * this.horaJornada);
+                    CostoTotalSolicitud = (resta*this.costoHoraBasico) + (modulo * this.jornadaBasico);
+                }
+            }
+            return CostoTotalSolicitud;
+        }
 
-        // int CostoTotalProyectos = 0;
+        int CostoTotalProyectos = 0;
          
-        // public int CostoTotalProyecto(Proyecto proyecto) 
-        // {
-        //     for (int i = 0; i < proyecto.ListaDeSolicitudes.Count; i++) 
-        //     {
-        //         CalcularCostoSolicitud(proyecto.ListaDeSolicitudes[i]);
-        //         CostoTotalProyectos = CostoTotalProyectos + CalcularCostoSolicitud(proyecto.ListaDeSolicitudes[i]);
-        //     }
-        //     return CostoTotalProyectos; 
-        // }
+        public int CostoTotalProyecto(Proyecto proyecto) 
+        {
+            for (int i = 0; i < proyecto.ListaDeSolicitudes.Count; i++) 
+            {
+                CalcularCostoSolicitud(proyecto.ListaDeSolicitudes[i]);
+                CostoTotalProyectos = CostoTotalProyectos + CalcularCostoSolicitud(proyecto.ListaDeSolicitudes[i]);
+            }
+            return CostoTotalProyectos; 
+        }
 
     }
 }
