@@ -83,6 +83,11 @@ namespace RazorPagesIgnis
 
                 // Notifico a los observers.
                 Notificar();
+
+                foreach (Solicitud item in this.ListaDeSolicitudes)
+                {
+                    item.Cerrar();
+                }
             }
         }
 
