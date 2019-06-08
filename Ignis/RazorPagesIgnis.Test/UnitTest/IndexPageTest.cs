@@ -43,6 +43,5 @@ namespace RazorPagesIgnis.Test
                 actualMessages.OrderBy(m => m.Id).Select(m => m.Text));
         }
     }
-
-}
+  }
 }
