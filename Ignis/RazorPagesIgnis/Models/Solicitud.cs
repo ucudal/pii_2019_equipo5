@@ -100,7 +100,7 @@ namespace RazorPagesIgnis
             this.horasContratadas += Math.Abs(Horas);
 
             // Actualizamos el costo de esta solicitud.
-            this.ActualizarCostoSolicitud();
+            this.ActualizarCostoSolicitudesActivas();
         }
 
         // Método para restar horas de contratación.
@@ -114,16 +114,23 @@ namespace RazorPagesIgnis
             if ((this.horasContratadas  - Math.Abs(Horas)) >= 0) this.horasContratadas -= Math.Abs(Horas);
 
             // Actualizamos el costo de esta solicitud.
-            this.ActualizarCostoSolicitud();
+            this.ActualizarCostoSolicitudesActivas();
         }
 
         /// Este método actualiza el costo para la solicitud.
-        /// Se ejecuta en dos oportunidades: cuando se agregan / restan horas y cuando se actualizan los precios.
-        public void ActualizarCostoSolicitud() 
+        /// 
+        /// La solicitud debe estar activa para que se realice esta modificación.
+        /// Se ejecuta en dos oportunidades: 
+        /// - cuando se agregan / restan horas
+        /// - cuando se actualizan los precios.
+        public void ActualizarCostoSolicitudesActivas() 
         {
             ICosto Costo = new Costo(); 
 
-            this.costoSolicitud = Costo.CalcularCostoSolicitud(this.ModoDeContrato, this.HorasContratadas, this.NivelExperiencia);
+            if (this.status == true) 
+            {
+                this.costoSolicitud = Costo.CalcularCostoSolicitud(this.ModoDeContrato, this.HorasContratadas, this.NivelExperiencia);
+            }
         }
 
         /// <summary>
