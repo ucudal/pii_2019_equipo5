@@ -23,7 +23,7 @@ namespace RazorPagesIgnis
 
             Console.WriteLine ("Proyecto: {0} Estado: {1}", Proyecto.Nombre, ValorDeStatusDelProyecto(Proyecto));
             Console.WriteLine ("Descripción del proyecto: {0}", Proyecto.Descripcion);
-            Console.WriteLine ("El costo total del proyecto es: $ {1}", Costo.CostoTotalProyecto(Proyecto));
+            //Console.WriteLine ("El costo total del proyecto es: $ {1}", Costo.CostoTotalProyecto(Proyecto));
         }
 
         /// <summary>

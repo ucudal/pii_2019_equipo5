@@ -12,8 +12,8 @@ namespace RazorPagesIgnis
             this.nivelExperiencia = NivelExperiencia;
             this.observaciones = Observaciones;
 
-            //ICosto Costo = new Costo();
-            this.costoSolicitud = 1000; // - - - - - > Costo.CostoTotalProyecto(ModoDeContrato, HorasContratadas, NivelExperiencia);
+            ICosto Costo = new Costo();
+            this.costoSolicitud = Costo.CalcularCostoSolicitud(ModoDeContrato, HorasContratadas, NivelExperiencia);
 
             this.tecnicoAsignado = null;
             this.status = true;
@@ -123,8 +123,8 @@ namespace RazorPagesIgnis
         /// Se ejecuta en dos oportunidades: cuando se agregan / restan horas y cuando se actualizan los precios.
         public void ActualizarCostoSolicitud() 
         {
-            //ICosto Costo = new Costo(); 
-            this.costoSolicitud = 1000; // - - - - - > Costo.CostoTotalProyecto(this.ModoDeContrato, this.HorasContratadas, this.NivelExperiencia);
+            ICosto Costo = new Costo(); 
+            this.costoSolicitud = Costo.CalcularCostoSolicitud(this.ModoDeContrato, this.HorasContratadas, this.NivelExperiencia);
         }
 
         /// <summary>

@@ -2,7 +2,7 @@ namespace RazorPagesIgnis
 {
     public interface ICosto 
     {
-        int CostoTotalProyecto(Proyecto proyecto);
+        int CalcularCostoSolicitud(int ModoDeContrato, int HorasContratadas,string NivelExperiencia);
     }
     
 }
