@@ -36,6 +36,9 @@ namespace RazorPagesIgnis
             protected set {}
         }
 
+        /// <summary>
+        /// Lista de Solicitudes del proyecto.
+        /// </summary>
         private List<Solicitud> listaSolicitudes;
         public List<Solicitud> ListaDeSolicitudes 
         {
@@ -50,18 +53,21 @@ namespace RazorPagesIgnis
         public void AgregarSolicitud(Solicitud nuevaSolicitud) 
         {
             ListaDeSolicitudes.Add(nuevaSolicitud);
-
-            this.Agregar(nuevaSolicitud);
         }
 
         /// <summary>
-        /// Este método imprime por pantalla el costo total del proyecto.
+        /// Este método retorna el costo total del proyecto.
         /// </summary>
-        public void ImprimirCostoTotal() 
+        public int InformarCostoTotalProyecto() 
         {
-            //IConsoleWriter Consola = new ConsoleWriter();
-
-            //Consola.ImprimirCostoTotalDelProyecto(this);
+            int CostoTotal = 0;
+            
+            foreach (Solicitud item in listaSolicitudes) 
+            {
+                CostoTotal += item.CostoSolicitud;
+            }
+            
+            return CostoTotal;
         }
 
         /// <summary>
@@ -69,6 +75,7 @@ namespace RazorPagesIgnis
         /// Activar(): si el proyecto está 'Cerrado' se cambia para 'Activo'.
         /// Cerrar(): si el proyecto está 'Activo' se cambia para 'Cerrado'.
         /// </summary>
+
         public void Activar() 
         {
             if (this.status == false) this.CambiarStatus();
@@ -78,11 +85,13 @@ namespace RazorPagesIgnis
         {
             if (this.status == true) 
             {
-                // Cambio el estado.
                 this.CambiarStatus();
 
-                // Notifico a los observers.
-                Notificar();
+                /// Cuando cerramos el proyecto, se cierran todas sus solicitudes.
+                foreach (Solicitud item in this.ListaDeSolicitudes)
+                {
+                    item.Cerrar();
+                }
             }
         }
 
