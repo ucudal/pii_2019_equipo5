@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace RazorPagesIgnis
 {   
@@ -15,6 +16,27 @@ namespace RazorPagesIgnis
         public Cliente(string nombre, string correo, string contrasena) 
                     : base(nombre, correo, contrasena) 
         { 
+            List<Proyecto> ListaDeProyectos = new List<Proyecto>();
+            this.listaProyectos = ListaDeProyectos;
+        }
+
+        /// <summary>
+        ///  Lista de Proyectos del cliente.
+        /// </summary>
+        private List<Proyecto> listaProyectos;
+        public List<Proyecto> ListaProyectos 
+        {
+            get => this.listaProyectos;
+            protected set {}
+        }
+
+        /// <summary>
+        /// Este método agrega un nuevo proyecto a la lista de proyectos del cliente.
+        /// </summary>
+        /// <param name="ProyectoNuevo">Proyecto del cliente.</param>
+        public void AgregarProyecto(Proyecto ProyectoNuevo) 
+        {
+            this.listaProyectos.Add(ProyectoNuevo);
         }
 
         /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
