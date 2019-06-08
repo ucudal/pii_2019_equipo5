@@ -112,23 +112,23 @@ namespace RazorPagesIgnis
             this.jornadaAvanzado = nuevoCosto;
         }
 
-        public int CalcularCostoSolicitud(Solicitud solicitudIngresada) 
+        public int CalcularCostoSolicitud(int ModoDeContrato,int HorasContratadas,string NivelExperiencia) 
         {
             int CostoTotalSolicitud = 0;
             int modulo = 0;
 
 
-            if (solicitudIngresada.ModoDeContrato == 1 ){
+            if (ModoDeContrato == 1 ){
                
-                if (solicitudIngresada.NivelExperiencia == "Avanzado" )
+                if (NivelExperiencia == "Avanzado" )
                 {
                     
-                    CostoTotalSolicitud = (solicitudIngresada.HorasContratadas -1) * this.CostoHoraAvanzado;
+                    CostoTotalSolicitud = (HorasContratadas -1) * this.CostoHoraAvanzado;
                     CostoTotalSolicitud = CostoTotalSolicitud + this.primeraHoraAvanzado;
                 }
                 else
                 {
-                    CostoTotalSolicitud = (solicitudIngresada.HorasContratadas -1) * this.CostoHoraBasico;
+                    CostoTotalSolicitud = (HorasContratadas -1) * this.CostoHoraBasico;
                     CostoTotalSolicitud = CostoTotalSolicitud + this.primeraHoraBasico;                      
                 }
 
@@ -136,18 +136,18 @@ namespace RazorPagesIgnis
 
             else// si modocontrato es 2 es por jornada
             {
-                if (solicitudIngresada.NivelExperiencia == "Basico" )
+                if (NivelExperiencia == "Basico" )
                 {
                     
-                    modulo= solicitudIngresada.HorasContratadas / this.horaJornada;
-                    int resta = solicitudIngresada.HorasContratadas - (modulo * this.horaJornada);
+                    modulo= HorasContratadas / this.horaJornada;
+                    int resta = HorasContratadas - (modulo * this.horaJornada);
                     CostoTotalSolicitud = (resta*this.costoHoraBasico) + (modulo * this.jornadaBasico);
                 }
                 else 
                 {
                     
-                    modulo= solicitudIngresada.HorasContratadas / this.horaJornada;
-                    int resta = solicitudIngresada.HorasContratadas - (modulo * this.horaJornada);
+                    modulo= HorasContratadas / this.horaJornada;
+                    int resta = HorasContratadas - (modulo * this.horaJornada);
                     CostoTotalSolicitud = (resta*this.costoHoraAvanzado) + (modulo * this.jornadaAvanzado);
                     
                 }
@@ -155,8 +155,8 @@ namespace RazorPagesIgnis
             return CostoTotalSolicitud;
         }
 
-        int CostoTotalProyectos = 0;
-         
+        //int CostoTotalProyectos = 0;
+       /*  
         public int CostoTotalProyecto(Proyecto proyecto) 
         {
             for (int i = 0; i < proyecto.ListaDeSolicitudes.Count; i++) 
@@ -166,6 +166,6 @@ namespace RazorPagesIgnis
             }
             return CostoTotalProyectos; 
         }
-
+*/
     }
 }
