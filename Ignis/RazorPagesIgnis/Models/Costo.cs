@@ -2,7 +2,7 @@ using System;
 
 namespace RazorPagesIgnis 
 {   
-    public class Costo : ICosto 
+    public class Costo : ISujetoCosto, ICosto
     { 
         /// <summary>
         /// Esta clase conoce el costo por hora para cada modo de contratación y catégoria de técnico.
@@ -31,11 +31,6 @@ namespace RazorPagesIgnis
             get => this.horaJornada;
             protected set {}
         }
-
-        public void ModificarHoraJornada(int nuevoCosto) 
-        {
-            this.horaJornada = nuevoCosto;
-        }
         
         //costo basico
         private int costoHoraBasico;
@@ -43,11 +38,6 @@ namespace RazorPagesIgnis
         {
             get => this.costoHoraBasico;
             protected set {}
-        }
-
-        public void ModificarCostoHoraBasico(int nuevoCosto) 
-        {
-            this.costoHoraBasico = nuevoCosto;
         }
 
         //costo avanzado
@@ -58,23 +48,12 @@ namespace RazorPagesIgnis
             protected set {}
         }
 
-        public void ModificarCostoHoraAvanzado(int nuevoCosto) 
-        {
-            this.costoHoraAvanzado = nuevoCosto;
-        }
-
         //primera hora
         private int primeraHoraBasico;
         public int PrimeraHoraBasico 
         {
             get => this.primeraHoraBasico;
             protected set {}
-        }
-
-        public void ModificarPrimeraHoraBasico(int nuevoCosto) 
-
-        {
-            this.primeraHoraBasico = nuevoCosto;
         }
 
         private int primeraHoraAvanzado;
@@ -84,21 +63,11 @@ namespace RazorPagesIgnis
             protected set {}
         }
 
-        public void ModificarPrimeraHoraAvanzado(int nuevoCosto) 
-        {
-            this.primeraHoraAvanzado = nuevoCosto;
-        }
-        
         private int jornadaBasico;
         public int JornadaBasico
         {
             get => this.jornadaBasico;
             protected set {}
-        }
-
-        public void ModificarJornadaBasico(int nuevoCosto) 
-        {
-            this.jornadaBasico = nuevoCosto;
         }
 
         private int jornadaAvanzado;
@@ -108,9 +77,54 @@ namespace RazorPagesIgnis
             protected set {}
         }
 
+        public void ModificarHoraJornada(int nuevoCosto) 
+        {
+            this.horaJornada = nuevoCosto;
+
+            Notificar();
+        }
+        
+        public void ModificarCostoHoraBasico(int nuevoCosto) 
+        {
+            this.costoHoraBasico = nuevoCosto;
+
+            Notificar();
+        }
+
+        public void ModificarCostoHoraAvanzado(int nuevoCosto) 
+        {
+            this.costoHoraAvanzado = nuevoCosto;
+
+            Notificar();
+        }
+
+        public void ModificarPrimeraHoraBasico(int nuevoCosto) 
+
+        {
+            this.primeraHoraBasico = nuevoCosto;
+
+            Notificar();
+        }
+
+        public void ModificarPrimeraHoraAvanzado(int nuevoCosto) 
+        {
+            this.primeraHoraAvanzado = nuevoCosto;
+
+            Notificar();
+        }
+
+        public void ModificarJornadaBasico(int nuevoCosto) 
+        {
+            this.jornadaBasico = nuevoCosto;
+
+            Notificar();
+        }
+
         public void ModificarJornadaAvanzado(int nuevoCosto) 
         {
             this.jornadaAvanzado = nuevoCosto;
+
+            Notificar();
         }
 
         public int CalcularCostoSolicitud(int ModoDeContrato,int HorasContratadas,string NivelExperiencia) 
@@ -148,20 +162,6 @@ namespace RazorPagesIgnis
             }
 
             return CostoTotalSolicitud;
-
         }
-
-    //     //int CostoTotalProyectos = 0;
-    //    /*  
-    //     public int CostoTotalProyecto(Proyecto proyecto) 
-    //     {
-    //         for (int i = 0; i < proyecto.ListaDeSolicitudes.Count; i++) 
-    //         {
-    //             CalcularCostoSolicitud(proyecto.ListaDeSolicitudes[i]);
-    //             CostoTotalProyectos = CostoTotalProyectos + CalcularCostoSolicitud(proyecto.ListaDeSolicitudes[i]);
-    //         }
-    //         return CostoTotalProyectos; 
-    //     }
-
     }
 }

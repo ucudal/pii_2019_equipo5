@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RazorPagesIgnis 
 {   
-    public class Proyecto : ISujetoProyecto, ICrearSolicitud
+    public class Proyecto : ICrearSolicitud
     { 
         public Proyecto(string Nombre, string Descripcion) 
         {

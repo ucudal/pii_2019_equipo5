@@ -2,7 +2,7 @@ using System;
 
 namespace RazorPagesIgnis 
 {
-    public class Solicitud : IGestionHoras, IGestionTecnicos, IObserverProyecto
+    public class Solicitud : IGestionHoras, IGestionTecnicos, IObserverCosto
     {
         public Solicitud(int ModoDeContrato, string RolRequerido, int HorasContratadas, string NivelExperiencia, string Observaciones) 
         {
