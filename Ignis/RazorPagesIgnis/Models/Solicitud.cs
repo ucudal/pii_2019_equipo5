@@ -11,12 +11,11 @@ namespace RazorPagesIgnis
             this.horasContratadas = HorasContratadas;
             this.nivelExperiencia = NivelExperiencia;
             this.observaciones = Observaciones;
+            this.tecnicoAsignado = null;
+            this.status = true;
 
             ICosto Costo = new Costo();
             this.costoSolicitud = Costo.CalcularCostoSolicitud(ModoDeContrato, HorasContratadas, NivelExperiencia);
-
-            this.tecnicoAsignado = null;
-            this.status = true;
         }
 
         // Modo de Contratación
@@ -74,7 +73,6 @@ namespace RazorPagesIgnis
         {
             get => this.costoSolicitud;
             protected set {}
-
         }
 
         private bool status;
@@ -119,11 +117,12 @@ namespace RazorPagesIgnis
             this.ActualizarCostoSolicitud();
         }
 
-        /// Este método actualiza el costo estipulado para la solicitud.
+        /// Este método actualiza el costo para la solicitud.
         /// Se ejecuta en dos oportunidades: cuando se agregan / restan horas y cuando se actualizan los precios.
         public void ActualizarCostoSolicitud() 
         {
             ICosto Costo = new Costo(); 
+
             this.costoSolicitud = Costo.CalcularCostoSolicitud(this.ModoDeContrato, this.HorasContratadas, this.NivelExperiencia);
         }
 
@@ -139,16 +138,7 @@ namespace RazorPagesIgnis
 
         public void Cerrar() 
         {
-            if (this.status == true) 
-            {
-                // Notifico a los observers.
-                //SujetoProyecto suj = new SujetoProyecto();
-
-                //suj.notificar(this.status);
-
-                // Cambio el estado.
-                this.CambiarStatus();
-            }
+            if (this.status == true) this.CambiarStatus();
         }
 
         private void CambiarStatus() 
