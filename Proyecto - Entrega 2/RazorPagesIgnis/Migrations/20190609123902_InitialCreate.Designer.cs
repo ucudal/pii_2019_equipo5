@@ -9,7 +9,7 @@ using RazorPagesIgnis.Areas.Identity.Data;
 namespace RazorPagesIgnis.Migrations
 {
     [DbContext(typeof(RazorPagesIgnisIdentityDbContext))]
-    [Migration("20190609092502_InitialCreate")]
+    [Migration("20190609123902_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

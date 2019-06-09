@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RazorPagesIgnis.Areas.Identity.Data;
 
-namespace RazorPagesIgnis.Migrations.RazorPagesIgnisIdentityDb
+namespace RazorPagesIgnis.Migrations
 {
     [DbContext(typeof(RazorPagesIgnisIdentityDbContext))]
     partial class RazorPagesIgnisIdentityDbContextModelSnapshot : ModelSnapshot
