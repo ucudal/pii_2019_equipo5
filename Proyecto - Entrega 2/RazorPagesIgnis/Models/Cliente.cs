@@ -21,6 +21,16 @@ namespace RazorPagesIgnis
         }
 
         /// <summary>
+        /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
+        /// Para el atributo se agrega parámetro 'new' por advertencia de compilación.
+        /// </summary>
+        public Cliente() 
+        {
+        }
+
+        public new int ID { get; set; }
+
+        /// <summary>
         ///  Lista de Proyectos del cliente.
         /// </summary>
         private List<Proyecto> listaProyectos;
@@ -38,14 +48,6 @@ namespace RazorPagesIgnis
         {
             this.listaProyectos.Add(ProyectoNuevo);
         }
-
-        /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
-        /// Para el atributo se agrega parámetro 'new' por advertencia de compilación.
-        public Cliente() 
-        {
-        }
-
-        public new int ID { get; set; }
 
     }
 }

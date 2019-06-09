@@ -7,7 +7,7 @@ namespace RazorPagesIgnis
         /// <summary>
         /// El Administrador es la persona que trabaja en el Centro Ignis.
         /// 
-        /// Los atributos obligatorios son nombre y edad.
+        /// Los atributos obligatorios son nombre y edad. 
         /// Nombre, correo y contraseña los valida la clase Persona.
         /// </summary>
         /// <param name="nombre">Nombre del administrador</param>

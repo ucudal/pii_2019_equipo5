@@ -9,6 +9,15 @@ namespace RazorPagesIgnis
     public class Check 
     { 
         /// <summary>
+        /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
+        /// </summary>
+        public Check() 
+        {
+        }
+
+        public int ID { get; set; }
+
+        /// <summary>
         /// Precondiciones.
         /// </summary>
         public class PrecondicionExcepcion : Exception 
@@ -55,13 +64,6 @@ namespace RazorPagesIgnis
                 throw new InvarianteExcepcion(mensaje);
             }
         }
-
-        /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
-        public Check() 
-        {
-        }
-
-        public int ID { get; set; }
 
     }
 }

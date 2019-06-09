@@ -75,7 +75,6 @@ namespace RazorPagesIgnis
         /// Activar(): si el proyecto está 'Cerrado' se cambia para 'Activo'.
         /// Cerrar(): si el proyecto está 'Activo' se cambia para 'Cerrado'.
         /// </summary>
-
         public void Activar() 
         {
             if (this.status == false) this.CambiarStatus();

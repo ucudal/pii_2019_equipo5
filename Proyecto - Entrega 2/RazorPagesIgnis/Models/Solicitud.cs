@@ -26,8 +26,6 @@ namespace RazorPagesIgnis
 
         public int ID { get; set; } 
 
-        public ICollection<TecnicoSolicitud> MisTecnicos { get; set; }
-
         // Modo de Contratación
         // 1: horas y 2: Jornada.
         private int modoDeContrato;
@@ -69,13 +67,13 @@ namespace RazorPagesIgnis
             set => this.observaciones = value;
         }
 
-        // // La solicitud conoce el técnico cuando se le asigna.
-        // private Tecnico tecnicoAsignado;
-        // public Tecnico TecnicoAsignado 
-        // {
-        //     get => this.tecnicoAsignado;
-        //     protected set {}
-        // }
+        // La solicitud conoce el técnico cuando se le asigna.
+        private Tecnico tecnicoAsignado;
+        public Tecnico TecnicoAsignado 
+        {
+            get => this.tecnicoAsignado;
+            protected set {}
+        }
 
         // Costo de la solicitud.
         private int costoSolicitud;
@@ -92,17 +90,22 @@ namespace RazorPagesIgnis
             protected set {}
         }
 
-        // // Método para asignar un técnico a esta solicitud.
-        // public void AsignarTecnico(Tecnico Tecnico) 
-        // {
-        //     Check.Precondicion(!string.IsNullOrEmpty(Tecnico.ToString()), "El técnico no puede ser null o vacío.");
+       /// <summary>
+        // Método para asignar un técnico a esta solicitud.
+       /// </summary>
+        public void AsignarTecnico(Tecnico Tecnico) 
+        {
+            Check.Precondicion(!string.IsNullOrEmpty(Tecnico.ToString()), "El técnico no puede ser null o vacío.");
 
-        //     this.tecnicoAsignado = Tecnico;
-        // }
+            this.tecnicoAsignado = Tecnico;
 
+        }
+
+       /// <summary>
         // Método para agregar horas de contratación.
         // El mensaje recibido debe tener como parámetro un valor positivo.
         // Implementamos valor absoluto sobre la variable para evitar error en el cálculo.
+       /// </summary>
         public void AgregarHoras(int Horas) 
         {
             Check.Precondicion(Math.Abs(Horas) > 0, "El valor debe ser mayor a cero.");
@@ -113,9 +116,11 @@ namespace RazorPagesIgnis
             this.ActualizarCostoSolicitudesActivas();
         }
 
+       /// <summary>
         // Método para restar horas de contratación.
         // El mensaje recibido debe tener como parámetro un valor positivo.
         // Implementamos valor absoluto sobre la variable para evitar error en el cálculo.
+       /// </summary>
         public void RestarHoras(int Horas) 
         {
             Check.Precondicion(Math.Abs(Horas) > 0, "El valor debe ser mayor a cero.");
@@ -127,12 +132,14 @@ namespace RazorPagesIgnis
             this.ActualizarCostoSolicitudesActivas();
         }
 
+       /// <summary>
         /// Este método actualiza el costo para la solicitud.
         /// 
         /// La solicitud debe estar activa para que se realice esta modificación.
         /// Se ejecuta en dos oportunidades: 
         /// - cuando se agregan / restan horas
         /// - cuando se actualizan los precios.
+        /// </summary>
         public void ActualizarCostoSolicitudesActivas() 
         {
             ICosto Costo = new Costo(); 
