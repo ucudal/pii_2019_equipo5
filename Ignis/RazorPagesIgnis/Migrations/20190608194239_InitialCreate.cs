@@ -39,21 +39,6 @@ namespace RazorPagesIgnis.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Proyecto",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Nombre = table.Column<string>(nullable: true),
-                    Descripcion = table.Column<string>(nullable: true),
-                    Status = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Proyecto", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Rol",
                 columns: table => new
                 {
@@ -84,6 +69,28 @@ namespace RazorPagesIgnis.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tecnico", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Proyecto",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Nombre = table.Column<string>(nullable: true),
+                    Descripcion = table.Column<string>(nullable: true),
+                    Status = table.Column<bool>(nullable: false),
+                    ClienteID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Proyecto", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Proyecto_Cliente_ClienteID",
+                        column: x => x.ClienteID,
+                        principalTable: "Cliente",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -120,6 +127,11 @@ namespace RazorPagesIgnis.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Proyecto_ClienteID",
+                table: "Proyecto",
+                column: "ClienteID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Solicitud_ProyectoID",
                 table: "Solicitud",
                 column: "ProyectoID");
@@ -136,9 +148,6 @@ namespace RazorPagesIgnis.Migrations
                 name: "Administrador");
 
             migrationBuilder.DropTable(
-                name: "Cliente");
-
-            migrationBuilder.DropTable(
                 name: "Rol");
 
             migrationBuilder.DropTable(
@@ -149,6 +158,9 @@ namespace RazorPagesIgnis.Migrations
 
             migrationBuilder.DropTable(
                 name: "Tecnico");
+
+            migrationBuilder.DropTable(
+                name: "Cliente");
         }
     }
 }

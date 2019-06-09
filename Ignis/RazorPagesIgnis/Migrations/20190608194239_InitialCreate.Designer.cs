@@ -9,8 +9,8 @@ using RazorPagesIgnis.Models;
 namespace RazorPagesIgnis.Migrations
 {
     [DbContext(typeof(RazorPagesIgnisContext))]
-    [Migration("20190607223738_Solicitud")]
-    partial class Solicitud
+    [Migration("20190608194239_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -59,6 +59,8 @@ namespace RazorPagesIgnis.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("ClienteID");
+
                     b.Property<string>("Descripcion");
 
                     b.Property<string>("Nombre");
@@ -66,6 +68,8 @@ namespace RazorPagesIgnis.Migrations
                     b.Property<bool>("Status");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("ClienteID");
 
                     b.ToTable("Proyecto");
                 });
@@ -138,6 +142,13 @@ namespace RazorPagesIgnis.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Tecnico");
+                });
+
+            modelBuilder.Entity("RazorPagesIgnis.Proyecto", b =>
+                {
+                    b.HasOne("RazorPagesIgnis.Cliente")
+                        .WithMany("ListaProyectos")
+                        .HasForeignKey("ClienteID");
                 });
 
             modelBuilder.Entity("RazorPagesIgnis.Solicitud", b =>
