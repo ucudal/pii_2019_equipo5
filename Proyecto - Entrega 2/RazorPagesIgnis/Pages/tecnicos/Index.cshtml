@@ -14,22 +14,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Tecnico[0].Edad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tecnico[0].Presentacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tecnico[0].Nivel_experiencia)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Tecnico[0].Nombre)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Tecnico[0].Correo)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Tecnico[0].Edad)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Tecnico[0].Contrasena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tecnico[0].Presentacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tecnico[0].Nivel_experiencia)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Tecnico[0].Status)
@@ -41,22 +41,22 @@
 @foreach (var item in Model.Tecnico) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Edad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Presentacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nivel_experiencia)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Correo)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Edad)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Contrasena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Presentacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nivel_experiencia)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)

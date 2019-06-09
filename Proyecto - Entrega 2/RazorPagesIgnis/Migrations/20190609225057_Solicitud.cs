@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RazorPagesIgnis.Migrations.RazorPagesIgnis
+namespace RazorPagesIgnis.Migrations
 {
-    public partial class Proyecto : Migration
+    public partial class Solicitud : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

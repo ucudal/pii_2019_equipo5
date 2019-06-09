@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RazorPagesIgnis.Models;
 
-namespace RazorPagesIgnis.Migrations.RazorPagesIgnis
+namespace RazorPagesIgnis.Migrations
 {
     [DbContext(typeof(RazorPagesIgnisContext))]
-    [Migration("20190609092839_Rol")]
-    partial class Rol
+    [Migration("20190609225038_Cliente")]
+    partial class Cliente
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -109,9 +109,13 @@ namespace RazorPagesIgnis.Migrations.RazorPagesIgnis
 
                     b.Property<bool>("Status");
 
+                    b.Property<int?>("TecnicoAsignadoID");
+
                     b.HasKey("ID");
 
                     b.HasIndex("ProyectoID");
+
+                    b.HasIndex("TecnicoAsignadoID");
 
                     b.ToTable("Solicitud");
                 });
@@ -170,12 +174,16 @@ namespace RazorPagesIgnis.Migrations.RazorPagesIgnis
                     b.HasOne("RazorPagesIgnis.Proyecto")
                         .WithMany("ListaDeSolicitudes")
                         .HasForeignKey("ProyectoID");
+
+                    b.HasOne("RazorPagesIgnis.Tecnico", "TecnicoAsignado")
+                        .WithMany()
+                        .HasForeignKey("TecnicoAsignadoID");
                 });
 
             modelBuilder.Entity("RazorPagesIgnis.TecnicoSolicitud", b =>
                 {
                     b.HasOne("RazorPagesIgnis.Solicitud", "Solicitud")
-                        .WithMany("MisTecnicos")
+                        .WithMany()
                         .HasForeignKey("solicitudID")
                         .OnDelete(DeleteBehavior.Cascade);
 

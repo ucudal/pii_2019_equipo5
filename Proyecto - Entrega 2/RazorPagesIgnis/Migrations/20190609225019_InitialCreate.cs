@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RazorPagesIgnis.Migrations.RazorPagesIgnis
+namespace RazorPagesIgnis.Migrations
 {
     public partial class InitialCreate : Migration
     {
@@ -104,6 +104,7 @@ namespace RazorPagesIgnis.Migrations.RazorPagesIgnis
                     HorasContratadas = table.Column<int>(nullable: false),
                     NivelExperiencia = table.Column<string>(nullable: true),
                     Observaciones = table.Column<string>(nullable: true),
+                    TecnicoAsignadoID = table.Column<int>(nullable: true),
                     CostoSolicitud = table.Column<int>(nullable: false),
                     Status = table.Column<bool>(nullable: false),
                     ProyectoID = table.Column<int>(nullable: true)
@@ -115,6 +116,12 @@ namespace RazorPagesIgnis.Migrations.RazorPagesIgnis
                         name: "FK_Solicitud_Proyecto_ProyectoID",
                         column: x => x.ProyectoID,
                         principalTable: "Proyecto",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Solicitud_Tecnico_TecnicoAsignadoID",
+                        column: x => x.TecnicoAsignadoID,
+                        principalTable: "Tecnico",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -156,6 +163,11 @@ namespace RazorPagesIgnis.Migrations.RazorPagesIgnis
                 column: "ProyectoID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Solicitud_TecnicoAsignadoID",
+                table: "Solicitud",
+                column: "TecnicoAsignadoID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TecnicoSolicitud_solicitudID",
                 table: "TecnicoSolicitud",
                 column: "solicitudID");
@@ -181,10 +193,10 @@ namespace RazorPagesIgnis.Migrations.RazorPagesIgnis
                 name: "Solicitud");
 
             migrationBuilder.DropTable(
-                name: "Tecnico");
+                name: "Proyecto");
 
             migrationBuilder.DropTable(
-                name: "Proyecto");
+                name: "Tecnico");
 
             migrationBuilder.DropTable(
                 name: "Cliente");

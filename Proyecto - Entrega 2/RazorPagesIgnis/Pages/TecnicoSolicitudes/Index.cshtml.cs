@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using RazorPagesIgnis;
 using RazorPagesIgnis.Models;
 
-namespace RazorPagesIgnis.Pages.TecnicoSolicitudes
+namespace RazorPagesIgnis.Pages.tecnicoSolicitudes
 {
     public class IndexModel : PageModel
     {

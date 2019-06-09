@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RazorPagesIgnis.Migrations.RazorPagesIgnis
+namespace RazorPagesIgnis.Migrations
 {
-    public partial class Rol : Migration
+    public partial class Administrador : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

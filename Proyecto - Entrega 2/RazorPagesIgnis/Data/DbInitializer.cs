@@ -49,7 +49,7 @@ namespace RazorPagesIgnis
                 {
                 new Tecnico ("Marcelo", "marce@correo.com", "********", 40, "Hola!", "Básico"),
                 new Tecnico ("Laura", "laura@correo.com", "********", 25, "Buen día!", "Avanzado"),
-                new Tecnico ("Diego", "eldiego@correo.com", "********", 22, "Buenas terdes!", "Básico")
+                new Tecnico ("Diego", "eldiego@correo.com", "********", 22, "Buenas tardes!", "Básico")
                 };
 
                 foreach (Tecnico itemT in tecnicos)
