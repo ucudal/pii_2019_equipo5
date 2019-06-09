@@ -57,6 +57,8 @@ namespace RazorPagesIgnis.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("ClienteID");
+
                     b.Property<string>("Descripcion");
 
                     b.Property<string>("Nombre");
@@ -64,6 +66,8 @@ namespace RazorPagesIgnis.Migrations
                     b.Property<bool>("Status");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("ClienteID");
 
                     b.ToTable("Proyecto");
                 });
@@ -136,6 +140,13 @@ namespace RazorPagesIgnis.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Tecnico");
+                });
+
+            modelBuilder.Entity("RazorPagesIgnis.Proyecto", b =>
+                {
+                    b.HasOne("RazorPagesIgnis.Cliente")
+                        .WithMany("ListaProyectos")
+                        .HasForeignKey("ClienteID");
                 });
 
             modelBuilder.Entity("RazorPagesIgnis.Solicitud", b =>
