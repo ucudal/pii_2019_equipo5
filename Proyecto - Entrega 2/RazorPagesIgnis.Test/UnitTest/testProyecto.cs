@@ -8,7 +8,7 @@ namespace tests
     public class testsProyecto
     {
         /// <summary>
-        /// Verificamos la construcción de un objeto tecnico.
+        /// Verificamos la construcción de un objeto Proyecto.
         /// </summary>
         [Fact]
         public void construir_un_proyecto()
@@ -18,6 +18,22 @@ namespace tests
             string actual = string.Format(@"{0} {1}", proyecto1.Nombre, proyecto1.Descripcion);
  
             string expected = "Proyecto1 descripcion";
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Probar_Metodo_Cerrar()
+        {
+            Proyecto proyecto1 = new Proyecto("Proyecto1", "descripcion");
+            Solicitud sol1 = new Solicitud(1,"Camarografo",10,"Avanzado","");
+
+            proyecto1.AgregarSolicitud(sol1);
+            proyecto1.Cerrar();
+            
+            string actual = string.Format(@"{0} {1}", proyecto1.Status, sol1.Status);
+ 
+            string expected = "False False";
 
             Assert.Equal(expected, actual);
         }
