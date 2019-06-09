@@ -22,6 +22,11 @@ namespace tests
             Assert.Equal(expected, actual);
         }
 
+        /// <summary>
+        /// Probamos el metodo cerrar, Metodo que cambia el status del proyecto y sus solicitudes asosiadas.
+        /// Para ello se necesita tener una solicitud ingresada.
+        /// </summary>
+
         [Fact]
         public void Probar_Metodo_Cerrar()
         {
@@ -37,6 +42,12 @@ namespace tests
 
             Assert.Equal(expected, actual);
         }
+        
+      /// <summary>
+      /// Probamos el metodo cerrar, Metodo que calcula el costo total del proyecto para ello se calculan el costo de las solicitudes asosiadas.
+      /// Para ello se necesita tener al menos una solicitud ingresada.
+      /// </summary>
+      
         [Fact]
         public void Probar_InformarCostoTotalProyecto()
         {
@@ -52,6 +63,5 @@ namespace tests
 
             Assert.Equal(expected, actual);
         }
-
     }
 }
