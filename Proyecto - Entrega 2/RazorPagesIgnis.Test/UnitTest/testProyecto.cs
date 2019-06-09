@@ -37,6 +37,21 @@ namespace tests
 
             Assert.Equal(expected, actual);
         }
+        [Fact]
+        public void Probar_InformarCostoTotalProyecto()
+        {
+            Proyecto proyecto1 = new Proyecto("Proyecto1", "descripcion");
+            Solicitud sol1 = new Solicitud(1,"Camarografo",10,"Avanzado","");
+
+            proyecto1.AgregarSolicitud(sol1);
+            proyecto1.InformarCostoTotalProyecto();
+            
+            string actual = string.Format(@"{0}",sol1.CostoSolicitud);
+ 
+            string expected = "3040";
+
+            Assert.Equal(expected, actual);
+        }
 
     }
 }
