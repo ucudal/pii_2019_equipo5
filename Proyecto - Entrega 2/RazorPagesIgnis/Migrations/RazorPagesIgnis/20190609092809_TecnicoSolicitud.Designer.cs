@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RazorPagesIgnis.Models;
 
-namespace RazorPagesIgnis.Migrations
+namespace RazorPagesIgnis.Migrations.RazorPagesIgnis
 {
     [DbContext(typeof(RazorPagesIgnisContext))]
-    partial class RazorPagesIgnisContextModelSnapshot : ModelSnapshot
+    [Migration("20190609092809_TecnicoSolicitud")]
+    partial class TecnicoSolicitud
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,6 +151,8 @@ namespace RazorPagesIgnis.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("solicitudID");
+
                     b.HasIndex("tecnicoID");
 
                     b.ToTable("TecnicoSolicitud");
@@ -170,7 +174,12 @@ namespace RazorPagesIgnis.Migrations
 
             modelBuilder.Entity("RazorPagesIgnis.TecnicoSolicitud", b =>
                 {
-                    b.HasOne("RazorPagesIgnis.Tecnico")
+                    b.HasOne("RazorPagesIgnis.Solicitud", "Solicitud")
+                        .WithMany("MisTecnicos")
+                        .HasForeignKey("solicitudID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("RazorPagesIgnis.Tecnico", "Tecnico")
                         .WithMany("MisSolicitudes")
                         .HasForeignKey("tecnicoID")
                         .OnDelete(DeleteBehavior.Cascade);

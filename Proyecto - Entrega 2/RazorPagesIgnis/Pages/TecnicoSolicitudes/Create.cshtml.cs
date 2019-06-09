@@ -21,6 +21,8 @@ namespace RazorPagesIgnis.Pages.TecnicoSolicitudes
 
         public IActionResult OnGet()
         {
+        ViewData["solicitudID"] = new SelectList(_context.Solicitud, "ID", "ID");
+        ViewData["tecnicoID"] = new SelectList(_context.Tecnico, "ID", "ID");
             return Page();
         }
 

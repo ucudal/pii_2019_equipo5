@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RazorPagesIgnis.Migrations
+namespace RazorPagesIgnis.Migrations.RazorPagesIgnis
 {
     public partial class InitialCreate : Migration
     {
@@ -94,26 +94,6 @@ namespace RazorPagesIgnis.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TecnicoSolicitud",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    tecnicoID = table.Column<int>(nullable: false),
-                    solicitudID = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TecnicoSolicitud", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_TecnicoSolicitud_Tecnico_tecnicoID",
-                        column: x => x.tecnicoID,
-                        principalTable: "Tecnico",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Solicitud",
                 columns: table => new
                 {
@@ -139,6 +119,32 @@ namespace RazorPagesIgnis.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "TecnicoSolicitud",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    tecnicoID = table.Column<int>(nullable: false),
+                    solicitudID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TecnicoSolicitud", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_TecnicoSolicitud_Solicitud_solicitudID",
+                        column: x => x.solicitudID,
+                        principalTable: "Solicitud",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TecnicoSolicitud_Tecnico_tecnicoID",
+                        column: x => x.tecnicoID,
+                        principalTable: "Tecnico",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Proyecto_ClienteID",
                 table: "Proyecto",
@@ -148,6 +154,11 @@ namespace RazorPagesIgnis.Migrations
                 name: "IX_Solicitud_ProyectoID",
                 table: "Solicitud",
                 column: "ProyectoID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TecnicoSolicitud_solicitudID",
+                table: "TecnicoSolicitud",
+                column: "solicitudID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TecnicoSolicitud_tecnicoID",
@@ -164,16 +175,16 @@ namespace RazorPagesIgnis.Migrations
                 name: "Rol");
 
             migrationBuilder.DropTable(
-                name: "Solicitud");
-
-            migrationBuilder.DropTable(
                 name: "TecnicoSolicitud");
 
             migrationBuilder.DropTable(
-                name: "Proyecto");
+                name: "Solicitud");
 
             migrationBuilder.DropTable(
                 name: "Tecnico");
+
+            migrationBuilder.DropTable(
+                name: "Proyecto");
 
             migrationBuilder.DropTable(
                 name: "Cliente");

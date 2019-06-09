@@ -21,5 +21,9 @@ namespace RazorPagesIgnis
 
         public int solicitudID { get; set; }
 
+        public Tecnico Tecnico { get; set; }
+
+        public Solicitud Solicitud { get; set; }
+
     }
 }

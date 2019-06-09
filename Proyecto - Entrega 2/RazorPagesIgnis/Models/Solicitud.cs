@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RazorPagesIgnis 
@@ -12,7 +13,6 @@ namespace RazorPagesIgnis
             this.horasContratadas = HorasContratadas;
             this.nivelExperiencia = NivelExperiencia;
             this.observaciones = Observaciones;
-            // this.tecnicoAsignado = null;
             this.status = true;
 
             ICosto Costo = new Costo();
@@ -25,6 +25,8 @@ namespace RazorPagesIgnis
         }
 
         public int ID { get; set; } 
+
+        public ICollection<TecnicoSolicitud> MisTecnicos { get; set; }
 
         // Modo de Contratación
         // 1: horas y 2: Jornada.

@@ -23,7 +23,9 @@ namespace RazorPagesIgnis.Pages.TecnicoSolicitudes
 
         public async Task OnGetAsync()
         {
-            TecnicoSolicitud = await _context.TecnicoSolicitud.ToListAsync();
+            TecnicoSolicitud = await _context.TecnicoSolicitud
+                .Include(t => t.Solicitud)
+                .Include(t => t.Tecnico).ToListAsync();
         }
     }
 }

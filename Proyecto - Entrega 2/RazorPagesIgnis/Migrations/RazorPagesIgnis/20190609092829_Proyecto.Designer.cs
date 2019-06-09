@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RazorPagesIgnis.Models;
 
-namespace RazorPagesIgnis.Migrations
+namespace RazorPagesIgnis.Migrations.RazorPagesIgnis
 {
     [DbContext(typeof(RazorPagesIgnisContext))]
-    [Migration("20190609072706_Administrador")]
-    partial class Administrador
+    [Migration("20190609092829_Proyecto")]
+    partial class Proyecto
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -151,6 +151,8 @@ namespace RazorPagesIgnis.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("solicitudID");
+
                     b.HasIndex("tecnicoID");
 
                     b.ToTable("TecnicoSolicitud");
@@ -172,7 +174,12 @@ namespace RazorPagesIgnis.Migrations
 
             modelBuilder.Entity("RazorPagesIgnis.TecnicoSolicitud", b =>
                 {
-                    b.HasOne("RazorPagesIgnis.Tecnico")
+                    b.HasOne("RazorPagesIgnis.Solicitud", "Solicitud")
+                        .WithMany("MisTecnicos")
+                        .HasForeignKey("solicitudID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("RazorPagesIgnis.Tecnico", "Tecnico")
                         .WithMany("MisSolicitudes")
                         .HasForeignKey("tecnicoID")
                         .OnDelete(DeleteBehavior.Cascade);

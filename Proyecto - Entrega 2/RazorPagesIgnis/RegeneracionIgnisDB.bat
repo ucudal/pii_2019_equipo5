@@ -14,6 +14,3 @@ dotnet ef migrations add Solicitud --context RazorPagesIgnisContext
 dotnet ef migrations add Proyecto --context RazorPagesIgnisContext
 dotnet ef migrations add Rol --context RazorPagesIgnisContext
 dotnet ef database update --context RazorPagesIgnisContext
-
-dotnet ef migrations add InitialCreate --context RazorPagesIgnisIdentityDbContext
-dotnet ef database update --context RazorPagesIgnisIdentityDbContext
