@@ -15,7 +15,7 @@ namespace tests
         {
             Proyecto proyecto1 = new Proyecto("Proyecto1", "descripcion");
 
-            string actual = string.Format(@"{0} {1} {2} {3} {4}", proyecto1.Nombre,proyecto1.Descripcion);
+            string actual = string.Format(@"{0} {1}", proyecto1.Nombre, proyecto1.Descripcion);
  
             string expected = "Proyecto1 descripcion";
 
