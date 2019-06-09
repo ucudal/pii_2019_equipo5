@@ -7,9 +7,7 @@ namespace tests
 {
     public class testsRol
     {
-        /// <summary>
-        /// Verificamos la construcción de un objeto Proyecto.
-        /// </summary>
+
         [Fact]
         public void construir_un_rol()
         {
