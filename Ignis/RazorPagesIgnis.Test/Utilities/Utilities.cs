@@ -16,14 +16,14 @@ namespace RazorPagesIgnis.Tests
         {
             // Create a new service provider to create a new in-memory database.
             var serviceProvider = new ServiceCollection()
-                .AddEntityFrameworkSqlite()
+                .AddEntityFrameworkInMemoryDatabase()
                 .BuildServiceProvider();
 
             // Create a new options instance using an in-memory database and 
             // IServiceProvider that the context should resolve all of its 
             // services from.
             var builder = new DbContextOptionsBuilder<AppDbContext>()
-                .UseSqlite("InMemoryDb")
+                .UseInMemoryDatabase("InMemoryDb")
                 .UseInternalServiceProvider(serviceProvider);
 
             return builder.Options;

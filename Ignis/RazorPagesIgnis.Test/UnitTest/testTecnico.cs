@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Xunit;
-using Ignis;
+using RazorPagesIgnis;
 
 namespace tests
 {
