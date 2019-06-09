@@ -19,8 +19,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="TecnicoSolicitud.solicitudID" class="control-label"></label>
-                <input asp-for="TecnicoSolicitud.solicitudID" class="form-control" />
-                <span asp-validation-for="TecnicoSolicitud.solicitudID" class="text-danger"></span>
+                <select asp-for="TecnicoSolicitud.solicitudID" class ="form-control" asp-items="ViewBag.solicitudID"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

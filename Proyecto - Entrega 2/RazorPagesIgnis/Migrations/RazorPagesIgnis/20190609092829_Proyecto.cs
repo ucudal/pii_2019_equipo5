@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RazorPagesIgnis.Migrations.RazorPagesIgnisIdentityDb
+namespace RazorPagesIgnis.Migrations.RazorPagesIgnis
 {
-    public partial class InitialCreate : Migration
+    public partial class Proyecto : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

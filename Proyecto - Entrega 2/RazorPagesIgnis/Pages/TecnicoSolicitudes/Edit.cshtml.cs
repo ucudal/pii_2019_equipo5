@@ -30,12 +30,16 @@ namespace RazorPagesIgnis.Pages.TecnicoSolicitudes
                 return NotFound();
             }
 
-            TecnicoSolicitud = await _context.TecnicoSolicitud.FirstOrDefaultAsync(m => m.ID == id);
+            TecnicoSolicitud = await _context.TecnicoSolicitud
+                .Include(t => t.Solicitud)
+                .Include(t => t.Tecnico).FirstOrDefaultAsync(m => m.ID == id);
 
             if (TecnicoSolicitud == null)
             {
                 return NotFound();
             }
+           ViewData["solicitudID"] = new SelectList(_context.Solicitud, "ID", "ID");
+           ViewData["tecnicoID"] = new SelectList(_context.Tecnico, "ID", "ID");
             return Page();
         }
 

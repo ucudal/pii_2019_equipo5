@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RazorPagesIgnis.Areas.Identity.Data;
 
-namespace RazorPagesIgnis.Migrations.RazorPagesIgnisIdentityDb
+namespace RazorPagesIgnis.Migrations
 {
     [DbContext(typeof(RazorPagesIgnisIdentityDbContext))]
-    [Migration("20190609074854_InitialCreate")]
+    [Migration("20190609092502_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
