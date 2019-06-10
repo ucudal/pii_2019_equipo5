@@ -30,7 +30,7 @@ namespace RazorPagesIgnis.Pages.administradores
                 return NotFound();
             }
 
-            Administrador = await _context.Administrador.FirstOrDefaultAsync(m => m.ID == id);
+            Administrador = await _context.Administradores.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Administrador == null)
             {
@@ -69,7 +69,7 @@ namespace RazorPagesIgnis.Pages.administradores
 
         private bool AdministradorExists(int id)
         {
-            return _context.Administrador.Any(e => e.ID == id);
+            return _context.Administradores.Any(e => e.ID == id);
         }
     }
 }

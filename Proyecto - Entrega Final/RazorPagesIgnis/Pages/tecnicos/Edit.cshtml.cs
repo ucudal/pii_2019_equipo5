@@ -30,7 +30,7 @@ namespace RazorPagesIgnis.Pages.tecnicos
                 return NotFound();
             }
 
-            Tecnico = await _context.Tecnico.FirstOrDefaultAsync(m => m.ID == id);
+            Tecnico = await _context.Tecnicos.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Tecnico == null)
             {
@@ -69,7 +69,7 @@ namespace RazorPagesIgnis.Pages.tecnicos
 
         private bool TecnicoExists(int id)
         {
-            return _context.Tecnico.Any(e => e.ID == id);
+            return _context.Tecnicos.Any(e => e.ID == id);
         }
     }
 }

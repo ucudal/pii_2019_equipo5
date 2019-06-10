@@ -19,7 +19,7 @@ namespace RazorPagesIgnis
         public string Nombre  
         { 
             get => this.nombre; 
-            protected set {}
+            set => this.nombre = value;
         }
 
         private string descripcion;

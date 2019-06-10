@@ -7,10 +7,10 @@ namespace RazorPagesIgnis
         /// <summary>
         /// Rol del técnica.
         /// </summary>
-        public Rol(string Nombre, string Descripción) 
+        public Rol(string Nombre, string Descripcion) 
         {
             this.nombre = Nombre;
-            this.descripcion = Descripción;
+            this.descripcion = Descripcion;
         }
 
         // Nombre del rol.
@@ -18,7 +18,7 @@ namespace RazorPagesIgnis
         public string Nombre  
         { 
             get => this.nombre; 
-            protected set {}
+            set => this.nombre = value;
         }
 
         // Descripción del rol (opcional).
@@ -26,7 +26,7 @@ namespace RazorPagesIgnis
         public string Descripcion  
         { 
             get => this.descripcion; 
-            protected set {}
+            set => this.descripcion = value;
         }
         
         // Modificar nombre del rol.

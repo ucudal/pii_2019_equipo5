@@ -28,7 +28,7 @@ namespace RazorPagesIgnis.Pages.proyectos
                 return NotFound();
             }
 
-            Proyecto = await _context.Proyecto.FirstOrDefaultAsync(m => m.ID == id);
+            Proyecto = await _context.Proyectos.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Proyecto == null)
             {

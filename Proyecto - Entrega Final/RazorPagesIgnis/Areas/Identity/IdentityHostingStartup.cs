@@ -23,10 +23,6 @@ namespace RazorPagesIgnis.Areas.Identity
                 services.AddDefaultIdentity<RazorPagesIgnisUser>()
                     .AddEntityFrameworkStores<RazorPagesIgnisIdentityDbContext>();
 
-                // services.AddDefaultIdentity<RazorPagesIgnisUser>()
-                //     .AddRoles<IdentityRole>()
-                //     .AddEntityFrameworkStores<RazorPagesIgnisIdentityDbContext>();
-
             });
         }
     }

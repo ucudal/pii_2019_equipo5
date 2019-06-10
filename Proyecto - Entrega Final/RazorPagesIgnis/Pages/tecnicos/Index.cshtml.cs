@@ -23,7 +23,7 @@ namespace RazorPagesIgnis.Pages.tecnicos
 
         public async Task OnGetAsync()
         {
-            Tecnico = await _context.Tecnico.ToListAsync();
+            Tecnico = await _context.Tecnicos.ToListAsync();
         }
     }
 }

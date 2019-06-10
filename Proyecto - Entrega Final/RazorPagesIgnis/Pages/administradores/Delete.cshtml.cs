@@ -29,7 +29,7 @@ namespace RazorPagesIgnis.Pages.administradores
                 return NotFound();
             }
 
-            Administrador = await _context.Administrador.FirstOrDefaultAsync(m => m.ID == id);
+            Administrador = await _context.Administradores.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Administrador == null)
             {
@@ -45,11 +45,11 @@ namespace RazorPagesIgnis.Pages.administradores
                 return NotFound();
             }
 
-            Administrador = await _context.Administrador.FindAsync(id);
+            Administrador = await _context.Administradores.FindAsync(id);
 
             if (Administrador != null)
             {
-                _context.Administrador.Remove(Administrador);
+                _context.Administradores.Remove(Administrador);
                 await _context.SaveChangesAsync();
             }
 

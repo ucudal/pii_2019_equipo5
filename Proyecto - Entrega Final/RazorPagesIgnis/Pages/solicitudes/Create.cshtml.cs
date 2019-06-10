@@ -34,7 +34,7 @@ namespace RazorPagesIgnis.Pages.solicitudes
                 return Page();
             }
 
-            _context.Solicitud.Add(Solicitud);
+            _context.Solicitudes.Add(Solicitud);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

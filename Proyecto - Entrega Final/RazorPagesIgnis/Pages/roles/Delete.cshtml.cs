@@ -29,7 +29,7 @@ namespace RazorPagesIgnis.Pages.roles
                 return NotFound();
             }
 
-            Rol = await _context.Rol.FirstOrDefaultAsync(m => m.ID == id);
+            Rol = await _context.Roles.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Rol == null)
             {
@@ -45,11 +45,11 @@ namespace RazorPagesIgnis.Pages.roles
                 return NotFound();
             }
 
-            Rol = await _context.Rol.FindAsync(id);
+            Rol = await _context.Roles.FindAsync(id);
 
             if (Rol != null)
             {
-                _context.Rol.Remove(Rol);
+                _context.Roles.Remove(Rol);
                 await _context.SaveChangesAsync();
             }
 

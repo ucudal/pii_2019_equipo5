@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using RazorPagesIgnis.Models;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using System;
+using RazorPagesIgnis.Models;
+using RazorPagesIgnis.Areas.Identity.Data;
 
 namespace RazorPagesIgnis
 {
@@ -26,8 +23,9 @@ namespace RazorPagesIgnis
             {
                 var context = services.GetRequiredService<RazorPagesIgnisContext>();
 
-                // Seeding la base de Ignis.
-                DbInitializer.Initialize(context);
+                // Seeding la base de Ignis y de Identity.
+                SeeData.Initialize(services);
+                SeedIdentityData.Initialize(services);
             }
             catch (Exception ex)
             {
@@ -38,13 +36,6 @@ namespace RazorPagesIgnis
 
         host.Run();
     }
-
-
-
-        // {
-        //     CreateWebHostBuilder(args).Build().Run();
-        // }
-
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();

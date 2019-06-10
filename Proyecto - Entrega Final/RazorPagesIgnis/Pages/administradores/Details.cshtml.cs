@@ -28,7 +28,7 @@ namespace RazorPagesIgnis.Pages.administradores
                 return NotFound();
             }
 
-            Administrador = await _context.Administrador.FirstOrDefaultAsync(m => m.ID == id);
+            Administrador = await _context.Administradores.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Administrador == null)
             {

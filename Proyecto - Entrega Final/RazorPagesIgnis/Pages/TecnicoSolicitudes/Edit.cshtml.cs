@@ -30,16 +30,16 @@ namespace RazorPagesIgnis.Pages.tecnicoSolicitudes
                 return NotFound();
             }
 
-            TecnicoSolicitud = await _context.TecnicoSolicitud
+            TecnicoSolicitud = await _context.TecnicoSolicitudes
                 .Include(t => t.Solicitud)
-                .Include(t => t.Tecnico).FirstOrDefaultAsync(m => m.ID == id);
+                .Include(t => t.Tecnico).FirstOrDefaultAsync(m => m.tecnicoID == id);
 
             if (TecnicoSolicitud == null)
             {
                 return NotFound();
             }
-           ViewData["solicitudID"] = new SelectList(_context.Solicitud, "ID", "ID");
-           ViewData["tecnicoID"] = new SelectList(_context.Tecnico, "ID", "ID");
+           ViewData["solicitudID"] = new SelectList(_context.Solicitudes, "ID", "ID");
+           ViewData["tecnicoID"] = new SelectList(_context.Tecnicos, "ID", "ID");
             return Page();
         }
 
@@ -58,7 +58,7 @@ namespace RazorPagesIgnis.Pages.tecnicoSolicitudes
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TecnicoSolicitudExists(TecnicoSolicitud.ID))
+                if (!TecnicoSolicitudExists(TecnicoSolicitud.tecnicoID))
                 {
                     return NotFound();
                 }
@@ -73,7 +73,7 @@ namespace RazorPagesIgnis.Pages.tecnicoSolicitudes
 
         private bool TecnicoSolicitudExists(int id)
         {
-            return _context.TecnicoSolicitud.Any(e => e.ID == id);
+            return _context.TecnicoSolicitudes.Any(e => e.tecnicoID == id);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace RazorPagesIgnis.Pages.tecnicos
                 return NotFound();
             }
 
-            Tecnico = await _context.Tecnico.FirstOrDefaultAsync(m => m.ID == id);
+            Tecnico = await _context.Tecnicos.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Tecnico == null)
             {

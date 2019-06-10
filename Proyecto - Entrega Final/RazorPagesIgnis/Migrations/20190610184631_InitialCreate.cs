@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RazorPagesIgnis.Migrations.RazorPagesIgnisIdentityDb
+namespace RazorPagesIgnis.Migrations
 {
     public partial class InitialCreate : Migration
     {

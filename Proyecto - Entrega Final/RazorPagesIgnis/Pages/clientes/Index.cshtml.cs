@@ -23,7 +23,7 @@ namespace RazorPagesIgnis.Pages.clientes
 
         public async Task OnGetAsync()
         {
-            Cliente = await _context.Cliente.ToListAsync();
+            Cliente = await _context.Clientes.ToListAsync();
         }
     }
 }

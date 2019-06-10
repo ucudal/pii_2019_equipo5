@@ -28,7 +28,7 @@ namespace RazorPagesIgnis.Pages.clientes
                 return NotFound();
             }
 
-            Cliente = await _context.Cliente.FirstOrDefaultAsync(m => m.ID == id);
+            Cliente = await _context.Clientes.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Cliente == null)
             {

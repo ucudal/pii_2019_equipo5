@@ -23,7 +23,7 @@ namespace RazorPagesIgnis.Pages.solicitudes
 
         public async Task OnGetAsync()
         {
-            Solicitud = await _context.Solicitud.ToListAsync();
+            Solicitud = await _context.Solicitudes.ToListAsync();
         }
     }
 }

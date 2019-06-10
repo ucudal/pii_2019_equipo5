@@ -34,7 +34,7 @@ namespace RazorPagesIgnis.Pages.administradores
                 return Page();
             }
 
-            _context.Administrador.Add(Administrador);
+            _context.Administradores.Add(Administrador);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
