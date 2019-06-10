@@ -10,12 +10,27 @@ namespace RazorPagesIgnis.Models
             : base(options)
         {
         }
-        public DbSet<RazorPagesIgnis.Administrador> Administrador { get; set; }
-        public DbSet<RazorPagesIgnis.Cliente> Cliente { get; set; }
-        public DbSet<RazorPagesIgnis.Tecnico> Tecnico { get; set; }
-        public DbSet<RazorPagesIgnis.Solicitud> Solicitud { get; set; }
-        public DbSet<RazorPagesIgnis.Proyecto> Proyecto { get; set; }
-        public DbSet<RazorPagesIgnis.Rol> Rol { get; set; }
-        public DbSet<RazorPagesIgnis.TecnicoSolicitud> TecnicoSolicitud { get; set; }
+
+        public DbSet<RazorPagesIgnis.Administrador> Administradores { get; set; }
+
+        public DbSet<RazorPagesIgnis.Cliente> Clientes { get; set; }
+
+        public DbSet<RazorPagesIgnis.Tecnico> Tecnicos { get; set; }
+
+        public DbSet<RazorPagesIgnis.Solicitud> Solicitudes { get; set; }
+
+        public DbSet<RazorPagesIgnis.Proyecto> Proyectos { get; set; }
+
+        public DbSet<RazorPagesIgnis.Rol> Roles { get; set; }
+
+        public DbSet<RazorPagesIgnis.TecnicoSolicitud> TecnicoSolicitudes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<TecnicoSolicitud>().ToTable("TecnicoSolicitud")
+                 .HasKey(a => new { a.tecnicoID, a.solicitudID });
+        }
     }
 }

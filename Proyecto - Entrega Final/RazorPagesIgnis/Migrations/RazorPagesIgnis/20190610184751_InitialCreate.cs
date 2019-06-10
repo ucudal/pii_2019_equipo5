@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RazorPagesIgnis.Migrations
+namespace RazorPagesIgnis.Migrations.RazorPagesIgnis
 {
     public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Administrador",
+                name: "Administradores",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -19,11 +19,11 @@ namespace RazorPagesIgnis.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Administrador", x => x.ID);
+                    table.PrimaryKey("PK_Administradores", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cliente",
+                name: "Clientes",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -35,11 +35,11 @@ namespace RazorPagesIgnis.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cliente", x => x.ID);
+                    table.PrimaryKey("PK_Clientes", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Rol",
+                name: "Roles",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -49,11 +49,11 @@ namespace RazorPagesIgnis.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rol", x => x.ID);
+                    table.PrimaryKey("PK_Roles", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tecnico",
+                name: "Tecnicos",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -68,11 +68,11 @@ namespace RazorPagesIgnis.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tecnico", x => x.ID);
+                    table.PrimaryKey("PK_Tecnicos", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Proyecto",
+                name: "Proyectos",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -84,17 +84,17 @@ namespace RazorPagesIgnis.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Proyecto", x => x.ID);
+                    table.PrimaryKey("PK_Proyectos", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Proyecto_Cliente_ClienteID",
+                        name: "FK_Proyectos_Clientes_ClienteID",
                         column: x => x.ClienteID,
-                        principalTable: "Cliente",
+                        principalTable: "Clientes",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Solicitud",
+                name: "Solicitudes",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -111,17 +111,17 @@ namespace RazorPagesIgnis.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Solicitud", x => x.ID);
+                    table.PrimaryKey("PK_Solicitudes", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Solicitud_Proyecto_ProyectoID",
+                        name: "FK_Solicitudes_Proyectos_ProyectoID",
                         column: x => x.ProyectoID,
-                        principalTable: "Proyecto",
+                        principalTable: "Proyectos",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Solicitud_Tecnico_TecnicoAsignadoID",
+                        name: "FK_Solicitudes_Tecnicos_TecnicoAsignadoID",
                         column: x => x.TecnicoAsignadoID,
-                        principalTable: "Tecnico",
+                        principalTable: "Tecnicos",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -130,76 +130,65 @@ namespace RazorPagesIgnis.Migrations
                 name: "TecnicoSolicitud",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
                     tecnicoID = table.Column<int>(nullable: false),
                     solicitudID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TecnicoSolicitud", x => x.ID);
+                    table.PrimaryKey("PK_TecnicoSolicitud", x => new { x.tecnicoID, x.solicitudID });
+                    table.UniqueConstraint("AK_TecnicoSolicitud_solicitudID_tecnicoID", x => new { x.solicitudID, x.tecnicoID });
                     table.ForeignKey(
-                        name: "FK_TecnicoSolicitud_Solicitud_solicitudID",
+                        name: "FK_TecnicoSolicitud_Solicitudes_solicitudID",
                         column: x => x.solicitudID,
-                        principalTable: "Solicitud",
+                        principalTable: "Solicitudes",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_TecnicoSolicitud_Tecnico_tecnicoID",
+                        name: "FK_TecnicoSolicitud_Tecnicos_tecnicoID",
                         column: x => x.tecnicoID,
-                        principalTable: "Tecnico",
+                        principalTable: "Tecnicos",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Proyecto_ClienteID",
-                table: "Proyecto",
+                name: "IX_Proyectos_ClienteID",
+                table: "Proyectos",
                 column: "ClienteID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Solicitud_ProyectoID",
-                table: "Solicitud",
+                name: "IX_Solicitudes_ProyectoID",
+                table: "Solicitudes",
                 column: "ProyectoID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Solicitud_TecnicoAsignadoID",
-                table: "Solicitud",
+                name: "IX_Solicitudes_TecnicoAsignadoID",
+                table: "Solicitudes",
                 column: "TecnicoAsignadoID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TecnicoSolicitud_solicitudID",
-                table: "TecnicoSolicitud",
-                column: "solicitudID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TecnicoSolicitud_tecnicoID",
-                table: "TecnicoSolicitud",
-                column: "tecnicoID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Administrador");
+                name: "Administradores");
 
             migrationBuilder.DropTable(
-                name: "Rol");
+                name: "Roles");
 
             migrationBuilder.DropTable(
                 name: "TecnicoSolicitud");
 
             migrationBuilder.DropTable(
-                name: "Solicitud");
+                name: "Solicitudes");
 
             migrationBuilder.DropTable(
-                name: "Proyecto");
+                name: "Proyectos");
 
             migrationBuilder.DropTable(
-                name: "Tecnico");
+                name: "Tecnicos");
 
             migrationBuilder.DropTable(
-                name: "Cliente");
+                name: "Clientes");
         }
     }
 }

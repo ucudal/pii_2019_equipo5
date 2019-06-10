@@ -30,7 +30,7 @@ namespace RazorPagesIgnis.Pages.proyectos
                 return NotFound();
             }
 
-            Proyecto = await _context.Proyecto.FirstOrDefaultAsync(m => m.ID == id);
+            Proyecto = await _context.Proyectos.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Proyecto == null)
             {
@@ -69,7 +69,7 @@ namespace RazorPagesIgnis.Pages.proyectos
 
         private bool ProyectoExists(int id)
         {
-            return _context.Proyecto.Any(e => e.ID == id);
+            return _context.Proyectos.Any(e => e.ID == id);
         }
     }
 }

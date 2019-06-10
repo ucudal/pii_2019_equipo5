@@ -23,7 +23,7 @@ namespace RazorPagesIgnis.Pages.administradores
 
         public async Task OnGetAsync()
         {
-            Administrador = await _context.Administrador.ToListAsync();
+            Administrador = await _context.Administradores.ToListAsync();
         }
     }
 }

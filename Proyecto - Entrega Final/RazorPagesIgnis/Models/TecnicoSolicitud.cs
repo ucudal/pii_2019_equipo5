@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RazorPagesIgnis
@@ -15,14 +16,16 @@ namespace RazorPagesIgnis
         {
         }
 
-        public int ID { get; set; }
-
+        [Key]
         public int tecnicoID { get; set; }
 
+        [Key]
         public int solicitudID { get; set; }
 
+        [Required]
         public Tecnico Tecnico { get; set; }
 
+        [Required]
         public Solicitud Solicitud { get; set; }
 
     }

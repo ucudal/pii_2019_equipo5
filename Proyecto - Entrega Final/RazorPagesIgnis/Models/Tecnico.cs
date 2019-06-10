@@ -33,7 +33,7 @@ namespace RazorPagesIgnis
 
         public new int ID { get; set; } 
 
-        public ICollection<TecnicoSolicitud> MisSolicitudes { get; set; }
+        public ICollection<TecnicoSolicitud> TecnicoSolicitudes { get; set; }
 
         /// <summary>
         /// Edad. 

@@ -29,7 +29,7 @@ namespace RazorPagesIgnis.Pages.proyectos
                 return NotFound();
             }
 
-            Proyecto = await _context.Proyecto.FirstOrDefaultAsync(m => m.ID == id);
+            Proyecto = await _context.Proyectos.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Proyecto == null)
             {
@@ -45,11 +45,11 @@ namespace RazorPagesIgnis.Pages.proyectos
                 return NotFound();
             }
 
-            Proyecto = await _context.Proyecto.FindAsync(id);
+            Proyecto = await _context.Proyectos.FindAsync(id);
 
             if (Proyecto != null)
             {
-                _context.Proyecto.Remove(Proyecto);
+                _context.Proyectos.Remove(Proyecto);
                 await _context.SaveChangesAsync();
             }
 

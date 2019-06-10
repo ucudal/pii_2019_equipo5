@@ -29,7 +29,7 @@ namespace RazorPagesIgnis.Pages.solicitudes
                 return NotFound();
             }
 
-            Solicitud = await _context.Solicitud.FirstOrDefaultAsync(m => m.ID == id);
+            Solicitud = await _context.Solicitudes.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Solicitud == null)
             {
@@ -45,11 +45,11 @@ namespace RazorPagesIgnis.Pages.solicitudes
                 return NotFound();
             }
 
-            Solicitud = await _context.Solicitud.FindAsync(id);
+            Solicitud = await _context.Solicitudes.FindAsync(id);
 
             if (Solicitud != null)
             {
-                _context.Solicitud.Remove(Solicitud);
+                _context.Solicitudes.Remove(Solicitud);
                 await _context.SaveChangesAsync();
             }
 

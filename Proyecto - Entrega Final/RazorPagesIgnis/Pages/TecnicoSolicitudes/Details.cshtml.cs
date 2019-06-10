@@ -28,9 +28,9 @@ namespace RazorPagesIgnis.Pages.tecnicoSolicitudes
                 return NotFound();
             }
 
-            TecnicoSolicitud = await _context.TecnicoSolicitud
+            TecnicoSolicitud = await _context.TecnicoSolicitudes
                 .Include(t => t.Solicitud)
-                .Include(t => t.Tecnico).FirstOrDefaultAsync(m => m.ID == id);
+                .Include(t => t.Tecnico).FirstOrDefaultAsync(m => m.tecnicoID == id);
 
             if (TecnicoSolicitud == null)
             {

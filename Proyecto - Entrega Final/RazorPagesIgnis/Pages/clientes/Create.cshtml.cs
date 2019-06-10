@@ -34,7 +34,7 @@ namespace RazorPagesIgnis.Pages.clientes
                 return Page();
             }
 
-            _context.Cliente.Add(Cliente);
+            _context.Clientes.Add(Cliente);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

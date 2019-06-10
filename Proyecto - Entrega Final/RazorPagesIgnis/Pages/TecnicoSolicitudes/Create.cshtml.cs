@@ -21,8 +21,8 @@ namespace RazorPagesIgnis.Pages.tecnicoSolicitudes
 
         public IActionResult OnGet()
         {
-        ViewData["solicitudID"] = new SelectList(_context.Solicitud, "ID", "ID");
-        ViewData["tecnicoID"] = new SelectList(_context.Tecnico, "ID", "ID");
+        ViewData["solicitudID"] = new SelectList(_context.Solicitudes, "ID", "ID");
+        ViewData["tecnicoID"] = new SelectList(_context.Tecnicos, "ID", "ID");
             return Page();
         }
 
@@ -36,7 +36,7 @@ namespace RazorPagesIgnis.Pages.tecnicoSolicitudes
                 return Page();
             }
 
-            _context.TecnicoSolicitud.Add(TecnicoSolicitud);
+            _context.TecnicoSolicitudes.Add(TecnicoSolicitud);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

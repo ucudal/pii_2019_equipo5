@@ -29,9 +29,9 @@ namespace RazorPagesIgnis.Pages.tecnicoSolicitudes
                 return NotFound();
             }
 
-            TecnicoSolicitud = await _context.TecnicoSolicitud
+            TecnicoSolicitud = await _context.TecnicoSolicitudes
                 .Include(t => t.Solicitud)
-                .Include(t => t.Tecnico).FirstOrDefaultAsync(m => m.ID == id);
+                .Include(t => t.Tecnico).FirstOrDefaultAsync(m => m.tecnicoID == id);
 
             if (TecnicoSolicitud == null)
             {
@@ -47,11 +47,11 @@ namespace RazorPagesIgnis.Pages.tecnicoSolicitudes
                 return NotFound();
             }
 
-            TecnicoSolicitud = await _context.TecnicoSolicitud.FindAsync(id);
+            TecnicoSolicitud = await _context.TecnicoSolicitudes.FindAsync(id);
 
             if (TecnicoSolicitud != null)
             {
-                _context.TecnicoSolicitud.Remove(TecnicoSolicitud);
+                _context.TecnicoSolicitudes.Remove(TecnicoSolicitud);
                 await _context.SaveChangesAsync();
             }
 

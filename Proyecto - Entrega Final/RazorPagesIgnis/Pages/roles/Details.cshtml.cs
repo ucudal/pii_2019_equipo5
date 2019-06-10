@@ -28,7 +28,7 @@ namespace RazorPagesIgnis.Pages.roles
                 return NotFound();
             }
 
-            Rol = await _context.Rol.FirstOrDefaultAsync(m => m.ID == id);
+            Rol = await _context.Roles.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Rol == null)
             {

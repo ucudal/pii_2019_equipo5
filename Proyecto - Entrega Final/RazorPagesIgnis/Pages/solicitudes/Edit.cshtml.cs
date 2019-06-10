@@ -30,7 +30,7 @@ namespace RazorPagesIgnis.Pages.solicitudes
                 return NotFound();
             }
 
-            Solicitud = await _context.Solicitud.FirstOrDefaultAsync(m => m.ID == id);
+            Solicitud = await _context.Solicitudes.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Solicitud == null)
             {
@@ -69,7 +69,7 @@ namespace RazorPagesIgnis.Pages.solicitudes
 
         private bool SolicitudExists(int id)
         {
-            return _context.Solicitud.Any(e => e.ID == id);
+            return _context.Solicitudes.Any(e => e.ID == id);
         }
     }
 }

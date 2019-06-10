@@ -48,7 +48,7 @@ namespace RazorPagesIgnis
         public int HorasContratadas 
         {
             get => this.horasContratadas;
-            protected set {}
+            set => this.horasContratadas = value;
         }
 
         // Es el nivel de esperiencia que se necesita (Básico, Avanzado).
