@@ -1,0 +1,26 @@
+using System;
+using Xunit;
+using RazorPagesIgnis;
+
+namespace tests
+{
+    public class testMail
+    {
+        /// <summary>
+        /// Verificamos la construcción de un mail.
+        /// </summary>
+        [Fact]
+        public void construir_un_mail(Tecnico tecnico, Cliente cliente)
+        {
+
+            Mail mail1 = new Mail("Fausto",tecnico.Correo, Cliente.Correo, "Hola es un contenido");
+
+            string actual = string.Format(@"{0} {1} {2} {3}", mail1.Asunto, mail1.remintente, mail1.Destinatario, mail1.Contenido);
+
+            string expected = "Fausto"+tecnico.Correo+cliente.Correo+"Hola es un contenido";
+
+            Assert.Equal(expected, actual);
+        } 
+
+    }
+}
