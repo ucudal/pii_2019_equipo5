@@ -13,6 +13,8 @@ using RazorPagesIgnis.Models;
 using Microsoft.EntityFrameworkCore;
 using RazorPagesIgnis.Areas.Identity;
 using RazorPagesIgnis.Areas.Identity.Data;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RazorPagesIgnis
 {
@@ -38,7 +40,21 @@ namespace RazorPagesIgnis
             services.AddDbContext<RazorPagesIgnisContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("IgnisContext")));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(config =>
+            {
+                // Requiere que haya usuarios logueados
+                var policy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            })
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions
+                    .AllowAnonymousToPage("/Privacy")
+                    .AllowAnonymousToPage("/Index");
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
