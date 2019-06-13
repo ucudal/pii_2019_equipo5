@@ -20,11 +20,11 @@ namespace RazorPagesIgnis.Pages
 
         // FIX: Unable to resolve service for type 'RazorPagesIgnis.Data.AppDbContext' while attempting to activate 'RazorPagesIgnis.Pages.IndexModel'.
         // private readonly AppDbContext _db;
-        private readonly RazorPagesIgnisContext _db;
+        private readonly IgnisContext _db;
 
         // FIX: Unable to resolve service for type 'RazorPagesIgnis.Data.AppDbContext' while attempting to activate 'RazorPagesIgnis.Pages.IndexModel'.
         // public IndexModel(AppDbContext db)
-        public IndexModel(RazorPagesIgnisContext db)
+        public IndexModel(IgnisContext db)
         {
             _db = db;
         }

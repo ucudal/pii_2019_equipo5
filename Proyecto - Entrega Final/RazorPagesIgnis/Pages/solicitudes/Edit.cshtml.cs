@@ -13,9 +13,9 @@ namespace RazorPagesIgnis.Pages.solicitudes
 {
     public class EditModel : PageModel
     {
-        private readonly RazorPagesIgnis.Models.RazorPagesIgnisContext _context;
+        private readonly RazorPagesIgnis.Models.IgnisContext _context;
 
-        public EditModel(RazorPagesIgnis.Models.RazorPagesIgnisContext context)
+        public EditModel(RazorPagesIgnis.Models.IgnisContext context)
         {
             _context = context;
         }
