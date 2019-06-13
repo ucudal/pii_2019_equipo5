@@ -1,20 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using RazorPagesIgnis.Models;
 using Microsoft.EntityFrameworkCore;
-using RazorPagesIgnis.Areas.Identity;
+
+using RazorPagesIgnis.Models;
 using RazorPagesIgnis.Areas.Identity.Data;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.AspNetCore.Authorization;
 
 namespace RazorPagesIgnis
 {
@@ -30,6 +25,7 @@ namespace RazorPagesIgnis
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Cookie policy.
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -37,24 +33,66 @@ namespace RazorPagesIgnis
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<RazorPagesIgnisContext>(options =>
+            // Databases contexts.
+            services.AddDbContext<IgnisContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("IgnisContext")));
 
+            services.AddDbContext<IgnisIdentityContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("IgnisContext")));
+
+            // // services: defined role-based policies: pages access by role.
+            // services.AddAuthorization(options => 
+            // {
+            //     options.AddPolicy("AdministradorPolicy", policy => 
+            //     {
+            //         policy.RequireRole("Administrador");
+            //     } );
+
+            //     options.AddPolicy("ClientePolicy", policy => 
+            //     {
+            //         policy.RequireRole("Cliente");
+            //     } );    
+
+            //     options.AddPolicy("TecnicoPolicy", policy => 
+            //     {
+            //         policy.RequireRole("Técnico");
+            //     } );    
+            // } );
+
+            // MVC authenticate policy.
             services.AddMvc(config =>
             {
-                // Requiere que haya usuarios logueados
                 var policy = new AuthorizationPolicyBuilder()
                     .RequireAuthenticatedUser()
                     .Build();
+
                 config.Filters.Add(new AuthorizeFilter(policy));
-            })
-                .AddRazorPagesOptions(options =>
-                {
-                    options.Conventions
-                    .AllowAnonymousToPage("/Privacy")
-                    .AllowAnonymousToPage("/Index");
-                })
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            } ) 
+                    .AddRazorPagesOptions(options =>
+                    {
+                        // // administrators.
+                        // options.Conventions.AuthorizeFolder("/Index", "AdministradorPolicy")
+                        //     .AuthorizeFolder("/administradores", "AdministradorPolicy")
+                        //     .AuthorizeFolder("/clientes", "AdministradorPolicy")
+                        //     .AuthorizeFolder("/tecnicos", "AdministradorPolicy")
+                        //     .AuthorizeFolder("/proyectos", "AdministradorPolicy")
+                        //     .AuthorizeFolder("/solicitudes", "AdministradorPolicy")
+                        //     .AuthorizeFolder("/roles", "AdministradorPolicy");
+                        // // clients.
+                        // options.Conventions
+                        //     .AuthorizeFolder("/Index", "ClientePolicy")
+                        //     .AuthorizeFolder("/proyectos", "ClientePolicy")
+                        //     .AuthorizeFolder("/solicitudes", "ClientePolicy");
+                        // // technicians.
+                        // options.Conventions
+                        //     .AuthorizeFolder("/Index", "TecnicoPolicy")
+                        //     .AuthorizeFolder("/roles", "TecnicoPolicy");
+                        // anonymous.
+                        options.Conventions
+                            .AllowAnonymousToPage("/Index")
+                            .AllowAnonymousToPage("/Privacy");
+                    } )
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,9 +111,8 @@ namespace RazorPagesIgnis
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseAuthentication();
             app.UseCookiePolicy();
-
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

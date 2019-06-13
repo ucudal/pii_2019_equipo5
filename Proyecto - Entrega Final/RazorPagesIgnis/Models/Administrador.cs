@@ -28,5 +28,6 @@ namespace RazorPagesIgnis
 
         public new int ID { get; set; }   
 
+        
     }
 }

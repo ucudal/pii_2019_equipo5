@@ -1,22 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace RazorPagesIgnis.Areas.Identity.Data
 {
     /// <summary>
     /// Inicializa la base de datos de identity.
-    /// Los usuarios y los roles para la aplicación
-    /// Solo la primera vez que se ejecuta.
     /// </summary>
     public static class SeedIdentityData
     {
         /// <summary>
-        /// Crea los usuarios y roles necesarios para el funcionamiento de la aplicación si ya no existente.
+        /// Usuarios y roles necesarios para el funcionamiento de la aplicación.
         /// </summary>
         /// <param name="serviceProvider">El <see cref="IServiceProvider"/> al que se han injectado previamente un
         /// <see cref="UserManager<T>"/> y un <see cref="RoleManager<T>"/>.</param>
@@ -30,7 +24,9 @@ namespace RazorPagesIgnis.Areas.Identity.Data
 
         private static void SeedUsers(UserManager<ApplicationUser> userManager)
         {
-            // Crea el primer y único administrador si no existe. Primero crea un usuario y luego se asigna el rol de adminstrador.
+            // Verificación de existencia. 
+
+            // Administrador.
             if (userManager.FindByNameAsync(IdentityData.AdminUserName).Result == null)
             {
                 ApplicationUser user = new ApplicationUser();
@@ -39,35 +35,97 @@ namespace RazorPagesIgnis.Areas.Identity.Data
                 user.Email = IdentityData.AdminMail;
                 user.DOB = IdentityData.AdminDOB;
 
-                // Es necesario tener acceso a RoleManager para poder buscar el rol de este usuario; se asigna aquí para poder
-                // buscar por rol después cuando no hay acceso a RoleManager.
                 user.AssignRole(userManager, IdentityData.AdminRoleName);
 
                 IdentityResult result = userManager.CreateAsync(user, IdentityData.AdminPassword).Result;
 
-                if (result.Succeeded)
-                {
-                    IdentityResult addRoleResult = userManager.AddToRoleAsync(user, IdentityData.AdminRoleName).Result;
-                    if (!addRoleResult.Succeeded)
-                    {
-                        throw new InvalidOperationException(
-                            $"Unexpected error ocurred adding role '{IdentityData.AdminRoleName}' to user '{IdentityData.AdminName}'.");
-                    }
-                }
-                else
-                {
-                    throw new InvalidOperationException($"Unexpected error ocurred creating user '{IdentityData.AdminName}'.");
-                }
+                AddToRole(userManager, result, user, "Admin");
+            }
+
+            // Cliente.
+            if (userManager.FindByNameAsync(IdentityData.ClientUserName).Result == null)
+            {
+                ApplicationUser userClient = new ApplicationUser();
+
+                userClient.Name = IdentityData.ClientName;
+                userClient.UserName = IdentityData.ClientUserName;
+                userClient.Email = IdentityData.ClientMail;
+                userClient.DOB = IdentityData.ClientDOB;
+
+                userClient.AssignRole(userManager, IdentityData.NonAdminRoleNames[0]);
+
+                IdentityResult result2 = userManager.CreateAsync(userClient, IdentityData.ClientPassword).Result;
+
+                AddToRole(userManager, result2, userClient, "Cliente");
+            }
+
+            // Técnico.
+            if (userManager.FindByNameAsync(IdentityData.ClientUserName).Result == null)
+            {
+                ApplicationUser userTechnician = new ApplicationUser();
+
+                userTechnician.Name = IdentityData.TechName;
+                userTechnician.UserName = IdentityData.TechUserName;
+                userTechnician.Email = IdentityData.TechMail;
+                userTechnician.DOB = IdentityData.TechDOB;
+
+                userTechnician.AssignRole(userManager, IdentityData.NonAdminRoleNames[1]);
+
+                IdentityResult result3 = userManager.CreateAsync(userTechnician, IdentityData.TechPassword).Result;
+
+                AddToRole(userManager, result3, userTechnician, "Tecnico");
             }
         }
 
+        // Role.
+        private static void AddToRole(UserManager<ApplicationUser> userManager, IdentityResult result, ApplicationUser user, string userType) 
+        {
+            string IdentityDataRole = "";
+
+            string IdentityDataName = "";
+
+            if (result.Succeeded)
+            {
+                // Tipo de usuario.
+                if (userType == "Admin") 
+                {
+                    IdentityDataName = IdentityData.AdminName;
+                    IdentityDataRole = IdentityData.AdminRoleName;
+                }
+                else if (userType == "Cliente") 
+                {
+                    IdentityDataName = IdentityData.ClientName;
+                    IdentityDataRole = IdentityData.NonAdminRoleNames[0];
+                }
+                else if (userType == "Tecnico") 
+                {
+                    IdentityDataName = IdentityData.TechName;
+                    IdentityDataRole = IdentityData.NonAdminRoleNames[1];
+                }
+
+                IdentityResult addRoleResult = userManager.AddToRoleAsync(user, IdentityDataRole).Result;
+
+                if (!addRoleResult.Succeeded)
+                {
+                    throw new InvalidOperationException(
+                        $"Unexpected error ocurred adding role '{IdentityDataRole}' to user '{IdentityDataName}'.");
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException($"Unexpected error ocurred creating user '{IdentityDataName}'.");
+            }
+        }
+
+        // Crear un Role.
         private static void CreateRole(RoleManager<IdentityRole> roleManager, string roleName)
         {
-            // Crea un rol si no existe.
             if (!roleManager.RoleExistsAsync(roleName).Result)
             {
                 IdentityRole role = new IdentityRole(roleName);
+
                 IdentityResult createRoleResult = roleManager.CreateAsync(role).Result;
+
                 if (!createRoleResult.Succeeded)
                 {
                     throw new InvalidOperationException($"Unexpected error ocurred creating role '{role}'.");
@@ -75,9 +133,9 @@ namespace RazorPagesIgnis.Areas.Identity.Data
             }
         }
 
+        // Crear un Role para Administrador.
         private static void SeedRoles(RoleManager<IdentityRole> roleManager)
         {
-            // Crea el rol de administrador si no existe
             CreateRole(roleManager, IdentityData.AdminRoleName);
 
             foreach (var roleName in IdentityData.NonAdminRoleNames)
@@ -85,6 +143,5 @@ namespace RazorPagesIgnis.Areas.Identity.Data
                 CreateRole(roleManager, roleName);
             }
         }
-
     }
 }
