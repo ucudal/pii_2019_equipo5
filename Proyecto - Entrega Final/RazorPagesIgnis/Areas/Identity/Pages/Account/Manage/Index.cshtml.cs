@@ -14,13 +14,13 @@ namespace RazorPagesIgnis.Areas.Identity.Pages.Account.Manage
 {
     public partial class IndexModel : PageModel
     {
-        private readonly UserManager<RazorPagesIgnisUser> _userManager;
-        private readonly SignInManager<RazorPagesIgnisUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
 
         public IndexModel(
-            UserManager<RazorPagesIgnisUser> userManager,
-            SignInManager<RazorPagesIgnisUser> signInManager,
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender)
         {
             _userManager = userManager;
