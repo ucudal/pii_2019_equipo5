@@ -12,9 +12,9 @@ namespace RazorPagesIgnis.Pages.tecnicos
 {
     public class DeleteModel : PageModel
     {
-        private readonly RazorPagesIgnis.Models.RazorPagesIgnisContext _context;
+        private readonly RazorPagesIgnis.Models.IgnisContext _context;
 
-        public DeleteModel(RazorPagesIgnis.Models.RazorPagesIgnisContext context)
+        public DeleteModel(RazorPagesIgnis.Models.IgnisContext context)
         {
             _context = context;
         }

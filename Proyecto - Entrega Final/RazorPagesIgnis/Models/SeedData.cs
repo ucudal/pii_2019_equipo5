@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+
 using RazorPagesIgnis.Models;
 
 namespace RazorPagesIgnis
@@ -11,35 +12,35 @@ namespace RazorPagesIgnis
     /// agregando valores por defecto. En todos los casos solo se agregan valores 
     /// si no hay registros previos en la tabla.
     /// </summary>
-    public static class SeeData 
+    public static class SeedData 
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var contexto = new RazorPagesIgnisContext(
+            using (var context = new IgnisContext(
                 serviceProvider.GetRequiredService<
-                    DbContextOptions<RazorPagesIgnisContext>>()))
+                    DbContextOptions<IgnisContext>>()))
             {
-                SeedAdministradores(contexto);
-                SeedClientes(contexto);
-                SeedTecnicos(contexto);
-                SeedSolicitudes(contexto);
-                SeedTecnicoSolicitudes(contexto);
-                SeedProyectos(contexto);
-                SeedRoles(contexto);
+                SeedAdministradores(context);
+                SeedClientes(context);
+                SeedTecnicos(context);
+                SeedSolicitudes(context);
+                SeedTecnicoSolicitudes(context);
+                SeedProyectos(context);
+                SeedRoles(context);
             }
         }
 
         /// <summary>
         /// Seeding Administrador.
         /// </summary>
-        private static void SeedAdministradores(RazorPagesIgnisContext contexto)
+        private static void SeedAdministradores(IgnisContext context)
         {
-            if (contexto.Administradores.Any()) 
+            if (context.Administradores.Any()) 
             {
                 return;
             }
 
-            contexto.Administradores.AddRange(
+            context.Administradores.AddRange(
                 new Administrador 
                 {
                     Nombre = "Marcelo",
@@ -54,20 +55,20 @@ namespace RazorPagesIgnis
                     Contrasena = "********"
                 }
             );
-            contexto.SaveChanges();
+            context.SaveChanges();
         }
 
         /// <summary>
         /// Seeding Cliente.
         /// </summary>
-        private static void SeedClientes(RazorPagesIgnisContext contexto)
+        private static void SeedClientes(IgnisContext context)
         {
-            if (contexto.Clientes.Any()) 
+            if (context.Clientes.Any()) 
             {
                 return;
             }
 
-            contexto.Clientes.AddRange(
+            context.Clientes.AddRange(
                 new Cliente 
                 {
                     Nombre = "Micaela",
@@ -82,20 +83,20 @@ namespace RazorPagesIgnis
                     Contrasena = "********"
                 }
             );
-            contexto.SaveChanges();
+            context.SaveChanges();
         }
 
         /// <summary>
         /// Seeding Técnico.
         /// </summary>
-        private static void SeedTecnicos(RazorPagesIgnisContext contexto)
+        private static void SeedTecnicos(IgnisContext context)
         {
-            if (contexto.Tecnicos.Any()) 
+            if (context.Tecnicos.Any()) 
             {
                 return;
             }
 
-            contexto.Tecnicos.AddRange(
+            context.Tecnicos.AddRange(
                 new Tecnico 
                 {
                     Nombre = "Marcelo",
@@ -126,20 +127,20 @@ namespace RazorPagesIgnis
                     Nivel_experiencia = "Básico"
                 }
             );
-            contexto.SaveChanges();
+            context.SaveChanges();
         }
 
         /// <summary>
         /// Seeding Solicitud.
         /// </summary>
-        private static void SeedSolicitudes(RazorPagesIgnisContext contexto)
+        private static void SeedSolicitudes(IgnisContext context)
         {
-            if (contexto.Solicitudes.Any()) 
+            if (context.Solicitudes.Any()) 
             {
                 return;
             }
 
-            contexto.Solicitudes.AddRange(
+            context.Solicitudes.AddRange(
                 new Solicitud 
                 {
                     ModoDeContrato = 1, 
@@ -167,15 +168,15 @@ namespace RazorPagesIgnis
                     Observaciones = "no."
                 }
             );
-            contexto.SaveChanges();
+            context.SaveChanges();
         }
 
         /// <summary>
         /// Seeding TecnicoSolicitud.
         /// </summary>
-        private static void SeedTecnicoSolicitudes(RazorPagesIgnisContext contexto)
+        private static void SeedTecnicoSolicitudes(IgnisContext context)
         {
-            if (contexto.TecnicoSolicitudes.Any()) 
+            if (context.TecnicoSolicitudes.Any()) 
             {
                 return;
             }
@@ -184,42 +185,42 @@ namespace RazorPagesIgnis
             {
                 new TecnicoSolicitud 
                 {
-                    tecnicoID = contexto.Tecnicos.Single(t => t.Nombre == "Marcelo").ID, 
-                    solicitudID = contexto.Solicitudes.Single(s => s.ID == 1).ID 
+                    tecnicoID = context.Tecnicos.Single(t => t.Nombre == "Marcelo").ID, 
+                    solicitudID = context.Solicitudes.Single(s => s.ID == 1).ID 
                 },
 
                 new TecnicoSolicitud 
                 {
-                    tecnicoID = contexto.Tecnicos.Single(t => t.Nombre == "Marcelo").ID, 
-                    solicitudID = contexto.Solicitudes.Single(s => s.ID == 3).ID 
+                    tecnicoID = context.Tecnicos.Single(t => t.Nombre == "Marcelo").ID, 
+                    solicitudID = context.Solicitudes.Single(s => s.ID == 3).ID 
                 },
 
                 new TecnicoSolicitud 
                 {
-                    tecnicoID = contexto.Tecnicos.Single(t => t.Nombre == "Laura").ID, 
-                    solicitudID = contexto.Solicitudes.Single(s => s.ID == 2).ID 
+                    tecnicoID = context.Tecnicos.Single(t => t.Nombre == "Laura").ID, 
+                    solicitudID = context.Solicitudes.Single(s => s.ID == 2).ID 
                 }
             };
 
             foreach (TecnicoSolicitud ts in tecnicoSolictudes)
             {
-                contexto.TecnicoSolicitudes.Add(ts);
+                context.TecnicoSolicitudes.Add(ts);
             }
 
-            contexto.SaveChanges();
+            context.SaveChanges();
         }
 
         /// <summary>
         /// Seeding Proyecto.
         /// </summary>
-        private static void SeedProyectos(RazorPagesIgnisContext contexto)
+        private static void SeedProyectos(IgnisContext context)
         {
-            if (contexto.Proyectos.Any()) 
+            if (context.Proyectos.Any()) 
             {
                 return;
             }
 
-            contexto.Proyectos.AddRange(
+            context.Proyectos.AddRange(
                 new Proyecto 
                 {
                     Nombre = "Hulk Aplasta!!!", 
@@ -232,20 +233,20 @@ namespace RazorPagesIgnis
                     Descripcion = "Investigación." 
                 }
             );
-            contexto.SaveChanges();
+            context.SaveChanges();
         }
 
         /// <summary>
         /// Seeding Rol.
         /// </summary>
-        private static void SeedRoles(RazorPagesIgnisContext contexto)
+        private static void SeedRoles(IgnisContext context)
         {
-            if (contexto.Roles.Any()) 
+            if (context.Roles.Any()) 
             {
                 return;
             }
 
-            contexto.Roles.AddRange(
+            context.Roles.AddRange(
                 new Rol 
                 {
                     Nombre = "Cámara", 
@@ -264,7 +265,7 @@ namespace RazorPagesIgnis
                     Descripcion = "..." 
                 }
             );
-            contexto.SaveChanges();
+            context.SaveChanges();
         }
     }
 }

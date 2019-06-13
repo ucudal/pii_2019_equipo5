@@ -12,9 +12,9 @@ namespace RazorPagesIgnis.Pages.solicitudes
 {
     public class IndexModel : PageModel
     {
-        private readonly RazorPagesIgnis.Models.RazorPagesIgnisContext _context;
+        private readonly RazorPagesIgnis.Models.IgnisContext _context;
 
-        public IndexModel(RazorPagesIgnis.Models.RazorPagesIgnisContext context)
+        public IndexModel(RazorPagesIgnis.Models.IgnisContext context)
         {
             _context = context;
         }

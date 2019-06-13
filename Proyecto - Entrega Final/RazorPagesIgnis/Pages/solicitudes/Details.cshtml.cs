@@ -12,9 +12,9 @@ namespace RazorPagesIgnis.Pages.solicitudes
 {
     public class DetailsModel : PageModel
     {
-        private readonly RazorPagesIgnis.Models.RazorPagesIgnisContext _context;
+        private readonly RazorPagesIgnis.Models.IgnisContext _context;
 
-        public DetailsModel(RazorPagesIgnis.Models.RazorPagesIgnisContext context)
+        public DetailsModel(RazorPagesIgnis.Models.IgnisContext context)
         {
             _context = context;
         }
