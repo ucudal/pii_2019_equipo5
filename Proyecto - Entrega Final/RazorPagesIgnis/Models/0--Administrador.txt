@@ -1,5 +1,0 @@
-        IServiceProvider serviceProvider;
-        
-        var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-
-                UserManager<ApplicationUser> identityManager = new UserManager<ApplicationUser> ();
