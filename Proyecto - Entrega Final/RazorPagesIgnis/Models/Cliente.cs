@@ -1,53 +1,29 @@
-using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+using RazorPagesIgnis.Areas.Identity.Data;
 
 namespace RazorPagesIgnis
-{   
-    public class Cliente : Persona 
-    {
+{ 
+    /// <summary>
+    /// Cliente del Centro Ignis.
+    /// El cliente tiene proyectos y contrata técnicos.
+    /// </summary>
+    public class Cliente : ApplicationUser
+    { 
         /// <summary>
-        /// El cliente es la persona que tiene el proyecto y contrata los servicios del técnico.
-        /// 
-        /// Nombre, correo y contraseña: se chequean en la clase Persona.
+        /// RazorPages: constructor sin argumentos.
         /// </summary>
-        /// <param name="nombre">Nombre del cliente</param>
-        /// <param name="correo">Correo electrónico</param>
-        /// <param name="contrasena">Contraseña</param>        
-        public Cliente(string nombre, string correo, string contrasena) 
-                    : base(nombre, correo, contrasena) 
-        { 
-            List<Proyecto> ListaDeProyectos = new List<Proyecto>();
-            this.listaProyectos = ListaDeProyectos;
-        }
+        public Cliente() : base () {}
 
-        /// <summary>
-        /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
-        /// Para el atributo se agrega parámetro 'new' por advertencia de compilación.
-        /// </summary>
-        public Cliente() 
-        {
-        }
+        // /// <summary>
+        // /// RazorPages: atributo PrimaryKey.
+        // /// </summary>
+        // [Key]
+        // public int Id { get; set; }  
 
-        public new int ID { get; set; }
-
-        /// <summary>
-        ///  Lista de Proyectos del cliente.
-        /// </summary>
-        private List<Proyecto> listaProyectos;
-        public List<Proyecto> ListaProyectos 
-        {
-            get => this.listaProyectos;
-            protected set {}
-        }
-
-        /// <summary>
-        /// Este método agrega un nuevo proyecto a la lista de proyectos del cliente.
-        /// </summary>
-        /// <param name="ProyectoNuevo">Proyecto del cliente.</param>
-        public void AgregarProyecto(Proyecto ProyectoNuevo) 
-        {
-            this.listaProyectos.Add(ProyectoNuevo);
-        }
+        // Relación Cliente:Proyectos (uno-a-muchos)
+        public IList<Proyecto> Proyectos { get; set; }
 
     }
 }

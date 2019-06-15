@@ -22,14 +22,14 @@ namespace RazorPagesIgnis.Pages.tecnicos
         [BindProperty]
         public Tecnico Tecnico { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Tecnico = await _context.Tecnicos.FirstOrDefaultAsync(m => m.ID == id);
+            Tecnico = await _context.Tecnicos.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Tecnico == null)
             {
@@ -38,7 +38,7 @@ namespace RazorPagesIgnis.Pages.tecnicos
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(string id)
         {
             if (id == null)
             {

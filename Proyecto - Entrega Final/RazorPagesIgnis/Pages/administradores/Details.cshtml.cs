@@ -21,14 +21,14 @@ namespace RazorPagesIgnis.Pages.administradores
 
         public Administrador Administrador { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Administrador = await _context.Administradores.FirstOrDefaultAsync(m => m.ID == id);
+            Administrador = await _context.Administradores.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Administrador == null)
             {

@@ -1,20 +1,36 @@
-using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RazorPagesIgnis 
 {   
     public class Proyecto : ICrearSolicitud
     { 
+        /// <summary>
+        /// RazorPages: constructor sin argumentos.
+        /// </summary>
+        public Proyecto()
+        {
+        }
+
+        /// <summary>
+        /// RazorPages: atributo PrimaryKey.
+        /// </summary>
+        [Key]
+        public int Id { get; set; }  
+
+        /// <summary>
+        /// Proyecto ingresado por el cliente.
+        /// </summary>
         public Proyecto(string Nombre, string Descripcion) 
         {
             this.nombre = Nombre;
             this.descripcion = Descripcion;
             this.status = true;
-
-            List<Solicitud> ListaDeSolicitudes = new List<Solicitud>();
-            this.listaSolicitudes = ListaDeSolicitudes;
         }
 
+        /// <summary>
+        /// Nombre del proyecto.
+        /// </summary>
         private string nombre;
         public string Nombre  
         { 
@@ -22,6 +38,9 @@ namespace RazorPagesIgnis
             set => this.nombre = value;
         }
 
+        /// <summary>
+        /// Descripción del proyecto.
+        /// </summary>
         private string descripcion;
         public string Descripcion  
         { 
@@ -29,6 +48,9 @@ namespace RazorPagesIgnis
             set => this.descripcion = value;
         }
 
+        /// <summary>
+        /// Estado del proyecto.
+        /// </summary>
         private bool status;
         public bool Status 
         {
@@ -37,37 +59,22 @@ namespace RazorPagesIgnis
         }
 
         /// <summary>
-        /// Lista de Solicitudes del proyecto.
+        /// Relación Cliente:Proyectos (uno-a-muchos)
         /// </summary>
-        private List<Solicitud> listaSolicitudes;
-        public List<Solicitud> ListaDeSolicitudes 
-        {
-            get => this.listaSolicitudes;
-            protected set {}
-        }
+        public int ClienteId { get; set; }
+
+        /// </summary>
+        /// Relación Proyecto:Solicitudes (uno-a-muchos)
+        /// </summary>
+        public IList<Solicitud> Solicitud { get; set; }
 
         /// <summary>
-        /// Este método agrega una nueva solicitud a la lista de solicitudes del proyecto.
+        /// Agregar solicitud al registro de solicitudes de este proyecto.
         /// </summary>
-        /// <param name="nuevaSolicitud">La nueva solicitud creada que se agrega a la lista</param>
+        /// <param name="nuevaSolicitud"></param>
         public void AgregarSolicitud(Solicitud nuevaSolicitud) 
         {
-            ListaDeSolicitudes.Add(nuevaSolicitud);
-        }
-
-        /// <summary>
-        /// Este método retorna el costo total del proyecto.
-        /// </summary>
-        public int InformarCostoTotalProyecto() 
-        {
-            int CostoTotal = 0;
-            
-            foreach (Solicitud item in listaSolicitudes) 
-            {
-                CostoTotal += item.CostoSolicitud;
-            }
-            
-            return CostoTotal;
+            Solicitud.Add(nuevaSolicitud);
         }
 
         /// <summary>
@@ -87,7 +94,7 @@ namespace RazorPagesIgnis
                 this.CambiarStatus();
 
                 /// Cuando cerramos el proyecto, se cierran todas sus solicitudes.
-                foreach (Solicitud item in this.ListaDeSolicitudes)
+                foreach (Solicitud item in this.Solicitud)
                 {
                     item.Cerrar();
                 }
@@ -99,12 +106,19 @@ namespace RazorPagesIgnis
             this.status = !this.status;
         }
 
-        /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
-        public Proyecto() 
-        {
-        }
-
-        public int ID { get; set; }
-
     }
 }
+        // /// <summary>
+        // /// Este método retorna el costo total del proyecto.
+        // /// </summary>
+        // public int InformarCostoTotalProyecto() 
+        // {
+        //     int CostoTotal = 0;
+            
+        //     foreach (Solicitud item in listaSolicitudes) 
+        //     {
+        //         CostoTotal += item.CostoSolicitud;
+        //     }
+            
+        //     return CostoTotal;
+        // }

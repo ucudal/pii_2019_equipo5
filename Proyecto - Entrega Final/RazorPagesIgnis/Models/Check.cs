@@ -3,19 +3,14 @@ using System;
 namespace RazorPagesIgnis 
 {   
     /// <summary>
-    /// Esta clase permite implementar el manejo de Precondiciones, Postcondiciones e Invariantes 
-    /// durante la ejecución de la aplicación.
+    /// Esta clase implementa el manejo de Precondiciones, Postcondiciones e Invariantes.
     /// </summary>
     public class Check 
     { 
         /// <summary>
-        /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
+        /// RazorPages: atributo PrimaryKey.
         /// </summary>
-        public Check() 
-        {
-        }
-
-        public int ID { get; set; }
+        public int ID { get; set; }  
 
         /// <summary>
         /// Precondiciones.

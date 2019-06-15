@@ -23,14 +23,14 @@ namespace RazorPagesIgnis.Pages.clientes
         [BindProperty]
         public Cliente Cliente { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Cliente = await _context.Clientes.FirstOrDefaultAsync(m => m.ID == id);
+            Cliente = await _context.Clientes.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Cliente == null)
             {
@@ -54,7 +54,7 @@ namespace RazorPagesIgnis.Pages.clientes
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ClienteExists(Cliente.ID))
+                if (!ClienteExists(Cliente.Id))
                 {
                     return NotFound();
                 }
@@ -67,9 +67,9 @@ namespace RazorPagesIgnis.Pages.clientes
             return RedirectToPage("./Index");
         }
 
-        private bool ClienteExists(int id)
+        private bool ClienteExists(string id)
         {
-            return _context.Clientes.Any(e => e.ID == id);
+            return _context.Clientes.Any(e => e.Id == id);
         }
     }
 }

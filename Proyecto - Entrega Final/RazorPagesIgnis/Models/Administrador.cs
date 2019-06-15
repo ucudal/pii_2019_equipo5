@@ -1,33 +1,23 @@
 using System;
 
+using RazorPagesIgnis.Areas.Identity.Data;
+
 namespace RazorPagesIgnis
 { 
-    public class Administrador : Persona 
+    /// <summary>
+    /// Administrador del Centro Ignis.
+    /// </summary>
+    public class Administrador : ApplicationUser
     { 
         /// <summary>
-        /// El Administrador es la persona que trabaja en el Centro Ignis.
-        /// 
-        /// Los atributos obligatorios son nombre y edad. 
-        /// Nombre, correo y contraseña los valida la clase Persona.
+        /// RazorPages: constructor sin argumentos.
         /// </summary>
-        /// <param name="nombre">Nombre del administrador</param>
-        /// <param name="correo">Correo electrónico</param>
-        /// <param name="contrasena">Contraseña</param>      
-        public Administrador(string nombre, string correo, string contrasena) 
-                        : base(nombre, correo, contrasena) 
-        { 
-        }
+        public Administrador() : base () {}
 
-        /// <summary>
-        /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
-        /// Para el atributo se agrega parámetro 'new' por advertencia de compilación.
-        /// </summary>
-        public Administrador() 
-        {
-        }
+        // /// <summary>
+        // /// RazorPages: atributo PrimaryKey.
+        // /// </summary>
+        // public int ID { get; set; }  
 
-        public new int ID { get; set; }   
-
-        
     }
 }

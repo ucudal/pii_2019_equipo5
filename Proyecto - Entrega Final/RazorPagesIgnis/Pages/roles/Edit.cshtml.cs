@@ -30,7 +30,7 @@ namespace RazorPagesIgnis.Pages.roles
                 return NotFound();
             }
 
-            Rol = await _context.Roles.FirstOrDefaultAsync(m => m.ID == id);
+            Rol = await _context.Roles.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Rol == null)
             {
@@ -54,7 +54,7 @@ namespace RazorPagesIgnis.Pages.roles
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RolExists(Rol.ID))
+                if (!RolExists(Rol.Id))
                 {
                     return NotFound();
                 }
@@ -69,7 +69,7 @@ namespace RazorPagesIgnis.Pages.roles
 
         private bool RolExists(int id)
         {
-            return _context.Roles.Any(e => e.ID == id);
+            return _context.Roles.Any(e => e.Id == id);
         }
     }
 }

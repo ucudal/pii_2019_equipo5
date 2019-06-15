@@ -1,0 +1,37 @@
+
+PROPIEDADES REMOVIDAS
+
+        /// <summary>
+        /// El Status de un usuario permite al Administrador de Ignis habilitar/deshabilitar 
+        /// las operaciones en la aplicación. Por ejemplo, un técnico con Status = Inactivo 
+        /// puede ingresar y consultar históricos pero no puede ser asignado a proyectos.
+        /// 
+        /// Durante la creación del objeto Cliente, Tecnico o Administrador, Status se inicializa con valor 'Activo'.
+        /// </summary>
+        /// <returns>True = usuario activo; False = usuario inactivo</returns>
+        private bool status;
+        public bool Status 
+        {
+            get => this.status; 
+            protected set {}
+        }
+
+        /// <summary>
+        /// Métodos para cambiar el status, 
+        /// Activar(): si el usuario está 'Inactivo' se cambia para 'Activo'.
+        /// Inactivar(): si el usuario está 'Activo' se cambia para 'Inactivo'.
+        /// </summary>
+        public void Activar() 
+        {
+            if (this.status == false) this.CambiarStatus();
+        }
+
+        public void Inactivar() 
+        {
+            if (this.status == true) this.CambiarStatus();
+        }
+
+        private void CambiarStatus() 
+        {
+            this.status = !this.status;
+        }

@@ -54,13 +54,13 @@ namespace RazorPagesIgnis.Areas.Identity.Data
 
                 userClient.AssignRole(userManager, IdentityData.NonAdminRoleNames[0]);
 
-                IdentityResult result2 = userManager.CreateAsync(userClient, IdentityData.ClientPassword).Result;
+                IdentityResult result = userManager.CreateAsync(userClient, IdentityData.ClientPassword).Result;
 
-                AddToRole(userManager, result2, userClient, "Cliente");
+                AddToRole(userManager, result, userClient, "Cliente");
             }
 
             // Técnico.
-            if (userManager.FindByNameAsync(IdentityData.ClientUserName).Result == null)
+            if (userManager.FindByNameAsync(IdentityData.TechUserName).Result == null)
             {
                 ApplicationUser userTechnician = new ApplicationUser();
 
@@ -71,9 +71,9 @@ namespace RazorPagesIgnis.Areas.Identity.Data
 
                 userTechnician.AssignRole(userManager, IdentityData.NonAdminRoleNames[1]);
 
-                IdentityResult result3 = userManager.CreateAsync(userTechnician, IdentityData.TechPassword).Result;
+                IdentityResult result = userManager.CreateAsync(userTechnician, IdentityData.TechPassword).Result;
 
-                AddToRole(userManager, result3, userTechnician, "Tecnico");
+                AddToRole(userManager, result, userTechnician, "Tecnico");
             }
         }
 
@@ -143,5 +143,6 @@ namespace RazorPagesIgnis.Areas.Identity.Data
                 CreateRole(roleManager, roleName);
             }
         }
+
     }
 }

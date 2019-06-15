@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 using RazorPagesIgnis.Models;
 using RazorPagesIgnis.Areas.Identity.Data;
@@ -39,6 +40,12 @@ namespace RazorPagesIgnis
 
             services.AddDbContext<IgnisIdentityContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("IgnisContext")));
+
+            // // Para herencia de IdentityUser, IdentityRole ------
+            // services.AddIdentity <IdentityUser, IdentityRole>()
+            //         .AddEntityFrameworkStores<IgnisContext>()
+            //         .AddDefaultTokenProviders();
+            // // Para herencia de IdentityUser, IdentityRole --fin--
 
             // // services: defined role-based policies: pages access by role.
             // services.AddAuthorization(options => 

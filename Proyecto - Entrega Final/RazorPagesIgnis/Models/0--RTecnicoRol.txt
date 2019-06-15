@@ -1,0 +1,29 @@
+using System.ComponentModel.DataAnnotations;
+
+namespace RazorPagesIgnis
+{   
+    /// <summary>
+    /// Relación un técnico = un rol.
+    /// </summary>
+    public class RTecnicoRol
+    { 
+        public RTecnicoRol(int tecnicoID, int rolID) 
+        {
+            this.TecnicoID = tecnicoID;
+            this.RolID = rolID;
+        }
+
+        [Key]
+        public int TecnicoID { get; set; }
+
+        [Key]
+        public int RolID { get; set; }
+
+        // [Required]
+        // public Tecnico Tecnico { get; set; }
+
+        // [Required]
+        // public Rol Rol { get; set; }
+
+    }
+}

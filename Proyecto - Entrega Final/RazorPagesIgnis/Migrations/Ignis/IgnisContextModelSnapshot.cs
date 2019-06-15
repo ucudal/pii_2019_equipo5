@@ -18,46 +18,104 @@ namespace RazorPagesIgnis.Migrations.Ignis
 
             modelBuilder.Entity("RazorPagesIgnis.Administrador", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Contrasena");
+                    b.Property<int>("AccessFailedCount");
 
-                    b.Property<string>("Correo");
+                    b.Property<string>("ConcurrencyStamp");
 
-                    b.Property<string>("Nombre");
+                    b.Property<DateTime>("DOB");
+
+                    b.Property<string>("Email");
+
+                    b.Property<bool>("EmailConfirmed");
+
+                    b.Property<bool>("LockoutEnabled");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("NormalizedEmail");
+
+                    b.Property<string>("NormalizedUserName");
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("Role");
+
+                    b.Property<string>("SecurityStamp");
 
                     b.Property<bool>("Status");
 
-                    b.HasKey("ID");
+                    b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Administradores");
                 });
 
             modelBuilder.Entity("RazorPagesIgnis.Cliente", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Contrasena");
+                    b.Property<int>("AccessFailedCount");
 
-                    b.Property<string>("Correo");
+                    b.Property<string>("ConcurrencyStamp");
 
-                    b.Property<string>("Nombre");
+                    b.Property<DateTime>("DOB");
+
+                    b.Property<string>("Email");
+
+                    b.Property<bool>("EmailConfirmed");
+
+                    b.Property<bool>("LockoutEnabled");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("NormalizedEmail");
+
+                    b.Property<string>("NormalizedUserName");
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("Role");
+
+                    b.Property<string>("SecurityStamp");
 
                     b.Property<bool>("Status");
 
-                    b.HasKey("ID");
+                    b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Clientes");
                 });
 
             modelBuilder.Entity("RazorPagesIgnis.Proyecto", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ClienteID");
+                    b.Property<int>("ClienteId");
+
+                    b.Property<string>("ClienteId1");
 
                     b.Property<string>("Descripcion");
 
@@ -65,30 +123,30 @@ namespace RazorPagesIgnis.Migrations.Ignis
 
                     b.Property<bool>("Status");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ClienteID");
+                    b.HasIndex("ClienteId1");
 
                     b.ToTable("Proyectos");
                 });
 
             modelBuilder.Entity("RazorPagesIgnis.Rol", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Descripcion");
 
                     b.Property<string>("Nombre");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("RazorPagesIgnis.Solicitud", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("CostoSolicitud");
@@ -101,88 +159,83 @@ namespace RazorPagesIgnis.Migrations.Ignis
 
                     b.Property<string>("Observaciones");
 
-                    b.Property<int?>("ProyectoID");
+                    b.Property<int>("ProyectoId");
 
                     b.Property<string>("RolRequerido");
 
                     b.Property<bool>("Status");
 
-                    b.Property<int?>("TecnicoAsignadoID");
+                    b.Property<int>("TecnicoId");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ProyectoID");
-
-                    b.HasIndex("TecnicoAsignadoID");
+                    b.HasIndex("ProyectoId");
 
                     b.ToTable("Solicitudes");
                 });
 
             modelBuilder.Entity("RazorPagesIgnis.Tecnico", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Contrasena");
+                    b.Property<int>("AccessFailedCount");
 
-                    b.Property<string>("Correo");
+                    b.Property<string>("ConcurrencyStamp");
 
-                    b.Property<int>("Edad");
+                    b.Property<DateTime>("DOB");
 
-                    b.Property<string>("Nivel_experiencia");
+                    b.Property<string>("Email");
 
-                    b.Property<string>("Nombre");
+                    b.Property<bool>("EmailConfirmed");
+
+                    b.Property<bool>("LockoutEnabled");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("NivelExperiencia");
+
+                    b.Property<string>("NormalizedEmail");
+
+                    b.Property<string>("NormalizedUserName");
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("Presentacion");
 
+                    b.Property<string>("Role");
+
+                    b.Property<string>("SecurityStamp");
+
                     b.Property<bool>("Status");
 
-                    b.HasKey("ID");
+                    b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Tecnicos");
-                });
-
-            modelBuilder.Entity("RazorPagesIgnis.TecnicoSolicitud", b =>
-                {
-                    b.Property<int>("tecnicoID");
-
-                    b.Property<int>("solicitudID");
-
-                    b.HasKey("tecnicoID", "solicitudID");
-
-                    b.HasAlternateKey("solicitudID", "tecnicoID");
-
-                    b.ToTable("TecnicoSolicitud");
                 });
 
             modelBuilder.Entity("RazorPagesIgnis.Proyecto", b =>
                 {
                     b.HasOne("RazorPagesIgnis.Cliente")
-                        .WithMany("ListaProyectos")
-                        .HasForeignKey("ClienteID");
+                        .WithMany("Proyectos")
+                        .HasForeignKey("ClienteId1");
                 });
 
             modelBuilder.Entity("RazorPagesIgnis.Solicitud", b =>
                 {
                     b.HasOne("RazorPagesIgnis.Proyecto")
-                        .WithMany("ListaDeSolicitudes")
-                        .HasForeignKey("ProyectoID");
-
-                    b.HasOne("RazorPagesIgnis.Tecnico", "TecnicoAsignado")
-                        .WithMany()
-                        .HasForeignKey("TecnicoAsignadoID");
-                });
-
-            modelBuilder.Entity("RazorPagesIgnis.TecnicoSolicitud", b =>
-                {
-                    b.HasOne("RazorPagesIgnis.Solicitud", "Solicitud")
-                        .WithMany()
-                        .HasForeignKey("solicitudID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("RazorPagesIgnis.Tecnico", "Tecnico")
-                        .WithMany("TecnicoSolicitudes")
-                        .HasForeignKey("tecnicoID")
+                        .WithMany("Solicitud")
+                        .HasForeignKey("ProyectoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

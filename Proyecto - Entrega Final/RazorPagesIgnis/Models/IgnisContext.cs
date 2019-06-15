@@ -15,21 +15,28 @@ namespace RazorPagesIgnis.Models
 
         public DbSet<RazorPagesIgnis.Tecnico> Tecnicos { get; set; }
 
-        public DbSet<RazorPagesIgnis.Solicitud> Solicitudes { get; set; }
-
-        public DbSet<RazorPagesIgnis.Proyecto> Proyectos { get; set; }
-
         public DbSet<RazorPagesIgnis.Rol> Roles { get; set; }
 
-        public DbSet<RazorPagesIgnis.TecnicoSolicitud> TecnicoSolicitudes { get; set; }
+        public DbSet<RazorPagesIgnis.Proyecto> Proyectos { get; set; }
+        
+        public DbSet<RazorPagesIgnis.Solicitud> Solicitudes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<TecnicoSolicitud>().ToTable("TecnicoSolicitud")
-                 .HasKey(a => new { a.tecnicoID, a.solicitudID });
-        }
+            // modelBuilder.Entity<IdentityUser>(i => {
+            //         i.ToTable("Users");
+            //         i.HasKey(x => x.Id);
+            //     });
+            
+            // modelBuilder.Entity<IdentityRole>(i => {
+            //         i.ToTable("Role");
+            //         i.HasKey(x => x.Id);
+            //     });
 
+            // modelBuilder.Entity<TecnicoSolicitud>().ToTable("TecnicoSolicitud")
+            //      .HasKey(a => new { a.tecnicoID, a.solicitudID });
+        }
     }
 }

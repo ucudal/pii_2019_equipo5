@@ -9,7 +9,7 @@ using RazorPagesIgnis.Areas.Identity.Data;
 namespace RazorPagesIgnis.Migrations
 {
     [DbContext(typeof(IgnisIdentityContext))]
-    [Migration("20190613175100_InitialCreate")]
+    [Migration("20190615203842_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -167,6 +167,8 @@ namespace RazorPagesIgnis.Migrations
                     b.Property<string>("Role");
 
                     b.Property<string>("SecurityStamp");
+
+                    b.Property<bool>("Status");
 
                     b.Property<bool>("TwoFactorEnabled");
 

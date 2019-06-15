@@ -1,11 +1,11 @@
-using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace RazorPagesIgnis 
 {   
     public class Persona
     { 
         /// <summary>
-        /// La clase Persona es superclase de las clases: Cliente, Técnico y Administrador.
+        /// La clase Persona es superclase de las clases Cliente, Técnico y Administrador.
         /// </summary>
         public Persona(string Nombre, string Correo, string Contrasena) 
         { 
@@ -25,12 +25,18 @@ namespace RazorPagesIgnis
         IValidarEmail validaEmail = new ValidarEmail();
 
         IValidarContrasena validaClave = new ValidarContrasena();
+        
+        [Key]
+        public int ID { get; set; }   
 
         /// <summary>
         /// Nombre del usuario.
         /// 
         /// No se permite un valor nulo o vacío.
         /// </summary>
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Nombre")]
         private string nombre; 
         public string Nombre  
         {
@@ -49,6 +55,9 @@ namespace RazorPagesIgnis
         /// 
         /// La información ingresada debe tener formato de dirección de correo electrónico.
         /// </summary>
+        [Required]
+        [StringLength(75)]
+        [Display(Name = "Correo Electrónico")]
         private string correo;
         public string Correo 
         {
@@ -67,6 +76,8 @@ namespace RazorPagesIgnis
         /// 
         /// Debe cumplir con las condiciones detalladas en la clase EsUnaContrasenaValida (archivo ValidarContrasena.cs)
         /// </summary>
+        [Required]
+        [Display(Name = "Contraseña")]
         private string contrasena;
         public string Contrasena  
         {
@@ -88,6 +99,7 @@ namespace RazorPagesIgnis
         /// Durante la creación del objeto Cliente, Tecnico o Administrador, Status se inicializa con valor 'Activo'.
         /// </summary>
         /// <returns>True = usuario activo; False = usuario inactivo</returns>
+        [Display(Name = "Estado")]
         private bool status;
         public bool Status 
         {
@@ -115,12 +127,12 @@ namespace RazorPagesIgnis
             this.status = !this.status;
         }
 
+        /// <summary>
         /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
+        /// </summary>
         public Persona() 
         {
         }
-
-        public int ID { get; set; }   
 
     }
 }

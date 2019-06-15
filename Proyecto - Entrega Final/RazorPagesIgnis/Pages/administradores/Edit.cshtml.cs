@@ -23,14 +23,14 @@ namespace RazorPagesIgnis.Pages.administradores
         [BindProperty]
         public Administrador Administrador { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Administrador = await _context.Administradores.FirstOrDefaultAsync(m => m.ID == id);
+            Administrador = await _context.Administradores.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Administrador == null)
             {
@@ -54,7 +54,7 @@ namespace RazorPagesIgnis.Pages.administradores
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AdministradorExists(Administrador.ID))
+                if (!AdministradorExists(Administrador.Id))
                 {
                     return NotFound();
                 }
@@ -67,9 +67,9 @@ namespace RazorPagesIgnis.Pages.administradores
             return RedirectToPage("./Index");
         }
 
-        private bool AdministradorExists(int id)
+        private bool AdministradorExists(string id)
         {
-            return _context.Administradores.Any(e => e.ID == id);
+            return _context.Administradores.Any(e => e.Id == id);
         }
     }
 }

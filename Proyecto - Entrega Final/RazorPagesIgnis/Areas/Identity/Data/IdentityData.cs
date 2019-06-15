@@ -4,7 +4,7 @@ namespace RazorPagesIgnis.Areas.Identity.Data
 {
     public static class IdentityData
     {
-        //Administrador
+        // Administrador
 
         public const string AdminUserName = "admin@correo.com";
 
@@ -38,7 +38,7 @@ namespace RazorPagesIgnis.Areas.Identity.Data
 
         public const string ClientPassword = "Abece.123";
 
-        // Roles
+        // Roles de Identity.
         public const string AdminRoleName = "Administrador";
 
         public static string[] NonAdminRoleNames = new string[] { "Cliente", "Técnico" };

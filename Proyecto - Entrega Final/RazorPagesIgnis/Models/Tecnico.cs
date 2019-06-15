@@ -1,63 +1,32 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+
+using RazorPagesIgnis.Areas.Identity.Data;
 
 namespace RazorPagesIgnis
-{   
-    public class Tecnico : Persona
+{ 
+    /// <summary>
+    /// El Técnico se registra en el Centro Ignis para ser contratado.
+    /// </summary>
+    public class Tecnico : ApplicationUser
     { 
         /// <summary>
-        /// El Técnico es la persona que se registra en la aplicación para ser contratado.
-        /// Puede anotarse hasta en 3 roles (especialidades) y los Administradores lo asignan a Proyectos.
-        /// 
-        /// Los campos obligatorios son: nombre y edad.
-        /// Nombre, correo y contraseña los valida la clase Persona.
+        /// RazorPages: constructor sin argumentos.
         /// </summary>
-        public Tecnico(string Nombre, string Correo, string Contrasena, 
-                        Int32 Edad, string Presentacion, string Nivel_experiencia) 
-                    : base(Nombre, Correo, Contrasena) 
+        public Tecnico() : base() {}
+
+        // /// <summary>
+        // /// RazorPages: atributo PrimaryKey.
+        // /// </summary>
+        // public int ID { get; set; }  
+
+        public Tecnico(string Presentacion, string NivelExperiencia)
         { 
-            Check.Precondicion(!string.IsNullOrEmpty(Edad.ToString()), "La edad no puede ser nulo o vacío.");
-            Check.Precondicion((Edad > 0), "La edad debe ser mayor que cero.");
-
-            this.edad = Edad;
             this.presentacion = Presentacion;                 // Texto de presentación de sí mismo.
-            this.nivel_experiencia = Nivel_experiencia;       // 'Básico', 'Avanzado'.
-        }
-
-        /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
-        /// Para el atributo se agrega parámetro 'new' por advertencia de compilación.
-        public Tecnico() 
-        {
-        }
-
-        public new int ID { get; set; } 
-
-        public ICollection<TecnicoSolicitud> TecnicoSolicitudes { get; set; }
-
-        /// <summary>
-        /// Edad. 
-        /// 
-        /// La edad debe ser mayor a cero, no puede ser nulo o vacío. 
-        /// </summary>
-        private Int32 edad;
-        public Int32 Edad 
-        {
-            get { return this.edad; }
-            set { 
-                Check.Precondicion(!string.IsNullOrEmpty(value.ToString()), "La edad no puede ser nulo o vacío.");
-                Check.Precondicion((value > 0), "La edad debe ser mayor que cero.");
-
-                this.edad = value;
-
-                Check.Postcondicion(this.Edad == value, "Edad no fue actualizado.");
-                }
+            this.nivelExperiencia = NivelExperiencia;       // 'Básico', 'Avanzado'.
         }
 
         /// <summary>
-        /// Presentación
-        /// 
-        /// El técnico puede incluir un texto para aclarar cosas, describir su forma de trabajo o intéreses.
+        /// Presentación: puede incluir un texto para describir su forma de trabajo o habilidades.
         /// </summary>
         private string presentacion;
         public string  Presentacion
@@ -67,34 +36,21 @@ namespace RazorPagesIgnis
         }
 
         /// <summary>
-        /// Nivel de Experiencia
-        /// 
-        /// Nivel que el técnico se adjudica de experiencia.
+        /// Nivel de Experiencia que se adjudica el técnico.
         /// </summary>
         /// <value>"Básico", "Avanzado"</value>
-        private string nivel_experiencia;
-        public string  Nivel_experiencia
+        private string nivelExperiencia;
+        public string  NivelExperiencia
         {
-            get { return this.nivel_experiencia; }
+            get { return this.nivelExperiencia; }
             set { 
                 Check.Precondicion((value == "Básico" || value == "Avanzado"), "Nivel de experiencia no admitido.");
 
-                this.nivel_experiencia = value;
+                this.nivelExperiencia = value;
 
                 Check.Postcondicion((value == "Básico" || value == "Avanzado"), "Nivel de experiencia no fue actualizado.");
                 }
         }
 
-        /// <summary>
-        /// Método para cambio de nivel de experiencia.
-        /// 
-        /// Si actualmente es Básico, lo cambia a Avanzado.
-        /// Si está en Avanzado, no se realizan modificaciones.
-        /// </summary>
-        public void CambiarNivelDeExperienciaParaAvanzado() 
-        {
-            if (this.Nivel_experiencia == "Básico") this.Nivel_experiencia = "Avanzado";
-        }
     }
-
 }

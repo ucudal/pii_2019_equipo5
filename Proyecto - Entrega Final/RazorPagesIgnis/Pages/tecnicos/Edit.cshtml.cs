@@ -23,14 +23,14 @@ namespace RazorPagesIgnis.Pages.tecnicos
         [BindProperty]
         public Tecnico Tecnico { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Tecnico = await _context.Tecnicos.FirstOrDefaultAsync(m => m.ID == id);
+            Tecnico = await _context.Tecnicos.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Tecnico == null)
             {
@@ -54,7 +54,7 @@ namespace RazorPagesIgnis.Pages.tecnicos
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TecnicoExists(Tecnico.ID))
+                if (!TecnicoExists(Tecnico.Id))
                 {
                     return NotFound();
                 }
@@ -67,9 +67,9 @@ namespace RazorPagesIgnis.Pages.tecnicos
             return RedirectToPage("./Index");
         }
 
-        private bool TecnicoExists(int id)
+        private bool TecnicoExists(string id)
         {
-            return _context.Tecnicos.Any(e => e.ID == id);
+            return _context.Tecnicos.Any(e => e.Id == id);
         }
     }
 }

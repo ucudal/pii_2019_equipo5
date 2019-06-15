@@ -21,7 +21,7 @@ namespace RazorPagesIgnis
         {
             foreach (IObserverCosto observer in ListaDeObservers)
             {
-                observer.ActualizarCostoSolicitudesActivas();
+                observer.ActualizarCostoSolicitudActiva();
             }
         }
     }

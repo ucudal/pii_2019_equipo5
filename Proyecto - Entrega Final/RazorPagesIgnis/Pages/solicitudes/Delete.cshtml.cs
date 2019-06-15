@@ -29,7 +29,7 @@ namespace RazorPagesIgnis.Pages.solicitudes
                 return NotFound();
             }
 
-            Solicitud = await _context.Solicitudes.FirstOrDefaultAsync(m => m.ID == id);
+            Solicitud = await _context.Solicitudes.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Solicitud == null)
             {

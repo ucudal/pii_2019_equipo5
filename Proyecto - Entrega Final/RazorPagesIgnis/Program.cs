@@ -24,7 +24,7 @@ namespace RazorPagesIgnis
                 {
                     var context = services.GetRequiredService<IgnisContext>();
 
-                        context.Database.Migrate();
+                        //context.Database.Migrate();
 
                         SeedData.Initialize(services);
 

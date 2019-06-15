@@ -29,7 +29,7 @@ namespace RazorPagesIgnis.Pages.roles
                 return NotFound();
             }
 
-            Rol = await _context.Roles.FirstOrDefaultAsync(m => m.ID == id);
+            Rol = await _context.Roles.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Rol == null)
             {

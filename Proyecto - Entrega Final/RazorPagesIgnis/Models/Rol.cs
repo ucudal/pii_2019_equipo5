@@ -2,18 +2,38 @@ using System;
 
 namespace RazorPagesIgnis 
 {
+    /// <summary>
+    /// Rol del técnico.
+    /// </summary>
     public class Rol : IRol
     {
         /// <summary>
-        /// Rol del técnica.
+        /// RazorPages: constructor sin argumentos.
         /// </summary>
+        public Rol()
+        {
+
+        }
+
+        /// <summary>
+        /// RazorPages: atributo PrimaryKey.
+        /// </summary>
+        public int Id { get; set; }  
+
+        /// <summary>
+        /// Rol del técnico.
+        /// </summary>
+        /// <param name="Nombre"></param>
+        /// <param name="Descripcion"></param>
         public Rol(string Nombre, string Descripcion) 
         {
             this.nombre = Nombre;
             this.descripcion = Descripcion;
         }
 
-        // Nombre del rol.
+        /// <summary>
+        /// Nombre del rol.
+        /// </summary>
         private string nombre;
         public string Nombre  
         { 
@@ -21,7 +41,9 @@ namespace RazorPagesIgnis
             set => this.nombre = value;
         }
 
-        // Descripción del rol (opcional).
+        /// <summary>
+        /// Descripción del rol (opcional).
+        /// </summary>
         private string descripcion;
         public string Descripcion  
         { 
@@ -40,13 +62,6 @@ namespace RazorPagesIgnis
         {
             this.descripcion = Descripcion;
         }
-
-        /// Para RazorPages: constructor sin argumentos, atributo ID es PrimaryKey para la base.
-        public Rol() 
-        {
-        }
-
-        public int ID { get; set; }
 
     }    
 }

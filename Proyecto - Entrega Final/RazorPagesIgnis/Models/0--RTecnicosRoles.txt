@@ -1,0 +1,54 @@
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace RazorPagesIgnis
+{   
+    /// <summary>
+    /// Relación de técnicos y roles.
+    /// </summary>
+    public class RTecnicosRoles
+    { 
+
+        // Lista de objetos de relación técnico - rol.
+        public IList<RTecnicoRol> ListaTecnicosRoles = new List<RTecnicoRol>();
+
+        // Agregar una relación.
+        public void AgregarRTecnicoRol(Tecnico Tecnico, Rol Rol)  
+        { 
+            if (TecnicoAdmiteRol(Tecnico, ListaTecnicosRoles)) 
+            {
+                RTecnicoRol Relacion = new RTecnicoRol(Tecnico.ID, Rol.ID); 
+
+                this.ListaTecnicosRoles.Add(Relacion);
+            }
+        }
+
+        // Eliminar una relación.
+        public void EliminarRTecnicoRol(Tecnico Tecnico, Rol Rol)  
+        {
+            RTecnicoRol Relacion = new RTecnicoRol(Tecnico.ID, Rol.ID); 
+
+            this.ListaTecnicosRoles.Remove(Relacion);
+        }
+
+        private bool TecnicoAdmiteRol(Tecnico Tecnico, IList<RTecnicoRol> ListaTecnicosRoles) 
+        {
+            int conteo = 0;
+            
+            foreach (RTecnicoRol item in ListaTecnicosRoles) 
+            {
+                if (item.TecnicoID == Tecnico.ID) conteo += 1;
+            }
+
+            if (conteo < 3) 
+            {
+                return true; 
+            }
+            else
+            {
+                return false;
+            }
+             
+        }
+    }
+}
