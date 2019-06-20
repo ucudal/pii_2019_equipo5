@@ -94,6 +94,7 @@ namespace IgnisMercado.Areas.Identity.Pages.Account
                 };
 
                 user.AssignRole(this._userManager, Input.Role);
+                user.Activar();
             
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
