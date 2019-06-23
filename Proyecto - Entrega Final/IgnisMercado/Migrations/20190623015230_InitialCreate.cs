@@ -8,22 +8,6 @@ namespace IgnisMercado.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Administradores",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    nombre = table.Column<string>(nullable: true),
-                    correo = table.Column<string>(nullable: true),
-                    contrasena = table.Column<string>(nullable: true),
-                    status = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Administradores", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -56,30 +40,15 @@ namespace IgnisMercado.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
                     DOB = table.Column<DateTime>(nullable: false),
-                    Role = table.Column<string>(nullable: true),
-                    Status = table.Column<bool>(nullable: false)
+                    Role = table.Column<string>(nullable: false),
+                    Status = table.Column<bool>(nullable: false),
+                    Discriminator = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Clientes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    nombre = table.Column<string>(nullable: true),
-                    correo = table.Column<string>(nullable: true),
-                    contrasena = table.Column<string>(nullable: true),
-                    status = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Clientes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -88,31 +57,12 @@ namespace IgnisMercado.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    nombre = table.Column<string>(nullable: true),
-                    descripcion = table.Column<string>(nullable: true)
+                    Nivel = table.Column<string>(nullable: true),
+                    Descripcion = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Roles", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Tecnicos",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    nombre = table.Column<string>(nullable: true),
-                    correo = table.Column<string>(nullable: true),
-                    contrasena = table.Column<string>(nullable: true),
-                    status = table.Column<bool>(nullable: false),
-                    edad = table.Column<int>(nullable: false),
-                    presentacion = table.Column<string>(nullable: true),
-                    nivelExperiencia = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Tecnicos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -227,18 +177,18 @@ namespace IgnisMercado.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    nombre = table.Column<string>(nullable: true),
-                    descripcion = table.Column<string>(nullable: true),
-                    status = table.Column<bool>(nullable: false),
-                    ClienteId = table.Column<int>(nullable: true)
+                    ClienteId = table.Column<string>(nullable: true),
+                    Nombre = table.Column<string>(nullable: true),
+                    Descripcion = table.Column<string>(nullable: true),
+                    Status = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Proyectos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Proyectos_Clientes_ClienteId",
+                        name: "FK_Proyectos_AspNetUsers_ClienteId",
                         column: x => x.ClienteId,
-                        principalTable: "Clientes",
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -249,15 +199,15 @@ namespace IgnisMercado.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    modoDeContrato = table.Column<int>(nullable: false),
-                    rolRequerido = table.Column<string>(nullable: true),
-                    horasContratadas = table.Column<int>(nullable: false),
-                    nivelExperiencia = table.Column<string>(nullable: true),
-                    observaciones = table.Column<string>(nullable: true),
-                    costoSolicitud = table.Column<int>(nullable: false),
-                    status = table.Column<bool>(nullable: false),
                     ProyectoId = table.Column<int>(nullable: true),
-                    TecnicoId = table.Column<int>(nullable: true)
+                    TecnicoId = table.Column<string>(nullable: true),
+                    ModoDeContrato = table.Column<int>(nullable: false),
+                    RolRequerido = table.Column<string>(nullable: true),
+                    HorasContratadas = table.Column<int>(nullable: false),
+                    NivelExperiencia = table.Column<string>(nullable: true),
+                    Observaciones = table.Column<string>(nullable: true),
+                    costoSolicitud = table.Column<int>(nullable: false),
+                    Status = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -269,9 +219,9 @@ namespace IgnisMercado.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Solicitudes_Tecnicos_TecnicoId",
+                        name: "FK_Solicitudes_AspNetUsers_TecnicoId",
                         column: x => x.TecnicoId,
-                        principalTable: "Tecnicos",
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -332,9 +282,6 @@ namespace IgnisMercado.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Administradores");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
@@ -359,16 +306,10 @@ namespace IgnisMercado.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
                 name: "Proyectos");
 
             migrationBuilder.DropTable(
-                name: "Tecnicos");
-
-            migrationBuilder.DropTable(
-                name: "Clientes");
+                name: "AspNetUsers");
         }
     }
 }

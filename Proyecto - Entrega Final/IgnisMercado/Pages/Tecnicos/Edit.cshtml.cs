@@ -22,7 +22,7 @@ namespace IgnisMercado.Pages.Tecnicos
         [BindProperty]
         public Tecnico Tecnico { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(string id)
         {
             if (id == null)
             {
@@ -66,7 +66,7 @@ namespace IgnisMercado.Pages.Tecnicos
             return RedirectToPage("./Index");
         }
 
-        private bool TecnicoExists(int id)
+        private bool TecnicoExists(string id)
         {
             return _context.Tecnicos.Any(e => e.Id == id);
         }

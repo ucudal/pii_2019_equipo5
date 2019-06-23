@@ -14,25 +14,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Solicitud[0].modoDeContrato)
+                @Html.DisplayNameFor(model => model.Solicitud[0].ModoDeContrato)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Solicitud[0].rolRequerido)
+                @Html.DisplayNameFor(model => model.Solicitud[0].RolRequerido)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Solicitud[0].horasContratadas)
+                @Html.DisplayNameFor(model => model.Solicitud[0].HorasContratadas)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Solicitud[0].nivelExperiencia)
+                @Html.DisplayNameFor(model => model.Solicitud[0].NivelExperiencia)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Solicitud[0].observaciones)
+                @Html.DisplayNameFor(model => model.Solicitud[0].Observaciones)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Solicitud[0].costoSolicitud)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Solicitud[0].status)
+                @Html.DisplayNameFor(model => model.Solicitud[0].Status)
             </th>
             <th></th>
         </tr>
@@ -41,25 +41,25 @@
 @foreach (var item in Model.Solicitud) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.modoDeContrato)
+                @Html.DisplayFor(modelItem => item.ModoDeContrato)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.rolRequerido)
+                @Html.DisplayFor(modelItem => item.RolRequerido)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.horasContratadas)
+                @Html.DisplayFor(modelItem => item.HorasContratadas)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.nivelExperiencia)
+                @Html.DisplayFor(modelItem => item.NivelExperiencia)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.observaciones)
+                @Html.DisplayFor(modelItem => item.Observaciones)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.costoSolicitud)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.status)
+                @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
