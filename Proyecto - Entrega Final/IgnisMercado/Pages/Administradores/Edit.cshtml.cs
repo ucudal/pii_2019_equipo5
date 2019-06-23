@@ -22,7 +22,7 @@ namespace IgnisMercado.Pages.Administradores
         [BindProperty]
         public Administrador Administrador { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(string id)
         {
             if (id == null)
             {
@@ -66,7 +66,7 @@ namespace IgnisMercado.Pages.Administradores
             return RedirectToPage("./Index");
         }
 
-        private bool AdministradorExists(int id)
+        private bool AdministradorExists(string id)
         {
             return _context.Administradores.Any(e => e.Id == id);
         }

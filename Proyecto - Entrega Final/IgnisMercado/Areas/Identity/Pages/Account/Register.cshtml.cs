@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
@@ -11,8 +10,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
 using IgnisMercado.Areas.Identity.Data;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Linq;
 
 namespace IgnisMercado.Areas.Identity.Pages.Account
 {
@@ -45,17 +42,17 @@ namespace IgnisMercado.Areas.Identity.Pages.Account
         {
             [Required]
             [DataType(DataType.Text)]
-            [Display(Name = "Full name")]
+            [Display(Name = "Nombre Completo")]
             public string Name { get; set; }
 
             [Required]
-            [Display(Name = "Birth Date")]
+            [Display(Name = "Fecha de Nacimiento")]
             [DataType(DataType.Date)]
             public DateTime DOB { get; set; }
 
             [Required]
             [EmailAddress]
-            [Display(Name = "Email")]
+            [Display(Name = "Correo Electrónico")]
             public string Email { get; set; }
 
             [Required]
@@ -70,7 +67,7 @@ namespace IgnisMercado.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
             
             [Required]
-            [Display(Name = "Role")]
+            [Display(Name = "Perfil")]
             public string Role { get; set; }
             
         }
@@ -85,6 +82,7 @@ namespace IgnisMercado.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
+                // Asigno los valores ingresados en el formulario a las variables.
                 var user = new IgnisMercado.Areas.Identity.Data.ApplicationUser
                 {
                     Name = Input.Name,
@@ -93,9 +91,12 @@ namespace IgnisMercado.Areas.Identity.Pages.Account
                     Email = Input.Email
                 };
 
+                // Asigno role al usuario.
                 user.AssignRole(this._userManager, Input.Role);
-                user.Activar();
-            
+
+                // Asigno al usuario el status activo.
+                user.StatusHabilitar();
+                
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)

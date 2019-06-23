@@ -22,7 +22,7 @@ namespace IgnisMercado.Pages.Clientes
         [BindProperty]
         public Cliente Cliente { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(string id)
         {
             if (id == null)
             {
@@ -66,7 +66,7 @@ namespace IgnisMercado.Pages.Clientes
             return RedirectToPage("./Index");
         }
 
-        private bool ClienteExists(int id)
+        private bool ClienteExists(string id)
         {
             return _context.Clientes.Any(e => e.Id == id);
         }
