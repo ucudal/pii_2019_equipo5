@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IgnisMercado.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20190623070807_Tecnico")]
-    partial class Tecnico
+    [Migration("20190624000559_Rol")]
+    partial class Rol
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
