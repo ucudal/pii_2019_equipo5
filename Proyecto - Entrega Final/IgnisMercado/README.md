@@ -18,9 +18,9 @@
 
 ![Ingresar](./Images/02-Register.png)
 
-#### Deberá ingresar sus datos personales, correo electrónico (este será su nombre de usuario) y una contraseña.
-
 #### Deberá seleccionar su perfil: Administrador, Cliente o Técnico. Esta opción define los menús de la aplicación a los cuales tendrá acceso y las acciones que podrá realizar.
+
+#### A continuación debe ingresar sus datos personales, correo electrónico (este será su nombre de usuario) y una contraseña.
 
 ## **INGRESAR A LA APLICACIÓN**
 
