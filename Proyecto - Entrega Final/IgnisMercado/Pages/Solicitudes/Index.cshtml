@@ -29,10 +29,10 @@
         @if (User.IsInRole("Administrador"))
         {
             <th>
-                @Html.DisplayNameFor(model => model.Solicitud[0].RolRequerido)
+                @Html.DisplayNameFor(model => model.Solicitud[0].NivelExperiencia)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Solicitud[0].NivelExperiencia)
+                @Html.DisplayNameFor(model => model.Solicitud[0].RolRequerido)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Solicitud[0].ModoDeContrato)
@@ -48,10 +48,10 @@
         @if (User.IsInRole("Cliente") || User.IsInRole("Técnico"))
         {
             <th>
-                @Html.DisplayNameFor(model => model.Solicitud[0].RolRequerido)
+                @Html.DisplayNameFor(model => model.Solicitud[0].NivelExperiencia)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Solicitud[0].NivelExperiencia)
+                @Html.DisplayNameFor(model => model.Solicitud[0].RolRequerido)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Solicitud[0].ModoDeContrato)
@@ -74,10 +74,10 @@
         @if (User.IsInRole("Administrador"))
         {
             <td>
-                @Html.DisplayFor(modelItem => item.RolRequerido)
+                @Html.DisplayFor(modelItem => item.NivelExperiencia)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NivelExperiencia)
+                @Html.DisplayFor(modelItem => item.RolRequerido)
             </td>
 
             @if ((item.ModoDeContrato) == 1)
@@ -96,19 +96,19 @@
                 @Html.DisplayFor(modelItem => item.costoSolicitud)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Detalles</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.SolicitudId">Editar</a> |
+                <a asp-page="./Details" asp-route-id="@item.SolicitudId">Detalles</a> |
+                <a asp-page="./Delete" asp-route-id="@item.SolicitudId">Delete</a>
             </td>
         }
 
         @if (User.IsInRole("Cliente") || User.IsInRole("Técnico"))
         {
             <td>
-                @Html.DisplayFor(modelItem => item.RolRequerido)
+                @Html.DisplayFor(modelItem => item.NivelExperiencia)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NivelExperiencia)
+                @Html.DisplayFor(modelItem => item.RolRequerido)
             </td>
 
             @if ((item.ModoDeContrato) == 1)
@@ -127,8 +127,8 @@
                 @Html.DisplayFor(modelItem => item.costoSolicitud)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Detalles</a>
+                <a asp-page="./Edit" asp-route-id="@item.SolicitudId">Editar</a> |
+                <a asp-page="./Details" asp-route-id="@item.SolicitudId">Detalles</a>
             </td>
         }
         </tr>

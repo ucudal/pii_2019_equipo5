@@ -29,6 +29,9 @@ namespace IgnisMercado.Models.Seeding
                 serviceProvider.GetRequiredService<
                     DbContextOptions<ApplicationContext>>()))
             {
+                // Seeding costos.
+                SeedCostos(context);
+
                 // Seeding proyectos.
                 SeedProyectos(context);
 
@@ -36,7 +39,7 @@ namespace IgnisMercado.Models.Seeding
                 SeedSolicitudes(context);
 
                 // Seeding roles.
-                SeedRoles(context);
+                SeedRol(context);
             }
         }
 
@@ -135,39 +138,80 @@ namespace IgnisMercado.Models.Seeding
                 new Proyecto 
                 { 
                     Nombre = "Proyecto 1", 
-                    Descripcion = "Descripción 1"
+                    Descripcion = "Descripción 1", 
+                    Status = true
                 },
                 new Proyecto 
                 {
                     Nombre = "Proyecto 2",
-                    Descripcion = "Descripción 2"
+                    Descripcion = "Descripción 2",
+                    Status = true
                 },
                 new Proyecto 
                 { 
                     Nombre = "Corto - Hulk Aplasta!!!", 
-                    Descripcion = "El héroe verde regresa... más enojado que nunca!"
+                    Descripcion = "El héroe verde regresa... más enojado que nunca!",
+                    Status = true
                 },
                 new Proyecto 
                 {
                     Nombre = "Docu-mental",
-                    Descripcion = "Investigación."
+                    Descripcion = "Investigación.",
+                    Status = true
                 },
                 new Proyecto 
                 {
                     Nombre = "Documental Parque de Juegos",
-                    Descripcion = "Documental sobre el Parque Rodó"
+                    Descripcion = "Documental sobre el Parque Rodó",
+                    Status = true
                 },
                 new Proyecto 
                 {
                     Nombre = "Video Musical",
-                    Descripcion = "Video musical de banda universitaria."
+                    Descripcion = "Video musical de banda universitaria.",
+                    Status = true
+                }
+            );
+
+            // guarda los cambios.
+            context.SaveChanges();
+            
+            // Cuando se crea el proyecto, status queda inactivo. Aquí lo actualizo a true.
+            var proys = context.Proyectos;
+
+            foreach(var proy in proys) proy.StatusActivo();
+
+            // guarda los cambios.
+            context.SaveChanges();
+        }
+    
+        /// <summary>
+        /// Seeding Costos.
+        /// </summary>
+        private static void SeedCostos(ApplicationContext context)
+        {
+            if (context.Costos.Any()) 
+            {
+                return;
+            }
+
+            context.Costos.AddRange(
+                new Costo 
+                {
+                    CostoHoraBasico = 150,
+                    CostoHoraAvanzado = 280,
+                    PrimeraHoraBasico = 380,
+                    PrimeraHoraAvanzado = 520,
+                    JornadaAvanzado=2000,
+                    JornadaBasico=1200,
+                    HoraJornada=6
                 }
             );
 
             // guarda los cambios.
             context.SaveChanges();
         }
-    
+
         /// <summary>
         /// Seeding Solicitud.
         /// </summary>
@@ -181,67 +225,75 @@ namespace IgnisMercado.Models.Seeding
             context.Solicitudes.AddRange(
                 new Solicitud 
                 {
+                    SolicitudId = 1,
                     ModoDeContrato = 1, 
-                    RolRequerido = "Camarografo", 
+                    RolRequerido = "Operador de Cabina 03 y Estudio de Radio", 
                     HorasContratadas = 8, 
                     NivelExperiencia = "Básico", 
-                    Observaciones = "obs..."
+                    Observaciones = "s/obs."
                 },
                 new Solicitud 
                 {
+                    SolicitudId = 2,
                     ModoDeContrato = 2, 
-                    RolRequerido = "Luces", 
+                    RolRequerido = "Sonidista", 
                     HorasContratadas = 10, 
                     NivelExperiencia = "Avanzado", 
-                    Observaciones = "no"
+                    Observaciones = "s/obs."
                 },
                 new Solicitud 
                 {
+                    SolicitudId = 3,
                     ModoDeContrato = 1, 
-                    RolRequerido = "Director", 
+                    RolRequerido = "Presentador / conductor", 
                     HorasContratadas = 15, 
                     NivelExperiencia = "Básico", 
-                    Observaciones = "no."
+                    Observaciones = "s/obs."
                 },
                 new Solicitud 
                 {
+                    SolicitudId = 4,
                     ModoDeContrato = 1, 
-                    RolRequerido = "Camarografo", 
+                    RolRequerido = "Sonidista", 
                     HorasContratadas = 8, 
                     NivelExperiencia = "Básico", 
-                    Observaciones = "obs..."
+                    Observaciones = "s/obs."
                 },
                 new Solicitud 
                 {
+                    SolicitudId = 5,
                     ModoDeContrato = 2, 
-                    RolRequerido = "Luces", 
+                    RolRequerido = "Redactor creativo", 
                     HorasContratadas = 10, 
                     NivelExperiencia = "Avanzado", 
-                    Observaciones = "no."
+                    Observaciones = "s/obs."
                 },
                 new Solicitud 
                 {
+                    SolicitudId = 6,
                     ModoDeContrato = 1, 
-                    RolRequerido = "Director", 
+                    RolRequerido = "Operador de Cabina 02", 
                     HorasContratadas = 15, 
                     NivelExperiencia = "Básico", 
-                    Observaciones = "no."
+                    Observaciones = "s/obs."
                 },
                 new Solicitud 
                 {
+                    SolicitudId = 7,
                     ModoDeContrato = 1, 
-                    RolRequerido = "Camarografo", 
+                    RolRequerido = "Diseñador gráfico", 
                     HorasContratadas = 8, 
                     NivelExperiencia = "Básico", 
-                    Observaciones = "obs..."
+                    Observaciones = "s/obs."
                 },
                 new Solicitud 
                 {
+                    SolicitudId = 8,
                     ModoDeContrato = 2, 
-                    RolRequerido = "Luces", 
+                    RolRequerido = "Cámara y asistente de cámara", 
                     HorasContratadas = 10, 
                     NivelExperiencia = "Avanzado", 
-                    Observaciones = "no."
+                    Observaciones = "s/obs."
                 }
             );
 
@@ -250,18 +302,18 @@ namespace IgnisMercado.Models.Seeding
             
             // Cuando se crea la solicitud en context, queda a costo cero y status inactivo.
             // Actualizo el status y el costo de cada solicitud de acuerdo al precio vigente.
-            var sols = context.Solicitudes;
+            var solicitudes = context.Solicitudes;
 
             ICosto Costo = new Costo();
 
-            foreach(var sol in sols)
+            foreach(var s in solicitudes)
             {
-                sol.costoSolicitud = Costo.CalcularCostoSolicitud(
-                                            sol.ModoDeContrato,
-                                            sol.HorasContratadas,
-                                            sol.NivelExperiencia);
+                s.costoSolicitud = Costo.CalcularCostoSolicitud(
+                                            s.ModoDeContrato,
+                                            s.HorasContratadas,
+                                            s.NivelExperiencia);
 
-                sol.StatusActivo();
+                s.StatusActivo();
             }
 
             // guarda los cambios.
@@ -271,7 +323,7 @@ namespace IgnisMercado.Models.Seeding
         /// <summary>
         /// Seeding Rol.
         /// </summary>
-        private static void SeedRoles(ApplicationContext context)
+        private static void SeedRol(ApplicationContext context)
         {
             if (context.Roles.Any()) 
             {
@@ -309,5 +361,6 @@ namespace IgnisMercado.Models.Seeding
             // guarda los cambios.
             context.SaveChanges();
         }
+
     }
 }
