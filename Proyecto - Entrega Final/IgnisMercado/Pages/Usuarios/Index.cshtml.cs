@@ -25,11 +25,11 @@ namespace IgnisMercado.Pages.Usuarios
             _userManager = userManager;
         }
 
+        public string ClienteId { get; set; }
+
         public int ProyectoId { get; set; }
 
         public ClienteIndexData ClienteIdxData  { get; set; }
-
-        
 
         public async Task OnGetAsync(string id, int? proyectoId)
         { 
@@ -44,10 +44,14 @@ namespace IgnisMercado.Pages.Usuarios
             // Seleccionar un usuario, mostrar proyectos.
             if (id != null)
             {
-                ClienteIdxData.Proyectos = await _context.Proyectos
-                //.Include(p => p.RelacionClienteProyecto.Where(r => r.ClienteId == id))
-                    .OrderBy(p => p.Nombre)
-                        .ToListAsync();
+                // El id del usuario es el id ingresado.
+                ClienteId = id;
+
+                // Instanciar un nuevo usuario y asignarle la info a partir del viewmodel.
+                ApplicationUser Usuario = ClienteIdxData.Usuarios.Where(u => u.ClienteId == id).Single();
+
+                // Cargamos los proyectos a partir de las relaciones de ese usuario.
+                ClienteIdxData.Proyectos = Usuario.RelacionClienteProyecto.Select(r => r.Proyecto);
             };
 
             // Seleccionar un proyecto, mostrar solicitudes.
