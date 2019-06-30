@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using IgnisMercado.Areas.Identity.Data;
+
 namespace IgnisMercado.Models
 {
     /// <summary>
@@ -13,7 +15,7 @@ namespace IgnisMercado.Models
         public string ClienteId { get; set; }
 
         [Required]
-        public Cliente Cliente { get; set; }
+        public ApplicationUser Cliente { get; set; }
 
         [Key]
         public int ProyectoId { get; set; }
