@@ -27,6 +27,7 @@ namespace IgnisMercado.Models
             builder.Entity<Proyecto>().ToTable("Proyectos");
             builder.Entity<Rol>().ToTable("Roles");
             builder.Entity<Costo>().ToTable("Costos");
+            builder.Entity<ApplicationUser>().ToTable("AspNetUsers");
 
             // Relación Cliente:Proyecto
             builder.Entity<RelacionClienteProyecto>()
@@ -79,8 +80,6 @@ namespace IgnisMercado.Models
         public DbSet<IgnisMercado.Models.RelacionTecnicoRol> RelacionTecnicoRoles { get; set; }
 
         public DbSet<IgnisMercado.Models.Administrador> Administradores { get; set; }
-
-        public DbSet<IgnisMercado.Models.Cliente> Clientes { get; set; }
 
         public DbSet<IgnisMercado.Models.Tecnico> Tecnicos { get; set; }
 
