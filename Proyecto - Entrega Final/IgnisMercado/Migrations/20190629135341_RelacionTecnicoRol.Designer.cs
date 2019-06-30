@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IgnisMercado.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20190628173919_Administrador")]
-    partial class Administrador
+    [Migration("20190629135341_RelacionTecnicoRol")]
+    partial class RelacionTecnicoRol
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -333,13 +333,6 @@ namespace IgnisMercado.Migrations
                     b.HasDiscriminator().HasValue("Administrador");
                 });
 
-            modelBuilder.Entity("IgnisMercado.Models.Cliente", b =>
-                {
-                    b.HasBaseType("IgnisMercado.Areas.Identity.Data.ApplicationUser");
-
-                    b.HasDiscriminator().HasValue("Cliente");
-                });
-
             modelBuilder.Entity("IgnisMercado.Models.Tecnico", b =>
                 {
                     b.HasBaseType("IgnisMercado.Areas.Identity.Data.ApplicationUser");
@@ -351,7 +344,7 @@ namespace IgnisMercado.Migrations
 
             modelBuilder.Entity("IgnisMercado.Models.RelacionClienteProyecto", b =>
                 {
-                    b.HasOne("IgnisMercado.Models.Cliente", "Cliente")
+                    b.HasOne("IgnisMercado.Areas.Identity.Data.ApplicationUser", "Cliente")
                         .WithMany("RelacionClienteProyecto")
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade);
