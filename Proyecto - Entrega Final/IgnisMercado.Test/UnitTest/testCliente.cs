@@ -1,6 +1,6 @@
 using System;
 using Xunit;
-using RazorPagesIgnis;
+using IgnisMercado.Models;
 
 namespace tests
 {
