@@ -29,7 +29,14 @@ namespace IgnisMercado.Models.Seeding
                 serviceProvider.GetRequiredService<
                     DbContextOptions<ApplicationContext>>()))
             {
-                // Seeding roles.
+                Initialize(context);
+                
+            }
+        }
+
+        public static void Initialize(ApplicationContext context)
+        {
+            // Seeding roles.
                 SeedRol(context);
                 
                 // Seeding costos.
@@ -50,7 +57,6 @@ namespace IgnisMercado.Models.Seeding
                 SeedRTecnicoRoles(context);
 
                 SeedRTecnicoSolicitudes(context);
-            }
         }
 
         // Seeding usuarios.

@@ -5,7 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.Sqlite;
 using Xunit;
 using IgnisMercado.Models;
-using IgnisMercado.Pages_Actors;
+using IgnisMercado.Pages.Usuarios;
+using IgnisMercado.Models.Seeding;
+using IgnisMercado.Areas.Identity.Data;
 
 namespace IgnisMercado.Tests
 {
@@ -31,7 +33,7 @@ namespace IgnisMercado.Tests
                 using (var context = new ApplicationContext(options))
                 {
                     context.Database.EnsureCreated();
-                    SeedData.Initialize(context);
+                    Seeding.Initialize(context);
 
                     await testAction(context);
                 }
@@ -48,17 +50,22 @@ namespace IgnisMercado.Tests
             // Arrange: seed database with test data
             await PrepareTestContext(async(context) =>
             {
-                    var expectedActors = SeedData.GetSeedingUsuarios();
+                            SeedUserData seedUserData = new SeedUserData();
+
+            // Cargar la lista de usuarios.
+            seedUserData.CargarListaUsuarios();
+
+                    var expectedActors = seedUserData.ListaUsuarios;
 
                     // Act: retrieve actors
                     var pageModel = new IndexModel(context);
-                    await pageModel.OnGetAsync();
+                    await pageModel.OnGetAsync(null, 0);
 
                     // Assert: seeded and retrieved actors match
-                    var actualMessages = Assert.IsAssignableFrom<List<Actor>>(pageModel.Usuario);
+                    var actualMessages = Assert.IsAssignableFrom<List<ApplicationUser>>(pageModel.ClienteIdxData.Usuarios);
                     Assert.Equal(
-                        expectedActors.OrderBy(a => a.ID).Select(a => a.Name),
-                        actualMessages.OrderBy(a => a.ID).Select(a => a.Name));
+                        expectedActors.OrderBy(a => a.Email).Select(a => a.Name),
+                        actualMessages.OrderBy(a => a.Email).Select(a => a.Name));
             });
         }
     }
