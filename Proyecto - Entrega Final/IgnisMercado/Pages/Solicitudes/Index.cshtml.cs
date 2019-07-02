@@ -72,19 +72,19 @@ namespace IgnisMercado.Pages.Solicitudes
             }
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
-        {
+        // public async Task<IActionResult> OnPostAsync(int? id)
+        // {
 
-        //     if (!ModelState.IsValid)
-        //     {
-        //         return Page();
-        //     }
+        // //     if (!ModelState.IsValid)
+        // //     {
+        // //         return Page();
+        // //     }
 
-            var solicitudActualizar = await _context.Movies
-                .Include(l => l.Location)
-                .Include(a => a.Appeareances)
-                    .ThenInclude(a => a.Actor)
-                .FirstOrDefaultAsync(m => m.ID == id);
+        //     var solicitudActualizar = await _context.Movies
+        //         .Include(l => l.Location)
+        //         .Include(a => a.Appeareances)
+        //             .ThenInclude(a => a.Actor)
+        //         .FirstOrDefaultAsync(m => m.ID == id);
 
  
         //     if (await TryUpdateModelAsync<Movie>(
@@ -201,6 +201,7 @@ namespace IgnisMercado.Pages.Solicitudes
         //     return _context.Movies.Any(e => e.ID == id);
         // }
 
-        }
+        // }
     }
+}
 
