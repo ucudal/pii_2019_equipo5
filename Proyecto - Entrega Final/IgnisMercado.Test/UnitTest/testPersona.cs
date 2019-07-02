@@ -59,6 +59,5 @@ namespace tests
 
             Assert.Equal(expected.ToString(), actual.ToString());
         }
-
     }
 }
