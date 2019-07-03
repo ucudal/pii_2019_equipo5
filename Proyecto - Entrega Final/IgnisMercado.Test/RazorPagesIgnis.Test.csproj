@@ -17,6 +17,6 @@
     <PackageReference Include="System.Net.Http" Version="4.3.3" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RazorPagesIgnis\RazorPagesIgnis.csproj"/>
+    <ProjectReference Include="..\IgnisMercado\IgnisMercado.csproj"/>
   </ItemGroup>
 </Project>

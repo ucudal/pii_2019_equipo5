@@ -16,13 +16,13 @@ namespace IgnisMercado.Pages.Usuarios
     {
         private readonly IgnisMercado.Models.ApplicationContext _context;
 
-        private readonly UserManager<ApplicationUser> _userManager;
+        //private readonly UserManager<ApplicationUser> _userManager;
 
-        public IndexModel(IgnisMercado.Models.ApplicationContext context, UserManager<ApplicationUser> userManager)
+        public IndexModel(IgnisMercado.Models.ApplicationContext context/*, UserManager<ApplicationUser> userManager */)
         {
             _context = context;
 
-            _userManager = userManager;
+            //_userManager = userManager;
         }
 
         public string ClienteId { get; set; }

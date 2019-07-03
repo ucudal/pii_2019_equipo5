@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/IgnisMercado/bin/Debug/netcoreapp2.2/IgnisMercado.dll",
+            "program": "IgnisMercado/bin/Debug/netcoreapp2.2/IgnisMercado.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/IgnisMercado",
+            "cwd": "IgnisMercado",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",

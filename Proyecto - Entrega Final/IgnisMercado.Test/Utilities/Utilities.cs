@@ -5,7 +5,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using RazorPagesIgnis.Data;
+using IgnisMercado.Models;
+using IgnisMercado.Areas.Identity.Data;
 
 namespace RazorPagesIgnis.Tests
 {
@@ -21,7 +22,7 @@ namespace RazorPagesIgnis.Tests
             // Create a new options instance using an in-memory database and 
             // IServiceProvider that the context should resolve all of its 
             // services from.
-            var builder = new DbContextOptionsBuilder<AppDbContext>()
+            var builder = new DbContextOptionsBuilder<ApplicationContext>()
                 .UseInMemoryDatabase("InMemoryDb")
                 .UseInternalServiceProvider(serviceProvider);
 

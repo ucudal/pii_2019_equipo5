@@ -29,16 +29,21 @@ namespace IgnisMercado.Models.Seeding
                 serviceProvider.GetRequiredService<
                     DbContextOptions<ApplicationContext>>()))
             {
-                // Seeding roles.
+                Initialize(context);
+            }
+        }
+
+        public static void Initialize(ApplicationContext context)
+        {
+            // Seeding roles.
                 SeedRol(context);
                 
                 // Seeding costos.
                 SeedCostos(context);
 
-
                 // Seeding proyectos.
                 SeedProyectos(context);
-
+ 
                 // Seeding solicitudes.
                 SeedSolicitudes(context);
 
@@ -50,7 +55,6 @@ namespace IgnisMercado.Models.Seeding
                 SeedRTecnicoRoles(context);
 
                 SeedRTecnicoSolicitudes(context);
-            }
         }
 
         // Seeding usuarios.
@@ -204,9 +208,6 @@ namespace IgnisMercado.Models.Seeding
             {
                 return;
             }
-
-            // ApplicationUser usuario = context.Users.Where(u => u.Name == "Admin").Single();
-            // var usuarioid = usuario.Id;
 
             context.RelacionClienteProyectos.AddRange(
             
