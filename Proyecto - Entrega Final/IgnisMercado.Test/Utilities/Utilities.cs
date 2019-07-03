@@ -12,7 +12,7 @@ namespace RazorPagesIgnis.Tests
 {
     public static class Utilities
     {
-        public static DbContextOptions<ApplicationContext> TestDbContextOptions()
+        public static DbContextOptions<AppDbContext> TestDbContextOptions()
         {
             // Create a new service provider to create a new in-memory database.
             var serviceProvider = new ServiceCollection()
