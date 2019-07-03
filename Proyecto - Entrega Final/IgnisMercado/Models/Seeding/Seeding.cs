@@ -31,6 +31,7 @@ namespace IgnisMercado.Models.Seeding
             {
                 Initialize(context);
             }
+            
         }
 
         public static void Initialize(ApplicationContext context)
