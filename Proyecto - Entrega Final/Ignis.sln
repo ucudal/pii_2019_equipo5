@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPagesIgnis", "RazorPagesIgnis\RazorPagesIgnis.csproj", "{3367152F-1F1E-4F98-A839-4C76970107EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IgnisMercado", "IgnisMercado\IgnisMercado.csproj", "{3367152F-1F1E-4F98-A839-4C76970107EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPagesIgnis.Test", "RazorPagesIgnis.Test\RazorPagesIgnis.Test.csproj", "{809446D1-C987-43CB-977B-968A078924FF}"
 EndProject

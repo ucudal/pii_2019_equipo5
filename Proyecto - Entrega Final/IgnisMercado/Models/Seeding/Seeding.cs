@@ -29,16 +29,21 @@ namespace IgnisMercado.Models.Seeding
                 serviceProvider.GetRequiredService<
                     DbContextOptions<ApplicationContext>>()))
             {
-                // Seeding roles.
+                Initialize(context);
+            }
+        }
+
+        public static void Initialize(ApplicationContext context)
+        {
+            // Seeding roles.
                 SeedRol(context);
                 
                 // Seeding costos.
                 SeedCostos(context);
 
-
                 // Seeding proyectos.
                 SeedProyectos(context);
-
+ 
                 // Seeding solicitudes.
                 SeedSolicitudes(context);
 
@@ -50,7 +55,6 @@ namespace IgnisMercado.Models.Seeding
                 SeedRTecnicoRoles(context);
 
                 SeedRTecnicoSolicitudes(context);
-            }
         }
 
         // Seeding usuarios.
@@ -205,37 +209,40 @@ namespace IgnisMercado.Models.Seeding
                 return;
             }
 
+            ApplicationUser Cliente = context.Users.Where(u => u.Name == "Admin").Single();
+
             context.RelacionClienteProyectos.AddRange(
             
+                // new RelacionClienteProyecto 
+                // { 
+                //     ProyectoId = context.Proyectos.Single(p => p.Nombre == "El vendedor de humo").ProyectoId, 
+                //     ClienteId = context.Users.Single(p => p.NormalizedUserName == "CLIENTE@CORREO.COM").Id  
+                // },
+                // new RelacionClienteProyecto 
+                // { 
+                //     ProyectoId = context.Proyectos.Single(p => p.Nombre == "Mi peluquera ideal").ProyectoId, 
+                //     ClienteId = context.Users.Single(p => p.NormalizedUserName == "CLIENTE@CORREO.COM").Id  
+                // },
+                // new RelacionClienteProyecto 
+                // { 
+                //     ProyectoId = context.Proyectos.Single(p => p.Nombre == "Ataque de pánico").ProyectoId, 
+                //     ClienteId = context.Users.Single(p => p.NormalizedUserName == "MARCELO@CORREO.COM").Id  
+                // },
+                // new RelacionClienteProyecto 
+                // { 
+                //     ProyectoId = context.Proyectos.Single(p => p.Nombre == "La luna").ProyectoId, 
+                //     ClienteId = context.Users.Single(p => p.NormalizedUserName == "MARCELO@CORREO.COM").Id  
+                // },
+                // new RelacionClienteProyecto 
+                // { 
+                //     ProyectoId = context.Proyectos.Single(p => p.Nombre == "La cabeza me da vueltas").ProyectoId, 
+                //     ClienteId = context.Users.Single(p => p.NormalizedUserName == "JUAN@CORREO.COM").Id  
+                // },
                 new RelacionClienteProyecto 
                 { 
-                    ProyectoId = context.Proyectos.Single(p => p.Nombre == "El vendedor de humo").ProyectoId, 
-                    ClienteId = context.Users.Single(p => p.NormalizedUserName == "CLIENTE@CORREO.COM").Id  
-                },
-                new RelacionClienteProyecto 
-                { 
-                    ProyectoId = context.Proyectos.Single(p => p.Nombre == "Mi peluquera ideal").ProyectoId, 
-                    ClienteId = context.Users.Single(p => p.NormalizedUserName == "CLIENTE@CORREO.COM").Id  
-                },
-                new RelacionClienteProyecto 
-                { 
-                    ProyectoId = context.Proyectos.Single(p => p.Nombre == "Ataque de pánico").ProyectoId, 
-                    ClienteId = context.Users.Single(p => p.NormalizedUserName == "MARCELO@CORREO.COM").Id  
-                },
-                new RelacionClienteProyecto 
-                { 
-                    ProyectoId = context.Proyectos.Single(p => p.Nombre == "La luna").ProyectoId, 
-                    ClienteId = context.Users.Single(p => p.NormalizedUserName == "MARCELO@CORREO.COM").Id  
-                },
-                new RelacionClienteProyecto 
-                { 
-                    ProyectoId = context.Proyectos.Single(p => p.Nombre == "La cabeza me da vueltas").ProyectoId, 
-                    ClienteId = context.Users.Single(p => p.NormalizedUserName == "JUAN@CORREO.COM").Id  
-                },
-                new RelacionClienteProyecto 
-                { 
-                    ProyectoId = context.Proyectos.Single(p => p.Nombre == "It´s a bird thing").ProyectoId, 
-                    ClienteId = context.Users.Single(p => p.NormalizedUserName == "LUCAS@CORREO.COM").Id
+                    ProyectoId = 1, //context.Proyectos.Single(p => p.Nombre == "It´s a bird thing").ProyectoId, 
+                    ClienteId = Cliente.Id
+                    
                 }
             );
 
