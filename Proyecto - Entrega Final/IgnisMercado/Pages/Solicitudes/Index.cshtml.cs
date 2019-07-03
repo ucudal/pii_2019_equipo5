@@ -45,7 +45,7 @@ namespace IgnisMercado.Pages.Solicitudes
                                 .AsNoTracking()
                                 .ToListAsync();
             }
-            else 
+            else    
             {
                 SolicitudId = id;
 
@@ -67,7 +67,6 @@ namespace IgnisMercado.Pages.Solicitudes
                                             
                 this.TecnicosDisponibles = await _context.Tecnicos
                                                 .Where(t => !TecnicosAsignados.Contains(t))
-                                                .Where(t => t.Role == "Técnico")
                                                 .ToListAsync();
             }
         }

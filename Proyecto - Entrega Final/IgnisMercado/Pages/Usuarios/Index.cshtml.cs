@@ -1,13 +1,12 @@
-using System;
-using System.Collections.Generic;
+
+// revisado
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-using IgnisMercado.Models;
 using IgnisMercado.Areas.Identity.Data;
+using IgnisMercado.Models;
 using IgnisMercado.Models.ViewModels;
 
 namespace IgnisMercado.Pages.Usuarios
@@ -16,13 +15,9 @@ namespace IgnisMercado.Pages.Usuarios
     {
         private readonly IgnisMercado.Models.ApplicationContext _context;
 
-        //private readonly UserManager<ApplicationUser> _userManager;
-
-        public IndexModel(IgnisMercado.Models.ApplicationContext context/*, UserManager<ApplicationUser> userManager */)
+        public IndexModel(IgnisMercado.Models.ApplicationContext context)
         {
             _context = context;
-
-            //_userManager = userManager;
         }
 
         public string ClienteId { get; set; }
@@ -36,24 +31,20 @@ namespace IgnisMercado.Pages.Usuarios
             
             if (id == null)
             {
-                // Mostramos en pantalla la lista de todos los usuarios.
+                // Se muestran todos los usuarios en pantalla.
                 ClienteIdxData.Usuarios = await _context.Users
                     .Include(u => u.RelacionClienteProyecto)
                         .ThenInclude(rcp => rcp.Proyecto)
                             .OrderBy(u => u.Name)
                             .OrderBy(u => u.Role)
-                            .AsNoTracking()
-                            .ToListAsync();
+                                .AsNoTracking()
+                                .ToListAsync();
             }
             else 
             {
-                // El usuario selecciona en pantalla a un usuario (id != null).
+                // Se muestra el usuario seleccionado (id != null).
                 ClienteId = id;
 
-                // Mostramos en pantalla solo el usuario seleccionado.
-                // Decidimos redefinir aquí el viewmodel Usuarios mediante una condición where
-                // para evitar agregar en la vista parte de la lógica de filtrado.
-                // Toda la lógica de seleccionar el usuario queda en el controlador.
                 ClienteIdxData.Usuarios = await _context.Users
                     .Where(u => u.Id == id)
                     .Include(u => u.RelacionClienteProyecto)
@@ -63,27 +54,31 @@ namespace IgnisMercado.Pages.Usuarios
                                     .AsNoTracking()
                                     .ToListAsync();
 
+                // Instanciamos el usuario seleccionado.
                 ApplicationUser usuario = ClienteIdxData.Usuarios
                                             .Where(u => u.Id == id).Single();
 
+                // Seleccionamos los proyectos del usuario.
                 ClienteIdxData.Proyectos = usuario.RelacionClienteProyecto 
                                             .Select(r => r.Proyecto).ToList();
 
-                // Solicitudes.
                 if (proyId != 0) 
                 { 
                     // El usuario selecciona un proyecto del cliente.
                     ProyectoId = proyId;
 
+                    // Seleccionamos el proyecto del cliente.
                     Proyecto proyecto = ClienteIdxData.Proyectos
                                             .Where(p => p.ProyectoId == proyId).Single();
 
+                    // Seleccionamos las solicitudes del proyecto.
                     ClienteIdxData.Solicitudes = proyecto.RelacionProyectoSolicitud
                                                     .Select(rps => rps.Solicitud).ToList();
 
                 };
+
             };
-           
+
         }
     }
 }

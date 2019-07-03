@@ -17,9 +17,9 @@ namespace IgnisMercado.Models.Seeding
             // administrador.
             SeedUser user1 = new SeedUser 
             {
-                UserName = "admin@ignis.com",
+                UserName = "admin@correo.com",
                 Name = "Admin",
-                Email = "admin@ignis.com",
+                Email = "admin@correo.com",
                 DOB = new DateTime(1978, 9, 25),
                 Password = "Abece.123",
                 UserType = AdminRole
@@ -30,9 +30,9 @@ namespace IgnisMercado.Models.Seeding
             // cliente.
             SeedUser user2 = new SeedUser 
             {
-                UserName = "cliente@ignis.com",
+                UserName = "cliente@correo.com",
                 Name = "Cliente",
-                Email = "cliente@ignis.com",
+                Email = "cliente@correo.com",
                 DOB = new DateTime(1978, 9, 25),
                 Password = "Abece.123",
                 UserType = NonAdminRole[0]
@@ -43,9 +43,9 @@ namespace IgnisMercado.Models.Seeding
             // técnico.
             SeedUser user3 = new SeedUser 
             {
-                UserName = "tecnico@ignis.com",
+                UserName = "tecnico@correo.com",
                 Name = "Tecnico",
-                Email = "tecnico@ignis.com",
+                Email = "tecnico@correo.com",
                 DOB = new DateTime(1978, 9, 25),
                 Password = "Abece.123",
                 UserType = NonAdminRole[1]
@@ -56,9 +56,9 @@ namespace IgnisMercado.Models.Seeding
             // cliente 2.
             SeedUser user4 = new SeedUser 
             {
-                UserName = "marcelo@ignis.com",
+                UserName = "marcelo@correo.com",
                 Name = "Marcelo",
-                Email = "marcelo@ignis.com",
+                Email = "marcelo@correo.com",
                 DOB = new DateTime(1978, 9, 25),
                 Password = "Abece.123",
                 UserType = NonAdminRole[0]
@@ -69,9 +69,9 @@ namespace IgnisMercado.Models.Seeding
             // cliente 3.
             SeedUser user5 = new SeedUser 
             {
-                UserName = "matias@ignis.com",
-                Name = "Matias",
-                Email = "matias@ignis.com",
+                UserName = "lucas@correo.com",
+                Name = "Lucas",
+                Email = "lucas@correo.com",
                 DOB = new DateTime(1978, 9, 25),
                 Password = "Abece.123",
                 UserType = NonAdminRole[0]
@@ -82,9 +82,9 @@ namespace IgnisMercado.Models.Seeding
             // técnico 2.
             SeedUser user6 = new SeedUser 
             {
-                UserName = "sofia@ignis.com",
-                Name = "Sofia",
-                Email = "sofia@ignis.com",
+                UserName = "pablo@correo.com",
+                Name = "Pablo",
+                Email = "pablo@correo.com",
                 DOB = new DateTime(1978, 9, 25),
                 Password = "Abece.123",
                 UserType = NonAdminRole[1]
@@ -95,9 +95,9 @@ namespace IgnisMercado.Models.Seeding
             // técnico 3.
             SeedUser user7 = new SeedUser 
             {
-                UserName = "fausto@ignis.com",
-                Name = "Fausto",
-                Email = "fausto@ignis.com",
+                UserName = "juan@correo.com",
+                Name = "Juan",
+                Email = "juan@correo.com",
                 DOB = new DateTime(1978, 9, 25),
                 Password = "Abece.123",
                 UserType = NonAdminRole[1]

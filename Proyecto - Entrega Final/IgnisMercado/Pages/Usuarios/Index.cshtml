@@ -1,4 +1,6 @@
 @page 
+<!-- revisado -->
+
 @model IgnisMercado.Pages.Usuarios.IndexModel
 
 @using Microsoft.AspNetCore.Identity
@@ -28,6 +30,7 @@
 <table class="table">
     <thead>
         <tr>
+
             @if (User.IsInRole("Administrador")) 
             {
                 <th>
@@ -101,10 +104,10 @@
 
                 @if (User.IsInRole("Cliente") || User.IsInRole("Técnico"))
                 {
-                    // Determinar el usuario logueado, saber su Id.
+                    <!-- Determinar el usuario logueado para saber su Id. -->
                     var um = UserManager.GetUserId(User);
 
-                    // Filtro los datos del usuario, solo ve sus datos, filtro por Id.
+                    <!-- El usuario solo ve sus datos, filtro por Id. -->
                     @if (um == item.Id)
                     {
                         string selectedRow = "";

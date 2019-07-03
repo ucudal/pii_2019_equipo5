@@ -31,6 +31,7 @@ namespace IgnisMercado.Models.Seeding
             {
                 Initialize(context);
             }
+            
         }
 
         public static void Initialize(ApplicationContext context)
@@ -170,7 +171,7 @@ namespace IgnisMercado.Models.Seeding
                 new Proyecto 
                 {
                     Nombre = "La cabeza me da vueltas",
-                    Descripcion = "Cortometraje documental.",
+                    Descripcion = "	Cortometraje documental.",
                     Status = true
                 },
                 new Proyecto 
