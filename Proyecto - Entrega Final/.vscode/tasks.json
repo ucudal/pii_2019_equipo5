@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/RazorPagesIgnis/RazorPagesIgnis.csproj"
+                "${workspaceFolder}/IgnisMercado/IgnisMercado.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/RazorPagesIgnis/RazorPagesIgnis.csproj"
+                "${workspaceFolder}/IgnisMercado/IgnisMercado.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/RazorPagesIgnis/RazorPagesIgnis.csproj"
+                "${workspaceFolder}/IgnisMercado/IgnisMercado.csproj"
             ],
             "problemMatcher": "$tsc"
         }

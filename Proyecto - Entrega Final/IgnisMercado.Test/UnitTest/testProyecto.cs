@@ -13,11 +13,11 @@ namespace tests
         [Fact]
         public void construir_un_proyecto()
         {
-            Proyecto proyecto1 = new Proyecto("Proyecto1", "descripcion");
+            Proyecto proyecto1 = new Proyecto("Proyecto1", "descripcion",true);
 
-            string actual = string.Format(@"{0} {1}", proyecto1.Nombre, proyecto1.Descripcion);
+            string actual = string.Format(@"{0} {1} {2}", proyecto1.Nombre, proyecto1.Descripcion,proyecto1.Status);
  
-            string expected = "Proyecto1 descripcion";
+            string expected = "Proyecto1 descripcion True";
 
             Assert.Equal(expected, actual);
         }
@@ -28,17 +28,15 @@ namespace tests
         /// </summary>
 
         [Fact]
-        public void Probar_Metodo_Cerrar()
+        public void Probar_Metodo_StatusInactivo()
         {
-            Proyecto proyecto1 = new Proyecto("Proyecto1", "descripcion");
-            Solicitud sol1 = new Solicitud(1,"Camarografo",10,"Avanzado","");
-
-            proyecto1.AgregarSolicitud(sol1);
-            proyecto1.Cerrar();
+            Proyecto proyecto1 = new Proyecto("Proyecto1", "descripcion",true);
+    
+            proyecto1.StatusInactivo();
             
-            string actual = string.Format(@"{0} {1}", proyecto1.Status, sol1.Status);
+            string actual = string.Format(@"{0}", proyecto1.Status);
  
-            string expected = "False False";
+            string expected = "False";
 
             Assert.Equal(expected, actual);
         }
@@ -49,17 +47,15 @@ namespace tests
       /// </summary>
       
         [Fact]
-        public void Probar_InformarCostoTotalProyecto()
+        public void Probar_StatusActivo()
         {
-            Proyecto proyecto1 = new Proyecto("Proyecto1", "descripcion");
-            Solicitud sol1 = new Solicitud(1,"Camarografo",10,"Avanzado","");
+            Proyecto proyecto1 = new Proyecto("Proyecto1", "descripcion",true);
 
-            proyecto1.AgregarSolicitud(sol1);
-            proyecto1.InformarCostoTotalProyecto();
+            proyecto1.StatusActivo();
             
-            string actual = string.Format(@"{0}",sol1.CostoSolicitud);
+            string actual = string.Format(@"{0}",proyecto1.Status);
  
-            string expected = "3040";
+            string expected = "True";
 
             Assert.Equal(expected, actual);
         }

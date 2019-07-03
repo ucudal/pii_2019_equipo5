@@ -50,22 +50,22 @@ namespace IgnisMercado.Tests
             // Arrange: seed database with test data
             await PrepareTestContext(async(context) =>
             {
-                            SeedUserData seedUserData = new SeedUserData();
+                SeedUserData seedUserData = new SeedUserData();
 
-            // Cargar la lista de usuarios.
-            seedUserData.CargarListaUsuarios();
+                // Cargar la lista de usuarios.
+                seedUserData.CargarListaUsuarios();
 
-                    var expectedActors = seedUserData.ListaUsuarios;
+                var expected = seedUserData.ListaUsuarios;
 
-                    // Act: retrieve actors
-                    var pageModel = new IndexModel(context);
-                    await pageModel.OnGetAsync(null, 0);
+                // Act: retrieve actors
+                var pageModel = new IndexModel(context);
+                await pageModel.OnGetAsync(null, 0);
 
-                    // Assert: seeded and retrieved actors match
-                    var actualMessages = Assert.IsAssignableFrom<List<ApplicationUser>>(pageModel.ClienteIdxData.Usuarios);
-                    Assert.Equal(
-                        expectedActors.OrderBy(a => a.Email).Select(a => a.Name),
-                        actualMessages.OrderBy(a => a.Email).Select(a => a.Name));
+                // Assert: seeded and retrieved actors match
+                var actualMessages = Assert.IsAssignableFrom<List<ApplicationUser>>(pageModel.ClienteIdxData.Usuarios);
+                Assert.Equal(
+                    expected.OrderBy(a => a.Email).Select(a => a.Name),
+                    actualMessages.OrderBy(a => a.Email).Select(a => a.Name));
             });
         }
     }
