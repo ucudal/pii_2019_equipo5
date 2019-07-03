@@ -11,7 +11,6 @@ namespace RazorPagesIgnis.Tests
 {
     public static class Utilities
     {
-        #region snippet1
         public static DbContextOptions<AppDbContext> TestDbContextOptions()
         {
             // Create a new service provider to create a new in-memory database.
@@ -28,6 +27,5 @@ namespace RazorPagesIgnis.Tests
 
             return builder.Options;
         }
-        #endregion
     }
 }

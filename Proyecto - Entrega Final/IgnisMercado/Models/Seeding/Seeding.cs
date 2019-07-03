@@ -166,7 +166,7 @@ namespace IgnisMercado.Models.Seeding
                 new Proyecto 
                 {
                     Nombre = "La cabeza me da vueltas",
-                    Descripcion = "	Cortometraje documental.",
+                    Descripcion = "Cortometraje documental.",
                     Status = true
                 },
                 new Proyecto 
@@ -204,6 +204,9 @@ namespace IgnisMercado.Models.Seeding
             {
                 return;
             }
+
+            // ApplicationUser usuario = context.Users.Where(u => u.Name == "Admin").Single();
+            // var usuarioid = usuario.Id;
 
             context.RelacionClienteProyectos.AddRange(
             
