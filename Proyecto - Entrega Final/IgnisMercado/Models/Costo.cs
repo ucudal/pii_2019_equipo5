@@ -5,20 +5,15 @@ namespace IgnisMercado.Models
 {   
     public class Costo : ISujetoCosto, ICosto
     { 
-        /// <summary>
-        /// Esta clase conoce el costo por hora para cada modo de contratación y catégoria de técnico.
-        /// Tiene la responsabilidad de calcular el costo de una solicitud.
-        /// </summary>
         public Costo() 
         {
-            this.costoHoraBasico = 150;
-            this.costoHoraAvanzado = 280;
-
             this.primeraHoraBasico = 380;
-            this.primeraHoraAvanzado = 520;
-
-            this.jornadaAvanzado=2000;
             this.jornadaBasico=1200;
+            this.costoHoraBasico = 150;
+
+            this.primeraHoraAvanzado = 520;
+            this.jornadaAvanzado=2000;
+            this.costoHoraAvanzado = 280;
 
             this.horaJornada=6;
         }

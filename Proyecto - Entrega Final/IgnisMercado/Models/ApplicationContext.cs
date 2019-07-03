@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 using IgnisMercado.Areas.Identity.Data;
-using IgnisMercado.Models;
 
 namespace IgnisMercado.Models
 {
@@ -16,9 +15,6 @@ namespace IgnisMercado.Models
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);
 
             builder.Entity<RelacionClienteProyecto>().ToTable("RelacionClienteProyectos");
             builder.Entity<RelacionProyectoSolicitud>().ToTable("RelacionProyectoSolicitudes");
@@ -31,6 +27,7 @@ namespace IgnisMercado.Models
             builder.Entity<ApplicationUser>().ToTable("AspNetUsers");
 
             // Relación Cliente:Proyecto
+
             builder.Entity<RelacionClienteProyecto>()
                 .HasKey(cp => new { cp.ClienteId, cp.ProyectoId });
 
@@ -45,6 +42,7 @@ namespace IgnisMercado.Models
                 .HasForeignKey(cp => cp.ProyectoId);
 
             // Relación Proyecto:Solicitud
+
             builder.Entity<RelacionProyectoSolicitud>()
                 .HasKey(ps => new { ps.ProyectoId, ps.SolicitudId });
 
@@ -59,6 +57,7 @@ namespace IgnisMercado.Models
                 .HasForeignKey(ps => ps.SolicitudId);
 
             // Relación Tecnico:Rol
+
             builder.Entity<RelacionTecnicoRol>()
                 .HasKey(tr => new { tr.TecnicoId, tr.RolId });
 
@@ -73,6 +72,7 @@ namespace IgnisMercado.Models
                 .HasForeignKey(tr => tr.RolId);
 
             // Relación Tecnico:Solicitud
+
             builder.Entity<RelacionTecnicoSolicitud>()
                 .HasKey(r => new { r.TecnicoId, r.SolicitudId });
 
@@ -85,7 +85,6 @@ namespace IgnisMercado.Models
                 .HasOne(r => r.Solicitud)
                 .WithMany(s => s.RelacionTecnicoSolicitud)
                 .HasForeignKey(r => r.SolicitudId);
-                
         }
 
         public DbSet<IgnisMercado.Models.RelacionClienteProyecto> RelacionClienteProyectos { get; set; }
@@ -105,6 +104,5 @@ namespace IgnisMercado.Models
         public new DbSet<IgnisMercado.Models.Rol> Roles { get; set; }
 
         public DbSet<IgnisMercado.Models.Costo> Costos { get; set; }
-
     }
 }
