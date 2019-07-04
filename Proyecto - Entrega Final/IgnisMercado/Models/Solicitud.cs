@@ -129,7 +129,7 @@ namespace IgnisMercado.Models
 
             if (this.Status == true) 
             {
-                this.costoSolicitud = Costo.CalcularCostoSolicitud(
+                this.CostoSolicitud = Costo.CalcularCostoSolicitud(
                                         this.ModoDeContrato, 
                                         this.HorasContratadas, 
                                         this.NivelExperiencia);
