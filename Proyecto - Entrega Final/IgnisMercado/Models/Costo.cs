@@ -5,18 +5,55 @@ namespace IgnisMercado.Models
 {   
     public class Costo : ISujetoCosto, ICosto
     { 
-        public Costo() 
+        // Para patrón Singleton: declaración static.
+        private static Costo costoInstancia;
+
+        // Para patrón Singleton: private.
+        private Costo() 
         {
             this.primeraHoraBasico = 380;
             this.costoHoraBasico = 150;
-            this.jornadaBasico=1200;
+            this.jornadaBasico = 1200;
 
             this.primeraHoraAvanzado = 520;
             this.costoHoraAvanzado = 280;
-            this.jornadaAvanzado=2000;
+            this.jornadaAvanzado = 2000;
 
-            this.horaJornada=6;
+            this.horaJornada = 6;
         }
+
+        // Para patrón Singleton: método obtener instancia.
+        public static Costo obtenerInstancia() 
+        {
+            if (costoInstancia == null)
+            {
+                costoInstancia = new Costo();
+            }
+            return costoInstancia;
+        }
+
+        // Para patrón Singleton: seeding en el contexto.
+        // Se define este método para uso del contexto y el patrón Singleton.
+        public void SeedCostoSingleton(ApplicationContext _context)
+        {
+            _context.Costos.AddRange(
+                new Costo 
+                {
+                    CostoHoraBasico = 4,
+                    CostoHoraAvanzado = 4,
+                    PrimeraHoraBasico = 4,
+                    PrimeraHoraAvanzado = 4,
+                    JornadaAvanzado = 4,
+                    JornadaBasico = 4,
+                    HoraJornada = 4
+                }
+            );
+
+            // guarda los cambios.
+            _context.SaveChanges();
+        }
+
+        //public static Costo CostoInstancia { get => costoInstancia; set => costoInstancia = value; }
 
         /// <summary>
         /// Para RazorPages: atributo PrimaryKey de la tabla.
