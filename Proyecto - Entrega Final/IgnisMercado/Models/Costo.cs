@@ -8,12 +8,12 @@ namespace IgnisMercado.Models
         public Costo() 
         {
             this.primeraHoraBasico = 380;
-            this.jornadaBasico=1200;
             this.costoHoraBasico = 150;
+            this.jornadaBasico=1200;
 
             this.primeraHoraAvanzado = 520;
-            this.jornadaAvanzado=2000;
             this.costoHoraAvanzado = 280;
+            this.jornadaAvanzado=2000;
 
             this.horaJornada=6;
         }

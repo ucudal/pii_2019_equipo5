@@ -32,12 +32,12 @@ namespace IgnisMercado.Pages.Proyectos
         // public ApplicationUser Cliente { get; set; }
 
         // Instanciamos el viewmodel.
-        public ClienteIndexData ClienteIdx = new ClienteIndexData();
+        public ClienteIndexData ClienteIdxData = new ClienteIndexData();
 
         public async Task OnGetAsync(int? id)
         {
             // Mostramos en pantalla la lista de todos los proyectos.
-            ClienteIdx.Proyectos = await _context.Proyectos
+            ClienteIdxData.Proyectos = await _context.Proyectos
                 .Include(p => p.RelacionProyectoSolicitud)
                     .ThenInclude(rps => rps.Solicitud)
                 .Include(p => p.RelacionClienteProyecto)
@@ -53,7 +53,7 @@ namespace IgnisMercado.Pages.Proyectos
                     // El usuario selecciona un proyecto del cliente.
                     ProyectoId = id;
 
-                    ClienteIdx.Proyectos = await _context.Proyectos 
+                    ClienteIdxData.Proyectos = await _context.Proyectos 
                         .Where(p=>p.ProyectoId == id)
                         .Include(p=>p.RelacionProyectoSolicitud)
                             .ThenInclude(r=>r.Solicitud)
@@ -61,10 +61,10 @@ namespace IgnisMercado.Pages.Proyectos
                                     .AsNoTracking()
                                     .ToListAsync();
 
-                    Proyecto proyecto = ClienteIdx.Proyectos
+                    Proyecto proyecto = ClienteIdxData.Proyectos
                                             .Where(p => p.ProyectoId == id).Single();
 
-                    ClienteIdx.Solicitudes = proyecto.RelacionProyectoSolicitud
+                    ClienteIdxData.Solicitudes = proyecto.RelacionProyectoSolicitud
                                                     .Select(rps => rps.Solicitud).ToList();
 
                 };

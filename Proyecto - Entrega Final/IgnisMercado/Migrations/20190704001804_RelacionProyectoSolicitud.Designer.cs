@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IgnisMercado.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20190701185533_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190704001804_RelacionProyectoSolicitud")]
+    partial class RelacionProyectoSolicitud
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,9 +29,6 @@ namespace IgnisMercado.Migrations
                         .IsConcurrencyToken();
 
                     b.Property<DateTime>("DOB");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
@@ -80,8 +77,6 @@ namespace IgnisMercado.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("ApplicationUser");
                 });
 
             modelBuilder.Entity("IgnisMercado.Models.Costo", b =>
@@ -220,8 +215,6 @@ namespace IgnisMercado.Migrations
 
                     b.Property<bool>("Status");
 
-                    b.Property<string>("TecnicoAsociado");
-
                     b.Property<int>("costoSolicitud")
                         .HasColumnType("decimal(18, 2)");
 
@@ -341,15 +334,6 @@ namespace IgnisMercado.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("IgnisMercado.Models.Tecnico", b =>
-                {
-                    b.HasBaseType("IgnisMercado.Areas.Identity.Data.ApplicationUser");
-
-                    b.Property<string>("NivelExperiencia");
-
-                    b.HasDiscriminator().HasValue("Tecnico");
-                });
-
             modelBuilder.Entity("IgnisMercado.Models.RelacionClienteProyecto", b =>
                 {
                     b.HasOne("IgnisMercado.Areas.Identity.Data.ApplicationUser", "Cliente")
@@ -379,12 +363,12 @@ namespace IgnisMercado.Migrations
             modelBuilder.Entity("IgnisMercado.Models.RelacionTecnicoRol", b =>
                 {
                     b.HasOne("IgnisMercado.Models.Rol", "Rol")
-                        .WithMany("RelacionTecnicoRoles")
+                        .WithMany("RelacionTecnicoRol")
                         .HasForeignKey("RolId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("IgnisMercado.Areas.Identity.Data.ApplicationUser", "Tecnico")
-                        .WithMany("RelacionTecnicoRoles")
+                        .WithMany("RelacionTecnicoRol")
                         .HasForeignKey("TecnicoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -392,12 +376,12 @@ namespace IgnisMercado.Migrations
             modelBuilder.Entity("IgnisMercado.Models.RelacionTecnicoSolicitud", b =>
                 {
                     b.HasOne("IgnisMercado.Models.Solicitud", "Solicitud")
-                        .WithMany("RelacionTecnicoSolicitudes")
+                        .WithMany("RelacionTecnicoSolicitud")
                         .HasForeignKey("SolicitudId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("IgnisMercado.Areas.Identity.Data.ApplicationUser", "Tecnico")
-                        .WithMany("RelacionTecnicoSolicitudes")
+                        .WithMany("RelacionTecnicoSolicitud")
                         .HasForeignKey("TecnicoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

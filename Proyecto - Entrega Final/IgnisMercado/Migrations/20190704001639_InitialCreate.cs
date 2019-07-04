@@ -43,9 +43,7 @@ namespace IgnisMercado.Migrations
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     DOB = table.Column<DateTime>(nullable: false),
                     Role = table.Column<string>(nullable: false),
-                    Status = table.Column<bool>(nullable: false),
-                    Discriminator = table.Column<string>(nullable: false),
-                    NivelExperiencia = table.Column<string>(nullable: true)
+                    Status = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -106,7 +104,6 @@ namespace IgnisMercado.Migrations
                 {
                     SolicitudId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    TecnicoAsociado = table.Column<string>(nullable: true),
                     ModoDeContrato = table.Column<int>(nullable: false),
                     RolRequerido = table.Column<string>(maxLength: 45, nullable: false),
                     HorasContratadas = table.Column<int>(nullable: false),
