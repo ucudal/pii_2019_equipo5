@@ -53,6 +53,7 @@ namespace IgnisMercado.Pages.Costos
                 await _context.SaveChangesAsync();
 
                 // Se actualiza el costo en todas las solicitudes activas.
+                // Se controla la condicion en ActualizarCostoSolicitudActiva().
                 foreach (Solicitud sol in _context.Solicitudes)
                 {
                     sol.ActualizarCostoSolicitudActiva();
