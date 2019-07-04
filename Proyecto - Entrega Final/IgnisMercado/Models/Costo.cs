@@ -61,7 +61,6 @@ namespace IgnisMercado.Models
                 }
             );
 
-            // guarda los cambios.
             _context.SaveChanges();
         }
 
